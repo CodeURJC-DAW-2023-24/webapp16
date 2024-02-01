@@ -5,13 +5,15 @@
 # Phase 0
 
 <details>
-<summary>🙇‍♂️🙇‍♀️ Development team members </summary>
+<summary>🙇‍♂️🙇‍♀️ **Development team members** </summary>
 |Name and surname|mail|github|
-| Nicolás Hernández Tejero | n.hernandezt.2021@alumnos.urjc.es | nicohht
-| Manuel López Corchado | m.lopezc.2021@alumnos.urjc.es | MNXLPZ
-| Ahmad Abdel Raziq Al Otaibi | a.abdel.2021@alumnos.urjc.es | Ahmad-SE
-| Adrián Soriano Aragón | a.soriano.2021@alumnos.urjc.es | aadrisoriiano
-| Natalia Hernández Vargas | n.hernandezv.2021@alumnos.urjc.es | nataaah
+|----------------------------|----------------------------|----------------|
+
+| Nicolás Hernández Tejero | n.hernandezt.2021@alumnos.urjc.es | nicohht |
+| Manuel López Corchado | m.lopezc.2021@alumnos.urjc.es | MNXLPZ |
+| Ahmad Abdel Raziq Al Otaibi | a.abdel.2021@alumnos.urjc.es | Ahmad-SE |
+| Adrián Soriano Aragón | a.soriano.2021@alumnos.urjc.es | aadrisoriiano |
+| Natalia Hernández Vargas | n.hernandezv.2021@alumnos.urjc.es | nataaah |
 </details>
 
 ## Team coordination tool
