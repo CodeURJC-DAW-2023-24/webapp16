@@ -28,7 +28,7 @@
 
 
 ## :hammer_and_wrench: Team coordination tool
-#####Trello
+### Trello
 This tool offers a Kanban-like organization, allowing us to view at any time and from any location the section of the software that is under development, completed, or pending.
 <a href="https://trello.com/b/arU2ZCsQ/daw">Trello link</a>
 
