@@ -2,16 +2,16 @@
 
 # Web application name
 ## Index
-- [<b>Phase 0</b>](#Phase-0)
-  - [<b>:busts_in_silhouette: Development team member</b>](##:busts_in_silhouette:-Development-team-members)
-  - [<b>:hammer_and_wrench: Team coordination tool</b>](###:hammer_and_wrench:-Team-coordination-tool)
-  - [<b>:memo: Entities</b>](###:memo:-Entities)
-  - [<b>:gear: Funcionalities</b>](###:gear:-Functionalities:exclamation::exclamation::exclamation:)
-  - [<b>:key: User permissions</b>](###:key:-User-permissions)
-  - [<b>:framed_picture: Images</b>](###:framed_picture:-Images)
-  - [<b>:bar_chart: Graphics</b>](###:bar_chart:-Graphics:exclamation::exclamation::exclamation:)
-  - [<b>:bulb: Complementary technology</b>](###:bulb:-Complementary-technology)
-  - [<b>:chart_with_upwards_trend: Algorithm and advanced query</b>](###:chart_with_upwards_trend:-Algorithm-and-advanced-query)
+- [**Phase 0**](#phase-0)
+  - [**:busts_in_silhouette: Development team member**](#busts_in_silhouette-development-team-members)
+  - [**:hammer_and_wrench: Team coordination tool**](#hammer_and_wrench-team-coordination-tool)
+  - [**:memo: Entities**](#memo-entities)
+  - [**:gear: Funcionalities**](#gear-functionalities❗❗❗)
+  - [**:key: User permissions**](#key-user-permissions)
+  - [**:framed_picture: Images**](#framed_picture-Images)
+  - [**:bar_chart: Graphics**](#bar_chart-Graphics❗❗❗)
+  - [**:bulb: Complementary technology**](#bulb-complementary-technology)
+  - [**:chart_with_upwards_trend: Algorithm and advanced query**](#chart_with_upwards_trend-algorithm-and-advanced-query)
   
 # Phase 0
 
@@ -42,7 +42,7 @@ The main entities that the application will manage are:
 - Matches
 - Players
 - Stadium
-### :gear: Functionalities:exclamation::exclamation::exclamation:
+### :gear: Functionalities❗❗❗
 - Functionalitie 1
 - Functionalitie 2
 - ...
@@ -62,7 +62,7 @@ The images mentioned are related to the entities mentioned above.
 - Stands Image (Stadium).
 - Tournament logo.
 
-### :bar_chart: Graphics:exclamation::exclamation::exclamation:
+### :bar_chart: Graphics❗❗❗
 The information that will be displayed using graphics is:
 - Information 1: Type of graph
 - Information 2: Type of graph
@@ -82,4 +82,3 @@ The algorithm or advanced query to be implemented is:
 - Automatic clasification when submitting the match report.
 - Advanced statistics of  matches by team/player.
 - Search bar on teams and players pages.
-
