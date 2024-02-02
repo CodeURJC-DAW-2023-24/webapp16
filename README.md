@@ -3,19 +3,19 @@
 # Web application name
 ## Index
 - [<b>Phase 0</b>](#Phase-0)
-  - [<b>👥 Development team member</b>](##👥-Development-team-members)
-  - [<b>🛠 Team coordination tool</b>](###🛠-Team-coordination-tool)
-  - [<b>📝 Entities</b>](###📝-Entities)
-  - [<b>⚙️ Funcionalities</b>](###⚙️-Functionalities❗❗❗)
-  - [<b>🔑 User permissions</b>](###🔑-User-permissions)
-  - [<b>🖼️ Images</b>](###🖼️-Images)
-  - [<b>📊 Graphics</b>](###📊-Graphics❗❗❗)
-  - [<b>💡 Complementary technology</b>](###💡-Complementary-technology)
-  - [<b>📈 Algorithm and advanced query</b>](###📈-Algorithm-and-advanced-query)
+  - [<b>:busts_in_silhouette: Development team member</b>](##:busts_in_silhouette:-Development-team-members)
+  - [<b>:hammer_and_wrench: Team coordination tool</b>](###:hammer_and_wrench:-Team-coordination-tool)
+  - [<b>:memo: Entities</b>](###:memo:-Entities)
+  - [<b>:gear: Funcionalities</b>](###:gear:-Functionalities:exclamation::exclamation::exclamation:)
+  - [<b>:key: User permissions</b>](###:key:-User-permissions)
+  - [<b>:framed_picture: Images</b>](###:framed_picture:-Images)
+  - [<b>:bar_chart: Graphics</b>](###:bar_chart:-Graphics:exclamation::exclamation::exclamation:)
+  - [<b>:bulb: Complementary technology</b>](###:bulb:-Complementary-technology)
+  - [<b>:chart_with_upwards_trend: Algorithm and advanced query</b>](###:chart_with_upwards_trend:-Algorithm-and-advanced-query)
   
 # Phase 0
 
-## 👥 Development team members
+## :busts_in_silhouette: Development team members
 
 |Name and surname|mail|github|
 |----------------|----|------|
@@ -27,14 +27,14 @@
 
 
 
-## 🛠 Team coordination tool
+## :hammer_and_wrench: Team coordination tool
 #####Trello
 This tool offers a Kanban-like organization, allowing us to view at any time and from any location the section of the software that is under development, completed, or pending.
 <a href="https://trello.com/b/arU2ZCsQ/daw">Trello link</a>
 
 
 ## Main aspects of the web application
-### 📝 Entities 
+### :memo: Entities 
 The main entities that the application will manage are:
 - Users
 - Teams
@@ -42,11 +42,11 @@ The main entities that the application will manage are:
 - Matches
 - Players
 - Stadium
-### ⚙️ Functionalities❗❗❗
+### :gear: Functionalities:exclamation::exclamation::exclamation:
 - Functionalitie 1
 - Functionalitie 2
 - ...
-### 🔑 User permissions
+### :key: User permissions
 The permissions of each of the user types are:
 - <b>Anonymous</b>: View  public content, sign up, sign in.
 - <b>Registered</b>:  Allows to do everything an anonymous user can plus mark teams as favourite, view and download match reports, view their profile and modify it and sign out.
@@ -54,7 +54,7 @@ The permissions of each of the user types are:
 - <b>Coach</b>: Allows to do everything a registered user can plus create teams and add players to teams and their teams to tournaments.
 - <b>Admin</b>: Allows everything other users can do plus create tournaments,  teams, matches, add players, modify stadiums information, tournaments, matches, teams and players.
 
-### 🖼️ Images
+### :framed_picture: Images
 The images mentioned are related to the entities mentioned above.
 - Favicon of the web page.
 - Team Icons.
@@ -62,13 +62,13 @@ The images mentioned are related to the entities mentioned above.
 - Stands Image (Stadium).
 - Tournament logo.
 
-### 📊 Graphics❗❗❗
+### :bar_chart: Graphics:exclamation::exclamation::exclamation:
 The information that will be displayed using graphics is:
 - Information 1: Type of graph
 - Information 2: Type of graph
 - ...
 
-### 💡 Complementary technology
+### :bulb: Complementary technology
 The complementary technology to be used is:
 - PDF autogeneration  for match reports.
 - Google Maps API integration for stadiums location.
@@ -77,8 +77,9 @@ The complementary technology to be used is:
 - WebSockets for real time chat between clients and server.
 
 
-### 📈 Algorithm and advanced query
+### :chart_with_upwards_trend: Algorithm and advanced query
 The algorithm or advanced query to be implemented is:
 - Automatic clasification when submitting the match report.
 - Advanced statistics of  matches by team/player.
 - Search bar on teams and players pages.
+
