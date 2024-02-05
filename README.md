@@ -1,4 +1,4 @@
-#FutPro League
+# FutPro League
 ___
 ## Index
 - [**Phase 0**](#phase-0)
