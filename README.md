@@ -1,6 +1,5 @@
-# webapp16
-
-# Web application name
+#FutPro League
+___
 ## Index
 - [**Phase 0**](#phase-0)
   - [**:busts_in_silhouette: Development team member**](#busts_in_silhouette-development-team-members)
