@@ -310,4 +310,4 @@ The diagram is a flow chart showing user permissions and navigation steps within
 - There are three initial states at the top: "Registered User", "Guest", "Referee" and "Admin", leading to different paths depending on the user's status.
 - Arrows connect these initial states to various web pages, including "Tournament Create", "Events" and "Player/Team Login" among others.
 - Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
-![*Flow Diagram*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
+![*Flow Diagram*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/usersDiagram.png)
