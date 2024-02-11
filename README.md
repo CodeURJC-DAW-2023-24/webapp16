@@ -108,3 +108,12 @@ The algorithm or advanced query to be implemented is:
 - Advanced statistics of  matches by team/player.
 - Search bar on teams and players pages.
 ___
+
+___
+# Phase 1
+___
+
+##Home Page: 
+
+##### img: Event Info Screen
+![HomePage] (https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/index.png)
