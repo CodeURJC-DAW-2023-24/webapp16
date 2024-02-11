@@ -1,0 +1,73 @@
+body {
+    background-color: #ffffff; 
+    font-family: Arial, sans-serif;
+  }
+.addPlayerForm{
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+  .addPlayerForm h1,h2 {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+  }
+
+  .addPlayerForm hr {
+    width: 50%;
+    margin: auto;
+  }
+
+  .addPlayerForm p {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .addPlayerForm form {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .addPlayerForm label {
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  .addPlayerForm input, textarea {
+    width: 80%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .addPlayerForm span {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+  }
+
+  .addPlayerForm button {
+    width: 20%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f17171; 
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+    transition: background-color 0.5s;
+    transition: width 0.1s;
+  }
+  .addPlayerForm button:hover{
+    width: 21%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+
+    background-color: #eb2c2c; 
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+  }
