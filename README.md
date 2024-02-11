@@ -114,7 +114,7 @@ ___
 ___
 
 ## Home Page: 
-The main page of your website is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
+The main page is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
 
 A navigation bar at the top with options for “Home,” “Teams,” “Profile,” and “Tournaments.” There is also a search bar and a sign in/register button on the right side.
 A section titled “Available Tournaments” beneath the banner, which displays four different types of trophy icons There is also a button for view the tournaments and a countdown timer for the registration deadline.
@@ -125,7 +125,7 @@ A footer menu at the bottom, including options like “Menu,” “About us,” 
 ___
 
 ## Register/Login:
-The login/sign up page of your website allows users to access or create their account on your website. It features the following elements:
+The login/sign up page of the website allows users to access or create their account on your website. It features the following elements:
 
 A logo at the top corner, consisting of multiple colors and shapes, representing the identity of your website.
 A login box in the center, with options to enter email and password. The login box has two tabs labeled “Log In” and “Sign Up,” indicating that users can either log into their existing account or create a new one. There is a red “LOGIN” button below the email and password fields for users to proceed after entering their credentials. There is also a link labeled “Forgot your password?” for users who need to recover their password.
@@ -135,7 +135,7 @@ A login box in the center, with options to enter email and password. The login b
 ___
 
 ## Tournament Bracket:
-The tournament bracket page of your website displays the matches and results of a football tournament. It features the following elements:
+The tournament bracket page website displays the matches and results of a football tournament. It features the following elements:
 
 A blank tournament bracket in the middle, labeled ROUND 1 through FINAL; each section has blank spaces for team names and scores. The bracket is designed for a single-elimination tournament with 16 teams.
 A stadistics button below the bracket, which allows users see the stadistics off the tournament.
@@ -146,7 +146,6 @@ ___
 
 ## Match Screen:
 The Match Screen of your web page displays detailed information about a specific football match between two teams. It provides a clear and organized layout that allows users to quickly grasp the key details of the match.
-
 The Match Screen consists of the following elements:
 
 Team logos displayed prominently.
@@ -169,18 +168,38 @@ Four graphs for the following stadistics: goals, shots, passes, and fouls.
 ___
 
 ## View Player:
+The Player Info is a section where users can input information about a football player of their choice.
 
+- The club logo is visible on the top right corner.
+- A large image of a stadium filled with spectators serves as the background at the upper part of the webpage. The UEFA Champions League trophy is prominently displayed on this background.
+- In front of this background, there's an empty form titled “PLAYER INFO” with various fields like “Name,” “Nationality,” “Age,” etc., for inputting information about a player.
 ![*View Player*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/viewPlayer.png)
 
 ___
 
-## Create Player:
+## Create New Player:
+
+The create new player section is a section where the user can enter information about a soccer player he wants to add to his team.
+
+- The form fields include spaces to enter the player's name, age, position, team, nationality, height, weight and number. Each field is delineated and has placeholder text indicating what information to enter.
+- Below the form is a red button labeled "ADD" to submit the completed form.
+
 
 ![*Create Player*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/addPlayer.png)
 
 ___
 
-## Create Team:
+## Create New Team:
+
+The create new team section is a section where the user can enter information about a soccer team he wants to create.
+
+- The section displays an online form titled "Football Referee Report".
+- The form has a light gray background and contains several fields to fill in, including:
+  - Team Name
+  - Players
+  - Basic stadistics
+- There is an orange "Save Changes" button at the bottom of the form to submit the completed information.
+
 
 ![*Create Team*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTeam.png)
 
@@ -188,35 +207,77 @@ ___
 
 ## Profile:
 
+The profile section is a section where the user can enter and update personal information.
+
+- The section shows a profile page on a website.
+- Below the header is the main content area for user profile information with fields for "First Name*", "Last Name*", "Date of Birth*", "Phone Number*", "Email Address*" and "Address".
+- Each field has an empty text box next to it for entering information.
+- There is a red button labeled "Save changes" below the input fields.
+
 ![*Profile*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/profile.png)
 
 ___
 
 ## About Us:
+The About Us is a section where users can learn more about the FUTBOLPRO  League platform and its features.
 
+- In the middle section, there is an article or blog post titled “FutPro League” accompanied by an image. The article explains what FUTBOLPRO LEAGUE is and how it helps users manage their football leagues in minutes.
+- Below this section, there’s another part titled “Our Testimonials” featuring a quote from someone praising the website/platform.
+  
 ![*About Us*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/aboutUs.png)
 
 ___
 
 ## Team:
+The Team is a section where users can view information about different football teams.
+
+- All the teams registered in the web.
+- The names of the teams and the city that came form are written below their respective logos.
 
 ![*Team*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/team.png)
 
 ___
 
 ## Team Info:
+The Team Info is a section where users can view information about a specific football team.
 
+- All the players registered in the team.
+- Stadistics off that football team.
 ![*Team Info*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/teamInfo.png)
 
 ___
 
 ## Fill Match Report:
+The section for filling out the match report is a section in which the soccer referee can enter information about the match he/she has refereed.
 
+- The section displays an online form entitled "Soccer Referee Report".
+- The form has a light gray background and contains several fields to fill in, including:
+  - Date of the match
+  - Time of the match
+  - Home team
+  - Away team
+  - Stadium
+  - Weather conditions
+  - Temperature (°F)
+  - Match Referees
+  - Match Summary
+- Each field has a blank space next to it to enter the information.
+- There is a red "SEND REPORT" button at the bottom of the form to send the completed report.
 ![*Fill Match Report*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/fillMatchReport.png)
 
 ___
 
 ## Tournament Create:
+
+The create new tournament section is a section where the user can enter information about a soccer tournament he/she wants to organize.
+
+- The section shows a user interface for creating a new tournament on a website or application.
+- Below this header, there is a form with fields to enter:
+    - "Tournament name"
+    - "Category"
+    - "Cup" with an example text "FIFA 20 Tournament cup".
+    - Fields to enter four different teams labeled "Team 1", "Team 2", "Team 3"...
+- At the bottom of the form there are two buttons: a green one labeled "SAVE" and a red one labeled "CANCEL".
 
 ![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
 
