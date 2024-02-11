@@ -116,4 +116,4 @@ ___
 ##Home Page: 
 
 ##### img: Event Info Screen
-![*HomePage*] (https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/index.png)
+![*HomePage*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/index.png)
