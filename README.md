@@ -113,7 +113,110 @@ ___
 # Phase 1
 ___
 
-##Home Page: 
+## Home Page: 
+The main page of your website is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
 
-##### img: Event Info Screen
+A navigation bar at the top with options for “Home,” “Teams,” “Profile,” and “Tournaments.” There is also a search bar and a sign in/register button on the right side.
+A section titled “Available Tournaments” beneath the banner, which displays four different types of trophy icons There is also a button for view the tournaments and a countdown timer for the registration deadline.
+A footer menu at the bottom, including options like “Menu,” “About us,” social media profiles, an email contact option, and some information about the website creator and the copyright.
+
 ![*HomePage*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/index.png)
+
+___
+
+## Register/Login:
+The login/sign up page of your website allows users to access or create their account on your website. It features the following elements:
+
+A logo at the top corner, consisting of multiple colors and shapes, representing the identity of your website.
+A login box in the center, with options to enter email and password. The login box has two tabs labeled “Log In” and “Sign Up,” indicating that users can either log into their existing account or create a new one. There is a red “LOGIN” button below the email and password fields for users to proceed after entering their credentials. There is also a link labeled “Forgot your password?” for users who need to recover their password.
+
+![*RegLog*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/login.png)
+
+___
+
+## Tournament Bracket:
+The tournament bracket page of your website displays the matches and results of a football tournament. It features the following elements:
+
+A blank tournament bracket in the middle, labeled ROUND 1 through FINAL; each section has blank spaces for team names and scores. The bracket is designed for a single-elimination tournament with 16 teams.
+A stadistics button below the bracket, which allows users see the stadistics off the tournament.
+
+![*Bracket*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/tournamentBracket.png)
+
+___
+
+## Match Screen:
+The Match Screen of your web page displays detailed information about a specific football match between two teams. It provides a clear and organized layout that allows users to quickly grasp the key details of the match.
+
+The Match Screen consists of the following elements:
+
+Team logos displayed prominently.
+A white box containing lists of players from both teams, divided into two columns labeled with each team’s name. Each column lists players’ names under their respective teams.
+A button labeled “Match Report” located below the white box, which leads to a page with more details and statistics about the match.
+
+![*Match*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/matchScreen.png)
+
+___
+
+## Stadistics:
+The Statistics Page of your web page shows four bar graphs with different statistics about the football matches. It provides a simple and visual way to compare the performance of the teams and players.
+
+The Statistics Page consists of: 
+
+Four graphs for the following stadistics: goals, shots, passes, and fouls.
+
+![*Stadistics*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/stadistics.png)
+
+___
+
+## View Player:
+
+![*View Player*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/viewPlayer.png)
+
+___
+
+## Create Player:
+
+![*Create Player*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/addPlayer.png)
+
+___
+
+## Create Team:
+
+![*Create Team*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTeam.png)
+
+___
+
+## Profile:
+
+![*Profile*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/profile.png)
+
+___
+
+## About Us:
+
+![*About Us*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/aboutUs.png)
+
+___
+
+## Team:
+
+![*Team*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/team.png)
+
+___
+
+## Team Info:
+
+![*Team Info*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/teamInfo.png)
+
+___
+
+## Fill Match Report:
+
+![*Fill Match Report*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/fillMatchReport.png)
+
+___
+
+## Tournament Create:
+
+![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
+
