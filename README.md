@@ -11,6 +11,24 @@ ___
   - [**:bar_chart: Graphics**](#bar_chart-Graphics)
   - [**:bulb: Complementary technology**](#bulb-complementary-technology)
   - [**:chart_with_upwards_trend: Algorithm and advanced query**](#chart_with_upwards_trend-algorithm-and-advanced-query)
+- [**Phase 1**](#phase-1)
+  - [**🖵 Screens**](#🖵-Screens)
+    - [**Home Page**](#Home-Page:)
+    - [**Register/Login**](#Register/Login)
+    - [**Tournament Bracket**](#Tournament-Bracket:)
+    - [**Match Screen**](#Match-Screen:)
+    - [**Stadistics**](#Stadistics:)
+    - [**View Player**](#View-Player)
+    - [**Create New Player**](#Create-New-Player:)
+    - [**Profile**](#Profile:)
+    - [**About Us**](#About-Us:)
+    - [**Teams**](#Teams:)
+    - [**Team Info**](#Team-Info)
+    - [**Fill Match Report**](#Fill-Match-Report:)
+    - [**Tournament Create**](#Tournament-Create:)
+  - [**Flow Diagram**](#Flow-Diagram:)
+
+___
 
 ___
 # Phase 0
@@ -112,7 +130,8 @@ ___
 ___
 # Phase 1
 ___
-
+#  🖵 Screens
+___
 ## Home Page: 
 The main page is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
 
@@ -281,3 +300,14 @@ The create new tournament section is a section where the user can enter informat
 
 ![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
 
+___
+# Flow Diagram:
+
+The diagram is a flow chart showing user permissions and navigation steps within a web interface. The diagram uses colored arrows to indicate the progression from one web page or state to another, based on user actions or permissions.
+
+- The diagram is a complex schematic with multiple screenshots of web pages connected by colored arrows indicating different user actions or states.
+- Each screenshot represents different sections or pages of a sports or tournament related website.
+- There are three initial states at the top: "Registered User", "Guest", "Referee" and "Admin", leading to different paths depending on the user's status.
+- Arrows connect these initial states to various web pages, including "Tournament Create", "Events" and "Player/Team Login" among others.
+- Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
+![*Flow Diagram*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
