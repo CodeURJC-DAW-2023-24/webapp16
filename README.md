@@ -192,6 +192,7 @@ The Player Info is a section where users can input information about a football 
 - The club logo is visible on the top right corner.
 - A large image of a stadium filled with spectators serves as the background at the upper part of the webpage. The UEFA Champions League trophy is prominently displayed on this background.
 - In front of this background, there's an empty form titled “PLAYER INFO” with various fields like “Name,” “Nationality,” “Age,” etc., for inputting information about a player.
+  
 ![*View Player*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/viewPlayer.png)
 
 ___
@@ -218,7 +219,6 @@ The create new team section is a section where the user can enter information ab
   - Players
   - Basic stadistics
 - There is an orange "Save Changes" button at the bottom of the form to submit the completed information.
-
 
 ![*Create Team*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTeam.png)
 
@@ -262,6 +262,7 @@ The Team Info is a section where users can view information about a specific foo
 
 - All the players registered in the team.
 - Stadistics off that football team.
+
 ![*Team Info*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/teamInfo.png)
 
 ___
@@ -282,6 +283,7 @@ The section for filling out the match report is a section in which the soccer re
   - Match Summary
 - Each field has a blank space next to it to enter the information.
 - There is a red "SEND REPORT" button at the bottom of the form to send the completed report.
+
 ![*Fill Match Report*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/fillMatchReport.png)
 
 ___
@@ -310,4 +312,5 @@ The diagram is a flow chart showing user permissions and navigation steps within
 - There are three initial states at the top: "Registered User", "Guest", "Referee" and "Admin", leading to different paths depending on the user's status.
 - Arrows connect these initial states to various web pages, including "Tournament Create", "Events" and "Player/Team Login" among others.
 - Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
+
 ![*Flow Diagram*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/usersDiagram.jpg)
