@@ -12,7 +12,7 @@ ___
   - [**:bulb: Complementary technology**](#bulb-complementary-technology)
   - [**:chart_with_upwards_trend: Algorithm and advanced query**](#chart_with_upwards_trend-algorithm-and-advanced-query)
 - [**Phase 1**](#phase-1)
-  - [**🖵 Screens**](#🖵-Screens)
+  - [**:computer: Screens**](#computer-Screens)
     - [**Home Page**](#Home-Page)
     - [**Register/Login**](#Register/Login)
     - [**Tournament Bracket**](#Tournament-Bracket)
@@ -26,7 +26,7 @@ ___
     - [**Team Info**](#Team-Info)
     - [**Fill Match Report**](#Fill-Match-Report)
     - [**Tournament Create**](#Tournament-Create)
-  - [**Flow Diagram**](#Flow-Diagram)
+  - [**:diamonds:Flow Diagram**](#diamonds-Flow-Diagram)
 
 ___
 
@@ -130,7 +130,7 @@ ___
 ___
 # Phase 1
 ___
-#  🖵 Screens
+#  :computer: Screens
 ___
 ## Home Page: 
 The main page is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
@@ -213,7 +213,6 @@ ___
 
 The create new team section is a section where the user can enter information about a soccer team he wants to create.
 
-- The section displays an online form titled "Football Referee Report".
 - The form has a light gray background and contains several fields to fill in, including:
   - Team Name
   - Players
@@ -303,7 +302,7 @@ The create new tournament section is a section where the user can enter informat
 ![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
 
 ___
-# Flow Diagram:
+# :diamonds: Flow Diagram:
 
 The diagram is a flow chart showing user permissions and navigation steps within a web interface. The diagram uses colored arrows to indicate the progression from one web page or state to another, based on user actions or permissions.
 
