@@ -1,0 +1,193 @@
+
+
+/*------------------------------------------------------------------
+    IMPORT FONTS
+-------------------------------------------------------------------*/
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700,900);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,700i);
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i);
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/*------------------------------------------------------------------
+    IMPORT FILES
+-------------------------------------------------------------------*/
+
+@import url(css/animate.css);
+@import url(css/flaticon.css);
+@import url(css/prettyPhoto.css);
+@import url(css/owl.carousel.css);
+@import url(css/font-awesome.min.css);
+
+.header-top {
+    margin: 15px 0 10px;
+    float: right;
+    width: 100%;
+}
+* {
+    font-family: 'Poppins', sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.full {
+    position:relative;
+}
+.full {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.logo {
+    float: left;
+    padding: 7px 0 6px;
+    margin: 0 0 0 0px;
+    position: relative;
+}
+
+a,
+.btn {
+	text-decoration: none !important;
+	outline: none !important;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+a {
+	color: #1f1f1f;
+	text-decoration: none;
+	outline: none;
+}
+.header-bottom {
+    float: left;
+    width: 100%;
+}
+.main-menu-section {
+    float: right;
+    width: 100%;
+    padding: 0;
+}
+.menu {
+    float: left;
+    width: 100%;
+    min-height: auto;
+    background: #fff;
+}
+.login {
+    float: right;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.login li a:hover, .login li a:focus {
+    background: #fff;
+    color: #333;
+}
+.login li a i {
+    margin: 0 5px 0 0;
+    font-size:15px;
+}
+
+
+#imaginary_container input.form-control {
+    float: left;
+    width: 100%;
+    border: none;
+    padding: 12px 21px 12px;
+    min-height: auto;
+    height: auto;
+    border-radius: 0px;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    border: solid #d8302f 2px;
+}
+
+div.menu div.search-bar .input-group-addon {
+    background: #d8302f;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    font-size: 20px;
+    height: auto;
+    padding: 14px 16px;
+}
+.main-menu-section .navbar.navbar-inverse {
+    background: transparent;
+    border: none;
+    margin: 0;
+    float: left;
+    width: auto;
+}
+.menu .navbar-header {
+    float: left;
+    display: none;
+}
+.navbar.navbar-inverse .navbar-collapse ul.nav.navbar-nav li a:hover, .navbar.navbar-inverse .navbar-collapse ul.nav.navbar-nav li a:focus {
+    color: #d8302f;
+}
+.navbar.navbar-inverse .navbar-collapse ul.nav.navbar-nav li a {
+    opacity: 1;
+    border: none;
+    box-shadow: none;
+}
+body {
+	color: #999;
+	font-size: 15px;
+	font-family: 'Poppins', sans-serif;
+	line-height: 1.80857;
+}
+
+
+
+.navbar.navbar-inverse ul.nav.navbar-nav li a {
+    float: left;
+    padding: 28px 18px 26px;
+    color: #222;
+    font-weight: 500;
+    font-size: 16px;
+}
+.search-bar {
+    float: right;
+    width: 30%;
+    padding: 10px;
+}
+
+.right_top_section {
+    float: right;
+    padding: 17px 0 0;
+}
+
+.login li {
+    float: left;
+    margin: 0 0 0 10px;
+    font-weight: 500;
+}
+.login li a {
+    padding: 9px 25px;
+    color: #fff;
+    font-size: 13px;
+    background: #d8302f;
+    border-radius: 50px;
+    float: left;
+}
+.navbar.navbar-inverse .navbar-collapse ul.nav.navbar-nav li a {
+    opacity: 1;
+    border: none;
+    box-shadow: none;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: transparent;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
