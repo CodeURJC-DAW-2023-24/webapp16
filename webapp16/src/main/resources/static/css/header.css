@@ -14,11 +14,11 @@
     IMPORT FILES
 -------------------------------------------------------------------*/
 
-@import url(css/animate.css);
-@import url(css/flaticon.css);
-@import url(css/prettyPhoto.css);
-@import url(css/owl.carousel.css);
-@import url(css/font-awesome.min.css);
+@import url(/futpro_league/css/animate.css);
+@import url(/futpro_league/css/flaticon.css);
+@import url(/futpro_league/css/prettyPhoto.css);
+@import url(/futpro_league/css/owl.carousel.css);
+@import url(/futpro_league/css/font-awesome.min.css);
 
 .header-top {
     margin: 15px 0 10px;
