@@ -40,4 +40,8 @@ public class MustacheController {
     public String index(Model model) {
         return "index";
     }
+	@GetMapping("/teamInfo")
+    public String teaminfo(Model model) {
+        return "teamInfo";
+    }
 }
