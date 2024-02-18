@@ -4,11 +4,12 @@
 -------------------------------------------------------------------*/
 
 
-@import url(/futpro_league/css/animate.css);
-@import url(/futpro_league/css/flaticon.css);
-@import url(/futpro_league/css/prettyPhoto.css);
-@import url(/futpro_league/css/owl.carousel.css);
-@import url(/futpro_league/css/font-awesome.min.css);
+
+@import url(./imports/animate.css);
+@import url(./imports/flaticon.css);
+@import url(./imports/prettyPhoto.css);
+@import url(./imports/font-awesome.min.css);
+@import url(./imports/font-awesome.css);
 
 .full {
     position:relative;
