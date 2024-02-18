@@ -36,4 +36,8 @@ public class MustacheController {
     public String newTour(Model model) {
         return "tournament-create";
     }
+	@GetMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
 }
