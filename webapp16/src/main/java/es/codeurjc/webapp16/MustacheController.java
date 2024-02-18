@@ -28,6 +28,12 @@ public class MustacheController {
     public String banner(Model model) {
         return "page_banner";
     }
-
-
+	@GetMapping("/login")
+    public String login(Model model) {
+        return "regLog";
+    }
+	@GetMapping("/createTournament")
+    public String newTour(Model model) {
+        return "tournament-create";
+    }
 }
