@@ -20,7 +20,14 @@ public class MustacheController {
 	public String foot(Model model) {
 		return "footer";
 	}
-	
+	@GetMapping("/prueba")
+	public String pru(Model model) {
+		return "prueba";
+	}
+	@GetMapping("/page_banner")
+    public String banner(Model model) {
+        return "page_banner";
+    }
 
 
 }
