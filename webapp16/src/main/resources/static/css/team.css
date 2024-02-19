@@ -1,0 +1,66 @@
+.team .card {
+    width: 100%;
+    height: 100%;
+    border: solid #ccc 1px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.team .col-md-3.column {
+    width: 285px;
+    height: 505.7px; /* Tamaño máximo igual al de la columna */
+    margin-top: 20px; /* Margen superior */
+    margin-bottom: 20px; /* Margen inferior */
+}
+.team .card .img-responsive {
+    flex: 2;
+    width: 253px;
+    height: 266,38px;
+    object-fit: cover;
+}
+.team .card .content {
+    width: 253px;
+    height: 122,31px;
+}
+section#contant p.title {
+    float: left;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+}
+@media (max-width: 368px){
+section#contant p {
+    float: left;
+    width: 100%;
+    line-height: 24px;
+    font-size: 13px;
+    text-align: left;
+    font-weight: 400;
+}
+}
+.main-heading {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 35px;
+}
+button.button {
+    background: #1c72ce;
+    color: #fff;
+    border: none;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+}
+section#contant h4 {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0 0 10px;
+    font-size: 18px;
+    color: #222;
+}

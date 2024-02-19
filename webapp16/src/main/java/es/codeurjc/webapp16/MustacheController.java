@@ -57,4 +57,8 @@ public class MustacheController {
     public String profile(Model model) {
         return "profile";
     }
+	@GetMapping("/team")
+    public String team(Model model) {
+        return "team";
+    }
 }
