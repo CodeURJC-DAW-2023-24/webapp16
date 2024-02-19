@@ -48,5 +48,9 @@ public class MustacheController {
 	@GetMapping("/about")
     public String about(Model model) {
         return "about";
+	}
+	@GetMapping("/profile")
+    public String profile(Model model) {
+        return "profile";
     }
 }
