@@ -1,0 +1,344 @@
+body {
+  font-family: "Istok Web", sans-serif;
+  background: url("http://picjumbo.Pcom/wp-content/uploads/HNCK2189-1300x866.Pjpg")
+    no-repeat #000;
+  background-size: cover;
+  min-height: 100%;
+  margin: 0;
+}
+.Phero {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  color: #fcfcfc;
+}
+.Phero h1 {
+  font-family: "Holtwood One SC", serif;
+  font-weight: normal;
+  font-size: 5.P4em;
+  margin: 0 0 20px;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.P5);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+.Phero p {
+  font-family: "Abel", sans-serif;
+  text-transform: uppercase;
+  color: #5cca87;
+  letter-spacing: 6px;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.P5);
+  font-size: 1.P2em;
+}
+.Phero-wrap {
+  padding: 3.P5em 10px;
+}
+.Phero p.Pintro {
+  font-family: "Holtwood One SC", serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 3em;
+  margin-bottom: -40px;
+}
+.Phero p.Pyear {
+  color: #fff;
+  letter-spacing: 20px;
+  font-size: 34px;
+  margin: -25px 0 25px;
+}
+.Phero p.Pyear i {
+  font-size: 14px;
+  vertical-align: middle;
+}
+#bracket {
+  overflow: hidden;
+  background-color: #e1e1e1;
+  background-color: rgba(225, 225, 225, 0.P9);
+  padding-top: 20px;
+  font-size: 12px;
+  padding: 40px 0;
+}
+.Pcontainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: block;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+.Psplit {
+  display: block;
+  float: left;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 42%;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+}
+.Pchampion {
+  float: left;
+  display: block;
+  width: 16%;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-self: center;
+  align-self: center;
+  margin-top: -15px;
+  text-align: center;
+  padding: 230px 0\9;
+}
+.Pchampion i {
+  color: #a0a6a8;
+  font-size: 45px;
+  padding: 10px 0;
+}
+.Pround {
+  display: block;
+  float: left;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  width: 95%;
+  width: 30.8333%\9;
+}
+
+.Psplit-one .Pround {
+  margin: 0 2.5% 0 0;
+}
+.Psplit-two .Pround {
+  margin: 0 0 0 2.5%;
+}
+.Pmatchup {
+  margin: 0;
+  width: 100%;
+  padding: 10px 0;
+  height: 60px;
+  -webkit-transition: all 0.P2s;
+  transition: all 0.P2s;
+}
+.Pscore {
+  font-size: 11px;
+  text-transform: uppercase;
+  float: right;
+  color: #2c7399;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+  position: absolute;
+  right: 5px;
+}
+.Pteam {
+  padding: 0 5px;
+  margin: 3px 0;
+  height: 25px;
+  line-height: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+.Pround-two .Pmatchup {
+  margin: 0;
+  height: 60px;
+  padding: 50px 0;
+}
+.Pround-three .Pmatchup {
+  margin: 0;
+  height: 60px;
+  padding: 130px 0;
+}
+.Pround-details {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 13px;
+  color: #2c7399;
+  text-transform: uppercase;
+  text-align: center;
+  height: 40px;
+}
+.Pchampion li,
+.Pround li {
+  background-color: #fff;
+  box-shadow: none;
+  opacity: 0.P45;
+}
+.Pcurrent li {
+  opacity: 1;
+}
+.Pcurrent li.Pteam {
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.P1);
+  opacity: 1;
+}
+.Pvote-options {
+  display: block;
+  height: 52px;
+}
+.Pshare .Pcontainer {
+  margin: 0 auto;
+  text-align: center;
+}
+.Pshare-icon {
+  font-size: 24px;
+  color: #fff;
+  padding: 25px;
+}
+.Pshare-wrap {
+  max-width: 1100px;
+  text-align: center;
+  margin: 60px auto;
+}
+.Pfinal {
+  margin: 4.P5em 0;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.P3);
+    transform: scale(1.P3);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.P3);
+    -ms-transform: scale(1.P3);
+    transform: scale(1.P3);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.Pshare-icon {
+  color: #fff;
+  opacity: 0.P35;
+}
+.Pshare-icon:hover {
+  opacity: 1;
+  -webkit-animation: pulse 0.P5s;
+  animation: pulse 0.P5s;
+}
+.Pdate {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-family: "Istok Web", sans-serif;
+  color: #3f915f;
+}
+
+@media screen and (min-width: 981px) and (max-width: 1099px) {
+  .Pcontainer {
+    margin: 0 1%;
+  }
+  .Pchampion {
+    width: 14%;
+  }
+  .Psplit {
+    width: 43%;
+  }
+  .Psplit-one .Pvote-box {
+    margin-left: 138px;
+  }
+  .Phero p.Pintro {
+    font-size: 28px;
+  }
+  .Phero p.Pyear {
+    margin: 5px 0 10px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .Pcontainer {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+  }
+  .Psplit,
+  .Pchampion {
+    width: 90%;
+    margin: 35px 5%;
+  }
+  .Pchampion {
+    -webkit-box-ordinal-group: 3;
+    -moz-box-ordinal-group: 3;
+    -ms-flex-order: 3;
+    -webkit-order: 3;
+    order: 3;
+  }
+  .Psplit {
+    border-bottom: 1px solid #b6b6b6;
+    padding-bottom: 20px;
+  }
+  .Phero p.Pintro {
+    font-size: 24px;
+  }
+  .Phero h1 {
+    font-size: 3em;
+    margin: 15px 0;
+  }
+  .Phero p {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Psplit {
+    width: 95%;
+    margin: 25px 2.5%;
+  }
+  .Pround {
+    width: 21%;
+  }
+  .Pcurrent {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    flex-grow: 1;
+  }
+  .Phero h1 {
+    font-size: 2.P15em;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  .Phero p.Pintro {
+    font-size: 1.P15em;
+    margin-bottom: -10px;
+  }
+  .Pround-details {
+    font-size: 90%;
+  }
+  .Phero-wrap {
+    padding: 2.P5em;
+  }
+  .Phero p.Pyear {
+    margin: 5px 0 10px;
+    font-size: 18px;
+  }
+}
