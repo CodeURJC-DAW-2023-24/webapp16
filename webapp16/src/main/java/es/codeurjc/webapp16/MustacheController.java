@@ -48,5 +48,17 @@ public class MustacheController {
 	@GetMapping("/about")
     public String about(Model model) {
         return "about";
+		}
+	@GetMapping("/fillMatchReport")
+    public String report(Model model) {
+        return "FillMatchReport";
+	}
+	@GetMapping("/profile")
+    public String profile(Model model) {
+        return "profile";
+    }
+	@GetMapping("/team")
+    public String team(Model model) {
+        return "team";
     }
 }
