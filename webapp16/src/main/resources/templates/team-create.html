@@ -11,7 +11,7 @@
                 <a href="./prueba" style="margin-left: 20px; color: #d8302f;"><i class='input-icon uil uil-arrow-left' style="font-size: 2rem;"></i></a>
                 <a href="./prueba" style="justify-content: center; align-items: center; display: flex;"><img class="show-logo" src="./images/logo_top.png" alt="#"/></a>
         </div>
-          <h2>CREATE TOURNAMENT</h2>
+          <h2>CREATE TEAM</h2>
           <hr>
           <form action="../futpro_league/index.html" >
 
@@ -22,11 +22,38 @@
             <input type="category" id="category" name="category"  required>
             <br>
             <label for="cup">Stadium</label> 
-            <input type="cup" id="cup" name="cup" placeholder="Enter the tournmanet cup" required>
+            <input type="cup" id="cup" name="cup" required>
+            <br>
+            <label for="cup">Team colors</label> 
+            <input type="cup" id="cup" name="cup" required>
             <br>
             <div class="equipo">
-                <label for="equipo-1">Team colors</label>
+                <label for="equipo-1">Player 1:</label>
                 <input type="text" class="equipo-input" name="equipo[]" required>
+            </div>
+            <div class="equipo-extra">
+                <label for="equipo-2">Player 2:</label>
+                <input type="text" class="equipo-input" name="equipo[]">
+            </div>
+            <div class="equipo-extra">
+                <label for="equipo-3">Player 3:</label>
+                <input type="text" class="equipo-input" name="equipo[]">
+            </div>
+            <div class="equipo-extra">
+                <label for="equipo-3">Player 4:</label>
+                <input type="text" class="equipo-input" name="equipo[]">
+            </div>
+            <div class="equipo">
+                <label for="equipo-1">Player 5:</label>
+                <input type="text" class="equipo-input" name="equipo[]" required>
+            </div>
+            <div class="equipo-extra">
+                <label for="equipo-2">Player 6:</label>
+                <input type="text" class="equipo-input" name="equipo[]">
+            </div>
+            <div class="equipo-extra">
+                <label for="equipo-3">Player 7:</label>
+                <input type="text" class="equipo-input" name="equipo[]">
             </div>
             
             <button type="save">SAVE</button>
