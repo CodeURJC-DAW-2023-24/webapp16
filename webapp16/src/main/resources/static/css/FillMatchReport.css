@@ -83,7 +83,7 @@ body {
   .contact-wrap {
     -webkit-box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.05);
     box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.05);
-    border: 1px solid #efefef; }
+    }
     .contact-wrap .col-form-label {
       font-size: 14px;
       color: #b3b3b3;
