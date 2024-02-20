@@ -60,6 +60,10 @@ public class MustacheController {
     @GetMapping("/tournament_bracket")
     public String tournament_bracket(Model model) {
         return "tournament_bracket";
+	}
+	@GetMapping("/createPlayer")
+    public String newPlayer(Model model) {
+        return "player_create";
     }
 	@GetMapping("/newTeam")
     public String addTeam(Model model) {

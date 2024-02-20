@@ -44,10 +44,8 @@ a:hover {
     margin-bottom: 5px;
   }
   
-  input[type="text"],
-  input[type="tournamentname"],
-  input[type="category"],
-  input[type="cup"] {
+
+  input[type="field"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -56,7 +54,7 @@ a:hover {
     box-sizing: border-box;
   }
   
-  .equipo-extra {
+  .marginDefined {
     margin-top: 10px;
   }
   
@@ -64,6 +62,7 @@ a:hover {
   button[type="save"] {
     background-color: #4caf50;
     color: white;
+    transition: 0.5s;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -74,6 +73,7 @@ a:hover {
   button[type="cancel"] {
     background-color: #de0e0e;
     color: white;
+    transition: 0.5s;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -81,9 +81,13 @@ a:hover {
     margin-top: 10px;
   }
   
-  button[type="submit"]:hover,
-  button[type="add"]:hover {
-    background-color: #45a049;
+  button[type="save"]:hover {
+    background-color: #00ff08;
+    transition: 0.5s;
+  }
+  button[type="cancel"]:hover {
+    background-color: #ff0000;
+    transition: 0.5s;
   }
 
   

@@ -1,0 +1,32 @@
+.bracket {
+	display: flex
+	!important;
+}
+
+.round {
+	flex: 1;
+	display: flex;
+	margin-right: 30px;
+	flex-direction: column;
+	justify-content: space-around
+	!important;
+}
+
+.match {
+	margin: 15px 0;
+	overflow: hidden;
+	border-radius: 5px
+	!important;
+}
+
+.team {
+	color: #fff;
+	padding: 10px 8px;
+	background-color: #74b9ff
+	!important;
+}
+
+.team:nth-child(odd) {
+	border-bottom: 1px solid #8fc7ff
+	!important;
+}
