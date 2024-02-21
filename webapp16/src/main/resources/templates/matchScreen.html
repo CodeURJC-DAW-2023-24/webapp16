@@ -3,17 +3,16 @@
 {{>header}}
 {{>page_banner}}
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/imports/bootstrap.min.css"/> 
-
+<link rel="stylesheet" href="/css/imports/bootstrap.min.css"/> 
 <link href="/css/matchScreen.css" rel="stylesheet" type="text/css"/>
- 
-    <div class="table-container">
+    
+    <div class="table-container" style="padding-top: 75px;">
         <table>
             <thead>
                 <tr>
                     <th style ="text-align: center;">Real Madrid 
 
-                    <img  id="realMadrid"src="/images/realMadrid.png" alt="#">
+                    <img  class ="imgTeam"src="/images/realMadrid.png" alt="Real Madrid">
                   </th>
                 </tr>
             </thead>
@@ -34,7 +33,7 @@
             <thead>
               <tr>
                   <th style ="text-align: center;">Atletico de Madrid 
-                  <img   id ="Atleti"src="/images/AtleticoDeMAdrid.png" alt="#">
+                  <img  class ="imgTeam"src="/images/AtleticoDeMAdrid.png" alt="Atleti">
                 </th>
               </tr>
           </thead>
@@ -53,8 +52,13 @@
               </tr>
           </tbody>
         </table>
+        <div class="fillDiv">
+        <a href="fillMatchReport" >
+          <button type="button" class="btn btn-outline-primary">Fill Match Report</button>
+           </a>
+          </div>
     </div>
-  </div>
+ 
 
 
 
