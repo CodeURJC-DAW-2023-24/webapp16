@@ -16,21 +16,17 @@ public class MustacheController {
 	public String foot(Model model) {
 		return "footer";
 	}
-	@GetMapping("/prueba")
-	public String pru(Model model) {
-		return "prueba";
-	}
-	@GetMapping("/page_banner")
+	@GetMapping("/pageBanner")
     public String banner(Model model) {
-        return "page_banner";
+        return "pageBanner";
     }
 	@GetMapping("/login")
     public String login(Model model) {
         return "regLog";
     }
-	@GetMapping("/createTournament")
+	@GetMapping("/tournamentCreation")
     public String newTour(Model model) {
-        return "tournament-create";
+        return "tournamentCreate";
     }
 	@GetMapping("/index")
     public String index(Model model) {
@@ -47,7 +43,7 @@ public class MustacheController {
 		}
 	@GetMapping("/fillMatchReport")
     public String report(Model model) {
-        return "FillMatchReport";
+        return "fillMatchReport";
 	}
 	@GetMapping("/profile")
     public String profile(Model model) {
@@ -57,17 +53,17 @@ public class MustacheController {
     public String team(Model model) {
         return "team";
     }
-    @GetMapping("/tournament_bracket")
-    public String tournament_bracket(Model model) {
-        return "tournament_bracket";
+    @GetMapping("/tournamentBracket")
+    public String tournament_racket(Model model) {
+        return "tournamentBracket";
 	}
-	@GetMapping("/createPlayer")
+	@GetMapping("/playerCreation")
     public String newPlayer(Model model) {
-        return "player_create";
+        return "playerCreate";
     }
-	@GetMapping("/newTeam")
+	@GetMapping("/teamCreation")
     public String addTeam(Model model) {
-        return "team-create";
+        return "teamCreate";
     }
 	@GetMapping("/matchScreen")
     public String showMatchScreen(Model model) {

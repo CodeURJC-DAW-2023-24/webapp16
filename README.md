@@ -299,7 +299,7 @@ The create new tournament section is a section where the user can enter informat
     - Fields to enter different teams labeled "Team 1", "Team 2", "Team 3"...
 - At the bottom of the form there are two buttons: a green one labeled "SAVE" and a red one labeled "CANCEL".
 
-![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/createTournament.png)
+![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/readmeImg/tournamentCreation.png)
 
 ___
 # :diamonds: Flow Diagram:
