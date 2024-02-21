@@ -342,3 +342,21 @@ body {
     font-size: 18px;
   }
 }
+
+
+.btn {
+  float: left;
+  background: #d8302f;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 50px;
+  margin-top: 5px;
+  font-weight: 500;
+  transition: ease all 1s;
+}
+.btn:hover {
+background: #111;
+color: white ;
+text-decoration: none;
+}

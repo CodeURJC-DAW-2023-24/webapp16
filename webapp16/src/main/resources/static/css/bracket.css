@@ -19,16 +19,46 @@
 	overflow: hidden;
 	border-radius: 5px
 	!important;
+
 }
+
 
 .team {
 	color: #fff;
 	padding: 10px 8px;
-	background-color: #74b9ff
+	background-color: #d8302f
 	!important;
+	display: flex;
+	justify-content: space-between;
+
+
 }
+
+
 
 .team:nth-child(odd) {
 	border-bottom: 1px solid #8fc7ff
 	!important;
 }
+
+#round1{
+	margin-left: 50px;
+
+}
+
+.btn {
+	float: left;
+	background: #d8302f;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 15px;
+	border-radius: 50px;
+	margin-top: 5px;
+	font-weight: 500;
+	transition: ease all 1s;
+  }
+  .btn:hover {
+  background: #111;
+  color: white ;
+  text-decoration: none;
+  }
