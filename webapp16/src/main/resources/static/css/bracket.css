@@ -1,5 +1,7 @@
 .bracket {
-	display: flex
+	position: relative;
+	display: flex;
+	justify-content: space-around
 	!important;
 }
 
