@@ -73,4 +73,8 @@ public class MustacheController {
     public String showMatchScreen(Model model) {
         return "matchScreen";
     }
+    @GetMapping("/stadistics")
+    public String showStadistics(Model model) {
+        return "stadistics";
+    }
 }
