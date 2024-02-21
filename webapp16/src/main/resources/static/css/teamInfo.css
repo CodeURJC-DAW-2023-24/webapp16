@@ -34,8 +34,10 @@ th, td {
 }
 
 th {
-  background-color: #333;
+  background-color: #d8302f;
   color: #fff;
+  font-size: 20px;
+  text-align: center;
 }
 
 td {
