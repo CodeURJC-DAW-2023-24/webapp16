@@ -1,10 +1,10 @@
-package es.codeurjc.webapp16;
+package es.codeurjc.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Webapp16ApplicationTests {
+class backendApplicationTests {
 
 	@Test
 	void contextLoads() {
