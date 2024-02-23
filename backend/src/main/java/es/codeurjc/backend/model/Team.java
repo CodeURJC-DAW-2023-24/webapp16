@@ -19,10 +19,10 @@ public class Team {
     private Tournament tournament;
 
     @OneToMany(mappedBy = "localTeam", cascade = CascadeType.ALL)
-    private List<Match> homeMatches;
+    private List<Matches> homeMatches;
 
     @OneToMany(mappedBy = "visitingTeam", cascade = CascadeType.ALL)
-    private List<Match> awayMatches;
+    private List<Matches> awayMatches;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> playersList;

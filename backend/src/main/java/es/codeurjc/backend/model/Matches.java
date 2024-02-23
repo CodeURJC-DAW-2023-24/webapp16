@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import jakarta.persistence.*;
 
 @Entity
-public class Match {
+public class Matches {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

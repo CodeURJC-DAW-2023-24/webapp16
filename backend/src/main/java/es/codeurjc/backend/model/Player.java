@@ -22,6 +22,19 @@ public class Player {
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
+    public Player(){}
+    public Player( String name, String lastName, String age, int jerseyNumber, String nacionality, String goals, String position, String weight, String height, Team team) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.jerseyNumber = jerseyNumber;
+        this.nacionality = nacionality;
+        this.goals = goals;
+        this.position = position;
+        this.weight = weight;
+        this.height = height;
+        this.team = team;
+    }
 
 
     public Long getId() {

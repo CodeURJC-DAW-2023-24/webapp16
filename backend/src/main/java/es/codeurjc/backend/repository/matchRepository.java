@@ -1,4 +1,7 @@
 package es.codeurjc.backend.repository;
 
-public class matchRepository {
+import es.codeurjc.backend.model.Matches;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface matchRepository extends JpaRepository<Matches, Long> {
 }
