@@ -1,4 +1,4 @@
-package es.codeurjc.backend.models;
+package es.codeurjc.backend.model;
 import jakarta.persistence.*;
 
 @Entity

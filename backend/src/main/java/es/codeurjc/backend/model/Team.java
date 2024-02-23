@@ -1,4 +1,4 @@
-package es.codeurjc.backend.models;
+package es.codeurjc.backend.model;
 
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class Team {
     
     @ManyToOne
     @JoinColumn(name = "tournament_id")
-    private Tournament tournamnet;
+    private Tournament tournament;
 
     @OneToMany(mappedBy = "localTeam", cascade = CascadeType.ALL)
     private List<Match> homeMatches;

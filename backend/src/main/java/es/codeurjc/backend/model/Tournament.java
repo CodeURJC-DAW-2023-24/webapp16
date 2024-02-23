@@ -1,4 +1,4 @@
-package es.codeurjc.backend.models;
+package es.codeurjc.backend.model;
 
 
 import jakarta.persistence.*;
@@ -16,7 +16,7 @@ public class Tournament {
     private String category;
     private String cup;
 
-    @OneToMany(mappedBy = "torunament", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL)
     private List<Team> teamList;
 
     public Long getId() {

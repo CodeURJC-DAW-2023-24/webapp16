@@ -1,10 +1,9 @@
-package es.codeurjc.backend.models;
+package es.codeurjc.backend.model;
 
 
 import java.time.LocalDate;
 
 import jakarta.persistence.*;
-import org.springframework.cglib.core.Local;
 
 @Entity
 public class Match {
