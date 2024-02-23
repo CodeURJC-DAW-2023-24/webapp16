@@ -16,8 +16,21 @@ public class Tournament {
     private String category;
     private String cup;
 
-    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval=true)
     private List<Team> teamList;
+
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval=true)
+    private List<Matches> matchesList;
+
+
+
+    public Tournament(){}
+    public Tournament(String name, String category, String cup, List<Team> teamList) {
+        this.name = name;
+        this.category = category;
+        this.cup = cup;
+        this.teamList = teamList;
+    }
 
     public Long getId() {
         return this.id;

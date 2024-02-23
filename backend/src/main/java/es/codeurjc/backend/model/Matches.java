@@ -23,8 +23,24 @@ public class Matches {
     // private String visitingTeam;
     private int localGoals;
     private int visitingGoals;
-    private LocalDate matchDate;
+    private String matchDate;
     private String location;
+    @ManyToOne
+    @JoinColumn(name = "tournament_id")
+    private Tournament tournament;
+
+
+
+    public Matches(){};
+    public Matches(Team localTeam, Team visitingTeam, Tournament tournament,int  localGoals, int visitingGoals, String matchDate, String location) {
+        this.localTeam = localTeam;
+        this.visitingTeam = visitingTeam;
+        this.tournament = tournament;
+        this.localGoals = localGoals;
+        this.visitingGoals = visitingGoals;
+        this.matchDate = matchDate;
+        this.location = location;
+    }
 
     public Team getLocalTeam() {
         return this.localTeam;
@@ -54,10 +70,10 @@ public class Matches {
         this.visitingGoals = value;
     }
 
-    public LocalDate getMatchDate() {
+    public String getMatchDate() {
         return this.matchDate;
     }
-    public void setMatchDate(LocalDate value) {
+    public void setMatchDate(String value) {
         this.matchDate = value;
     }
 

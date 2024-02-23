@@ -1,4 +1,4 @@
-package es.codeurjc.backend;
+package es.codeurjc.backend.Controller;
 
 
 import org.springframework.stereotype.Controller;
