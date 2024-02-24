@@ -24,27 +24,29 @@ public class Matches {
     private int localGoals;
     private int visitingGoals;
     private String matchDate;
-    private String location;
+
     @ManyToOne
-    @JoinColumn(name = "tournament_id")
     private Tournament tournament;
 
 
+    public Matches() {
+    }
 
-    public Matches(){};
-    public Matches(Team localTeam, Team visitingTeam, Tournament tournament,int  localGoals, int visitingGoals, String matchDate, String location) {
+    ;
+
+    public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, String matchDate) {
         this.localTeam = localTeam;
         this.visitingTeam = visitingTeam;
         this.tournament = tournament;
         this.localGoals = localGoals;
         this.visitingGoals = visitingGoals;
         this.matchDate = matchDate;
-        this.location = location;
     }
 
     public Team getLocalTeam() {
         return this.localTeam;
     }
+
     public void setLocalTeam(Team value) {
         this.localTeam = value;
     }
@@ -52,6 +54,7 @@ public class Matches {
     public Team getVisitingTeam() {
         return this.visitingTeam;
     }
+
     public void setVisitingTeam(Team value) {
         this.visitingTeam = value;
     }
@@ -59,6 +62,7 @@ public class Matches {
     public int getLocalGoals() {
         return this.localGoals;
     }
+
     public void setLocalGoals(int value) {
         this.localGoals = value;
     }
@@ -66,6 +70,7 @@ public class Matches {
     public int getVisitingGoals() {
         return this.visitingGoals;
     }
+
     public void setVisitingGoals(int value) {
         this.visitingGoals = value;
     }
@@ -73,14 +78,8 @@ public class Matches {
     public String getMatchDate() {
         return this.matchDate;
     }
+
     public void setMatchDate(String value) {
         this.matchDate = value;
-    }
-
-    public String getLocation() {
-        return this.location;
-    }
-    public void setLocation(String value) {
-        this.location = value;
     }
 }

@@ -20,7 +20,6 @@ public class Player {
     private String height;
     
     @ManyToOne
-    @JoinColumn(name = "team_id")
     private Team team;
     public Player(){}
     public Player( String name, String lastName, String age, int jerseyNumber, String nacionality, String goals, String position, String weight, String height, Team team) {

@@ -1,9 +1,12 @@
 package es.codeurjc.backend.model;
 
 
+
+
 import java.util.List;
 
 import jakarta.persistence.*;
+import es.codeurjc.backend.model.Tournament;
 @Entity
 public class Team {
     @Id
@@ -13,20 +16,24 @@ public class Team {
     private String name;
     private String coach;
     private String stadium;
-    
+
     @ManyToOne
-    @JoinColumn(name = "tournament_id")
     private Tournament tournament;
 
-    @OneToMany(mappedBy = "localTeam", cascade = CascadeType.ALL)
-    private List<Matches> homeMatches;
+    @OneToMany(mappedBy = "team")
+    private List<Player> listPlayer;
 
-    @OneToMany(mappedBy = "visitingTeam", cascade = CascadeType.ALL)
-    private List<Matches> awayMatches;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
-    private List<Player> playersList;
-  // Relación de uno a muchos con la clase player
+    public Team(){}
+    public Team(String name, String coach, String stadium, Tournament tournament) {
+        this.name = name;
+        this.coach = coach;
+        this.stadium = stadium;
+        this.tournament = tournament;
+
+    }
+
+    // Relación de uno a muchos con la clase player
     public Long getId() {
       return this.id;
     }
