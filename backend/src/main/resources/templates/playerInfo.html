@@ -1,0 +1,45 @@
+{{>header}}
+{{>pageBanner}}
+<link href="/css/teamInfo.css" rel="stylesheet" type="text/css"/>
+
+<div class="container">
+    <div class="col-md-6">
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th colspan="2">{{player.name}} {{player.lastName}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Number:</td>
+                    <td>{{player.jerseyNumber}}</td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td>{{player.age}}</td>
+                </tr>
+                <tr>
+                    <td>Nationality:</td>
+                    <td>{{player.nationality}}</td>
+                </tr>
+                <tr>
+                    <td>Position:</td>
+                    <td>{{player.position}}</td>
+                </tr>
+                <tr>
+                    <td>Weight:</td>
+                    <td>{{player.weight}}</td>
+                </tr>
+                <tr>
+                    <td>Height:</td>
+                    <td>{{player.height}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{{>footer}}

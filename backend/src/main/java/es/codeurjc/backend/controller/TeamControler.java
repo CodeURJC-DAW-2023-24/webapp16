@@ -38,7 +38,24 @@ public class TeamControler {
         model.addAttribute("players", players);
 
         model.addAttribute("pageTitle", team.getName());
+
         return "teamInfo";
+
+    }
+    @GetMapping("/teams/{name}/{playerName}")
+    public String showPlayerInfo(@PathVariable String name, @PathVariable String playerName, Model model) {
+
+        Team team = teamService.findTeamByName(name);
+        Player player = playerService.findPlayerByName(playerName);
+
+
+        model.addAttribute("team", team);
+        model.addAttribute("player", player);
+
+        String pagePath = team.getName() + " / " + player.getName() + " " + player.getLastName();
+        model.addAttribute("pageTitle", pagePath);
+
+        return "playerInfo";
 
     }
 }

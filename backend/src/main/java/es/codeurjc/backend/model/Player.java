@@ -13,7 +13,7 @@ public class Player {
     // private String team;
     private String age;
     private int jerseyNumber;
-    private String nacionality;
+    private String nationality;
     private String goals;
     private String position;
     private String weight;
@@ -22,12 +22,12 @@ public class Player {
     @ManyToOne
     private Team team;
     public Player(){}
-    public Player( String name, String lastName, String age, int jerseyNumber, String nacionality, String goals, String position, String weight, String height, Team team) {
+    public Player( String name, String lastName, String age, int jerseyNumber, String nationality, String goals, String position, String weight, String height, Team team) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.jerseyNumber = jerseyNumber;
-        this.nacionality = nacionality;
+        this.nationality = nationality;
         this.goals = goals;
         this.position = position;
         this.weight = weight;
@@ -78,11 +78,11 @@ public class Player {
       this.jerseyNumber = value;
     }
 
-    public String getNacionality() {
-      return this.nacionality;
+    public String getNationality() {
+      return this.nationality;
     }
-    public void setNacionality(String value) {
-      this.nacionality = value;
+    public void setNationality(String value) {
+      this.nationality = value;
     }
 
     public String getGoals() {
