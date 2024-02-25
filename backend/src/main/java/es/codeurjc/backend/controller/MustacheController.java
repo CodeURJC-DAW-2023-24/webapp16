@@ -1,4 +1,4 @@
-package es.codeurjc.backend.Controller;
+package es.codeurjc.backend.controller;
 
 
 import org.springframework.stereotype.Controller;
@@ -33,10 +33,6 @@ public class MustacheController {
         return "index";
     }
 
-	@GetMapping("/teamInfo")
-    public String teaminfo(Model model) {
-        return "teamInfo";
-	}
 	@GetMapping("/about")
     public String about(Model model) {
         return "about";

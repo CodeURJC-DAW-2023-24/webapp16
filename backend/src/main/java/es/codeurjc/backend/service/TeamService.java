@@ -19,4 +19,6 @@ public class TeamService {
     public List<Team> findAll() {
         return teamRepository.findAllTeams();
     }
+    public Team findTeamByName(String name){return teamRepository.findTeamByName(name);}
+
 }

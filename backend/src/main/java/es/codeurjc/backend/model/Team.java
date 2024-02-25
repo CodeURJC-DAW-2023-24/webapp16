@@ -16,7 +16,9 @@ public class Team {
     private String name;
     private String coach;
     private String stadium;
-
+    private int gamesPlayed;
+    private int wins;
+    private int loses;
     @ManyToOne
     private Tournament tournament;
 
@@ -27,11 +29,14 @@ public class Team {
 
     }
 
-    public Team(String name, String coach, String stadium, Tournament tournament) {
+    public Team(String name, String coach, String stadium, Tournament tournament, int gamesPlayed, int wins, int loses) {
         this.name = name;
         this.coach = coach;
         this.stadium = stadium;
         this.tournament = tournament;
+        this.gamesPlayed = gamesPlayed;
+        this.wins = wins;
+        this.loses = loses;
 
     }
 
@@ -63,4 +68,27 @@ public class Team {
     public void setStadium(String value) {
       this.stadium = value;
     }
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getLoses() {
+        return loses;
+    }
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public void setLoses(int loses) {
+        this.loses = loses;
+    }
+
 }

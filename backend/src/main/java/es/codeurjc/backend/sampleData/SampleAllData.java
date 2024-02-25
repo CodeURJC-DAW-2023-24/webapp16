@@ -1,4 +1,4 @@
-package es.codeurjc.backend.SampleData;
+package es.codeurjc.backend.sampleData;
 
 
 import es.codeurjc.backend.model.Matches;
@@ -49,52 +49,52 @@ public class SampleAllData {
 
 
         //Teams creation
-        Team realMadrid = new Team("Real Madrid", "Mourinho", "Santiago Bernabeu", champions);
+        Team realMadrid = new Team("Real Madrid", "Mourinho", "Santiago Bernabeu", champions, 0 ,0, 0);
         teams.save(realMadrid);
 
-        Team barcelona = new Team("FC Barcelona", "Guardiola", "Camp Nou", champions);
+        Team barcelona = new Team("FC Barcelona", "Guardiola", "Camp Nou", champions, 0 ,0, 0);
         teams.save(barcelona);
 
-        Team atleticoMadrid = new Team("Atletico de Madrid", "Simeone", "Wanda Metropolitano",champions );
+        Team atleticoMadrid = new Team("Atletico de Madrid", "Simeone", "Wanda Metropolitano",champions, 0 ,0, 0);
         teams.save(atleticoMadrid);
 
-        Team sevilla = new Team("Sevilla FC", "Lopetegui", "Estadio Ramón Sánchez-Pizjuán", champions );
+        Team sevilla = new Team("Sevilla FC", "Lopetegui", "Estadio Ramón Sánchez-Pizjuán", champions, 0 ,0, 0 );
         teams.save(sevilla);
 
-        Team valencia = new Team("Valencia CF", "Javi Gracia", "Mestalla" ,champions);
+        Team valencia = new Team("Valencia CF", "Javi Gracia", "Mestalla" ,champions, 0 ,0, 0);
         teams.save(valencia);
 
-        Team villarreal = new Team("Villarreal CF", "Emery", "Estadio de la Cerámica",champions );
+        Team villarreal = new Team("Villarreal CF", "Emery", "Estadio de la Cerámica",champions, 0 ,0, 0);
         teams.save(villarreal);
 
-        Team realSociedad = new Team("Real Sociedad", "Alguacil", "Reale Arena",champions );
+        Team realSociedad = new Team("Real Sociedad", "Alguacil", "Reale Arena",champions, 0 ,0, 0);
         teams.save(realSociedad);
 
-        Team athleticBilbao = new Team("Athletic Bilbao", "Marcelino", "San Mamés", champions );
+        Team athleticBilbao = new Team("Athletic Bilbao", "Marcelino", "San Mamés", champions, 0 ,0, 0 );
         teams.save(athleticBilbao);
 
-        Team levante = new Team("Levante UD", "Paco López", "Estadi Ciutat de València", copaDelRey);
+        Team levante = new Team("Levante UD", "Paco López", "Estadi Ciutat de València", copaDelRey, 0 ,0, 0);
         teams.save(levante);
 
-        Team getafe = new Team("Getafe CF", "Bordalás", "Coliseum Alfonso Pérez",copaDelRey );
+        Team getafe = new Team("Getafe CF", "Bordalás", "Coliseum Alfonso Pérez",copaDelRey, 0 ,0, 0 );
         teams.save(getafe);
 
-        Team eibar = new Team("Eibar", "Mendilibar", "Estadio Municipal de Ipurua",copaDelRey );
+        Team eibar = new Team("Eibar", "Mendilibar", "Estadio Municipal de Ipurua",copaDelRey, 0 ,0, 0);
         teams.save(eibar);
 
-        Team celtaVigo = new Team("Celta de Vigo", "Coudet", "Estadio de Balaídos",copaDelRey );
+        Team celtaVigo = new Team("Celta de Vigo", "Coudet", "Estadio de Balaídos",copaDelRey, 0 ,0, 0);
         teams.save(celtaVigo);
 
-        Team granada = new Team("Granada CF", "Díaz", "Nuevo Los Cármenes",copaDelRey );
+        Team granada = new Team("Granada CF", "Díaz", "Nuevo Los Cármenes",copaDelRey, 0 ,0, 0);
         teams.save(granada);
 
-        Team realBetis = new Team("Real Betis", "Pellegrini", "Estadio Benito Villamarín" ,copaDelRey);
+        Team realBetis = new Team("Real Betis", "Pellegrini", "Estadio Benito Villamarín" ,copaDelRey, 0 ,0, 0);
         teams.save(realBetis);
 
-        Team huesca = new Team("SD Huesca", "Pacheta", "Estadio El Alcoraz", copaDelRey );
+        Team huesca = new Team("SD Huesca", "Pacheta", "Estadio El Alcoraz", copaDelRey, 0 ,0, 0);
         teams.save(huesca);
 
-        Team osasuna = new Team("Osasuna", "Arrasate", "Estadio El Sadar", copaDelRey);
+        Team osasuna = new Team("Osasuna", "Arrasate", "Estadio El Sadar", copaDelRey, 0 ,0, 0);
         teams.save(osasuna);
 
 
