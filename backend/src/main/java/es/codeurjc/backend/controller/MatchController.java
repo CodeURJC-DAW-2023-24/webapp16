@@ -1,4 +1,4 @@
-package es.codeurjc.backend.Controller;
+package es.codeurjc.backend.controller;
 
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;

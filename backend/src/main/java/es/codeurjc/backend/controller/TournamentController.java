@@ -1,10 +1,8 @@
-package es.codeurjc.backend.Controller;
+package es.codeurjc.backend.controller;
 
 
 import org.springframework.ui.Model;
-import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
-import es.codeurjc.backend.repository.TournamentRepository;
 import es.codeurjc.backend.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
