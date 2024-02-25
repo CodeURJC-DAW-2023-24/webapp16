@@ -28,10 +28,7 @@ public class MustacheController {
     public String newTour(Model model) {
         return "tournamentCreate";
     }
-	@GetMapping("/index")
-    public String index(Model model) {
-        return "index";
-    }
+
 
 	@GetMapping("/teamInfo")
     public String teaminfo(Model model) {
