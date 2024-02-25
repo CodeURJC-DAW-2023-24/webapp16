@@ -1,6 +1,8 @@
 package es.codeurjc.backend.service;
 
 import es.codeurjc.backend.model.User;
+import es.codeurjc.backend.model.UserPasswords;
+import es.codeurjc.backend.repository.UserPasswordsRepository;
 import es.codeurjc.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,20 +12,31 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserPasswordsRepository userPasswordsRepository;
     private void save(User user){
-        userRepository.save(user);
+        this.userRepository.save(user);
     }
     public void addUser(User user){
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(10));
-        String hashedNickname = BCrypt.hashpw(user.getNickname(), BCrypt.gensalt(10));
-        user.setPassword(hashedPassword);
-        user.setNickname(hashedNickname);
+        UserPasswords userPasswords = new UserPasswords();
+        userPasswords.setPass(hashedPassword);
+        userPasswords.setUser(user.getNickname());
+        this.saveCredentials(userPasswords);
+        user.setPassword(hashedPassword);//En un futuro hay que quitar pass de user
         this.save(user);
     }
-    public void checkUser(String pass, String nick){
-        String hashedPassword = BCrypt.hashpw(pass, BCrypt.gensalt(10));
-        String hashedNickname = BCrypt.hashpw(pass, BCrypt.gensalt(10));
-
+    public boolean checkUser(String pass, String nick){
+        System.out.println(nick);
+        String BDpassword = this.userRepository.getUserCredential(nick);
+        if (BCrypt.checkpw(pass, BDpassword)){
+            System.out.println("Coincidence took place");
+            return true;
+        }
+        return false;
+    }
+    private void saveCredentials(UserPasswords userPasswords){
+        this.userPasswordsRepository.save(userPasswords);
     }
 
 }
