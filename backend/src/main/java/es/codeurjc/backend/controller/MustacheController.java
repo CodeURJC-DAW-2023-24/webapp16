@@ -32,6 +32,7 @@ public class MustacheController {
 
 	@GetMapping("/about")
     public String about(Model model) {
+        model.addAttribute("pageTitle", "About us");
         return "about";
 		}
 	@GetMapping("/fillMatchReport")
@@ -40,6 +41,8 @@ public class MustacheController {
 	}
 	@GetMapping("/profile")
     public String profile(Model model) {
+        model.addAttribute("pageTitle", "Profile");
+
         return "profile";
     }
 

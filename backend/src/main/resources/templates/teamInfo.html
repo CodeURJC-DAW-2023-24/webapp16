@@ -1,6 +1,7 @@
 {{>header}}
 {{>pageBanner}}
 <link href="/css/teamInfo.css" rel="stylesheet" type="text/css"/>
+<link href="/css/team.css" rel="stylesheet" type="text/css"/>
 
 <div class="container">
     <div class="row">
@@ -15,8 +16,14 @@
                     <tbody>
                     {{#players}}
                     <tr>
-                        <td>{{name}} {{lastName}}</td>
+                        <td style="display: flex; justify-content: space-between;">
+                            <span>{{name}} {{lastName}}</span>
+                            <a href="/teams/{{team.name}}/{{name}}">
+                                <button class="button">Info</button>
+                            </a>
+                        </td>
                     </tr>
+
                     {{/players}}
                     </tbody>
                 </table>
