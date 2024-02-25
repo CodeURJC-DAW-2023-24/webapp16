@@ -1,0 +1,22 @@
+package es.codeurjc.backend.service;
+
+import es.codeurjc.backend.model.Team;
+import es.codeurjc.backend.repository.TeamRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import es.codeurjc.backend.repository.TeamRepository;
+
+import java.util.List;
+
+@Service
+public class TeamService {
+    @Autowired
+    private TeamRepository teamRepository;
+
+    public void save(Team team){
+        teamRepository.save(team);
+    }
+    public List<Team> findAll() {
+        return teamRepository.findAllTeams();
+    }
+}

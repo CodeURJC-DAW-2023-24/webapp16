@@ -49,10 +49,10 @@ public class MustacheController {
     public String profile(Model model) {
         return "profile";
     }
-	@GetMapping("/team")
-    public String team(Model model) {
-        return "team";
-    }
+	//@GetMapping("/team")
+    //public String team(Model model) {
+        //return "team";
+    //}
     @GetMapping("/tournamentBracket")
     public String tournament_racket(Model model) {
         return "tournamentBracket";

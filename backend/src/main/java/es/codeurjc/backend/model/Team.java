@@ -23,8 +23,10 @@ public class Team {
     @OneToMany(mappedBy = "team")
     private List<Player> listPlayer;
 
+    protected Team(){
 
-    public Team(){}
+    }
+
     public Team(String name, String coach, String stadium, Tournament tournament) {
         this.name = name;
         this.coach = coach;
