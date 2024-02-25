@@ -1,5 +1,6 @@
 package es.codeurjc.backend.repository;
 
+import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +17,11 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
 
     @Query("SELECT t FROM Tournament t WHERE t.cup = :cup")
     Tournament findTournamentByCup(@Param("cup") String cup);
+
+
+    @Query("SELECT m FROM Matches m WHERE m.tournament.id = :id") //todos los partidos de un torneo
+    List<Matches> findBracketById(@Param("id") Long id);
+
+    @Query("SELECT m FROM Matches m WHERE m.tournament.id = :id AND m.round = :round") //devolver los partidos de una ronda de un torneo
+    List<Matches> findRound( @Param("round") int round,@Param("id") Long id);
 }

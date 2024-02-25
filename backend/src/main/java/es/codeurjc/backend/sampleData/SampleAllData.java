@@ -150,14 +150,14 @@ public class SampleAllData {
 
         //Matches Creation
 
-        matches.save(new Matches(osasuna,levante,copaDelRey , 0,0, "2023-12-03"));
-        matches.save(new Matches(getafe,eibar,copaDelRey , 0,0, "2023-12-03"));
-        matches.save(new Matches(granada,celtaVigo,copaDelRey , 0,0, "2023-12-03"));
-        matches.save(new Matches(huesca,realBetis,copaDelRey , 0,0, "2023-12-03"));
-        matches.save(new Matches(realMadrid,barcelona,champions , 0,0, "2023-12-03"));
-        matches.save(new Matches(athleticBilbao,realSociedad,champions , 0,0, "2023-12-03"));
-        matches.save(new Matches(atleticoMadrid,sevilla,champions , 0,0, "2023-12-03"));
-        matches.save(new Matches(villarreal,valencia,champions , 0,0, "2023-12-03"));
+        matches.save(new Matches(osasuna,levante,copaDelRey , 0,0, "2023-12-03",1));
+        matches.save(new Matches(getafe,eibar,copaDelRey , 0,0, "2023-12-03",1));
+        matches.save(new Matches(granada,celtaVigo,copaDelRey , 0,0, "2023-12-03",1));
+        matches.save(new Matches(huesca,realBetis,copaDelRey , 0,0, "2023-12-03",1));
+        matches.save(new Matches(realMadrid,barcelona,champions , 0,0, "2023-12-03",1));
+        matches.save(new Matches(athleticBilbao,realSociedad,champions , 0,0, "2023-12-03",1));
+        matches.save(new Matches(atleticoMadrid,sevilla,champions , 0,0, "2023-12-03",1));
+        matches.save(new Matches(villarreal,valencia,champions , 0,0, "2023-12-03",1));
     }
 
 

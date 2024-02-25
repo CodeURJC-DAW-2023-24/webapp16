@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface MatchRepository extends JpaRepository<Matches, Long> {
 
-
     @Query("SELECT m FROM Matches m WHERE m.id = :id")
     Matches findMatchById(@Param("id") Long id);
+
+    @Query("SELECT m FROM Matches m WHERE m.id = :id AND m.tournament.id = :tournament_id")
+    Matches findMatchById2(@Param("tournament_id") Long tournament_id, @Param("id") Long id);
 }

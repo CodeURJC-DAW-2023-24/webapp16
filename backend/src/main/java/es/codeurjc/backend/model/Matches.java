@@ -25,6 +25,7 @@ public class Matches {
     private int visitingGoals;
     private String matchDate;
 
+    private int round;
     @ManyToOne
     private Tournament tournament;
 
@@ -34,13 +35,14 @@ public class Matches {
 
     ;
 
-    public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, String matchDate) {
+    public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, String matchDate, int round) {
         this.localTeam = localTeam;
         this.visitingTeam = visitingTeam;
         this.tournament = tournament;
         this.localGoals = localGoals;
         this.visitingGoals = visitingGoals;
         this.matchDate = matchDate;
+        this.round = round;
     }
 
     public Team getLocalTeam() {
