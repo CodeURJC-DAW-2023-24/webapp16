@@ -23,7 +23,9 @@ public class TeamControler {
     public String showTeams(Model model) {
 
         List<Team> teams = teamService.findAll();
+
         model.addAttribute("teams", teams);
+        model.addAttribute("pageTitle", "Teams");
         return "team";
     }
     @GetMapping("/teams/{name}")
@@ -34,6 +36,8 @@ public class TeamControler {
 
         model.addAttribute("team", team);
         model.addAttribute("players", players);
+
+        model.addAttribute("pageTitle", team.getName());
         return "teamInfo";
 
     }

@@ -45,6 +45,8 @@ public class MatchController {
         model.addAttribute("playerListLocal", playerListLocal);
         model.addAttribute("playerListVisiting", playerListVisiting);
 
+        String pagePath = localTeam.getName() + " vs " + visitingTeam.getName();
+        model.addAttribute("pageTitle", pagePath);
 
         return "matchScreen";
     }

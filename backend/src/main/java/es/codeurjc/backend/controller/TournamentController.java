@@ -24,6 +24,8 @@ public class TournamentController {
 
         List<Tournament> tournaments = tournamentService.findAllTournaments();
         model.addAttribute("tournaments", tournaments);
+
+        model.addAttribute("pageTitle", "Tournaments");
         return "index";
 
 
