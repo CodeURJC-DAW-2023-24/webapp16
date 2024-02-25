@@ -23,7 +23,7 @@ public class TournamentController {
     @Autowired MatchService matchService;
 
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String showTournaments(Model model){
 
         List<Tournament> tournaments = tournamentService.findAllTournaments();

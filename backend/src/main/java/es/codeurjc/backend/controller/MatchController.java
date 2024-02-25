@@ -28,7 +28,7 @@ public class MatchController {
     private PlayerService playerService;
 
 
-    @GetMapping("/index/{cup}/tournamentBracket/{id}")
+    @GetMapping("/index/{cup}/{id}") //si quitas el index pierde los css
     public String showMatch(Model model,@PathVariable String cup, @PathVariable  Long id){
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
         Matches match = matchService.findMatchById(id);
