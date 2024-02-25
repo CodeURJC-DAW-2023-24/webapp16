@@ -10,46 +10,35 @@
         <table>
             <thead>
                 <tr>
-                    <th style ="text-align: center; font-size: 20px;">Real Madrid 
+                    <th style ="text-align: center; font-size: 20px;">{{localTeam}}
 
                     <img  class ="imgTeam"src="/images/realMadrid.png" alt="Real Madrid">
                   </th>
                 </tr>
             </thead>
             <tbody>
+                {{#playerListLocal}}
                 <tr>
-                    <td>Player name</td>
-                    <tr>
-                      <td>Player name</td>
-                  </tr>
-                  <tr>
-                    <td>Player name</td>
+                    <td> {{name}} {{lastName}}</td>
+
                 </tr>
-                <tr>
-                  <td>Player name</td>
-              </tr>
-                </tr>
+                {{/playerListLocal}}
+
             </tbody>
             <thead>
               <tr>
-                  <th style ="text-align: center; font-size: 20px;">Atletico de Madrid 
+                  <th style ="text-align: center; font-size: 20px;">{{visitingTeam}}
                   <img  class ="imgTeam"src="/images/AtleticoDeMAdrid.png" alt="Atleti">
                 </th>
               </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td>Player name</td>
-                  <tr>
-                    <td>Player name</td>
-                </tr>
-                <tr>
-                  <td>Player name</td>
-              </tr>
-              <tr>
-                <td>Player name</td>
-            </tr>
-              </tr>
+          {{#playerListVisiting}}
+          <tr>
+              <td> {{name}} {{lastName}}</td>
+
+          </tr>
+          {{/playerListVisiting}}
           </tbody>
         </table>
         <div class="fillDiv">

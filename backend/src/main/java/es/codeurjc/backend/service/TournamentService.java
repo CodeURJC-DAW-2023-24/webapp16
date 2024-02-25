@@ -19,4 +19,9 @@ public class TournamentService {
         return tournamentRepository.findAllTournaments();
 
     }
+
+    public Tournament findTournamentByCup(String cup){
+        return tournamentRepository.findTournamentByCup(cup);
+
+    }
 }

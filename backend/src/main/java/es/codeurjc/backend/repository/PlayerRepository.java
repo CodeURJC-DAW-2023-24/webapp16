@@ -7,9 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-    @Query("SELECT p FROM Player p WHERE p.team = :teamId")
+    @Query("SELECT p FROM Player p WHERE p.team.id = :teamId")
     List<Player> findPlayerByTeamId(@Param("teamId") Long teamId);
 }

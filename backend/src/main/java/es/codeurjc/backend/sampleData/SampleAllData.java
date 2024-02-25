@@ -35,13 +35,13 @@ public class SampleAllData {
     public void init(){
 
         //Tournaments creation
-        Tournament champions = new Tournament("Madrid", "Futbol 7", "Champions League");
+        Tournament champions = new Tournament("Madrid", "Futbol 7", "ChampionsLeague");
         tournaments.save(champions);
 
-        Tournament copaDelRey = new Tournament("Sevilla", "Futbol 7", "Copa del Rey");
+        Tournament copaDelRey = new Tournament("Sevilla", "Futbol 7", "CopadelRey");
         tournaments.save(copaDelRey);
 
-        Tournament europaLeague = new Tournament("Valencia", "Futbol 7", "Europa League");
+        Tournament europaLeague = new Tournament("Valencia", "Futbol 7", "EuropaLeague");
         tournaments.save(europaLeague);
 
         Tournament superCopa = new Tournament("Cantabria", "Futbol 7", "SuperCopa");
