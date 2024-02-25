@@ -29,6 +29,7 @@ public class TeamControler {
     @GetMapping("/teams/{name}")
     public String showTeamInfo(@PathVariable String name, Model model) {
         Team team = teamService.findTeamByName(name);
+
         List<Player> players = playerService.findPlayerTeamById(team.getId());
 
         model.addAttribute("team", team);

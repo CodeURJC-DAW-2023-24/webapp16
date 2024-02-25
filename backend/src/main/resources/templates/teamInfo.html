@@ -5,28 +5,24 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h2>{{team.name}}</h2>
-            <h3>Players</h3>
             <div class="table-container">
                 <table>
                     <thead>
                     <tr>
-                        <th>Player name</th>
+                        <th>Players name</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{#player}}
+                    {{#players}}
                     <tr>
-                        <td>{{name}}</td>
-                        console.log(name)
+                        <td>{{name}} {{lastName}}</td>
                     </tr>
-                    {{/player}}
+                    {{/players}}
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="col-md-6">
-            <h3>Game stats</h3>
             <div class="table-container">
                 <table class="second-table">
                     <thead>
@@ -37,7 +33,7 @@
                     <tbody>
                     <tr>
                         <td>Games played</td>
-                        <td>{{team.games_played}}</td>
+                        <td>{{team.gamesPlayed}}</td>
                     </tr>
                     <tr>
                         <td>Wins</td>
