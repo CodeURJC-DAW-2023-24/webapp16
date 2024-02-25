@@ -16,7 +16,7 @@ public class TeamControler {
 
     @Autowired
     private TeamService teamService;
-    @GetMapping("/team")
+    @GetMapping("/teams")
     public String showTeams(Model model) {
 
         List<Team> teams = teamService.findAll();
