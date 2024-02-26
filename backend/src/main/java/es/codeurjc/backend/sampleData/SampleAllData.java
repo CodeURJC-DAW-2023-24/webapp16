@@ -143,7 +143,7 @@ public class SampleAllData {
         players.save(new Player("Karim", "Adeyemi", "20", 9, "Alemán", "4", "forward", "76 kg", "1.79",huesca));
         players.save(new Player("Ansu", "Fati", "19", 22, "Español", "5", "forward", "66 kg", "1.78",huesca));
         players.save(new Player("Phil", "Foden", "22", 47, "Inglés", "4", "forward", "70 kg", "1.71",huesca));
-        players.save(new Player("Vinicius", "Junior", "22", 20, "Brasileño", "7", "forward", "73 kg", "1.76",null));
+        players.save(new Player("Vinicius", "Junior", "22", 20, "Brasileño", "7", "forward", "73 kg", "1.76",celtaVigo));
 
 
 

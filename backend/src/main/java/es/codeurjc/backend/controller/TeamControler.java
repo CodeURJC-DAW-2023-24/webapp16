@@ -26,7 +26,7 @@ public class TeamControler {
 
         model.addAttribute("teams", teams);
         model.addAttribute("pageTitle", "Teams");
-        return "team";
+        return "teams";
     }
     @GetMapping("/teams/{name}")
     public String showTeamInfo(@PathVariable String name, Model model) {

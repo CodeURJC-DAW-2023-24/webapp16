@@ -17,5 +17,8 @@ public class PlayerService {
 
         return playerRepository.findPlayerByTeamId(teamId);
     }
+    public List<Player> findAll() {
+        return playerRepository.findAll();
+    }
     public Player findPlayerByName(String playerName){return playerRepository.findPlayerByName(playerName);}
 }
