@@ -15,7 +15,7 @@ public class UserController {
     public String loginData(@RequestParam String nick, @RequestParam String password){
         System.out.println("Recibidos nick: "+nick+" y pass: "+ password);
         if(userService.checkUser(password, nick)){
-        return "redirect:/index";
+        return "redirect:/";
         }else return "redirect:/error";
 
     }
@@ -32,6 +32,6 @@ public class UserController {
         user.setGender(null);
         user.setLastName(null);
         userService.addUser(user);
-        return "redirect:/index";
+        return "redirect:/";
     }
 }
