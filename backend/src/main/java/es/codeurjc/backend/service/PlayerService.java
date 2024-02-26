@@ -21,4 +21,7 @@ public class PlayerService {
         return playerRepository.findAll();
     }
     public Player findPlayerByName(String playerName){return playerRepository.findPlayerByName(playerName);}
+
+    public List<Player> findPlayerByNameSearch(String name){return playerRepository.findPlayerByNameContainingIgnoreCase(name);}
+    public List<Player> findPlayerByLastNameSearch(String lastName){return playerRepository.findPlayerByLastNameContainingIgnoreCase(lastName);}
 }

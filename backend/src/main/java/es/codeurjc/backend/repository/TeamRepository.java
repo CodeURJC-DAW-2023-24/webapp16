@@ -1,5 +1,6 @@
 package es.codeurjc.backend.repository;
 
+import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,5 +14,8 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
 
 
     Team findTeamByName (String name);
+
+    List<Team> findTeamByNameContainingIgnoreCase(String name);
+
 
 }

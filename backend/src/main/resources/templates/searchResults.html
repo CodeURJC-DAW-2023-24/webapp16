@@ -1,0 +1,41 @@
+{{>header}}
+{{>pageBanner}}
+<link href="/css/team.css" rel="stylesheet" type="text/css"/>
+
+<div>
+    <section id="contant" class="contant main-heading team">
+        <div class="row">
+            <div class="container">
+                <!-- Mostrar equipos -->
+                {{#teams}}
+                <div class="col-md-3 column">
+                    <div class="card">
+                        <div class="content">
+                            <img class="img-responsive" src="/images/realMadrid.png" alt="{{name}}" style="width:100%">
+                            <h4>{{name}}</h4>
+                            <p class="title">{{stadium}}</p>
+                            <div class="center"><a href="/teams/{{name}}"><button class="button">Info</button></a></div>
+                        </div>
+                    </div>
+                </div>
+                {{/teams}}
+
+                <!-- Mostrar jugadores -->
+                {{#players}}
+                <div class="col-md-3 column">
+                    <div class="card">
+                        <div class="content">
+                            <img class="img-responsive" src="/images/realMadrid.png" alt="{{name}}" style="width:100%">
+                            <h4>{{name}} {{lastName}}</h4>
+                            <p class="title">{{position}}</p>
+                            <div class="center"><a href="/players/{{name}}"><button class="button">Info</button></a></div>
+                        </div>
+                    </div>
+                </div>
+                {{/players}}
+            </div>
+        </div>
+    </section>
+</div>
+
+{{>footer}}
