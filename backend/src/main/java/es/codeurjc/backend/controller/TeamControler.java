@@ -11,7 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Base64;
 
 @Controller
 public class TeamControler {
@@ -21,9 +25,16 @@ public class TeamControler {
     @Autowired
     private PlayerService playerService;
     @GetMapping("/teams")
-    public String showTeams(Model model) {
+    public String showTeams(Model model) throws SQLException {
 
         List<Team> teams = teamService.findAll();
+        //poner en el html "src= "data:image/png, base64; {{teamImage}}"
+        for(int i=0;i<teams.size();i++){
+           // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
+            teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
+            System.out.println("Este es el equipo, " + teams.get(i).getName()+ "  este es el path modificado  "+ teams.get(i).getImagePath());
+
+        }
 
         model.addAttribute("teams", teams);
         model.addAttribute("pageTitle", "Teams");
