@@ -67,67 +67,68 @@ public class SampleAllData {
         teams.save(atleticoMadrid);
 
 
-            Team sevilla = new Team("Sevilla FC", "Lopetegui", "Estadio Ramón Sánchez-Pizjuán", champions, 0 ,0, 0 , "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team sevilla = new Team("Sevilla FC", "Lopetegui", "Estadio Ramón Sánchez-Pizjuán", champions, 0 ,0, 0 , "https://seeklogo.com/images/S/sevilla-logo-782E40BDB6-seeklogo.com.png");
 
             sevilla.setImageFile(realMadrid.URLtoBlob(sevilla.getImagePath()));
         teams.save(sevilla);
 
-            Team valencia = new Team("Valencia CF", "Javi Gracia", "Mestalla" ,champions, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team valencia = new Team("Valencia CF", "Javi Gracia", "Mestalla" ,champions, 0 ,0, 0, "https://w1.pngwing.com/pngs/103/895/png-transparent-dream-league-soccer-logo-valencia-cf-uefa-champions-league-football-real-madrid-cf-la-liga-cristiano-ronaldo-yellow.png");
 
             valencia.setImageFile(realMadrid.URLtoBlob(valencia.getImagePath()));
         teams.save(valencia);
 
-            Team villarreal = new Team("Villarreal CF", "Emery", "Estadio de la Cerámica",champions, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team villarreal = new Team("Villarreal CF", "Emery", "Estadio de la Cerámica",champions, 0 ,0, 0, "https://e7.pngegg.com/pngimages/692/211/png-clipart-villarreal-cf-c-villarreal-cf-b-football-football-sport-logo.png");
 
             villarreal.setImageFile(realMadrid.URLtoBlob(villarreal.getImagePath()));
         teams.save(villarreal);
 
-            Team realSociedad = new Team("Real Sociedad", "Alguacil", "Reale Arena",champions, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team realSociedad = new Team("Real Sociedad", "Alguacil", "Reale Arena",champions, 0 ,0, 0, "https://banner2.cleanpng.com/20180621/zau/kisspng-real-sociedad-b-la-liga-spain-fc-barcelona-spain-football-5b2b49cf2d5129.0535263415295635991856.jpg");
 
             realSociedad.setImageFile(realMadrid.URLtoBlob(realSociedad.getImagePath()));
         teams.save(realSociedad);
 
-            Team athleticBilbao = new Team("Athletic Bilbao", "Marcelino", "San Mamés", champions, 0 ,0, 0 , "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team athleticBilbao = new Team("Athletic Bilbao", "Marcelino", "San Mamés", champions, 0 ,0, 0 , "https://w7.pngwing.com/pngs/144/152/png-transparent-athletic-bilbao-athletic-club-real-sociedad-deportivo-de-la-coruna-fitness-club-emblem-text-logo-thumbnail.png");
 
             athleticBilbao.setImageFile(realMadrid.URLtoBlob(athleticBilbao.getImagePath()));
         teams.save(athleticBilbao);
 
-            Team levante = new Team("Levante UD", "Paco López", "Estadi Ciutat de València", copaDelRey, 0 ,0, 0 , "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team levante = new Team("Levante UD", "Paco López", "Estadi Ciutat de València", copaDelRey, 0 ,0, 0 , "https://banner2.cleanpng.com/20180528/llv/kisspng-levante-ud-la-liga-spain-getafe-cf-mlaga-cf-5b0bee0bbb2fe3.1733109815275084917667.jpg");
 
             levante.setImageFile(realMadrid.URLtoBlob(levante.getImagePath()));
         teams.save(levante);
 
-            Team getafe = new Team("Getafe CF", "Bordalás", "Coliseum Alfonso Pérez",copaDelRey, 0 ,0, 0  , "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team getafe = new Team("Getafe CF", "Bordalás", "Coliseum Alfonso Pérez",copaDelRey, 0 ,0, 0  , "https://upload.wikimedia.org/wikipedia/an/b/b8/Getafe_CF.png");
 
             getafe.setImageFile(realMadrid.URLtoBlob(getafe.getImagePath()));
         teams.save(getafe);
 
-            Team eibar = new Team("Eibar", "Mendilibar", "Estadio Municipal de Ipurua",copaDelRey, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team eibar = new Team("Eibar", "Mendilibar", "Estadio Municipal de Ipurua",copaDelRey, 0 ,0, 0, "https://www.intervinilo.com/images/stories/virtuemart/product/Eibar.png");
 
             eibar.setImageFile(realMadrid.URLtoBlob(eibar.getImagePath()));
         teams.save(eibar);
 
-            Team celtaVigo = new Team("Celta de Vigo", "Coudet", "Estadio de Balaídos",copaDelRey, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team celtaVigo = new Team("Celta de Vigo", "Coudet", "Estadio de Balaídos",copaDelRey, 0 ,0, 0, "https://logowik.com/content/uploads/images/rc-celta-de-vigo6992.jpg");
 
         celtaVigo.setImageFile(realMadrid.URLtoBlob(celtaVigo.getImagePath()));
         teams.save(celtaVigo);
 
-            Team granada = new Team("Granada CF", "Díaz", "Nuevo Los Cármenes",copaDelRey, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team granada = new Team("Granada CF", "Díaz", "Nuevo Los Cármenes",copaDelRey, 0 ,0, 0, "https://upload.wikimedia.org/wikipedia/commons/a/aa/Escudo_Granada_club_de_f%C3%BAtbol.png");
 
         granada.setImageFile(realMadrid.URLtoBlob(granada.getImagePath()));
         teams.save(granada);
 
-            Team realBetis = new Team("Real Betis", "Pellegrini", "Estadio Benito Villamarín" ,copaDelRey, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team realBetis = new Team("Real Betis", "Pellegrini", "Estadio Benito Villamarín" ,copaDelRey, 0 ,0, 0, "https://banner2.cleanpng.com/20180616/vec/kisspng-real-betis-real-sociedad-real-madrid-c-f-la-liga-betis-5b25a9819e77f8.2921612415291948816491.jpg");
 
         realBetis.setImageFile(realMadrid.URLtoBlob(realBetis.getImagePath()));
         teams.save(realBetis);
 
-            Team huesca = new Team("SD Huesca", "Pacheta", "Estadio El Alcoraz", copaDelRey, 0 ,0, 0,"https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team huesca = new Team("SD Huesca", "Pacheta", "Estadio El Alcoraz", copaDelRey, 0 ,0, 0,"https://statics-maker.llt-services.com/hue/images/2023/03/06/optimized/cb28a1e0-75ee-451c-b810-dc4660d1d4d4-385.png");
 
         huesca.setImageFile(realMadrid.URLtoBlob(huesca.getImagePath()));
         teams.save(huesca);
 
-            Team osasuna = new Team("Osasuna", "Arrasate", "Estadio El Sadar", copaDelRey, 0 ,0, 0, "https://i.pngimg.me/thumb/f/720/m2i8A0A0d3m2G6i8.jpg");
+            Team osasuna = new Team("Osasuna", "Arrasate", "Estadio El Sadar", copaDelRey, 0 ,0, 0, "https://upload.wikimedia.org/wikipedia/commons/3/39/CA_Osasuna.png" +
+                    "");
 
         osasuna.setImageFile(realMadrid.URLtoBlob(osasuna.getImagePath()));
         teams.save(osasuna);
