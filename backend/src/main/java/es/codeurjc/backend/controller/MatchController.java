@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -29,7 +30,7 @@ public class MatchController {
 
 
     @GetMapping("/tournament/{cup}/{id}") //si quitas el index pierde los css
-    public String showMatch(Model model,@PathVariable String cup, @PathVariable  Long id){
+    public String showMatch(Model model,@PathVariable String cup, @PathVariable  Long id) throws SQLException {
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
         Matches match = matchService.findMatchById(id);
 
@@ -39,8 +40,13 @@ public class MatchController {
         List <Player> playerListLocal = playerService.findPlayerTeamById(localTeam.getId());
         List <Player> playerListVisiting = playerService.findPlayerTeamById(visitingTeam.getId());
 
-        model.addAttribute("localTeam", localTeam.getName());
-        model.addAttribute("visitingTeam", visitingTeam.getName());
+        localTeam.setImagePath(localTeam.blobToString(localTeam.getImageFile(), localTeam));
+        visitingTeam.setImagePath(visitingTeam.blobToString(visitingTeam.getImageFile(), visitingTeam));
+
+
+
+        model.addAttribute("localTeam",localTeam);
+        model.addAttribute("visitingTeam", visitingTeam);
 
         model.addAttribute("playerListLocal", playerListLocal);
         model.addAttribute("playerListVisiting", playerListVisiting);
