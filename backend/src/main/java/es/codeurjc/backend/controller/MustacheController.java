@@ -64,6 +64,7 @@ public class MustacheController {
     }
     @GetMapping("/stadistics")
     public String showStadistics(Model model) {
+        model.addAttribute("pageTitle", "Players");
         return "stadistics";
     }
 }
