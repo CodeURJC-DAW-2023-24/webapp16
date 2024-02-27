@@ -5,11 +5,11 @@ import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.sql.Blob;
@@ -40,6 +40,16 @@ public class TeamControler {
         model.addAttribute("pageTitle", "Teams");
         return "teams";
     }
+
+    @GetMapping("/api/teams")
+    @ResponseBody
+    public List<Team> getTeams(@RequestParam(defaultValue = "0") int page,
+                               @RequestParam(defaultValue = "4") int pageSize) {
+        Page<Team> teamsPage = teamService.findAllTeams(PageRequest.of(page, pageSize));
+        return teamsPage.getContent();
+    }
+
+
     @GetMapping("/teams/{name}")
     public String showTeamInfo(@PathVariable String name, Model model) {
         Team team = teamService.findTeamByName(name);

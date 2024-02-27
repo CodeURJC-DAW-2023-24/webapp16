@@ -2,6 +2,8 @@ package es.codeurjc.backend.repository;
 
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,5 +19,8 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
 
     List<Team> findTeamByNameContainingIgnoreCase(String name);
 
+    Page<Team> findAll(Pageable pageable);
 
 }
+
+

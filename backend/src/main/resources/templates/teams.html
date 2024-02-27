@@ -1,12 +1,14 @@
 {{>header}}
 {{>pageBanner}}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/script.js"></script>
 <link href="/css/team.css" rel="stylesheet" type="text/css"/>
 <div>
    <section id="contant" class="contant main-heading team">
       <div class="row">
-         <div class="container">
+         <div class="container" id="teamContainer">
             {{#teams}}
-            <div class="col-md-3 column" >
+            <div class="col-md-3 column">
                <div class="card">
                   <div class="content">
                      <img class="img-responsive" src="data:image/png;base64,{{imagePath}}" alt="imagenEquipo" style="width: 250px ; height:350px" />
@@ -17,6 +19,9 @@
                </div>
             </div>
             {{/teams}}
+         </div>
+         <div class="text-center">
+            <button id="loadMoreTeams" class="button">Cargar más equipos</button>
          </div>
       </div>
    </section>

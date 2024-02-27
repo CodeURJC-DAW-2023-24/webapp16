@@ -4,6 +4,8 @@ import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import es.codeurjc.backend.repository.TeamRepository;
 
@@ -24,4 +26,9 @@ public class TeamService {
     public Team findTeamByName(String name){return teamRepository.findTeamByName(name);}
 
     public List<Team> findTeamByNameSearch(String name){return teamRepository.findTeamByNameContainingIgnoreCase(name);}
+
+    public Page<Team> findAllTeams(Pageable pageable) {
+        return teamRepository.findAll(pageable);
+    }
 }
+
