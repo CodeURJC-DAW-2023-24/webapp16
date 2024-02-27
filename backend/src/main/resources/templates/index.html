@@ -1,6 +1,7 @@
 
 {{>header}}
 {{>pageBanner}}
+<link href="css/bracket.css" rel="stylesheet" type="text/css"/>
 <div class="team-holder theme-padding">
 	<div class="container">
 	    <div class="main-heading-holder">
@@ -25,8 +26,13 @@
 				</div>
 			 </div>
 			{{/tournaments}}
+
 		  </div>
 	   </div>
+		<div style ="display: flex; justify-content: space-between;  padding: 50px;">
+			<a href="/players/stadistics" ><button type="button" class="btn btn-outline-primary">Players Stadistics</button></a>
+			<a href="stadistics" ><button type="button" class="btn btn-outline-primary">Teams Stadistics</button></a>
+		</div>
 	</div>
  </div>
 {{>footer}}
