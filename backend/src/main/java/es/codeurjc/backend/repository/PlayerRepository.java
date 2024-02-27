@@ -18,4 +18,9 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     List<Player> findPlayerByNameContainingIgnoreCase(String name);
     List<Player> findPlayerByLastNameContainingIgnoreCase(String lastName);
+
+    List<Player> findPlayerByNationalityContainingIgnoreCase(String nationality);
+
+    List<Player> findPlayerByPositionContainingIgnoreCase(String Position);
+
 }
