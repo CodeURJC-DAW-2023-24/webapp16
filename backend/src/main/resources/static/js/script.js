@@ -16,7 +16,7 @@ $(document).ready(function() {
                      <div class="col-md-3 column">
                         <div class="card">
                            <div class="content">
-                              <img class="img-responsive" src="/images/realMadrid.png" alt="${team.name}" style="width:100%">
+                              <img class="img-responsive" src="/images/{{team.imagePath}}.png" alt="${team.name}" style="width:100%">
                               <h4>${team.name}</h4>
                               <p class="title">${team.stadium}</p>
                               <div class="center"><a href="/teams/${team.name}"><button class="button">Info</button></a></div>

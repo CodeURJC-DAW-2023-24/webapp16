@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -24,9 +25,15 @@ public class TournamentController {
 
 
     @GetMapping("/")
-    public String showTournaments(Model model){
+    public String showTournaments(Model model) throws SQLException {
 
         List<Tournament> tournaments = tournamentService.findAllTournaments();
+
+         for(int i=0;i<tournaments.size();i++){
+        // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
+           tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
+         }
+
         model.addAttribute("tournaments", tournaments);
 
         model.addAttribute("pageTitle", "Tournaments");

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,17 +26,23 @@ public class SearchController {
     private PlayerService playerService;
 
     @GetMapping("/search")
-    public String search(@RequestParam(value = "query", required = false) String query, Model model) {
+    public String search(@RequestParam(value = "query", required = false) String query, Model model) throws SQLException {
         if (query != null && !query.isEmpty()) {
             List<Player> players = new ArrayList<>();
 
-            String[] parts = query.split(":", 2);
+          //  String[] parts = query.split(":", 2);
+            String[] parts = query.split("\\s*:\\s*", 2);
+
             if (parts.length == 2) {
                 String field = parts[0];
                 String searchTerm = parts[1];
                 switch (field) {
                     case "team":
                         List<Team> teams = teamService.findTeamByNameSearch(searchTerm);
+                        for(int i=0;i<teams.size();i++){
+                            teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
+                        }
+
                         model.addAttribute("teams", teams);
                         break;
                     case "player":
@@ -57,6 +64,9 @@ public class SearchController {
             } else {
                 // Búsqueda sin campo especificado, buscar en todos los campos disponibles
                 List<Team> teams = teamService.findTeamByNameSearch(query);
+                for(int i=0;i<teams.size();i++){
+                    teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
+                }
                 players = playerService.findPlayerByNameSearch(query);
                 players.addAll(playerService.findPlayerByLastNameSearch(query));
                 model.addAttribute("teams", teams);

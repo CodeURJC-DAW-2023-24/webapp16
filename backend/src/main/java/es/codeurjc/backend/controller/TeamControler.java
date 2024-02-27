@@ -28,11 +28,10 @@ public class TeamControler {
     public String showTeams(Model model) throws SQLException {
 
         List<Team> teams = teamService.findAll();
-        //poner en el html "src= "data:image/png, base64; {{teamImage}}"
+
         for(int i=0;i<teams.size();i++){
-           // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
             teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
-            System.out.println("Este es el equipo, " + teams.get(i).getName()+ "  este es el path modificado  "+ teams.get(i).getImagePath());
+          //  System.out.println("Este es el equipo, " + teams.get(i).getName()+ "  este es el path modificado  "+ teams.get(i).getImagePath());
 
         }
 
