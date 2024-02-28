@@ -29,7 +29,7 @@ $(document).ready(function() {
                     page++;
                 } else {
                     // No hay más equipos para cargar
-                    $('#loadMoreTeams').prop('disabled', true).text('No hay más equipos');
+                    $('#loadMoreTeams').prop('disabled', true).text('No hay mas equipos');
                 }
             },
             error: function(error) {
