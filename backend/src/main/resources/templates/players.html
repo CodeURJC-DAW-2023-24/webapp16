@@ -1,10 +1,12 @@
 {{>header}}
 {{>pageBanner}}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/playersScript.js"></script>
 <link href="/css/team.css" rel="stylesheet" type="text/css"/>
 <div>
     <section id="contant" class="contant main-heading team">
         <div class="row">
-            <div class="container">
+            <div class="container" id="playerContainer">
                 {{#players}}
                 <div class="col-md-3 column" >
                     <div class="card">
@@ -17,6 +19,9 @@
                     </div>
                 </div>
                 {{/players}}
+            </div>
+            <div class="text-center">
+                <button id="loadMorePlayers" class="button">Cargar más jugadores</button>
             </div>
         </div>
     </section>

@@ -8,13 +8,12 @@ import es.codeurjc.backend.service.PlayerService;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.StandardReflectionParameterNameDiscoverer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -31,12 +30,22 @@ public class PlayerController {
 
         List<Player> players = playerService.findAll();
 
-        model.addAttribute("players", players);
+        model.addAttribute("players", players.subList(0, Math.min(4, players.size())));
         model.addAttribute("pageTitle", "Players");
         return "players";
 
 
     }
+
+    @GetMapping("/api/players")
+    @ResponseBody
+    public List<Player> getPlayers(@RequestParam(defaultValue = "0") int page,
+                                   @RequestParam(defaultValue = "4") int pageSize) {
+        Page<Player> playersPage = playerService.findAllPlayers(PageRequest.of(page, pageSize));
+
+        return playersPage.getContent();
+    }
+
     @GetMapping("/players/stadistics")
     public String getPlayersStadistics(Model model){
 

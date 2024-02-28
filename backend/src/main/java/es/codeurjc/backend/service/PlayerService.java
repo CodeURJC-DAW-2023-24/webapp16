@@ -4,6 +4,8 @@ import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,10 @@ public class PlayerService {
     }
     public List<Player> findAll() {
         return playerRepository.findAll();
+    }
+
+    public Page<Player> findAllPlayers(PageRequest pageRequest) {
+        return playerRepository.findAll(pageRequest);
     }
     public Player findPlayerByName(String playerName){return playerRepository.findPlayerByName(playerName);}
 
