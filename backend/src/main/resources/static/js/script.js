@@ -7,26 +7,25 @@ $(document).ready(function() {
             url: '/api/teams?page=' + page + '&pageSize=' + pageSize,
             method: 'GET',
             dataType: 'json',
-            success: function(data) {
+                success: function(data) {
                 if (data.length > 0) {
-                    // Renderiza los nuevos equipos y agrega al contenedor
+
                     var newTeamsHtml = '';
                     data.forEach(function(team) {
                         newTeamsHtml += `
-                     <div class="col-md-3 column">
+                    <div class="col-md-3 column">
                         <div class="card">
-                           <div class="content">
-                              <img class="img-responsive" src="/images/{{team.imagePath}}.png" alt="${team.name}" style="width:100%">
-                              <h4>${team.name}</h4>
-                              <p class="title">${team.stadium}</p>
-                              <div class="center"><a href="/teams/${team.name}"><button class="button">Info</button></a></div>
-                           </div>
+                            <div class="content">
+                                <img class="img-responsive" src="data:image/png;base64,${team.imagePath}" alt="imagenEquipo" style="width: 250px; height:350px" />
+                                <h4 style="margin-bottom:20px; margin-top:20px">${team.name}</h4>
+                                <p class="title" style="margin-bottom:10px">${team.stadium}</p>
+                                <div class="center"><a href="/teams/${team.name}"><button class="button">Info</button></a></div>
+                            </div>
                         </div>
-                     </div>`;
+                    </div>`;
                     });
                     $('#teamContainer').append(newTeamsHtml);
 
-                    // Incrementa el número de página
                     page++;
                 } else {
                     // No hay más equipos para cargar

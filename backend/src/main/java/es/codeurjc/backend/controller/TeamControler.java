@@ -4,6 +4,7 @@ import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
+import org.apache.tomcat.util.modeler.BaseAttributeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,22 +30,30 @@ public class TeamControler {
 
         List<Team> teams = teamService.findAll();
 
-        for(int i=0;i<teams.size();i++){
+        //poner en el html "src= "data:image/png, base64; {{teamImage}}"
+        for(int i=0;i<4;i++){
+           // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
             teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
           //  System.out.println("Este es el equipo, " + teams.get(i).getName()+ "  este es el path modificado  "+ teams.get(i).getImagePath());
 
         }
 
-        model.addAttribute("teams", teams);
+        model.addAttribute("teams", teams.subList(0, Math.min(4, teams.size())));
         model.addAttribute("pageTitle", "Teams");
         return "teams";
     }
 
+
     @GetMapping("/api/teams")
     @ResponseBody
     public List<Team> getTeams(@RequestParam(defaultValue = "0") int page,
-                               @RequestParam(defaultValue = "4") int pageSize) {
+                               @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
         Page<Team> teamsPage = teamService.findAllTeams(PageRequest.of(page, pageSize));
+
+        for (Team currentTeam : teamsPage.getContent()) {
+            currentTeam.setImagePath(currentTeam.blobToString(currentTeam.getImageFile(), currentTeam));
+        }
+
         return teamsPage.getContent();
     }
 
