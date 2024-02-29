@@ -57,6 +57,9 @@ a:hover {
   .marginDefined {
     margin-top: 10px;
   }
+  .labelDesign{
+    text-align: center;
+  }
   
 
   button[type="save"] {

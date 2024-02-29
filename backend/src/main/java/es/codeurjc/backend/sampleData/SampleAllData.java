@@ -164,7 +164,7 @@ public class SampleAllData {
             players.save(new Player("Vinicius", "Junior", "22", 20, "Brasileño", 9, "forward", "73 kg", "1.76",celtaVigo));
    players.save(new Player("Zinedine", "Zidane", "49", 10, "Francés", 126, "midfielder", "80 kg", "1.85",celtaVigo));
         players.save(new Player("Ronaldo", "Nazário", "45", 9, "Brasileño", 352, "forward", "87 kg", "1.83", celtaVigo));
-        players.save(new Player("Luis", "Figo", "49", 10, "Portugués", 139, "midfielder", "75 kg", "1.80", celtaVigo));
+        players.save(new Player("Luis", "Figo ", "49", 10, "Portugués", 139, "midfielder", "75 kg", "1.80", celtaVigo));
         players.save(new Player("Paolo", "Maldini", "54", 3, "Italiano", 40, "defender", "85 kg", "1.86", celtaVigo));
         players.save(new Player("Alessandro", "Del Piero", "47", 10, "Italiano", 290, "forward", "73 kg", "1.74", celtaVigo));
         players.save(new Player("Didier", "Drogba", "44", 11, "Marfileño", 297, "forward", "84 kg", "1.88", celtaVigo));
@@ -175,7 +175,7 @@ public class SampleAllData {
         players.save(new Player("Xavi", "Hernández", "42", 6, "Español", 85, "midfielder", "68 kg", "1.70",barcelona));
         players.save(new Player("Andriy", "Shevchenko", "45", 7, "Ucraniano", 342, "forward", "78 kg", "1.83",barcelona));
         players.save(new Player("Ryan", "Giggs", "48", 11, "Galés", 169, "midfielder", "74 kg", "1.79",barcelona));
-        players.save(new Player("Patrick", "Vieira", "46", 4, "Francés", 107, "midfielder", "84 kg", "1.93",barcelona));
+        players.save(new Player("Patrick", "Vieira ", "46", 4, "Francés", 107, "midfielder", "84 kg", "1.93",barcelona));
 
         players.save(new Player("Fabio", "Cannavaro", "48", 5, "Italiano", 20, "defender", "75 kg", "1.75", realBetis));
         players.save(new Player("Michael", "Owen", "42", 10, "Inglés", 222, "forward", "73 kg", "1.73",realBetis));
@@ -195,14 +195,14 @@ players.save(new Player("Alessandro", "Nesta", "46", 3, "Italiano", 14, "defende
 
         players.save(new Player("Patrick", "Vieira", "46", 4, "Francés", 43, "midfielder", "84 kg", "1.93", villarreal));
         players.save(new Player("Dennis", "Bergkamp", "52", 4, "Holandés", 120, "forward", "80 kg", "1.88",villarreal));
-        players.save(new Player("Ronaldo", "Nazário", "45", 5, "Brasileño", 352, "forward", "87 kg", "1.83",villarreal));
-        players.save(new Player("Andriy", "Shevchenko", "45", 3, "Ucraniano", 342, "forward", "78 kg", "1.83",villarreal));
-        players.save(new Player("Didier", "Drogba", "44", 5, "Marfileño", 297, "forward", "84 kg", "1.88",villarreal));
-        players.save(new Player("Michael", "Owen", "42", 3, "Inglés", 222, "forward", "73 kg", "1.73",villarreal));
-        players.save(new Player("Ruud", "van Nistelrooy", "45", 5, "Holandés", 249, "forward", "78 kg", "1.88",villarreal));
+        players.save(new Player("Ronaldo", "Nazário ", "45", 5, "Brasileño", 352, "forward", "87 kg", "1.83",villarreal));
+        players.save(new Player("Andriy", "Shevchenko ", "45", 3, "Ucraniano", 342, "forward", "78 kg", "1.83",villarreal));
+        players.save(new Player("Didier", "Drogba ", "44", 5, "Marfileño", 297, "forward", "84 kg", "1.88",villarreal));
+        players.save(new Player("Michael", "Owen ", "42", 3, "Inglés", 222, "forward", "73 kg", "1.73",villarreal));
+        players.save(new Player("Ruud", "van Nistelrooy ", "45", 5, "Holandés", 249, "forward", "78 kg", "1.88",villarreal));
 
-        players.save(new Player("Thierry", "Henry", "44", 6, "Francés", 360, "forward", "83 kg", "1.88", realSociedad));
-        players.save(new Player("Roberto", "Baggio", "55", 6, "Italiano", 318, "forward", "72 kg", "1.74",realSociedad));
+        players.save(new Player("Thierry", "Henry ", "44", 6, "Francés", 360, "forward", "83 kg", "1.88", realSociedad));
+        players.save(new Player("Roberto", "Baggio ", "55", 6, "Italiano", 318, "forward", "72 kg", "1.74",realSociedad));
         players.save(new Player("Paolo", "Maldini", "54", 2, "Italiano", 40, "defender", "85 kg", "1.86",realSociedad));
         players.save(new Player("Franz", "Beckenbauer", "76", 3, "Alemán", 111, "defender", "78 kg", "1.81",realSociedad));
         players.save(new Player("Paul", "Gascoigne", "54", 3, "Inglés", 83, "midfielder", "81 kg", "1.83",realSociedad));
@@ -223,8 +223,8 @@ players.save(new Player("Raul", "Gonzalez", "44", 7, "Español", 323, "forward",
         players.save(new Player("Ruud", "Gullit", "60", 9, "Holandés", 152, "midfielder", "86 kg", "1.91",granada));
         players.save(new Player("George", "Best", "59", 7, "Irlandés", 181, "forward", "72 kg", "1.75",granada));
         players.save(new Player("Eusebio", "da Silva", "80", 9, "Portugués", 733, "forward", "70 kg", "1.75",granada));
-        players.save(new Player("Johan", "Cruyff", "73", 14, "Holandés", 291, "forward", "77 kg", "1.80",granada));
-        players.save(new Player("Diego", "Maradona", "61", 15, "Argentino", 259, "forward", "75 kg", "1.65",granada));
+        players.save(new Player("Johan", "Cruyff ", "73", 14, "Holandés", 291, "forward", "77 kg", "1.80",granada));
+        players.save(new Player("Diego", "Maradona ", "61", 15, "Argentino", 259, "forward", "75 kg", "1.65",granada));
 
         players.save(new Player("Zico", "", "69", 11, "Brasileño", 732, "forward", "70 kg", "1.72", atleticoMadrid));
         players.save(new Player("Garrincha", "", "49", 9, "Brasileño", 232, "forward", "65 kg", "1.69",atleticoMadrid));

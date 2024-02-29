@@ -41,7 +41,7 @@ public class TournamentController {
 
 
     }
-    @GetMapping("/{cup}")
+    @GetMapping("/tournament/{cup}")
     public String showBracket(Model model, @PathVariable String cup){
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
         //  List<Matches> tournamentBracket = tournamentService.findBracketById(tournament.getId()); // partidos con el id de un tournament

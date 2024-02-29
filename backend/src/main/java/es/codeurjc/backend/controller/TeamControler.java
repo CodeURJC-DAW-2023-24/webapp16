@@ -11,6 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.sql.Blob;
@@ -72,11 +75,11 @@ public class TeamControler {
         return "teamInfo";
 
     }
-    @GetMapping("/teams/{name}/{playerName}")
-    public String showPlayerInfo(@PathVariable String name, @PathVariable String playerName, Model model) {
+    @GetMapping("/teams/{name}/{playerName}/{lastName}")
+    public String showPlayerInfo(@PathVariable String name, @PathVariable String playerName,@PathVariable String lastName, Model model) {
 
         Team team = teamService.findTeamByName(name);
-        Player player = playerService.findPlayerByName(playerName);
+        Player player = playerService.findPlayerByNameAndLastName(playerName,lastName);
 
 
         model.addAttribute("team", team);
@@ -87,6 +90,16 @@ public class TeamControler {
 
         return "playerInfo";
 
+    }
+    @GetMapping("/{cup}/teamCreation/")
+    public String createTournamentTeam(@PathVariable String cup, Model model){
+        System.out.println("cup: "+cup);
+        model.addAttribute("cup",cup);
+        return "teamCreate";
+    }
+    @PostMapping("/addTeamToTournament/{cup}")
+    public String addTeamToTournament(@PathVariable String cup, Model model){
+        return ("redirect:/"+cup+"/teamCreation/");
     }
 
 }

@@ -29,7 +29,7 @@ public class SearchController {
     public String search(@RequestParam(value = "query", required = false) String query, Model model) throws SQLException {
         if (query != null && !query.isEmpty()) {
             List<Player> players = new ArrayList<>();
-
+            query = query.toLowerCase();
           //  String[] parts = query.split(":", 2);
             String[] parts = query.split("\\s*:\\s*", 2);
 

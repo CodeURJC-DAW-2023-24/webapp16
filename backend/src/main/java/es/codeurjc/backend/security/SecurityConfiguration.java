@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfiguration {
+public class SecurityConfiguration  {
 
 
 }

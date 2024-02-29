@@ -56,6 +56,7 @@ public class MustacheController {
     }
 	@GetMapping("/teamCreation")
     public String addTeam(Model model) {
+        model.addAttribute("cup","prueba");
         return "teamCreate";
     }
 	@GetMapping("/matchScreen")

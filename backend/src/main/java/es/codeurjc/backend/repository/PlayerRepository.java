@@ -14,8 +14,8 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Query("SELECT p FROM Player p WHERE p.team.id = :teamId")
     List<Player> findPlayerByTeamId(@Param("teamId") Long teamId);
 
-    Player findPlayerByName (String playerName);
-
+    Player findPlayerByNameAndLastName (String playerName, String lastName);
+    Player findPlayerByName(String playerName);
     List<Player> findPlayerByNameContainingIgnoreCase(String name);
     List<Player> findPlayerByLastNameContainingIgnoreCase(String lastName);
 
