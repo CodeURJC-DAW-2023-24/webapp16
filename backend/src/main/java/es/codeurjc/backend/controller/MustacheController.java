@@ -49,10 +49,7 @@ public class MustacheController {
         model.addAttribute("pageTitle", "About us");
         return "about";
 		}
-	@GetMapping("/fillMatchReport")
-    public String report(Model model) {
-        return "fillMatchReport";
-	}
+
 	@GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();

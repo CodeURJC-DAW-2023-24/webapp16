@@ -62,7 +62,7 @@ public class SearchController {
                         model.addAttribute("error", "Invalid syntax. Please try again.");
                 }
             } else {
-                // Búsqueda sin campo especificado, buscar en todos los campos disponibles
+
                 List<Team> teams = teamService.findTeamByNameSearch(query);
                 for(int i=0;i<teams.size();i++){
                     teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));

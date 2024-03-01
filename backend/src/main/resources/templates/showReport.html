@@ -1,0 +1,71 @@
+{{>header}}
+{{>pageBanner}}
+<link rel="stylesheet" href="/css/FillMatchReport.css">
+
+<div class="container">
+    {{#error}}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+    {{/error}}
+    {{^error}}
+    <div class="row align-items-stretch no-gutters contact-wrap">
+        <div class="col-md-12">
+            <div class="form h-100">
+                <h3>Match Report</h3>
+                <form class="mb-5" method="post" id="showReportForm" name="showReportForm">
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="date">Date of Match</label>
+                            <input type="text" class="form-control" id="date" name="date" value="{{report.date}}" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="time">Time of Match</label>
+                            <input type="text" class="form-control" id="time" name="time" value="{{report.time}}" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="team1">Home Team </label>
+                            <input type="text" class="form-control" name="team1" id="team1" value="{{match.localTeam.name}}" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="team2">Away Team *</label>
+                            <input type="text" class="form-control" name="team2" id="team2" value="{{match.visitingTeam.name}}" readonly>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="team1Goals" class="col-form-label">Home Team Goals </label>
+                            <input type="number" class="form-control" name="team1Goals" id="team1Goals" value="{{report.localTeamGoals}}" required>
+                            <div id="team1Scorers"></div>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="team2Goals" class="col-form-label">Away Team Goals </label>
+                            <input type="number" class="form-control" name="team2Goals" id="team2Goals" placeholder="{{report.visitingTeamGoals}}" required>
+                            <div id="team2Scorers"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group mb-3">
+                            <label for="matchOfficials">Match Officials</label>
+                            <input type="text" class="form-control" id="matchOfficials" name="matchOfficials" value="{{report.matchOfficials}}" readonly>
+                        </div>
+                    </div>
+                    <!-- Repite este patrón para los demás campos -->
+                    <div class="row">
+                        <div class="col-md-12 form-group mb-3">
+                            <label for="observations">Observations</label>
+                            <textarea class="form-control" id="observations" name="observations" rows="4" readonly>{{report.observations}}</textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/error}}
+</div>
+
+{{>footer}}

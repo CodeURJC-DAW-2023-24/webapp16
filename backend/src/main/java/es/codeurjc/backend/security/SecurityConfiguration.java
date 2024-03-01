@@ -5,6 +5,7 @@ import es.codeurjc.backend.service.RepositoryUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,7 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfiguration{
+
 
 
     @Autowired
@@ -69,13 +71,18 @@ public class SecurityConfiguration {
 
 
 
+
                         // PRIVATE PAGES
                         .requestMatchers("/profile").hasAnyRole("USER")
                         .requestMatchers("/search").hasAnyRole("USER")
+                        .requestMatchers("/tournament/{cup}/{id}/report").hasAnyRole("USER")
 
 
-
+                        .requestMatchers(HttpMethod.GET, "/tournament/{cup}/{id}/fillMatchReport").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/tournament/{cup}/{id}/fillMatchReport/saved").hasAnyRole("ADMIN")
                         .requestMatchers("/tournamentCreation").hasAnyRole("ADMIN")
+
+
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

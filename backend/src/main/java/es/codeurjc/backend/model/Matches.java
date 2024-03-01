@@ -19,8 +19,6 @@ public class Matches {
     @JoinColumn(name = "visitingTeam_id")
     private Team visitingTeam;
 
-    // private String localTeam;
-    // private String visitingTeam;
     private int localGoals;
     private int visitingGoals;
     private String matchDate;
@@ -30,10 +28,12 @@ public class Matches {
     private Tournament tournament;
 
 
+
+    @OneToOne(mappedBy = "match")
+    private Report report;
     public Matches() {
     }
 
-    ;
 
     public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, String matchDate, int round) {
         this.localTeam = localTeam;
@@ -83,5 +83,11 @@ public class Matches {
 
     public void setMatchDate(String value) {
         this.matchDate = value;
+    }
+
+    public void setReport(Report report) {
+    }
+    public Report getReport() {
+        return report;
     }
 }
