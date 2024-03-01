@@ -1,8 +1,10 @@
 {{>header}}
 {{>pageBanner}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js" defer></script>
+
 <link rel="stylesheet" href="/css/FillMatchReport.css">
 
-<div class="container">
+<div class="container" style=" padding-bottom: 50px;" id="allInfo">
     {{#error}}
     <div class="alert alert-danger" role="alert">
         {{error}}
@@ -11,7 +13,7 @@
     {{^error}}
     <div class="row align-items-stretch no-gutters contact-wrap">
         <div class="col-md-12">
-            <div class="form h-100">
+            <div class="form h-100" >
                 <h3>Match Report</h3>
                 <form class="mb-5" method="post" id="showReportForm" name="showReportForm">
                     <div class="row">
@@ -39,12 +41,12 @@
                     <div class="row">
                         <div class="col-md-6 form-group mb-3">
                             <label for="team1Goals" class="col-form-label">Home Team Goals </label>
-                            <input type="number" class="form-control" name="team1Goals" id="team1Goals" value="{{report.localTeamGoals}}" required>
+                            <input type="number" class="form-control" name="team1Goals" id="team1Goals" value="{{report.localTeamGoals}}" required readonly>
                             <div id="team1Scorers"></div>
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="team2Goals" class="col-form-label">Away Team Goals </label>
-                            <input type="number" class="form-control" name="team2Goals" id="team2Goals" placeholder="{{report.visitingTeamGoals}}" required>
+                            <input type="number" class="form-control" name="team2Goals" id="team2Goals" placeholder="{{report.visitingTeamGoals}}" required readonly>
                             <div id="team2Scorers"></div>
                         </div>
                     </div>
@@ -61,15 +63,34 @@
                         </div>
                     </div>
                 </form>
-                <div class="fillDiv">
+                <div style ="justify-content: center" >
                     <a href="/tournament/{{cup}}" >
-                        <button type="button" class="btn btn-outline-primary">Bracket</button>
+                        <button type="button" class="btn btn-outline-primary" style =" margin-bottom: 20px; text-align: center">Bracket</button>
                     </a>
+                    <button id="downloadPdfBtn" class="btn btn-primary">Download PDF</button>
+
                 </div>
             </div>
+
         </div>
     </div>
     {{/error}}
 </div>
+<script>
+    document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+        // Crear instancia de jsPDF
+        const pdf = new jsPDF();
+
+        // Obtener el contenido del formulario
+        const element = document.getElementById('allInfo');
+
+        // Generar el PDF desde el HTML
+        pdf.fromHTML(element, 15, 15);
+
+        // Descargar el PDF
+        pdf.save('report.pdf');
+    });
+</script>
+
 
 {{>footer}}

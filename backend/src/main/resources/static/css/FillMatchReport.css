@@ -59,14 +59,18 @@ body {
       -webkit-box-shadow: none;
       box-shadow: none;
       border-color: #000; }
-  
-  .btn {
-    border: none;
-    border-radius: 0;
-    font-size: 11px;
-    letter-spacing: .2rem;
-    text-transform: uppercase;
-    border-radius: 30px !important; }
+
+.btn {
+  float: left;
+  background: #d8302f;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 50px;
+  margin-top: 5px;
+  font-weight: 500;
+  transition: ease all 1s;
+}
     .btn.btn-primary {
       border-radius: 30px;
       background: #ef4339;
