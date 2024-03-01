@@ -84,6 +84,18 @@ public class MatchController {
         model.addAttribute("pageTitle", "Report");
 
         if (match != null) {
+
+            if (team1Goals < 0 || team2Goals < 0) {
+
+                model.addAttribute("error", "Goals cannot be negative.");
+                return "/error";
+            }
+            if (team1Goals == team2Goals) {
+
+                model.addAttribute("error", "It is not possible to save a match with a tie result.");
+                return "/error";
+            }
+
             Report report = new Report();
             report.setDate(dateOfBirth);
             report.setTime(matchTime);
@@ -92,16 +104,15 @@ public class MatchController {
             report.setVisitingTeamGoals(team2Goals);
             report.setObservations(matchSummary);
             report.setMatch(match);
-            match.setReport(report);
 
+            // Guardar el reporte
             reportService.saveReport(report);
 
-
+            // Agregar los atributos al modelo para mostrar el reporte
             model.addAttribute("report", report);
             model.addAttribute("match", match);
             return "showReport";
         } else {
-
             return "/error";
         }
     }
