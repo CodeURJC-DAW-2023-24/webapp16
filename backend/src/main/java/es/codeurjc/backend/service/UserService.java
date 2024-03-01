@@ -7,7 +7,7 @@ import es.codeurjc.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
-import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -18,12 +18,12 @@ public class UserService {
         this.userRepository.save(user);
     }
     public void addUser(User user){
-        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(10));
+        String hashedPassword = BCrypt.hashpw(user.getEncodedPassword(), BCrypt.gensalt(10));
         UserPasswords userPasswords = new UserPasswords();
         userPasswords.setPass(hashedPassword);
         userPasswords.setUser(user.getNickname());
         this.saveCredentials(userPasswords);
-        user.setPassword(hashedPassword);//En un futuro hay que quitar pass de user
+        user.setEncodedPassword(hashedPassword);//En un futuro hay que quitar pass de user
         this.save(user);
     }
     public boolean checkUser(String pass, String nick){

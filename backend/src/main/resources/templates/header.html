@@ -66,6 +66,17 @@
                                     <li><a href="/teams">Teams</a></li>
                                     <li><a href="/players">Players</a></li>
                                     <li><a href="/profile">Profile</a></li>
+                                    {{#admin}}
+                                    <li><a href="/tournamentCreation">Create Tournament</a></li>
+                                    {{/admin}}
+                                    {{#admin}}
+                                    <li><a href="/logout">Log Out</a></li>
+                                    {{/admin}}
+                                    {{#user}}
+                                    <li><a href="/logout">Log Out</a></li>
+                                    {{/user}}
+
+
                                  </ul>
                               </div>
                               <!-- /.nav-collapse -->

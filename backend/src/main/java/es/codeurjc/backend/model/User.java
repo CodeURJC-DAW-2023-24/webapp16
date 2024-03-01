@@ -1,6 +1,9 @@
 package es.codeurjc.backend.model;
 import jakarta.persistence.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Entity
 public class User {
     @Id
@@ -14,14 +17,37 @@ public class User {
     private String address;
     private String email;
     private String gender;
-    private String password;
+    private String encodedPassword;
     private String nickname;
-    public String getPassword() {
-        return password;
+
+
+    public User(String username, String password, String... roles) {
+        this.name = username;
+        this.encodedPassword = password;
+        this.roles = Arrays.asList(roles);
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
+
+    public User() {
+
+    }
+
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+    public String getEncodedPassword() {
+        return encodedPassword;
+    }
+
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public String getNickname() {
@@ -88,3 +114,6 @@ public class User {
         this.gender = value;
     }
 }
+
+
+

@@ -1,16 +1,11 @@
 package es.codeurjc.backend.sampleData;
 
 
-import es.codeurjc.backend.model.Matches;
-import es.codeurjc.backend.model.Team;
-import es.codeurjc.backend.model.Player;
-import es.codeurjc.backend.model.Tournament;
-import es.codeurjc.backend.repository.MatchRepository;
-import es.codeurjc.backend.repository.PlayerRepository;
-import es.codeurjc.backend.repository.TeamRepository;
-import es.codeurjc.backend.repository.TournamentRepository;
+import es.codeurjc.backend.model.*;
+import es.codeurjc.backend.repository.*;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -27,6 +22,13 @@ public class SampleAllData {
     private TeamRepository teams;
     @Autowired
     private MatchRepository matches;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
 
     @PostConstruct
@@ -207,7 +209,7 @@ players.save(new Player("Alessandro", "Nesta", "46", 3, "Italiano", 14, "defende
         players.save(new Player("Franz", "Beckenbauer", "76", 3, "Alemán", 111, "defender", "78 kg", "1.81",realSociedad));
         players.save(new Player("Paul", "Gascoigne", "54", 3, "Inglés", 83, "midfielder", "81 kg", "1.83",realSociedad));
         players.save(new Player("Diego", "Maradona", "61", 10, "Argentino", 259, "midfielder", "75 kg", "1.65",realSociedad));
-players.save(new Player("Raul", "Gonzalez", "44", 7, "Español", 323, "forward", "78 kg", "1.81",realSociedad));
+        players.save(new Player("Raul", "Gonzalez", "44", 7, "Español", 323, "forward", "78 kg", "1.81",realSociedad));
 
         players.save(new Player("Fernando", "Torres", "38", 9, "Español", 260, "forward", "78 kg", "1.86",sevilla));
         players.save(new Player("Alessandro", "Del Piero", "47", 8, "Italiano", 290, "forward", "73 kg", "1.74",sevilla));
@@ -255,6 +257,13 @@ players.save(new Player("Raul", "Gonzalez", "44", 7, "Español", 323, "forward",
             matches.save(new Matches(athleticBilbao,realSociedad,champions , 0,0, "2023-12-03",1));
             matches.save(new Matches(atleticoMadrid,sevilla,champions , 0,0, "2023-12-03",1));
             matches.save(new Matches(villarreal,valencia,champions , 0,0, "2023-12-03",1));
+
+        //userCreation
+
+        userRepository.save(new User("user", passwordEncoder.encode("pass"), "USER"));
+        userRepository.save(new User("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
+
+
     }
 
 

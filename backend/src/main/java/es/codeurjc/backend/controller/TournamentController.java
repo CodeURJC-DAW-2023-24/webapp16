@@ -2,7 +2,10 @@ package es.codeurjc.backend.controller;
 
 
 import es.codeurjc.backend.model.Matches;
+import es.codeurjc.backend.model.User;
+import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.MatchService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.TournamentService;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,16 +27,31 @@ public class TournamentController {
 
     @Autowired MatchService matchService;
 
+    @Autowired
+    UserRepository userRepository;
+
 
     @GetMapping("/")
-    public String showTournaments(Model model) throws SQLException {
+    public String showTournaments(Model model, HttpServletRequest request) throws SQLException {
 
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name = principal.getName();
+            User user = userRepository.findByName(name).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
+
+        }
         List<Tournament> tournaments = tournamentService.findAllTournaments();
 
          for(int i=0;i<tournaments.size();i++){
         // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
            tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
          }
+
 
         model.addAttribute("tournaments", tournaments);
 

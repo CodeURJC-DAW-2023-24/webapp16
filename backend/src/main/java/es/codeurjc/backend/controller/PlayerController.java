@@ -4,7 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
+import es.codeurjc.backend.model.User;
+import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.StandardReflectionParameterNameDiscoverer;
@@ -24,6 +27,8 @@ import java.util.List;
 public class PlayerController {
     @Autowired
     private PlayerService playerService;
+    @Autowired
+    private UserRepository userRepository;
     @GetMapping("/players")
     public String showPlayers(Model model){
 
@@ -48,6 +53,7 @@ public class PlayerController {
 
     @GetMapping("/players/stadistics")
     public String getPlayersStadistics(Model model){
+
 
         List<Player> players = playerService.findAll();
 
