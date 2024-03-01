@@ -63,8 +63,13 @@ public class MatchController {
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
         Matches match = matchService.findMatchById(id);
 
-        model.addAttribute("match", match);
-        model.addAttribute("report", new Report());
+        if (match != null && match.getReport() != null) {
+            return "/error"; //Incluir algo como ya hay un reporte para ese partido
+        } else {
+            model.addAttribute("match", match);
+            model.addAttribute("report", new Report());
+
+        }
 
         return "fillMatchReport";
     }

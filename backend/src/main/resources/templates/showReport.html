@@ -1,14 +1,36 @@
 {{>header}}
 {{>pageBanner}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js" defer></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <link rel="stylesheet" href="/css/FillMatchReport.css">
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var downloadPdfButton = document.getElementById('downloadPdfButton');
 
+        // Manejador de eventos para el clic en el botón "Download PDF"
+        downloadPdfButton.addEventListener('click', function() {
+            // Crear un nuevo objeto jsPDF
+            var pdf = new jsPDF();
+
+            // Agregar el contenido del reporte al PDF
+            var reportContent = document.getElementById('allInfo');
+            pdf.html(reportContent, {
+                callback: function(pdf) {
+                    // Guardar el PDF como un archivo con nombre 'reporte.pdf'
+                    pdf.save('reporte.pdf');
+                }
+            });
+        });
+    });
+</script>
 <div class="container" style=" padding-bottom: 50px;" id="allInfo">
     {{#error}}
     <div class="alert alert-danger" role="alert">
         {{error}}
     </div>
+    <a href="/tournament/{{cup}}/{{id}}" >
+        <button type="button" class="btn btn-outline-primary" style =" margin-bottom: 20px; text-align: center;justify-content: center;
+    align-items: center;">Go back</button>
+    </a>
     {{/error}}
     {{^error}}
     <div class="row align-items-stretch no-gutters contact-wrap">
@@ -32,7 +54,7 @@
                             <input type="text" class="form-control" name="team1" id="team1" value="{{match.localTeam.name}}" readonly>
                         </div>
                         <div class="col-md-6 form-group mb-3">
-                            <label for="team2">Away Team *</label>
+                            <label for="team2">Away Team </label>
                             <input type="text" class="form-control" name="team2" id="team2" value="{{match.visitingTeam.name}}" readonly>
                         </div>
                     </div>
@@ -63,34 +85,17 @@
                         </div>
                     </div>
                 </form>
-                <div style ="justify-content: center" >
+                <div class="fillDiv">
                     <a href="/tournament/{{cup}}" >
-                        <button type="button" class="btn btn-outline-primary" style =" margin-bottom: 20px; text-align: center">Bracket</button>
+                        <button type="button" class="btn btn-outline-primary">Bracket</button>
                     </a>
-                    <button id="downloadPdfBtn" class="btn btn-primary">Download PDF</button>
-
+                </div>
+                <div class="fillDiv">
+                    <button type="button" id="downloadPdfButton" class="btn btn-outline-primary">Download PDF</button>
                 </div>
             </div>
-
         </div>
     </div>
     {{/error}}
 </div>
-<script>
-    document.getElementById('downloadPdfBtn').addEventListener('click', function () {
-        // Crear instancia de jsPDF
-        const pdf = new jsPDF();
-
-        // Obtener el contenido del formulario
-        const element = document.getElementById('allInfo');
-
-        // Generar el PDF desde el HTML
-        pdf.fromHTML(element, 15, 15);
-
-        // Descargar el PDF
-        pdf.save('report.pdf');
-    });
-</script>
-
-
 {{>footer}}

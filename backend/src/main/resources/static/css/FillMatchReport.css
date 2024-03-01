@@ -60,6 +60,13 @@ body {
       box-shadow: none;
       border-color: #000; }
 
+.fillDiv{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  padding-bottom: 15px;
+}
+
 .btn {
   float: left;
   background: #d8302f;
