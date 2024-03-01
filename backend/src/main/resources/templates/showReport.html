@@ -54,7 +54,6 @@
                             <input type="text" class="form-control" id="matchOfficials" name="matchOfficials" value="{{report.matchOfficials}}" readonly>
                         </div>
                     </div>
-                    <!-- Repite este patrón para los demás campos -->
                     <div class="row">
                         <div class="col-md-12 form-group mb-3">
                             <label for="observations">Observations</label>
@@ -62,6 +61,11 @@
                         </div>
                     </div>
                 </form>
+                <div class="fillDiv">
+                    <a href="/tournament/{{cup}}" >
+                        <button type="button" class="btn btn-outline-primary">Bracket</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
