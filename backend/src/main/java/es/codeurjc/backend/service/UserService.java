@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -37,6 +39,11 @@ public class UserService {
     }
     private void saveCredentials(UserPasswords userPasswords){
         this.userPasswordsRepository.save(userPasswords);
+    }
+
+    public Optional<User> findUserByName(String userName){return userRepository.findByName(userName);}
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 
 }

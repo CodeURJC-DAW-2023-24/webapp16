@@ -40,17 +40,17 @@
                 <form class="mb-5" method="post" id="showReportForm" name="showReportForm">
                     <div class="row">
                         <div class="col-md-6 form-group mb-3">
-                            <label for="date">Date of Match</label>
+                            <label for="date" class="col-form-label">Date of Match</label>
                             <input type="text" class="form-control" id="date" name="date" value="{{report.date}}" readonly>
                         </div>
                         <div class="col-md-6 form-group mb-3">
-                            <label for="time">Time of Match</label>
+                            <label for="time" class="col-form-label">Time of Match</label>
                             <input type="text" class="form-control" id="time" name="time" value="{{report.time}}" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group mb-3">
-                            <label for="team1">Home Team </label>
+                            <label for="team1" class="col-form-label">Home Team </label>
                             <input type="text" class="form-control" name="team1" id="team1" value="{{match.localTeam.name}}" readonly>
                         </div>
                         <div class="col-md-6 form-group mb-3">
@@ -74,13 +74,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group mb-3">
-                            <label for="matchOfficials">Match Officials</label>
+                            <label for="matchOfficials" class="col-form-label">Match Officials</label>
                             <input type="text" class="form-control" id="matchOfficials" name="matchOfficials" value="{{report.matchOfficials}}" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group mb-3">
-                            <label for="observations">Observations</label>
+                            <label for="observations" class="col-form-label">Observations</label>
                             <textarea class="form-control" id="observations" name="observations" rows="4" readonly>{{report.observations}}</textarea>
                         </div>
                     </div>

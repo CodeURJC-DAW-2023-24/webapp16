@@ -22,7 +22,7 @@ public class Report {
 
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Matches match;
     public Report(){}
 

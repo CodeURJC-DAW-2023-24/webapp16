@@ -50,21 +50,7 @@ public class MustacheController {
         return "about";
 		}
 
-	@GetMapping("/profile")
-    public String profile(Model model, HttpServletRequest request) {
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name = principal.getName();
-            User user = userRepository.findByName(name).orElseThrow();
-            model.addAttribute("username", user.getName());
-            model.addAttribute("admin", request.isUserInRole("ADMIN"));
-            model.addAttribute("user", request.isUserInRole("USER"));
 
-        }
-        model.addAttribute("pageTitle", "Profile");
-
-        return "profile";
-    }
 
     @GetMapping("/tournamentBracket")
     public String tournament_racket(Model model) {

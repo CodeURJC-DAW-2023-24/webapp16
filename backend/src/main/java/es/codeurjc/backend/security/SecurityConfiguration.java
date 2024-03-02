@@ -73,7 +73,8 @@ public class SecurityConfiguration{
 
 
                         // PRIVATE PAGES
-                        .requestMatchers("/profile").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/profile").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/profile/save").hasAnyRole("USER")
                         .requestMatchers("/search").hasAnyRole("USER")
                         .requestMatchers("/tournament/{cup}/{id}/report").hasAnyRole("USER")
 

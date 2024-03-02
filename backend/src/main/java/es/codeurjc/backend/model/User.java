@@ -11,12 +11,17 @@ public class User {
     private Long id;
 
     private String name;
+
+
+    private String firstName;
     private String lastName;
     private String dateOfBirth;
     private String phoneNumber;
     private String address;
     private String email;
     private String gender;
+
+    private String dni;
     private String encodedPassword;
     private String nickname;
 
@@ -113,6 +118,20 @@ public class User {
     public void setGender(String value) {
         this.gender = value;
     }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getDni() {
+        return dni;
+    }
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
 }
 
 

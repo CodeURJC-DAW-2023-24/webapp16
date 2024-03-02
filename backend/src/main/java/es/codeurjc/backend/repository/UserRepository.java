@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     String getUserCredential(@Param("user") String user);
 
     Optional<User> findByName(String name);
+
+
 }

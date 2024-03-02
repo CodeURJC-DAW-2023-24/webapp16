@@ -260,7 +260,7 @@ public class SampleAllData {
             matches.save(new Matches(villarreal,valencia,champions , 3,0, 1));
 
 
-            //report.save(new Report("2024-03-01", "20:00", "Referee Smith",1, 0, "No obs", match05));
+            report.save(new Report("2024-03-01", "20:00", "Referee Smith",1, 0, "No obs", match05));
            // report.save(new Report("2024-04-01", "20:00", "Referee James",1, 0, "No obs", match06));
             matches.save(new Matches(realMadrid,athleticBilbao,champions , 2,0,2));
             matches.save(new Matches(villarreal,sevilla,champions , 0,0,2));
