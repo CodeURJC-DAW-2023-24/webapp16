@@ -26,15 +26,12 @@ public class Report {
     private Matches match;
     public Report(){}
 
-    public Report(Long id, String date, String time, String matchOfficials, int localTeamGoals, int visitingTeamGoals, String observations, Matches match) {
-        this.id = id;
+    public Report( String date, String time, String matchOfficials, int localTeamGoals, int visitingTeamGoals, String observations, Matches match) {
         this.date = date;
         this.time = time;
         this.matchOfficials = matchOfficials;
         this.localTeamGoals = localTeamGoals;
         this.visitingTeamGoals = visitingTeamGoals;
-        //this.localTeamScorers = localTeamScorers;
-        //this.visitingTeamScorers = visitingTeamScorers;
         this.observations = observations;
         this.match = match;
     }

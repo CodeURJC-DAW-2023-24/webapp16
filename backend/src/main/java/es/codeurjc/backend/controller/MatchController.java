@@ -108,10 +108,23 @@ public class MatchController {
             match.setLocalGoals(team1Goals);
             match.setVisitingGoals(team2Goals);
 
+
             Team winner;
+            Team loser;
             if (team1Goals > team2Goals){
+
                 winner = match.getLocalTeam();
+                winner.setGamesPlayed(winner.getGamesPlayed() + 1);
+                winner.setWins(winner.getWins() + 1);
+
+                loser = match.getVisitingTeam();
+                loser.setGamesPlayed(loser.getGamesPlayed() + 1);
+                loser.setLoses(loser.getLoses() + 1);
             } else {
+                winner = match.getVisitingTeam();
+                winner.setWins(winner.getWins() + 1);
+                loser = match.getLocalTeam();
+                loser.setLoses(loser.getLoses() + 1);
                 winner = match.getVisitingTeam();}
 
             reportService.saveReport(report);
