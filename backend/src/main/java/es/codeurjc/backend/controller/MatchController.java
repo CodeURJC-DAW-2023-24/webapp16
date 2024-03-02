@@ -105,10 +105,40 @@ public class MatchController {
             report.setObservations(matchSummary);
             report.setMatch(match);
 
-            // Guardar el reporte
+            match.setLocalGoals(team1Goals);
+            match.setVisitingGoals(team2Goals);
+
+            Team winner;
+            if (team1Goals > team2Goals){
+                winner = match.getLocalTeam();
+            } else {
+                winner = match.getVisitingTeam();}
+
             reportService.saveReport(report);
 
-            // Agregar los atributos al modelo para mostrar el reporte
+            if (match.getId() % 2 != 0) {
+                Matches nextMatch = new Matches();
+                nextMatch.setTournament(tournament);
+                nextMatch.setRound(match.getRound() + 1);
+
+                nextMatch.setLocalTeam(winner);
+                nextMatch.setLocalGoals(0);
+
+                matchService.saveMatch(nextMatch);
+            } else {
+                List<Matches> listNextMatches = matchService.findMatchByRound(match.getRound() + 1);
+
+                for (Matches nextMatch : listNextMatches) {
+                    if (nextMatch.getVisitingTeam() == null) {
+                        nextMatch.setVisitingTeam(winner);
+                        nextMatch.setVisitingGoals(0);
+                        matchService.saveMatch(nextMatch);
+                        break;
+                    }
+
+                }
+            }
+
             model.addAttribute("report", report);
             model.addAttribute("match", match);
             return "showReport";

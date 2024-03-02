@@ -8,10 +8,21 @@
 	<div class="round" id ="round1">
 		{{#roundOne}}
 		<a href="/tournament/{{cup}}/{{id}}">
-		<div class="match">
-			<div class="team">{{localTeam.name}} <span > {{localGoals}}</span></div>
-			<div class="team">{{visitingTeam.name}} <span> {{visitingGoals}}</span></div>
-		</div>
+			<div class="match">
+				{{#localTeam}}
+				<div class="team">{{localTeam.name}} <span>{{localGoals}}</span></div>
+				{{/localTeam}}
+				{{^localTeam}}
+				<div class="team">No local team assigned</div>
+				{{/localTeam}}
+
+				{{#visitingTeam}}
+				<div class="team">{{visitingTeam.name}} <span>{{visitingGoals}}</span></div>
+				{{/visitingTeam}}
+				{{^visitingTeam}}
+				<div class="team">No visiting team assigned</div>
+				{{/visitingTeam}}
+			</div>
 		</a>
 		{{/roundOne}}
 	</div>
@@ -19,32 +30,60 @@
 
 
 
+
 	<div class="round">
 		{{#roundTwo}}
-		<a href="matchScreen">
+		<a href="/tournament/{{cup}}/{{id}}">
 			<div class="match">
-				<div class="team">{{localTeam.name}} <span > {{localGoals}}</span></div>
-				<div class="team">{{visitingTeam.name}} <span> {{visitingGoals}}</span></div>
+				{{#localTeam}}
+				<div class="team">{{localTeam.name}} <span>{{localGoals}}</span></div>
+				{{/localTeam}}
+				{{^localTeam}}
+				<div class="team">No local team assigned</div>
+				{{/localTeam}}
+
+				{{#visitingTeam}}
+				<div class="team">{{visitingTeam.name}} <span>{{visitingGoals}}</span></div>
+				{{/visitingTeam}}
+				{{^visitingTeam}}
+				<div class="team">No visiting team assigned</div>
+				{{/visitingTeam}}
 			</div>
 		</a>
 		{{/roundTwo}}
 	</div>
 	<div class="round">
 		{{#roundThree}}
-		<a href="matchScreen">
+		<a href="/tournament/{{cup}}/{{id}}">
 			<div class="match">
-				<div class="team">{{localTeam.name}} <span > {{localGoals}}</span></div>
-				<div class="team">{{visitingTeam.name}} <span> {{visitingGoals}}</span></div>
+				{{#localTeam}}
+				<div class="team">{{localTeam.name}} <span>{{localGoals}}</span></div>
+				{{/localTeam}}
+				{{^localTeam}}
+				<div class="team">No local team assigned</div>
+				{{/localTeam}}
+
+				{{#visitingTeam}}
+				<div class="team">{{visitingTeam.name}} <span>{{visitingGoals}}</span></div>
+				{{/visitingTeam}}
+				{{^visitingTeam}}
+				<div class="team">No visiting team assigned</div>
+				{{/visitingTeam}}
 			</div>
 		</a>
 		{{/roundThree}}
 	</div>
   	<div class="round">
 		{{#roundFour}}
-		<a href="matchScreen">
+		<a href="/teams/{{localTeam.name}}">
 			<div class="match">
-				<div class="team">{{localTeam.name}} <span > {{localGoals}}</span></div>
-				<div class="team">{{visitingTeam.name}} <span> {{visitingGoals}}</span></div>
+				{{#localTeam}}
+				<div class="team">{{localTeam.name}} <span>Winner!!!!</span></div>
+				{{/localTeam}}
+				{{^localTeam}}
+				<div class="team">No local team assigned</div>
+				{{/localTeam}}
+
 			</div>
 		</a>
 		{{/roundFour}}

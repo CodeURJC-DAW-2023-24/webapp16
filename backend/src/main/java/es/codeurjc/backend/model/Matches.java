@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 
 @Entity
 public class Matches {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,9 +23,10 @@ public class Matches {
 
     private int localGoals;
     private int visitingGoals;
-    private String matchDate;
 
     private int round;
+
+
     @ManyToOne
     private Tournament tournament;
 
@@ -35,13 +38,12 @@ public class Matches {
     }
 
 
-    public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, String matchDate, int round) {
+    public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, int round) {
         this.localTeam = localTeam;
         this.visitingTeam = visitingTeam;
         this.tournament = tournament;
         this.localGoals = localGoals;
         this.visitingGoals = visitingGoals;
-        this.matchDate = matchDate;
         this.round = round;
     }
 
@@ -77,17 +79,32 @@ public class Matches {
         this.visitingGoals = value;
     }
 
-    public String getMatchDate() {
-        return this.matchDate;
-    }
-
-    public void setMatchDate(String value) {
-        this.matchDate = value;
-    }
 
     public void setReport(Report report) {
     }
     public Report getReport() {
         return report;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 }

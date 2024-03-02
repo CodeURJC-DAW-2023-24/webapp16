@@ -7,6 +7,8 @@ import es.codeurjc.backend.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MatchService {
 
@@ -17,7 +19,9 @@ public class MatchService {
         return matchRepository.findMatchById(id);
 
     }
-
+    public List<Matches> findMatchByRound(int round){
+        return matchRepository.findMatchesByRound(round);
+    }
     public Matches saveMatch(Matches match){
         return matchRepository.save(match);
     }
