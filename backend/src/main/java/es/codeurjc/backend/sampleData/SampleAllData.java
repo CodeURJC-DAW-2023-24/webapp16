@@ -254,18 +254,24 @@ public class SampleAllData {
 
             Matches match05 =new Matches(realMadrid,barcelona, champions, 1,0,1);
             matches.save(match05);
-            Matches match06 =new Matches(athleticBilbao,realSociedad,champions , 0,0,1);
-            matches.save(match06);
-            matches.save(new Matches(atleticoMadrid,sevilla,champions , 0,2,1));
-            matches.save(new Matches(villarreal,valencia,champions , 3,0, 1));
-
-
             report.save(new Report("2024-03-01", "20:00", "Referee Smith",1, 0, "No obs", match05));
-           // report.save(new Report("2024-04-01", "20:00", "Referee James",1, 0, "No obs", match06));
-            matches.save(new Matches(realMadrid,athleticBilbao,champions , 2,0,2));
-            matches.save(new Matches(villarreal,sevilla,champions , 0,0,2));
+            Matches match06 =new Matches(athleticBilbao,realSociedad,champions , 1,0,1);
+            matches.save(match06);
+            report.save(new Report("2024-04-01", "20:00", "Referee James",1, 0, "No obs", match06));
+            Matches match07 =new Matches(athleticBilbao,realSociedad,champions , 0,2,1);
+            matches.save(match07);
+            report.save(new Report("2024-04-01", "20:00", "Referee James",0, 2, "No obs", match07));
+            Matches match08 =new Matches(athleticBilbao,realSociedad,champions , 3,0,1);
+            matches.save(match08);
+            report.save(new Report("2024-04-01", "20:00", "Referee James",3, 0, "No obs", match08));
+            Matches match09 =new Matches(realMadrid,athleticBilbao,champions , 2,0,2);
+            matches.save(match09);
+            report.save(new Report("2024-04-01", "20:00", "Referee James",2, 0, "No obs", match09));
+            Matches match10 =new Matches(villarreal,sevilla,champions , 0,0,2);
+            matches.save(match10);
+            Matches match11 =new Matches(realMadrid,null,champions , 0,0,3);
+            matches.save(match11);
 
-            matches.save(new Matches(realMadrid,null,champions , 0,0,3));
 
             //userCreation
 
