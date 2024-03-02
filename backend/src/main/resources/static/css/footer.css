@@ -35,6 +35,7 @@ footer#footer {
     position: relative;
     background-position: center top;
     background-size: cover;
+    flex:1;
 }
 .footer-widget {
     float: left;

@@ -1,28 +1,10 @@
 {{>header}}
 {{>pageBanner}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 <link rel="stylesheet" href="/css/FillMatchReport.css">
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var downloadPdfButton = document.getElementById('downloadPdfButton');
 
-        // Manejador de eventos para el clic en el botón "Download PDF"
-        downloadPdfButton.addEventListener('click', function() {
-            // Crear un nuevo objeto jsPDF
-            var pdf = new jsPDF();
-
-            // Agregar el contenido del reporte al PDF
-            var reportContent = document.getElementById('allInfo');
-            pdf.html(reportContent, {
-                callback: function(pdf) {
-                    // Guardar el PDF como un archivo con nombre 'reporte.pdf'
-                    pdf.save('reporte.pdf');
-                }
-            });
-        });
-    });
-</script>
-<div class="container" style=" padding-bottom: 50px;" id="allInfo">
+<div class="container" style=" padding-bottom: 50px;" >
     {{#error}}
     <div class="alert alert-danger" role="alert">
         {{error}}
@@ -35,7 +17,7 @@
     {{^error}}
     <div class="row align-items-stretch no-gutters contact-wrap">
         <div class="col-md-12">
-            <div class="form h-100" >
+            <div class="form h-100" id="allInfo" >
                 <h3>Match Report</h3>
                 <form class="mb-5" method="post" id="showReportForm" name="showReportForm">
                     <div class="row">
@@ -98,4 +80,27 @@
     </div>
     {{/error}}
 </div>
+
+<script>
+    window.onload = function () {
+        document.getElementById('downloadPdfButton').addEventListener('click', function () {
+            // Captura el elemento del formulario por su ID
+            const formElement = document.getElementById('showReportForm');
+            console.log(formElement);
+            // Opcional: Puedes personalizar opciones de configuración
+            const options = {
+                margin: 10,
+                filename: '{{match.localTeam.name}} vs {{match.visitingTeam.name}}.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 1},
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            };
+
+            // Usa html2pdf para convertir el formulario a PDF
+            html2pdf(formElement, options);
+        });
+    };
+</script>
+
+
 {{>footer}}
