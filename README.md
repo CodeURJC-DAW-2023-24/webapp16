@@ -27,6 +27,13 @@ ___
     - [**Fill Match Report**](#Fill-Match-Report)
     - [**Tournament Create**](#Tournament-Create)
   - [**:diamonds:Flow Diagram**](#diamonds-Flow-Diagram)
+- [**Phase 2**](#phase-2)
+  - [**:computer: New Screens**](#computer-New-Screens)
+  - [**:diamonds: New Flow Diagram**](#diamonds-New-Flow-Diagram)
+  - [**:🚀: Execution Instructions**](#🚀-Execution-Instructions)
+  - [**:🗄️:Diagram with the database entities**](#🚀-Diagram-with-the-database-entities)
+  - [**:🤝: Participation**](#🤝-Participation)
+  - [**:🎨: Class diagram and templates](#🎨-Class-diagram-and-templates)
 
 ___
 
@@ -532,7 +539,7 @@ including date, time, teams involved, and match officials. There are also option
 
 ___
 
-# :diamonds: Flow Diagram:
+# :diamonds: New Flow Diagram:
 
 The diagram is a flow chart showing user permissions and navigation steps within a web interface. The diagram uses colored arrows to indicate the progression from one web page or state to another, based on user actions or permissions.
 
@@ -542,7 +549,7 @@ The diagram is a flow chart showing user permissions and navigation steps within
 - Arrows connect these initial states to various web pages, including "Tournament Create", "Events" and "Player/Team Login" among others.
 - Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
 
-![*Flow Diagram*](readmeImg/diagramFinal.jpg)
+![*New Flow Diagram*](readmeImg/diagramFinal.jpg)
 
 
 ---
@@ -586,7 +593,7 @@ The diagram is a flow chart showing user permissions and navigation steps within
   - Visit https://localhost:8443 in your web browser.
 
 --- 
-# :🗄️: Diagram with the database entities:
+# :🗄️: Diagram with the database entities
 
 Next, a diagram will be included depicting the entities within the database, their respective fields, and the relationships among them. 
 
@@ -647,4 +654,4 @@ I've been in charge of all the AJAX page layout.
 | 5º  |        [Add: new option off filters in the search bar](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/6ec37310609d0d5c48e3ee2277845550c5e92661)        | | 5º | [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java) |
 
 
-
+# :🎨: Class diagram and templates
