@@ -14,7 +14,7 @@
         </div>
           <h2>CREATE TOURNAMENT</h2>
           <hr>
-          <form action="/saveTournament">
+          <form action="/saveTournament" method="post" enctype="multipart/form-data">
             <div class="marginDefined">
                 <label for="field_1">Tournament name:</label>
                 <input type="field" name="field_1" id="field_1" placeholder="Enter Tournament name" class="texted" required>
@@ -101,7 +101,7 @@
             </div>
             <div class="marginDefined">
                 <label for="photo">Tournament photo:</label>
-                <input type="file" name="field_7" id="photo" accept="image/png">
+                <input type="file" name="photo" id="photo" accept="image/png">
             </div>
             <button type="submit">SAVE</button>
             <button type="button" onclick="location.href='{{redirect}}'">CANCEL</button>

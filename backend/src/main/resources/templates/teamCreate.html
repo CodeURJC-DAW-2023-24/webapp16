@@ -9,9 +9,9 @@
                 <a href="/tournamentCreation/1" style="margin-left: 20px; color: #d8302f;"><i class='input-icon uil uil-arrow-left' style="font-size: 2rem;"></i></a>
                 <a href="/" style="justify-content: center; align-items: center; display: flex;"><img class="show-logo" src="/images/logo_top.png" alt="#"/></a>
         </div>
-          <h2>CREATE/MODIFY PLAYER</h2>
+          <h2>CREATE TEAM</h2>
           <hr>
-          <form action="/addTeamToTournament/{{cup}}" method="post">
+          <form action="/addTeamToTournament/{{cup}}" method="post" enctype="multipart/form-data">
               <div class="marginDefined labelDesign">
                   Team properties
               </div>
@@ -262,8 +262,8 @@
                   Photo uploading
               </div>
               <div class="marginDefined">
-                  <label for="photo_1">Team photo:</label>
-                  <input type="file" name="field_7" id="photo_1" accept="image/png">
+                  <label for="photo">Team photo:</label>
+                  <input type="file" name="photo" id="photo" accept="image/png">
               </div>
             <button type="submit">SAVE</button>
        
