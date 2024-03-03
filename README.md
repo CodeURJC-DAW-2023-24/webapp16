@@ -563,10 +563,9 @@ The diagram is a flow chart showing user permissions and navigation steps within
 3. **Configure Database:**
   - Download MySQL v.8.0.36.0
   - Select default port (port 3306)
-  - Create a user with name root "admin" and password "adminpass" with DB admin as user role
+  - Create a user with name root "root" and password "webapp16" with DB admin as user role
   - Configure MySQL Server as Windows Service
   - Grant full access to the user
-  - Create a new Schema named EventCrafters in the server using MySQL Workbench
 
 4. **Docker Configuration:**
 - Download Docker desktop. 
@@ -597,9 +596,7 @@ Ahmad
 
 I have created different screens with mustache.
 I have helped to make the different pages more dynamic.
-Where I have worked the most is in the screens of players, teams, search and everything related to them.
 I've been in charge of all the AJAX page layout.
-I have also helped in the resolution of errors in different parts of the practice. 
 
 - Top 5 commits:
 
@@ -620,12 +617,23 @@ I have also helped in the resolution of errors in different parts of the practic
 
   - PlayerController: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/PlayerController.java
 
-  - SearchController: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java
+  <!-- SearchController: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java -->
 
   - playersScripts: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/playersScript.js
 
   - scripts: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/script.js
 
+#### Nicolás Hernández Tejero
+
+* Our security scientist has prepared all the security of our application, together with all the user and session management logic.
+
+| #   |                                                               Commit                                                               |     | #   |                                                                                         File                                                                                          |
+| :-: |:----------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |         [Add: tournament working!!!](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f521f1bb3588cf58f0755dc41c4bdbbce8e0997)          | | 1º |             [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)              |
+| 2º  |         [Fix:bracket issue](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/ea1b3ad7e76d76963ccb34559af3fca5f0cd838b)         | |2º |            [SearchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java)             |
+| 3º  | [Add: search controller and functionality](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/54cb1bb2f8be67c53b7002e4b0e6d84fcc8cb779)  | | 3º | [SingUpController.java](https://github.com/CodeURJC-DAW-2022-23/webapp8/blob/main/ProjectBackEnd/src/main/java/com/TwitterClone/ProjectBackend/Controller/UserSignupController.java)  |
+| 4º  | [Add: new graphic of players](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/862a2160e819f628faa80fa4205b5ed11ef9bf85) | | 4º |            [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)             |
+| 5º  |        [Add: new option off filters in the search bar](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/6ec37310609d0d5c48e3ee2277845550c5e92661)        | | 5º | [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java) |
 
 
 
