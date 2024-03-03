@@ -586,8 +586,15 @@ The diagram is a flow chart showing user permissions and navigation steps within
   - Visit https://localhost:8443 in your web browser.
 
 --- 
+# :🗄️: Diagram with the database entities:
 
-# Participation
+Next, a diagram will be included depicting the entities within the database, their respective fields, and the relationships among them. 
+
+
+![*Diagram with the database entities*](readmeImg/database.jpg)
+
+---
+# :🤝: Participation
 
 ---
 Ahmad
