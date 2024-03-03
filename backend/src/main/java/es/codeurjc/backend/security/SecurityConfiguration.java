@@ -83,7 +83,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/tournamentCreation/{created}").hasAnyRole("ADMIN")
                         .requestMatchers("addTeamToTournament/{cup}").hasAnyRole("ADMIN")
                         .requestMatchers("/cancelTournamentCreation").hasAnyRole("ADMIN")
-
+                        .requestMatchers("/saveTournament").hasAnyRole("ADMIN")
                         //
                 )
                 .formLogin(formLogin -> formLogin

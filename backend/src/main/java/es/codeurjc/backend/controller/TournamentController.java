@@ -117,6 +117,17 @@ public class TournamentController {
         tournamentService.delete(tournamentService.findTournamentById(tournamentService.countTournaments()));
         return "redirect:/";
     }
+    @GetMapping("/saveTournament")
+    public String saveTournament(Model model){
+        Long tourId = tournamentService.countTournaments();
+        List<Team> teamList = teamService.findTournamentsByTourName(tourId);
+        for (int teamN=0; teamN< teamList.size(); teamN+=2){
+            Matches matches = new Matches(teamList.get(teamN),teamList.get(teamN+1), tournamentService.findTournamentById(tourId),0,0,1);
+            matchService.saveMatch(matches);
+        }
+        return "redirect:/";
+    }
+
 
 
 

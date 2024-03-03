@@ -62,7 +62,7 @@ a:hover {
   }
   
 
-  button[type="save"] {
+  button[type="submit"] {
     background-color: #4caf50;
     color: white;
     transition: 0.5s;
@@ -84,7 +84,7 @@ a:hover {
     margin-top: 10px;
   }
   
-  button[type="save"]:hover {
+  button[type="submit"]:hover {
     background-color: #00ff08;
     transition: 0.5s;
   }

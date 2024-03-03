@@ -105,11 +105,6 @@ public class TeamControler {
         model.addAttribute("cup",cup);
         return "teamCreate";
     }
-    @PostMapping("/addTeamToTournament/{cup}")
-
-    public String addTeamToTournament(@PathVariable String cup, Model model){
-        return ("redirect:/"+cup+"/teamCreation/");
-    }
     @GetMapping("/teams/stadistics")
     public String getTeamsStadistics(Model model) {
 
@@ -134,6 +129,7 @@ public class TeamControler {
         model.addAttribute("pageTitle", "Teams Stadistics");
         return "teamsStadistics";
     }
+    @PostMapping("/addTeamToTournament/{cup}")
     public String addTeamToTournament(@PathVariable String cup, Model model, //Request for team creation data
                                       @RequestParam String field_1, //Team name
                                       @RequestParam String field_2, //Coach name
