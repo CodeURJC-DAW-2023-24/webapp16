@@ -12,8 +12,22 @@
                 </div>
                 {{/error}}
                 {{^error}}
+                {{#tournaments}}
+                <div class="col-md-3">
+                    <div class="team-column style-2">
+                        <a href="/tournament/{{cup}}">
+                            <img src="data:image/png;base64,{{tournamentImagePath}}" href="tournamentBracket" alt="{{cup}}" style="width: 250px ; height:350px">
+                            <div class="player-name">
+                                <div class="desination-2">{{name}}</div>
+                                <h5>{{cup}}</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {{/tournaments}}
+
                 {{#teams}}
-                <!-- Mostrar equipos -->
+
                 <div class="col-md-3 column">
                     <div class="card">
                         <div class="content">
@@ -40,9 +54,9 @@
                     </div>
                 </div>
                 {{/players}}
-                {{^teams}}{{^players}}
+                {{^teams}}{{^players}}{{^tournaments}}
                 <p>No results found.</p>
-                {{/players}}{{/teams}}
+                {{/tournaments}}{{/players}}{{/teams}}
                 {{/error}}
             </div>
         </div>

@@ -139,7 +139,7 @@ A navigation bar at the top with options for “Home,” “Teams,” “Profile
 A section titled “Available Tournaments” beneath the banner, which displays four different types of trophy icons There is also a button for view the tournaments and a countdown timer for the registration deadline.
 A footer menu at the bottom, including options like “Menu,” “About us,” social media profiles, an email contact option, and some information about the website creator and the copyright.
 
-![*HomePage*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/index.png)
+![*HomePage*](readmeImg/index.png)
 
 ___
 
@@ -149,7 +149,7 @@ The login/sign up page of the website allows users to access or create their acc
 A logo at the top corner, consisting of multiple colors and shapes, representing the identity of your website.
 A login box in the center, with options to enter email and password. The login box has two tabs labeled “Log In” and “Sign Up,” indicating that users can either log into their existing account or create a new one. There is a red “LOGIN” button below the email and password fields for users to proceed after entering their credentials. There is also a link labeled “Forgot your password?” for users who need to recover their password.
 
-![*RegLog*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/login.png)
+![*RegLog*](readmeImg/login.png)
 
 ___
 
@@ -159,7 +159,7 @@ The tournament bracket page website displays the matches and results of a footba
 A blank tournament bracket in the middle, labeled ROUND 1 through FINAL; each section has blank spaces for team names and scores. The bracket is designed for a single-elimination tournament with 16 teams.
 A stadistics button below the bracket, which allows users see the stadistics off the tournament.
 
-![*Bracket*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/tournamentBracket.png)
+![*Bracket*](readmeImg/tournamentBracket.png)
 
 ___
 
@@ -171,7 +171,7 @@ Team logos displayed prominently.
 A white box containing lists of players from both teams, divided into two columns labeled with each team’s name. Each column lists players’ names under their respective teams.
 A button labeled “Match Report” located below the white box, which leads to a page with more details and statistics about the match.
 
-![*Match*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/matchScreen.png)
+![*Match*](readmeImg/matchScreen.png)
 
 ___
 
@@ -182,7 +182,7 @@ The Statistics Page consists of:
 
 Four graphs for the following stadistics: goals, shots, passes, and fouls.
 
-![*Stadistics*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/stadistics.png)
+![*Stadistics*](readmeImg/stadistics.png)
 
 ___
 
@@ -193,7 +193,7 @@ The Player Info is a section where users can input information about a football 
 - A large image of a stadium filled with spectators serves as the background at the upper part of the webpage. The UEFA Champions League trophy is prominently displayed on this background.
 - In front of this background, there's an empty form titled “PLAYER INFO” with various fields like “Name,” “Nationality,” “Age,” etc., for inputting information about a player.
   
-![*View Player*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/viewPlayer.png)
+![*View Player*](readmeImg/viewPlayer.png)
 
 ___
 
@@ -205,7 +205,7 @@ The create new player section is a section where the user can enter information 
 - Below the form is a red button labeled "ADD" to submit the completed form.
 
 
-![*Create Player*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/addPlayer.png)
+![*Create Player*](readmeImg/addPlayer.png)
 
 ___
 
@@ -219,7 +219,7 @@ The create new team section is a section where the user can enter information ab
   - Basic stadistics
 - There is an orange "Save Changes" button at the bottom of the form to submit the completed information.
 
-![*Create Team*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/createTeam.png)
+![*Create Team*](readmeImg/createTeam.png)
 
 ___
 
@@ -232,7 +232,7 @@ The profile section is a section where the user can enter and update personal in
 - Each field has an empty text box next to it for entering information.
 - There is a red button labeled "Save changes" below the input fields.
 
-![*Profile*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/profile.png)
+![*Profile*](readmeImg/profile.png)
 
 ___
 
@@ -242,7 +242,7 @@ The About Us is a section where users can learn more about the FUTBOLPRO  League
 - In the middle section, there is an article or blog post titled “FutPro League” accompanied by an image. The article explains what FUTBOLPRO LEAGUE is and how it helps users manage their football leagues in minutes.
 - Below this section, there’s another part titled “Our Testimonials” featuring a quote from someone praising the website/platform.
   
-![*About Us*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/aboutUs.png)
+![*About Us*](readmeImg/aboutUs.png)
 
 ___
 
@@ -252,7 +252,7 @@ The Team is a section where users can view information about different football 
 - All the teams registered in the web.
 - The names of the teams and the city that came form are written below their respective logos.
 
-![*Team*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/team.png)
+![*Team*](readmeImg/team.png)
 
 ___
 
@@ -262,7 +262,7 @@ The Team Info is a section where users can view information about a specific foo
 - All the players registered in the team.
 - Stadistics off that football team.
 
-![*Team Info*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/teamInfo.png)
+![*Team Info*](readmeImg/teamInfo.png)
 
 ___
 
@@ -283,7 +283,7 @@ The section for filling out the match report is a section in which the soccer re
 - Each field has a blank space next to it to enter the information.
 - There is a red "SEND REPORT" button at the bottom of the form to send the completed report.
 
-![*Fill Match Report*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/fillMatchReport.png)
+![*Fill Match Report*](readmeImg/fillMatchReport.png)
 
 ___
 
@@ -299,7 +299,7 @@ The create new tournament section is a section where the user can enter informat
     - Fields to enter different teams labeled "Team 1", "Team 2", "Team 3"...
 - At the bottom of the form there are two buttons: a green one labeled "SAVE" and a red one labeled "CANCEL".
 
-![*Tournament Create*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/tournamentCreation.png)
+![*Tournament Create*](readmeImg/createTournament.png)
 
 ___
 # :diamonds: Flow Diagram:
@@ -312,4 +312,4 @@ The diagram is a flow chart showing user permissions and navigation steps within
 - Arrows connect these initial states to various web pages, including "Tournament Create", "Events" and "Player/Team Login" among others.
 - Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
 
-![*Flow Diagram*](https://github.com/CodeURJC-DAW-2023-24/backend/blob/main/readmeImg/usersDiagram.jpg)
+![*Flow Diagram*](readmeImg/usersDiagram.jpg)
