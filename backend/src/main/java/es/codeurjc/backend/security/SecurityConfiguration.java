@@ -65,6 +65,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/teams/{name}/{playerName}/{lastName}").permitAll()
                         .requestMatchers("/loginSuccesfull").permitAll()
                         .requestMatchers("/signUpRequest").permitAll()
+                        .requestMatchers("/error/**").permitAll()
 
 
 
@@ -83,7 +84,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/tournamentCreation/{created}").hasAnyRole("ADMIN")
                         .requestMatchers("addTeamToTournament/{cup}").hasAnyRole("ADMIN")
                         .requestMatchers("/cancelTournamentCreation").hasAnyRole("ADMIN")
-
+                        .requestMatchers("/saveTournament").hasAnyRole("ADMIN")
                         //
                 )
                 .formLogin(formLogin -> formLogin

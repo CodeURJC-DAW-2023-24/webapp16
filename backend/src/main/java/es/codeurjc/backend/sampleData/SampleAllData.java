@@ -252,6 +252,7 @@ public class SampleAllData {
             matches.save(new Matches(huesca,realBetis,copaDelRey , 0,0, 1));
 
 
+            //demo tournament
             Matches match05 =new Matches(realMadrid,barcelona, champions, 1,0,1);
             matches.save(match05);
             report.save(new Report("2024-03-01", "20:00", "Referee Smith",1, 0, "No obs", match05));

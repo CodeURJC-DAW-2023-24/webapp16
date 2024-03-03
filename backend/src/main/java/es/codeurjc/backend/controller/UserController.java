@@ -20,7 +20,7 @@ public class UserController {
     UserRepository userRepository;
     @PostMapping("/loginRequest")
     public String loginData(@RequestParam String nick, @RequestParam String password) {
-        System.out.println("Recibidos nick: " + nick + " y pass: " + password);
+
         return "redirect:/";
     }
 
@@ -29,32 +29,25 @@ public class UserController {
 
     @PostMapping("/signUpRequest")
     public String signUpData(@RequestParam String name, @RequestParam String email,@RequestParam String password, @RequestParam String date, Model model){
-       System.out.println("Recibidos nick: "+name+" email: "+ email+" pass: "+password+" date: "+date);
-//        User user = new User();
-//        user.setName(nick);
-//        user.setEmail(email);
-//        user.setEncodedPassword(password);
-//        user.setDateOfBirth(date);
-//        user.setAddress(null);
-//        user.setPhoneNumber(null);
-//        user.setGender(null);
-//        user.setFirstName(null);
-//        user.setLastName(null);
-//        userService.addUser(user);
-//
-        //intento soriano
+
         userService.newUser(name,email,password,date);
         model.addAttribute("name", name);
         return "loginSuccesfull";
     }
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request) {
+
+        //get session id
         Principal principal = request.getUserPrincipal();
         if(principal != null) {
             String name = principal.getName();
             User userProfile = userRepository.findByName(name).orElseThrow();
             model.addAttribute("userProfile", userProfile);
-
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
         }
         model.addAttribute("pageTitle", "Profile");
 
@@ -67,6 +60,11 @@ public class UserController {
             String name = principal.getName();
             User userProfile = userRepository.findByName(name).orElseThrow();
             model.addAttribute("userProfile", userProfile);
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
         }
         model.addAttribute("pageTitle", "Profile Modify");

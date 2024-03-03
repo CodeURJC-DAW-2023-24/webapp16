@@ -45,7 +45,21 @@ public class MustacheController {
 
 
 	@GetMapping("/about")
-    public String about(Model model) {
+    public String about(Model model, HttpServletRequest request) {
+
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
+
+        }
         model.addAttribute("pageTitle", "About us");
         return "about";
 		}

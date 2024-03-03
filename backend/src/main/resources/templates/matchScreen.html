@@ -50,16 +50,20 @@
           {{/playerListVisiting}}
           </tbody>
         </table>
+        {{#admin}}
         <div class="fillDiv">
             <a href="/tournament/{{cup}}/{{id}}/fillMatchReport" >
                 <button type="button" class="btn btn-outline-primary">Fill Match Report</button>
            </a>
         </div>
+        {{/admin}}
+        {{#report}}
         <div class="fillDiv">
             <a href="/tournament/{{cup}}/{{id}}/report" >
                 <button type="button" class="btn btn-outline-primary">Report</button>
             </a>
         </div>
+        {{/report}}
     </div>
  
 

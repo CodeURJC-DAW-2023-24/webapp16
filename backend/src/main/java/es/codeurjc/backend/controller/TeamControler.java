@@ -1,13 +1,12 @@
 package es.codeurjc.backend.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import es.codeurjc.backend.model.ImputData;
-import es.codeurjc.backend.model.Player;
-import es.codeurjc.backend.model.Team;
-import es.codeurjc.backend.model.Tournament;
+import es.codeurjc.backend.model.*;
+import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.tomcat.util.modeler.BaseAttributeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -36,17 +36,30 @@ public class TeamControler {
     private PlayerService playerService;
     @Autowired
     private TournamentService tournamentService;
+    @Autowired
+    private UserRepository userRepository;
     @GetMapping("/teams")
-    public String showTeams(Model model) throws SQLException {
+    public String showTeams(Model model, HttpServletRequest request) throws SQLException {
 
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name = principal.getName();
+            User user = userRepository.findByName(name).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
+
+        }
+
+        //get list of all teams
         List<Team> teams = teamService.findAll();
-
-        //poner en el html "src= "data:image/png, base64; {{teamImage}}"
+        //convert imageFile:blob to String and set it on imagePath on base64
         for(int i=0;i<4;i++){
-           // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
             teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
-          //  System.out.println("Este es el equipo, " + teams.get(i).getName()+ "  este es el path modificado  "+ teams.get(i).getImagePath());
-
         }
 
         model.addAttribute("teams", teams.subList(0, Math.min(4, teams.size())));
@@ -70,29 +83,61 @@ public class TeamControler {
 
 
     @GetMapping("/teams/{name}")
-    public String showTeamInfo(@PathVariable String name, Model model) {
+    public String showTeamInfo(@PathVariable String name, Model model , HttpServletRequest request) {
+
+
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
+
+        }
+
+        //get team by name in path
         Team team = teamService.findTeamByName(name);
-
+        //get list od players by team.id
         List<Player> players = playerService.findPlayerTeamById(team.getId());
-
+        //add team and players to model
         model.addAttribute("team", team);
         model.addAttribute("players", players);
-
+        //add pageTitle for page_banner
         model.addAttribute("pageTitle", team.getName());
 
         return "teamInfo";
 
     }
     @GetMapping("/teams/{name}/{playerName}/{lastName}")
-    public String showPlayerInfo(@PathVariable String name, @PathVariable String playerName,@PathVariable String lastName, Model model) {
+    public String showPlayerInfo(@PathVariable String name, @PathVariable String playerName,@PathVariable String lastName, Model model,HttpServletRequest request) {
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
+        }
+        //get team by name in path
         Team team = teamService.findTeamByName(name);
+        //get list of players by their name and lastname
         Player player = playerService.findPlayerByNameAndLastName(playerName,lastName);
 
-
+        //add object team and players to model
         model.addAttribute("team", team);
         model.addAttribute("player", player);
 
+        //add pageTitle for page_banner
         String pagePath = team.getName() + " / " + player.getName() + " " + player.getLastName();
         model.addAttribute("pageTitle", pagePath);
 
@@ -101,23 +146,30 @@ public class TeamControler {
     }
     @GetMapping("/tournamentCreation/{cup}/teamCreation/{teamNumber}")
     public String createTournamentTeam(@PathVariable String cup, Model model){
-        System.out.println("cup: "+cup);
+
         model.addAttribute("cup",cup);
         return "teamCreate";
     }
-    @PostMapping("/addTeamToTournament/{cup}")
-
-    public String addTeamToTournament(@PathVariable String cup, Model model){
-        return ("redirect:/"+cup+"/teamCreation/");
-    }
     @GetMapping("/teams/stadistics")
-    public String getTeamsStadistics(Model model) {
+    public String getTeamsStadistics(Model model,HttpServletRequest request) {
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
-
+        }
+        //get all teams
         List<Team> teams = teamService.findAll();
-
+        //sort teams by wins
         teams.sort(Comparator.comparingInt(Team::getWins).reversed());
-
+        //set max number of teams in graphic
         if (teams.size() > 10) {
             teams = teams.subList(0, 10);
         }
@@ -134,6 +186,7 @@ public class TeamControler {
         model.addAttribute("pageTitle", "Teams Stadistics");
         return "teamsStadistics";
     }
+    @PostMapping("/addTeamToTournament/{cup}")
     public String addTeamToTournament(@PathVariable String cup, Model model, //Request for team creation data
                                       @RequestParam String field_1, //Team name
                                       @RequestParam String field_2, //Coach name
