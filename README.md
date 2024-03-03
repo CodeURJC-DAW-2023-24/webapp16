@@ -542,7 +542,7 @@ The diagram is a flow chart showing user permissions and navigation steps within
 - Arrows connect these initial states to various web pages, including "Tournament Create", "Events" and "Player/Team Login" among others.
 - Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
 
-![*Flow Diagram*](readmeImg/usersDiagram.jpg)
+![*Flow Diagram*](readmeImg/diagramFinal.jpg)
 
 
 ---
