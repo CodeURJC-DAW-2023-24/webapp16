@@ -1,0 +1,72 @@
+{{>header}}
+{{>pageBanner}}
+<link href="/css/FillMatchReport.css" rel="stylesheet" type="text/css"/>
+<link href="/css/boostrap.min.css" rel="stylesheet" type="text/css"/>
+<div class="content">
+    <div class="container">
+        <div class="row align-items-stretch no-gutters contact-wrap">
+            <div class="col-md-12">
+                <div class="form h-100">
+                    <h2>Modify Profile</h2>
+                    <form class="mb-5" method="post" id="refereeReportForm" name="refereeReportForm" action="/profile/save">
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="name" class="col-form-label">User name</label>
+                                <input type="text" class="form-control" name="name" id="name" value="{{#userProfile.name}}{{userProfile.name}}{{/userProfile.name}}" required>
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="firstName" class="col-form-label">First Name</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName" value="{{#userProfile.firstName}}{{userProfile.firstName}}{{/userProfile.firstName}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="dateOfBirth" class="col-form-label">Date of birth</label>
+                                <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" value="{{#userProfile.dateOfBirth}}{{userProfile.dateOfBirth}}{{/userProfile.dateOfBirth}}">
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="lastName" class="col-form-label">Last Name</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" value="{{#userProfile.lastName}}{{userProfile.lastName}}{{/userProfile.lastName}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="phoneNumber" class="col-form-label">Phone Number</label>
+                                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" value="{{#userProfile.phoneNumber}}{{userProfile.phoneNumber}}{{/userProfile.phoneNumber}}">
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="dni" class="col-form-label">DNI</label>
+                                <input type="text" class="form-control" name="dni" id="dni" value="{{#userProfile.dni}}{{userProfile.dni}}{{/userProfile.dni}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group mb-3">
+                                <label for="address" class="col-form-label">Address</label>
+                                <input type="text" class="form-control" name="address" id="address" value="{{#userProfile.address}}{{userProfile.address}}{{/userProfile.address}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group mb-3">
+                                <label for="email" class="col-form-label">E-mail</label>
+                                <input type="text" class="form-control" name="email" id="email" value="{{#userProfile.email}}{{userProfile.email}}{{/userProfile.email}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="gender" class="col-form-label">Gender</label>
+                                <input type="text" class="form-control" name="gender" id="gender" value="{{#userProfile.gender}}{{userProfile.gender}}{{/userProfile.gender}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <input type="submit" value="Save changes" class="btn btn-outline-primary">
+                                <span class="submitting"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{>footer}}

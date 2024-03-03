@@ -53,7 +53,20 @@ public class UserController {
         }
         model.addAttribute("pageTitle", "Profile");
 
-        return "profile";
+        return "showProfile";
+    }
+    @GetMapping("/profileMod")
+    public String profileModify(Model model, HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name = principal.getName();
+            User userProfile = userRepository.findByName(name).orElseThrow();
+            model.addAttribute("userProfile", userProfile);
+
+        }
+        model.addAttribute("pageTitle", "Profile Modify");
+
+        return "profileMod";
     }
     @PostMapping("/profile/save")
     public String saveUserProfile(Model model, HttpServletRequest request,
@@ -105,6 +118,6 @@ public class UserController {
             model.addAttribute("pageTitle", "Profile");
 
         }
-        return "profile";
+        return "showProfile";
     }
 }
