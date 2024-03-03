@@ -653,7 +653,6 @@ I've been in charge of all the AJAX page layout.
 | 4º  | [Add: new graphic of players](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/862a2160e819f628faa80fa4205b5ed11ef9bf85) | | 4º |            [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)             |
 | 5º  |        [Add: new option off filters in the search bar](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/6ec37310609d0d5c48e3ee2277845550c5e92661)        | | 5º | [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java) |
 
-
 #### Adrián Soriano Aragón
 
 * I have implemented the security part and https.
@@ -671,24 +670,23 @@ I've been in charge of all the AJAX page layout.
 | 4º  | [Add Security and Authentication](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/29c97b5da3c281cd068b792ce3cd9e71a7bd6d70) | | 4º | [CustomErrorControler.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/CustomErrorController.java) |
 | 5º  |       [Add PDF Technology](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/c1396b2143030c307e52e3a883b12359372d2306)        | | 5º | [TournamentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TournamentController.java)  |
 
+#### Manuel López Corchado
+
+* Added entities for database and database set up
+* Created bracket for tournaments
+* Designed html form to fulfill a tournament
+* Designed html form to fulfill a team
+* Added logic to collect text data from form
+* Added logic to collect images from user files.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| #   |                                                                              Commit                                                                               |     | #   |                                                                                              File                                                                                               |
+| :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |   [Add Tournament - Team - Player html, Java and SQL config](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/353810e6c85d7305d016445d7e7b3da8c82c24ed)    | | 1º |                    [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java)                    |
+| 2º  |         [Models added to proyect and DB configuration](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/514c5de469c2c3a0177d1f6fdc8fd75c07a7a15d)          | |2º |             [TournamentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TournamentController.java)              |
+| 3º  | [Add photo to team and tournament, fixed error in player names](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9340b414f5ff7651cb9586e01cd61dd491c9b928) | | 3º |       [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)        |
+| 4º  |    [CSS - Bracket Style done and migration success complete](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/28f1338a14476accf8ba0a076e926649547cebfc)    | | 4º |           [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)            |
+| 5º  |           [Add tournament saving and adjusting links](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/94bc64d9798d3d1ea52010c28e9718c999cab131)           | | 5º | [teamCreate.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/teamCreate.html)  |
 
 # :🎨: Class diagram and templates
+
