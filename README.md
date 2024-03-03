@@ -625,7 +625,11 @@ I've been in charge of all the AJAX page layout.
 
 #### Nicolás Hernández Tejero
 
-* Our security scientist has prepared all the security of our application, together with all the user and session management logic.
+*  Developed screens for showTeams and showInfo, including a search bar with filters.
+*  Gathered and modified information from the user profiles.
+*  Implemented tournament functionality, including the creation of matches, deciding winners, and updating data accordingly.
+*  Designed statistical graphics to visualize data trends.
+*  Generated reports and match results calculated through reporting mechanisms.
 
 | #   |                                                               Commit                                                               |     | #   |                                                                                         File                                                                                          |
 | :-: |:----------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
