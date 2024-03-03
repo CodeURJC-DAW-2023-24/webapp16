@@ -156,19 +156,39 @@ public class MatchController {
 
             reportService.saveReport(report);
 
-            if (match.getId() % 2 != 0) {
-                Matches nextMatch = new Matches();
-                nextMatch.setTournament(tournament);
-                nextMatch.setRound(match.getRound() + 1);
-
-                nextMatch.setLocalTeam(winner);
-                nextMatch.setLocalGoals(0);
-
-                matchService.saveMatch(nextMatch);
+            List<Matches> nextRoundMatches = matchService.findMatchByRoundAndCup(match.getRound() + 1, tournament);
+            List<Matches> actualRound = matchService.findMatchByRoundAndCup(match.getRound(), tournament);
+            if (nextRoundMatches.isEmpty()) {
+                for (int i = 0; i < actualRound.size(); i+=2){
+                    Matches nextMatch = new Matches();
+                    nextMatch.setTournament(tournament);
+                    nextMatch.setRound(match.getRound() + 1);
+                    System.out.println("matches saved");
+                    nextRoundMatches.add(nextMatch);
+                }
+                nextRoundMatches.get(0).setLocalTeam(winner);
+                nextRoundMatches.get(0).setLocalGoals(0);
+                for (Matches nextMatch : nextRoundMatches){
+                    matchService.saveMatch(nextMatch);
+                }
+//                Matches nextMatch = new Matches();
+//                nextMatch.setTournament(tournament);
+//                nextMatch.setRound(match.getRound() + 1);
+//
+//                nextMatch.setLocalTeam(winner);
+//                nextMatch.setLocalGoals(0);
+//
+//                matchService.saveMatch(nextMatch);
             } else {
-                List<Matches> listNextMatches = matchService.findMatchByRound(match.getRound() + 1);
+                List<Matches> listNextMatches = matchService.findMatchByRoundAndCup(match.getRound() + 1, tournament);
 
                 for (Matches nextMatch : listNextMatches) {
+                    if (nextMatch.getLocalTeam() == null) {
+                        nextMatch.setLocalTeam(winner);
+                        nextMatch.setLocalGoals(0);
+                        matchService.saveMatch(nextMatch);
+                        break;
+                    }
                     if (nextMatch.getVisitingTeam() == null) {
                         nextMatch.setVisitingTeam(winner);
                         nextMatch.setVisitingGoals(0);

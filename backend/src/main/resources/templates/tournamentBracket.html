@@ -34,6 +34,7 @@
 	<div class="round">
 		{{#roundTwo}}
 		<a href="/tournament/{{cup}}/{{id}}">
+			{{#localTeam}}{{#visitingTeam}}
 			<div class="match">
 				{{#localTeam}}
 				<div class="team">{{localTeam.name}} <span>{{localGoals}}</span></div>
@@ -49,12 +50,14 @@
 				<div class="team">No visiting team assigned</div>
 				{{/visitingTeam}}
 			</div>
+			{{/visitingTeam}}{{/localTeam}}
 		</a>
 		{{/roundTwo}}
 	</div>
 	<div class="round">
 		{{#roundThree}}
 		<a href="/tournament/{{cup}}/{{id}}">
+			{{#localTeam}}{{#visitingTeam}}
 			<div class="match">
 				{{#localTeam}}
 				<div class="team">{{localTeam.name}} <span>{{localGoals}}</span></div>
@@ -70,6 +73,7 @@
 				<div class="team">No visiting team assigned</div>
 				{{/visitingTeam}}
 			</div>
+			{{/visitingTeam}}{{/localTeam}}
 		</a>
 		{{/roundThree}}
 	</div>

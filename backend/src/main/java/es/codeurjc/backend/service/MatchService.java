@@ -3,6 +3,7 @@ package es.codeurjc.backend.service;
 
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Report;
+import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,8 @@ public class MatchService {
     }
     public Matches saveMatch(Matches match){
         return matchRepository.save(match);
+    }
+
+    public List<Matches> findMatchByRoundAndCup(int i, Tournament tournament) { return matchRepository.findMatchesByRoundAndTournament(i, tournament);
     }
 }

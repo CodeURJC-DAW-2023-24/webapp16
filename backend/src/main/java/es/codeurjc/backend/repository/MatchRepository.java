@@ -17,4 +17,6 @@ public interface MatchRepository extends JpaRepository<Matches, Long> {
     Matches findMatchById2(@Param("tournament_id") Long tournament_id, @Param("id") Long id);
 
     List<Matches> findMatchesByRound(int round);
+
+    List<Matches> findMatchesByRoundAndTournament(int round, Tournament tournament);
 }
