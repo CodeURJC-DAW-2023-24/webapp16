@@ -30,10 +30,10 @@ ___
 - [**Phase 2**](#phase-2)
   - [**:computer: New Screens**](#computer-New-Screens)
   - [**:diamonds: New Flow Diagram**](#diamonds-New-Flow-Diagram)
-  - [**:🚀: Execution Instructions**](#🚀-Execution-Instructions)
-  - [**:🗄️:Diagram with the database entities**](#🗄-Diagram-with-the-database-entities)
-  - [**:🤝: Participation**](#🤝-Participation)
-  - [**:🎨: Class diagram and templates](#🎨-Class-diagram-and-templates)
+  - [**🚀 Execution Instructions**](#🚀-Execution-Instructions)
+  - [**🗄️Diagram with the database entities**](#🗄-Diagram-with-the-database-entities)
+  - [**🤝 Participation**](#🤝-Participation)
+  - [**🎨Class diagram and templates](#🎨-Class-diagram-and-templates)
 
 ___
 
