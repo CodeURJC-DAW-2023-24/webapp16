@@ -33,7 +33,7 @@ ___
   - [**🚀 Execution Instructions**](#🚀-Execution-Instructions)
   - [**🗄️Diagram with the database entities**](#🗄-Diagram-with-the-database-entities)
   - [**🤝 Participation**](#🤝-Participation)
-  - [**🎨Class diagram and templates](#🎨-Class-diagram-and-templates)
+  - [**🎨Class diagram and templates**](#🎨-Class-diagram-and-templates)
 
 ___
 
