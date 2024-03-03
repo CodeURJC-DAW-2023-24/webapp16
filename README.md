@@ -314,17 +314,18 @@ The diagram is a flow chart showing user permissions and navigation steps within
 
 ![*Flow Diagram*](readmeImg/usersDiagram.jpg)
 
+
 ___
 # Phase 2
 ___
-#  :computer: Screens
+#  :computer: New Screens
 ___
 ## Home Page:
 The main page is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
 
-A navigation bar at the top with options for “Home,” “Teams,” “Profile,” and “Tournaments.” There is also a search bar and a sign in/register button on the right side.
-A section titled “Available Tournaments” beneath the banner, which displays four different types of trophy icons There is also a button for view the tournaments and a countdown timer for the registration deadline.
-A footer menu at the bottom, including options like “Menu,” “About us,” social media profiles, an email contact option, and some information about the website creator and the copyright.
+A navigation bar at the top with options for “Home,” “Teams,” “Players,” and “Profile.” There is also a search bar and a sign in/register button on the right side.
+All available tournaments are shown below along with two buttons for players stadistics and teams stadistics.
+A footer menu at the bottom, including options like “Menu”, "Profile", "Teams", "Players", “About us,” social media profiles, an email contact option, and some information about the website creator and the copyright.
 
 ![*HomePage*](readmeImg/newImg/Index.png)
 
@@ -333,20 +334,24 @@ ___
 ## Register/Login:
 The login/sign up page of the website allows users to access or create their account on your website. It features the following elements:
 
-A logo at the top corner, consisting of multiple colors and shapes, representing the identity of your website.
+A logo at the top, consisting of multiple colors and shapes, representing the identity of our website.
 A login box in the center, with options to enter email and password. The login box has two tabs labeled “Log In” and “Sign Up,” indicating that users can either log into their existing account or create a new one. There is a red “LOGIN” button below the email and password fields for users to proceed after entering their credentials. There is also a link labeled “Forgot your password?” for users who need to recover their password.
 
 ![*RegLog*](readmeImg/newImg/Login.png)
 
 ___
 
+## Login Error:
+The login error page is to indicate login error. 
+
+![*Login Error*](readmeImg/newImg/LoginError.png)
+
+___
+
 ## Tournament Bracket:
 The tournament bracket page website displays the matches and results of a football tournament. It features the following elements:
 
-A blank tournament bracket in the middle, labeled ROUND 1 through FINAL; each section has blank spaces for team names and scores. The bracket is designed for a single-elimination tournament with 16 teams.
-A stadistics button below the bracket, which allows users see the stadistics off the tournament.
-
-![*Bracket*](readmeImg/newImg/Tournament Bracket.png)
+![*Bracket*](readmeImg/newImg/TournamentBracket.png)
 
 ___
 
@@ -355,33 +360,44 @@ The Match Screen of the web page displays detailed information about a specific 
 The Match Screen consists of the following elements:
 
 Team logos displayed prominently.
-A white box containing lists of players from both teams, divided into two columns labeled with each team’s name. Each column lists players’ names under their respective teams.
-A button labeled “Match Report” located below the white box, which leads to a page with more details and statistics about the match.
+A white box containing lists of players from both teams, divided into two columns labeled with each team’s name. Each column lists players’ names under their respective teams with an info button to access to the information about the players.
+A button labeled “Fill Match Report” located at the bottom, which leads to a page to write information about the match results.
+A button labeled “Report” located at the bottom, which leads to a page with more details and statistics about the match.
 
-![*Match*](readmeImg/newImg/Match Screen.png)
+![*Match*](readmeImg/newImg/MatchScreen.png)
 
 ___
 
 ## Player Stadistics:
 The Player Statistics Page shows the players with the most goals.
 
-![*Stadistics*](readmeImg/newImg/PlayerStadistics.png)
+![*Player Stadistics*](readmeImg/newImg/PlayerStadistics.png)
 
 ___
 
 ## Team Stadistics:
 The Team Statistics Page shows the teams with the most wins.
 
-![*Stadistics*](readmeImg/newImg/TeamStadistics.png)
+![*Team Stadistics*](readmeImg/newImg/TeamStadistics.png)
+
+
+___
+
+## Players:
+The Players Page is a section where users can view information about different football players.
+
+- All the players in the different teams.
+- The names and lastnames of the players.
+- Button for more info.
+- Button for see more players.
+
+
+![*Players*](readmeImg/newImg/Players.png)
 
 ___
 
 ## View Player:
-The Player Info is a section where users can input information about a football player of their choice.
-
-- The club logo is visible on the top right corner.
-- A large image of a stadium filled with spectators serves as the background at the upper part of the webpage. The UEFA Champions League trophy is prominently displayed on this background.
-- In front of this background, there's an empty form titled “PLAYER INFO” with various fields like “Name,” “Nationality,” “Age,” etc., for inputting information about a player.
+The Player Info is a section where users can visualize information about a football player of their choice.
 
 ![*View Player*](readmeImg/newImg/PlayerInfo.png)
 
@@ -395,7 +411,7 @@ The create new player section is a section where the user can enter information 
 - Below the form is a red button labeled "ADD" to submit the completed form.
 
 
-![*Create Player*](readmeImg/newImg/Player Create.png)
+![*Create New Player*](readmeImg/newImg/PlayerCreate.png)
 
 ___
 
@@ -407,9 +423,8 @@ The create new team section is a section where the user can enter information ab
   - Team Name
   - Players
   - Basic stadistics
-- There is an orange "Save Changes" button at the bottom of the form to submit the completed information.
 
-![*Create Team*](readmeImg/newImg/Player Create.png)
+![*Create Team*](readmeImg/newImg/PlayerCreate.png)
 
 ___
 
@@ -419,10 +434,22 @@ The profile section is a section where the user can enter and update personal in
 
 - The section shows a profile page on a website.
 - Below the header is the main content area for user profile information with fields for "First Name*", "Last Name*", "Date of Birth*", "Phone Number*", "Email Address*" and "Address".
-- Each field has an empty text box next to it for entering information.
-- There is a red button labeled "Save changes" below the input fields.
+- There is a red button labeled "Modify Profile" below the input fields.
 
 ![*Profile*](readmeImg/newImg/Profile.png)
+
+
+___
+
+## Modify Profile:
+
+The modify profile section is a section where the user can enter and update personal information.
+
+- The section shows a profile page on a website.
+- Below the header is the main content area for user profile information with fields for "First Name*", "Last Name*", "Date of Birth*", "Phone Number*", "Email Address*" and "Address".
+- There is a red button labeled "Save changes" below the input fields.
+
+![*Modify Profile*](readmeImg/newImg/ModifyProfile.png)
 
 ___
 
@@ -441,6 +468,7 @@ The Team is a section where users can view information about different football 
 
 - All the teams registered in the web.
 - The names of the teams and the city that came form are written below their respective logos.
+- Red button to visualize more teams.
 
 ![*Team*](readmeImg/newImg/Teams.png)
 
@@ -489,9 +517,21 @@ The create new tournament section is a section where the user can enter informat
   - Fields to enter different teams labeled "Team 1", "Team 2", "Team 3"...
 - At the bottom of the form there are two buttons: a green one labeled "SAVE" and a red one labeled "CANCEL".
 
-![*Tournament Create*](readmeImg/newImg/Create Tournament.png)
+![*Tournament Create*](readmeImg/newImg/CreateTournament.png)
 
 ___
+
+## Show Report:
+
+The Show Report page is to show football match reports. 
+
+The page layout includes fields to input details about the match, 
+including date, time, teams involved, and match officials. There are also options to display the bracket or download the report as a PDF.
+
+![*Show Report*](readmeImg/newImg/ShowReport.png)
+
+___
+
 # :diamonds: Flow Diagram:
 
 The diagram is a flow chart showing user permissions and navigation steps within a web interface. The diagram uses colored arrows to indicate the progression from one web page or state to another, based on user actions or permissions.
