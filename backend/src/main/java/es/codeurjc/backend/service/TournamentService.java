@@ -25,13 +25,21 @@ public class TournamentService {
     public Tournament findTournamentByCup(String cup){
         return tournamentRepository.findTournamentByCup(cup);
     }
+
     public Tournament findTournamentById(Long id){
         return tournamentRepository.findTournamentById(id);
     }
     public Tournament findTournamentByName(String name){
         return tournamentRepository.findTournamentByName(name);
     }
-    public <List> java.util.List<Matches> findRound(int round, Long id){
+
+
+    public List<Tournament> findTournamentByCupSearch(String cup){
+        return tournamentRepository.findTournamentByCupContainingIgnoreCase(cup);
+
+    }
+
+    public List<Matches> findRound(int round, Long id){
         return tournamentRepository.findRound(round,id);
     }
     public void delete(Tournament tournament){tournamentRepository.delete(tournament);}
