@@ -543,3 +543,89 @@ The diagram is a flow chart showing user permissions and navigation steps within
 - Each colored arrow represents a user, and therefore the path through which he/she can navigate the site.
 
 ![*Flow Diagram*](readmeImg/usersDiagram.jpg)
+
+
+---
+
+# Execution Instructions
+
+##  Steps
+1. **Download the Repository**
+
+
+2. **Check Requirements:**
+  - Java JDK 19
+  - MySQL v.8.0.36.0
+  - Maven 4.0.0
+  - Spring Boot 3.2.2
+  - Integrated Development Environment (IDE) - IntelliJ IDEA recommended
+
+3. **Configure Database:**
+  - Download MySQL v.8.0.36.0
+  - Select default port (port 3306)
+  - Create a user with name root "admin" and password "adminpass" with DB admin as user role
+  - Configure MySQL Server as Windows Service
+  - Grant full access to the user
+  - Create a new Schema named EventCrafters in the server using MySQL Workbench
+
+4. **Docker Configuration:**
+- Download Docker desktop. 
+- Execute in terminal:
+  - docker run -d --name futProLeagueBD -p 3306:3306 -e MYSQL_ROOT_PASSWORD=webapp16 -e MYSQL_DATABASE=futProLeague mysql:latest
+  - docker exec -it futProLeagueBD bash
+
+5. **Configure IDE:**
+  - Install IntelliJ IDEA (or your preferred IDE).
+  - Install Maven and Spring plugins for your IDE.
+
+6. **Run Application in the IDE:**
+  - Open the project in your IDE.
+  - Build the project using Maven.
+  - Run the application.
+
+7. **Access the Application:**
+  - Visit https://localhost:8443 in your web browser.
+
+--- 
+
+# Participation
+
+---
+Ahmad
+
+- Tasks:
+
+I have created different screens with mustache.
+I have helped to make the different pages more dynamic.
+Where I have worked the most is in the screens of players, teams, search and everything related to them.
+I've been in charge of all the AJAX page layout.
+I have also helped in the resolution of errors in different parts of the practice. 
+
+- Top 5 commits:
+
+  - Show player whit AJAX: https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/e2feaba0f41753ab1351a5596fb11bded63a745b
+
+  - Show teams whit AJAX: https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/a31df930fc246c4a22125624924b0417c8b05ed6
+
+  - Pagination: https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f5ccfcf9f9d2d5225658111e143ae8ec8f6529f
+
+  - Templates with Mustaches: https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/d6a39cc16a2119168f7401610f65090913a826ad
+
+  - Fixing templates: https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f5ccfcf9f9d2d5225658111e143ae8ec8f6529f
+
+
+- Top 5 files:
+
+  - TeamController: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java
+
+  - PlayerController: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/PlayerController.java
+
+  - SearchController: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java
+
+  - playersScripts: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/playersScript.js
+
+  - scripts: https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/script.js
+
+
+
+
