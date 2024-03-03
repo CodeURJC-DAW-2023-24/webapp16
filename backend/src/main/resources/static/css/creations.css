@@ -73,8 +73,8 @@ a:hover {
     margin-top: 10px;
   }
 
-  button[type="cancel"] {
-    background-color: #de0e0e;
+  button[type="button"] {
+    background-color: #ad4c4c;
     color: white;
     transition: 0.5s;
     padding: 10px 20px;
@@ -88,9 +88,24 @@ a:hover {
     background-color: #00ff08;
     transition: 0.5s;
   }
-  button[type="cancel"]:hover {
+  button[type="button"]:hover {
     background-color: #ff0000;
     transition: 0.5s;
   }
+a.addTeam {
+  background-color: #555555;
+  color: white;
+  transition: 0.5s;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none; /* Para quitar el subrayado del enlace */
+  margin-top: 5px;
+}
+
+a.addTeam:hover {
+  background-color: #000000;
+}
 
   

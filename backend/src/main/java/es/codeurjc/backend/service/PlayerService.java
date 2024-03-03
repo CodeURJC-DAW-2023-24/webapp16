@@ -18,6 +18,9 @@ public class PlayerService {
     public List<Player> findPlayerTeamById(Long teamId){
         return playerRepository.findPlayerByTeamId(teamId);
     }
+    public void save(Player player){
+        playerRepository.save(player);
+    }
     public List<Player> findAll() {
         return playerRepository.findAll();
     }
@@ -31,4 +34,5 @@ public class PlayerService {
     public List<Player> findPlayerByLastNameSearch(String lastName){return playerRepository.findPlayerByLastNameContainingIgnoreCase(lastName);}
     public List<Player> findPlayerByNationalitySearch(String nationality){return playerRepository.findPlayerByNationalityContainingIgnoreCase(nationality);}
     public List<Player> findPlayerByPositionSearch(String position){return playerRepository.findPlayerByPositionContainingIgnoreCase(position);}
+    public void deletePlayerByTeamId(Long teamId){playerRepository.deletePlayerByTeamId(teamId);}
 }

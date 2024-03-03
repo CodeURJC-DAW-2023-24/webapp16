@@ -19,15 +19,15 @@ import javax.sql.rowset.serial.SerialBlob;
 
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
 public class Tournament {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true)
     private String name;
     private String category;
     private String cup;
-
     @Lob
     @JsonIgnore
     private Blob tournamentImageFile ;

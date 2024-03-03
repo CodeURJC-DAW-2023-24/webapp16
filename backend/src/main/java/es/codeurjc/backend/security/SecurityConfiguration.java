@@ -46,7 +46,9 @@ public class SecurityConfiguration{
         http
                 .authorizeHttpRequests(authorize -> authorize
                         // PUBLIC PAGES
+                        .requestMatchers("https://localhost:8443").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("./").permitAll()
                         .requestMatchers("/css/**","/js/**","/fonts/**","/images/**").permitAll()
                         .requestMatchers("/tournament/{cup}").permitAll()
                         .requestMatchers("/teams").permitAll()
@@ -61,6 +63,8 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/teams").permitAll()
                         .requestMatchers("/players").permitAll()
                         .requestMatchers("/teams/{name}/{playerName}/{lastName}").permitAll()
+                        .requestMatchers("/images/logo_top.png").permitAll()
+
 
 
 
@@ -79,13 +83,15 @@ public class SecurityConfiguration{
                         .requestMatchers(HttpMethod.POST,"/profile/save").hasAnyRole("USER")
                         .requestMatchers("/search").hasAnyRole("USER")
                         .requestMatchers("/tournament/{cup}/{id}/report").hasAnyRole("USER")
-
-
                         .requestMatchers(HttpMethod.GET, "/tournament/{cup}/{id}/fillMatchReport").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/tournament/{cup}/{id}/fillMatchReport/saved").hasAnyRole("ADMIN")
                         .requestMatchers("/tournamentCreation").hasAnyRole("ADMIN")
-
-
+                        .requestMatchers("/tournamentCreation/{tournamentNumber}/teamCreation/{teamNumber}").hasAnyRole("ADMIN")
+                        .requestMatchers("/tournamentCreation/{tournamentNumber}/{teamNumber}").hasAnyRole("ADMIN")
+                        .requestMatchers("/teamCreate").hasAnyRole("ADMIN")
+                        .requestMatchers("/tournamentCreation/{created}").hasAnyRole("ADMIN")
+                        .requestMatchers("addTeamToTournament/{cup}").hasAnyRole("ADMIN")
+                        .requestMatchers("/cancelTournamentCreation").hasAnyRole("ADMIN")
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

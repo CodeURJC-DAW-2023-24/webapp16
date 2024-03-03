@@ -68,7 +68,7 @@
                                     <li><a href="/players">Players</a></li>
                                     <li><a href="/profile">Profile</a></li>
                                     {{#admin}}
-                                    <li><a href="/tournamentCreation">Create Tournament</a></li>
+                                    <li><a onclick="cleanLSandRedirect()">Create Tournament</a></li>
                                     {{/admin}}
                                     {{#admin}}
                                     <li><a href="/logout">Log Out</a></li>
@@ -80,7 +80,13 @@
 
                                  </ul>
                               </div>
-                              <!-- /.nav-collapse -->
+                              <script>
+                                 function cleanLSandRedirect() {
+                                    localStorage.clear();
+                                    window.location.href = "https://localhost:8443/tournamentCreation/0";
+                                 }
+                              </script>
+                              <!-- /.nav-collapse -->s
                            </nav>
                            <form action="/search" method="GET">
                            <div class="search-bar">

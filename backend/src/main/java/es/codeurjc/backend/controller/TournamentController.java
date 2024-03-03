@@ -1,18 +1,19 @@
 package es.codeurjc.backend.controller;
 
 
-import es.codeurjc.backend.model.Matches;
-import es.codeurjc.backend.model.User;
+import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.MatchService;
+import es.codeurjc.backend.service.PlayerService;
+import es.codeurjc.backend.service.TeamService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
-import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.security.Principal;
@@ -29,6 +30,10 @@ public class TournamentController {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    TeamService teamService;
+    @Autowired
+    PlayerService playerService;
 
 
     @GetMapping("/")
@@ -47,11 +52,14 @@ public class TournamentController {
         }
         List<Tournament> tournaments = tournamentService.findAllTournaments();
 
-         for(int i=0;i<tournaments.size();i++){
-        // System.out.println("Este es el equipo, " + teams.get(i).getName()+ "   "+ teams.get(i).getImagePath());
-           tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
+         for(int i=0;i<tournaments.size();i++) {
+             if (tournaments.get(i).getTournamentImageFile() != null) {
+                 System.out.println("Este es el equipo, " + tournaments.get(i).getName()+ "   "+ tournaments.get(i).getTournamentImageFile());
+                 tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
+             }
+             else
+                 tournaments.remove(tournaments.get(i));
          }
-
 
         model.addAttribute("tournaments", tournaments);
 
@@ -79,7 +87,35 @@ public class TournamentController {
 
         return "tournamentBracket";
     }
+    @GetMapping("/tournamentCreation/{tournamentNumber}/{teamNumber}")
+    public String newTeam(Model model, @PathVariable String tournamentNumber, @PathVariable String teamNumber, @RequestParam String field_1, @RequestParam String field_2, @RequestParam String field_3){
+        tournamentService.newTournament(field_1,field_2,field_3);
+        return ("redirect:/tournamentCreation/"+tournamentNumber+"/teamCreation/"+teamNumber);
+    }
+    @GetMapping("/tournamentCreation/{created}")
+    public String newTour(Model model, @PathVariable int created) {
+        //Hay que hacer un JS que redirija para no guardar todo el rato los datos en BDD
+        if(created==0) {
+            model.addAttribute("newTourID", tournamentService.countTournaments() + 1);
+            model.addAttribute("redirect", "/");
+        }
+        else{
+            model.addAttribute("newTourID", tournamentService.countTournaments());
+            model.addAttribute("redirect", "/cancelTournamentCreation");
+        }
+        return "tournamentCreate";
 
+    }
+    @GetMapping("/cancelTournamentCreation")
+    public String cancelTournament(Model model){
+        Long tourId = tournamentService.countTournaments();
+        for (Team team : teamService.findTournamentsByTourName(tourId)){
+            playerService.deletePlayerByTeamId(team.getId());
+            teamService.deleteTeam(team);
+        }
+        tournamentService.delete(tournamentService.findTournamentById(tournamentService.countTournaments()));
+        return "redirect:/";
+    }
 
 
 

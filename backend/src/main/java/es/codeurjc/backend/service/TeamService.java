@@ -24,11 +24,13 @@ public class TeamService {
         return teamRepository.findAllTeams();
     }
     public Team findTeamByName(String name){return teamRepository.findTeamByName(name);}
+    public List<Team> findTournamentsByTourName(Long tourId){return teamRepository.findTournamentsByTourName(tourId);}
 
     public List<Team> findTeamByNameSearch(String name){return teamRepository.findTeamByNameContainingIgnoreCase(name);}
 
     public Page<Team> findAllTeams(Pageable pageable) {
         return teamRepository.findAll(pageable);
     }
+    public void deleteTeam(Team team){teamRepository.delete(team);}
 }
 
