@@ -46,6 +46,7 @@ public class TournamentController {
             model.addAttribute("username", user.getName());
             if (request.isUserInRole("ADMIN")){
                 model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
             }else
                 model.addAttribute("user", request.isUserInRole("USER"));
 

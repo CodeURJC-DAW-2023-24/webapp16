@@ -68,17 +68,6 @@ public class SecurityConfiguration{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
                         // PRIVATE PAGES
                         .requestMatchers("/profile").hasAnyRole("USER")
                         .requestMatchers("/profileMod").hasAnyRole("USER")
@@ -94,6 +83,8 @@ public class SecurityConfiguration{
                         .requestMatchers("/tournamentCreation/{created}").hasAnyRole("ADMIN")
                         .requestMatchers("addTeamToTournament/{cup}").hasAnyRole("ADMIN")
                         .requestMatchers("/cancelTournamentCreation").hasAnyRole("ADMIN")
+
+                        //
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
@@ -105,7 +96,11 @@ public class SecurityConfiguration{
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .permitAll()
-                );
+                )
+
+                
+
+        ;
 
         // Disable CSRF at the moment
         http.csrf(AbstractHttpConfigurer::disable);
