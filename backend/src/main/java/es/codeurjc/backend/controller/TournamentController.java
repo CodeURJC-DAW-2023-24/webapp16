@@ -70,15 +70,32 @@ public class TournamentController {
 
     }
     @GetMapping("/tournament/{cup}")
-    public String showBracket(Model model, @PathVariable String cup){
+    public String showBracket(Model model, @PathVariable String cup,HttpServletRequest request){
+
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name = principal.getName();
+            User user = userRepository.findByName(name).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
+
+        }
+
+
+        //get Tournament by cup name on URL
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
-        //  List<Matches> tournamentBracket = tournamentService.findBracketById(tournament.getId()); // partidos con el id de un tournament
+        //get List of matches by rounds.
         List<Matches> roundOne = tournamentService.findRound(1, tournament.getId());
         List<Matches> roundTwo = tournamentService.findRound(2, tournament.getId());
         List<Matches> roundThree = tournamentService.findRound(3, tournament.getId());
         List<Matches> roundFour = tournamentService.findRound(4, tournament.getId());
 
-
+        //attributes to mustache
         model.addAttribute("cup",cup);
         model.addAttribute("roundOne", roundOne);
         model.addAttribute("roundTwo", roundTwo);
@@ -90,6 +107,8 @@ public class TournamentController {
     }
     @GetMapping("/tournamentCreation/{tournamentNumber}/{teamNumber}")
     public String newTeam(Model model, @PathVariable String tournamentNumber, @PathVariable String teamNumber, @RequestParam String field_1, @RequestParam String field_2, @RequestParam String field_3){
+
+
         tournamentService.newTournament(field_1,field_2,field_3);
         return ("redirect:/tournamentCreation/"+tournamentNumber+"/teamCreation/"+teamNumber);
     }

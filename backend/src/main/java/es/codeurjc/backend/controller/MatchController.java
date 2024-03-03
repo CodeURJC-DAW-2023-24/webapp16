@@ -2,8 +2,10 @@ package es.codeurjc.backend.controller;
 
 import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.ReportRepository;
+import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.ReportService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.TournamentService;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -28,30 +31,48 @@ public class MatchController {
 
     @Autowired
     private ReportService reportService;
-
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/tournament/{cup}/{id}")
-    public String showMatch(Model model,@PathVariable String cup, @PathVariable  Long id) throws SQLException {
-        Tournament tournament =  tournamentService.findTournamentByCup(cup);
-        Matches match = matchService.findMatchById(id);
+    public String showMatch(Model model, @PathVariable String cup, @PathVariable  Long id, HttpServletRequest request) throws SQLException {
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
+        }
+
+
+
+        //get tournament by cup in path
+        Tournament tournament =  tournamentService.findTournamentByCup(cup);
+        //get Match by id in path
+        Matches match = matchService.findMatchById(id);
+        //get local and visitin teams of that match
         Team localTeam = match.getLocalTeam();
         Team visitingTeam = match.getVisitingTeam();
-
+        //get list of players of both teams by team_id
         List <Player> playerListLocal = playerService.findPlayerTeamById(localTeam.getId());
         List <Player> playerListVisiting = playerService.findPlayerTeamById(visitingTeam.getId());
-
+        //set images in base64
         localTeam.setImagePath(localTeam.blobToString(localTeam.getImageFile(), localTeam));
         visitingTeam.setImagePath(visitingTeam.blobToString(visitingTeam.getImageFile(), visitingTeam));
 
 
-
+        //add attributes to Model
         model.addAttribute("localTeam",localTeam);
         model.addAttribute("visitingTeam", visitingTeam);
-
         model.addAttribute("playerListLocal", playerListLocal);
         model.addAttribute("playerListVisiting", playerListVisiting);
-
+        //add pageTitle to page_banner
         String pagePath = localTeam.getName() + " vs " + visitingTeam.getName();
         model.addAttribute("pageTitle", pagePath);
 
@@ -160,19 +181,37 @@ public class MatchController {
         }
     }
     @GetMapping("/tournament/{cup}/{id}/report")
-    public String showMatchReport(Model model, @PathVariable Long id, @PathVariable String cup) {
-        Tournament tournament =  tournamentService.findTournamentByCup(cup);
-        Matches match = matchService.findMatchById(id);
+    public String showMatchReport(Model model, @PathVariable Long id, @PathVariable String cup,HttpServletRequest request) {
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
+        }
+
+        //get tournament by cup in path
+        Tournament tournament =  tournamentService.findTournamentByCup(cup);
+        //get match by id in path
+        Matches match = matchService.findMatchById(id);
+        //get report by match_id
         Report report = reportService.findReportByMatchId(id);
 
+
+        //report exists or not
         if (report != null) {
             model.addAttribute("report", report);
             model.addAttribute("match", match);
         } else{
             model.addAttribute("error", "The report for this match is not available. Please wait for it to be filled in.");
         }
-
+        //add pageTitle to page_banner
         model.addAttribute("pageTitle", "Report");
         return "showReport";
     }

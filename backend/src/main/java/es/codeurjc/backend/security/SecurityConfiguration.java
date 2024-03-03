@@ -97,7 +97,7 @@ public class SecurityConfiguration{
                         .logoutSuccessUrl("/")
                         .permitAll()
                 )
-
+                .exceptionHandling().accessDeniedPage("deniedPage")
                 
 
         ;

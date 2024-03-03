@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,11 +31,23 @@ public class PlayerController {
     @Autowired
     private UserRepository userRepository;
     @GetMapping("/players")
-    public String showPlayers(Model model){
+    public String showPlayers(Model model,HttpServletRequest request){
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
-
+        }
+        //get list of all players
         List<Player> players = playerService.findAll();
-
+        //add attributes to model and page_banner
         model.addAttribute("players", players.subList(0, Math.min(4, players.size())));
         model.addAttribute("pageTitle", "Players");
         return "players";
@@ -52,11 +65,23 @@ public class PlayerController {
     }
 
     @GetMapping("/players/stadistics")
-    public String getPlayersStadistics(Model model){
+    public String getPlayersStadistics(Model model,HttpServletRequest request){
+        //get session id
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            }else
+                model.addAttribute("user", request.isUserInRole("USER"));
 
-
+        }
+        //get list of all players
         List<Player> players = playerService.findAll();
-
+        //sort players by goals scored
         players.sort(Comparator.comparingInt(Player::getGoals).reversed());
 
         if (players.size() > 10) {
