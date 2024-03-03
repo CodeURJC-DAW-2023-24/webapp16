@@ -1,0 +1,47 @@
+{{>header}}
+{{>pageBanner}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="/css/stadistics.css" rel="stylesheet" type="text/css"/>
+<link href="/css/stadistics.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+<div id="pageBackground">
+    <div id="cardsContainer" class="row row-cols-1 row-cols-md-2 g-4" style="margin: auto; padding-bottom: 20px; padding-right: 100px">
+        <canvas id="myChart"></canvas>
+        <script>
+            var teams = JSON.parse('{{{ teamsJson }}}');
+
+            var teamNames = teams.map(function(team) {
+                return team.name;
+            });
+
+            var wins = teams.map(function(team) {
+                return team.wins;
+            });
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: teamNames,
+                    datasets: [{
+                        label: 'Teams wins',
+                        data: wins,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
+{{>footer}}

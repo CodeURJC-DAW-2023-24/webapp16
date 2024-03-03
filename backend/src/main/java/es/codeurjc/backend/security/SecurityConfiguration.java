@@ -52,6 +52,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/teams").permitAll()
                         .requestMatchers("/tournament/{cup}/{id}").permitAll()
                         .requestMatchers("/players/stadistics").permitAll()
+                        .requestMatchers("/teams/stadistics").permitAll()
                         .requestMatchers("/teams/{name}").permitAll()
                         .requestMatchers("/teams/{name}/{playerName}").permitAll()
                         .requestMatchers("/about").permitAll()

@@ -7,7 +7,6 @@
 <div id="pageBackground">
     <div id="cardsContainer" class="row row-cols-1 row-cols-md-2 g-4" style = " margin: auto; padding-bottom:20px; padding-right:100px">
         <canvas id="myChart" ></canvas>
-
     <script>
         var players = JSON.parse('{{{ playersJson }}}');
 
@@ -25,7 +24,7 @@
             data: {
                 labels: playerNames,
                 datasets: [{
-                    label: 'Goles de los jugadores',
+                    label: 'PLayers Goals',
                     data: goals,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',

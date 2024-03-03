@@ -1,5 +1,7 @@
 package es.codeurjc.backend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.service.PlayerService;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Base64;
 
@@ -101,5 +104,28 @@ public class TeamControler {
     public String addTeamToTournament(@PathVariable String cup, Model model){
         return ("redirect:/"+cup+"/teamCreation/");
     }
+    @GetMapping("/teams/stadistics")
+    public String getTeamsStadistics(Model model){
 
+
+        List<Team> teams = teamService.findAll();
+
+        teams.sort(Comparator.comparingInt(Team::getWins).reversed());
+
+        if (teams.size() > 10) {
+            teams = teams.subList(0, 10);
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String teamsJson = "";
+        try {
+            teamsJson = objectMapper.writeValueAsString(teams);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        model.addAttribute("teamsJson", teamsJson);
+        model.addAttribute("pageTitle", "Teams Stadistics");
+        return "teamsStadistics";
+    }
 }
