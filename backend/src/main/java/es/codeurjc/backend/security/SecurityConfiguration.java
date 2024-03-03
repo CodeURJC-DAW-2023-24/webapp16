@@ -65,6 +65,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/teams/{name}/{playerName}/{lastName}").permitAll()
                         .requestMatchers("/loginSuccesfull").permitAll()
                         .requestMatchers("/signUpRequest").permitAll()
+                        .requestMatchers("/error/**").permitAll()
 
 
 
@@ -97,7 +98,7 @@ public class SecurityConfiguration{
                         .logoutSuccessUrl("/")
                         .permitAll()
                 )
-                .exceptionHandling().accessDeniedPage("deniedPage")
+
                 
 
         ;

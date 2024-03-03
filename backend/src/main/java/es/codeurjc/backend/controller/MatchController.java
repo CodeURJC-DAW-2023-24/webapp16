@@ -17,6 +17,8 @@ import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
+import static java.lang.Boolean.TRUE;
+
 @Controller
 public class MatchController {
     @Autowired
@@ -66,7 +68,11 @@ public class MatchController {
         localTeam.setImagePath(localTeam.blobToString(localTeam.getImageFile(), localTeam));
         visitingTeam.setImagePath(visitingTeam.blobToString(visitingTeam.getImageFile(), visitingTeam));
 
-
+        //check if report exists
+        Report report =  reportService.findReportByMatchId(id);
+        if (report != null) {
+            model.addAttribute("report", TRUE);
+        }
         //add attributes to Model
         model.addAttribute("localTeam",localTeam);
         model.addAttribute("visitingTeam", visitingTeam);
