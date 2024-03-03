@@ -57,4 +57,7 @@ public class TournamentService {
             tournamentRepository.save(new Tournament(name, category, cup, null));
         }
     }
+    public void save(Tournament tournament){
+        tournamentRepository.save(tournament);
+    }
 }

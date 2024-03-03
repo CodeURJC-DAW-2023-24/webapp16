@@ -18,8 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.IOException;
 import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -247,11 +249,20 @@ public class TeamControler {
                                       @RequestParam String field_50, //Nacionality
                                       @RequestParam String field_51, //Weight
                                       @RequestParam String field_52, //Height
-                                      @RequestParam String field_53 //Position
+                                      @RequestParam String field_53, //Position
+                                      @RequestParam MultipartFile photo
     ){
         //Team(String name, String coach, String stadium, Tournament tournament, int gamesPlayed, int wins, int loses, String imagePath)
         Tournament tournament = tournamentService.findTournamentById(Long.parseLong(cup));
         Team newTeam = new Team(field_1,field_2,field_3,tournament,0,0,0,null);
+        if (!photo.isEmpty()) {
+            try {
+                Blob blob = this.fileToBlob(photo.getBytes());
+                newTeam.setImageFile(blob);
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
         String[] nameArray;
         String name;
@@ -260,7 +271,7 @@ public class TeamControler {
         nameArray = field_5.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            surname.append(nameArray[i]+" ");
         }
         field_7=field_7.trim().replaceAll("[^0-9]", "");
         field_14=field_7.trim().replaceAll("[^0-9]", "");
@@ -271,36 +282,42 @@ public class TeamControler {
         field_49=field_7.trim().replaceAll("[^0-9]", "");
         System.out.println(field_7);
         Player player1 = new Player(name,surname.toString(),field_6,Integer.parseInt(field_7), field_8, 0, field_11, field_9, field_10, newTeam);
+
         nameArray = field_12.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
             surname.append(nameArray[i]);
         }
         Player player2 = new Player(name,surname.toString(),field_13,Integer.parseInt(field_14), field_15, 0, field_18, field_16, field_17, newTeam);
+        surname.setLength(0);
         nameArray = field_19.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
             surname.append(nameArray[i]);
         }
         Player player3 = new Player(name,surname.toString(),field_20,Integer.parseInt(field_21), field_22, 0, field_25, field_23, field_24, newTeam);
+        surname.setLength(0);
         nameArray = field_26.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
             surname.append(nameArray[i]);
         }
         Player player4 = new Player(name,surname.toString(),field_27,Integer.parseInt(field_28), field_29, 0, field_32, field_30, field_31, newTeam);
+        surname.setLength(0);
         nameArray = field_33.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
             surname.append(nameArray[i]);
         }
         Player player5 = new Player(name,surname.toString(),field_34,Integer.parseInt(field_35), field_36, 0, field_39, field_37, field_38, newTeam);
+        surname.setLength(0);
         nameArray = field_40.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
             surname.append(nameArray[i]);
         }
         Player player6 = new Player(name,surname.toString(),field_41,Integer.parseInt(field_42), field_43, 0, field_46, field_44, field_45, newTeam);
+        surname.setLength(0);
         nameArray = field_47.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
@@ -321,5 +338,12 @@ public class TeamControler {
     public String addTeam(@RequestBody List<ImputData> dataList, @PathVariable String tourNumber){
 
     return "redirect:/tournamentCreation";
+    }
+    private Blob fileToBlob(byte[] fileBytes) throws SQLException {
+        try {
+            return new javax.sql.rowset.serial.SerialBlob(fileBytes);
+        } catch (SQLException e) {
+            throw new SQLException("Error al convertir bytes a Blob", e);
+        }
     }
 }

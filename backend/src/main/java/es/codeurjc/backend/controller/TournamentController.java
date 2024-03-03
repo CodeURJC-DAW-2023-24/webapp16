@@ -13,10 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.IOException;
 import java.security.Principal;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -275,23 +279,32 @@ public class TournamentController {
         tournamentService.delete(tournamentService.findTournamentById(tournamentService.countTournaments()));
         return "redirect:/";
     }
-    @GetMapping("/saveTournament")
-    public String saveTournament(Model model){
+    @PostMapping("/saveTournament")
+    public String saveTournament(Model model, @RequestParam MultipartFile photo){
         Long tourId = tournamentService.countTournaments();
         List<Team> teamList = teamService.findTournamentsByTourName(tourId);
         for (int teamN=0; teamN< teamList.size(); teamN+=2){
             Matches matches = new Matches(teamList.get(teamN),teamList.get(teamN+1), tournamentService.findTournamentById(tourId),0,0,1);
             matchService.saveMatch(matches);
         }
+        if (!photo.isEmpty()) {
+            try {
+                Blob blob = this.fileToBlob(photo.getBytes());
+                Tournament tournament = tournamentService.findTournamentById(tourId);
+                tournament.setTournamentImageFile(blob);
+                tournamentService.save(tournament);
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return "redirect:/";
     }
-
-
-
-
-
-
-
-
+    private Blob fileToBlob(byte[] fileBytes) throws SQLException {
+        try {
+            return new javax.sql.rowset.serial.SerialBlob(fileBytes);
+        } catch (SQLException e) {
+            throw new SQLException("Error al convertir bytes a Blob", e);
+        }
+    }
 
 }
