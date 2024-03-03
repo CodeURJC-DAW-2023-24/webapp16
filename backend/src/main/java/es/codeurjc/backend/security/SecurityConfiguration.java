@@ -63,7 +63,9 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/teams").permitAll()
                         .requestMatchers("/players").permitAll()
                         .requestMatchers("/teams/{name}/{playerName}/{lastName}").permitAll()
-                        .requestMatchers("/images/logo_top.png").permitAll()
+                        .requestMatchers("/loginSuccesfull").permitAll()
+                        .requestMatchers("/signUpRequest").permitAll()
+
 
 
 

@@ -5,6 +5,7 @@ import es.codeurjc.backend.model.UserPasswords;
 import es.codeurjc.backend.repository.UserPasswordsRepository;
 import es.codeurjc.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -16,6 +17,10 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private UserPasswordsRepository userPasswordsRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private void save(User user){
         this.userRepository.save(user);
     }
@@ -47,4 +52,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void newUser(String name, String email, String password, String date) {
+        User userNew = new User(name, passwordEncoder.encode(password), "USER");
+        userNew.setEmail(email);
+        userNew.setDateOfBirth(date);
+        userRepository.save(userNew);
+
+    }
 }
