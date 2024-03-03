@@ -28,28 +28,76 @@
                 <input type="field" name="field_3" id="field_3" placeholder="Enter cup" class="texted" required>
             </div>
             <div class="marginDefined">
-                <div>Team 1 : </div><a  class="addTeam" onclick="saveTournamentFormData(1,{{newTourID}})">Add team 1</a></div>
+                <div>Team 1 : </div>
+                {{#showName1}}
+                    {{name1}}
+                {{/showName1}}
+                {{^showName1}}
+                <a  class="addTeam" onclick="saveTournamentFormData(1,{{newTourID}})">Add team 1</a>
+                {{/showName1}}
             </div>
             <div class="marginDefined">
-                <div>Team 2 : </div><a  class="addTeam" onclick="saveTournamentFormData(2,{{newTourID}})">Add team 2</a></div>
+                <div>Team 2 : </div>
+                {{#showName2}}
+                {{name2}}
+                {{/showName2}}
+                {{^showName2}}
+                <a  class="addTeam" onclick="saveTournamentFormData(2,{{newTourID}})">Add team 2</a>
+                {{/showName2}}
             </div>
             <div class="marginDefined">
-                <div>Team 3 : </div><a  class="addTeam" onclick="saveTournamentFormData(3,{{newTourID}})">Add team 3</a></div>
+                <div>Team 3 : </div>
+                {{#showName3}}
+                {{name3}}
+                {{/showName3}}
+                {{^showName3}}
+                <a  class="addTeam" onclick="saveTournamentFormData(3,{{newTourID}})">Add team 3</a>
+                {{/showName3}}
             </div>
             <div class="marginDefined">
-                <div>Team 4 : </div><a  class="addTeam" onclick="saveTournamentFormData(4,{{newTourID}})">Add team 4</a></div>
+                <div>Team 4 : </div>
+                {{#showName4}}
+                {{name4}}
+                {{/showName4}}
+                {{^showName4}}
+                <a  class="addTeam" onclick="saveTournamentFormData(4,{{newTourID}})">Add team 4</a>
+                {{/showName4}}
             </div>
             <div class="marginDefined">
-                <div>Team 5 : </div><a  class="addTeam" onclick="saveTournamentFormData(5,{{newTourID}})">Add team 5</a></div>
+                <div>Team 5 : </div>
+                {{#showName5}}
+                {{name5}}
+                {{/showName5}}
+                {{^showName5}}
+                <a  class="addTeam" onclick="saveTournamentFormData(5,{{newTourID}})">Add team 5</a>
+                {{/showName5}}
             </div>
             <div class="marginDefined">
-                <div>Team 6 : </div><a  class="addTeam" onclick="saveTournamentFormData(6,{{newTourID}})">Add team 6</a></div>
+                <div>Team 6 : </div>
+                {{#showName6}}
+                {{name6}}
+                {{/showName6}}
+                {{^showName6}}
+                <a  class="addTeam" onclick="saveTournamentFormData(6,{{newTourID}})">Add team 6</a>
+                {{/showName6}}
             </div>
             <div class="marginDefined">
-                <div>Team 7 : </div><a  class="addTeam" onclick="saveTournamentFormData(7,{{newTourID}})">Add team 7</a></div>
+                <div>Team 7 : </div>
+                {{#showName7}}
+                {{name7}}
+                {{/showName7}}
+                {{^showName7}}
+                <a  class="addTeam" onclick="saveTournamentFormData(7,{{newTourID}})">Add team 7</a>
+                {{/showName7}}
             </div>
             <div class="marginDefined">
-                <div>Team 8 : </div><a  class="addTeam" onclick="saveTournamentFormData(8,{{newTourID}})">Add team 8</a></div>
+                <div>Team 8 : </div>
+                {{#showName8}}
+                {{name8}}
+                {{/showName8}}
+                {{^showName8}}
+                <a  class="addTeam" onclick="saveTournamentFormData(8,{{newTourID}})">Add team 8</a>
+                {{/showName8}}
             </div>
             <div class="marginDefined">
                 <label for="photo">Tournament photo:</label>

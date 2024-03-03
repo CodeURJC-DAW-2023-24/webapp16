@@ -118,10 +118,149 @@ public class TournamentController {
         if(created==0) {
             model.addAttribute("newTourID", tournamentService.countTournaments() + 1);
             model.addAttribute("redirect", "/");
+            model.addAttribute("showName1",false);
+            model.addAttribute("showName2",false);
+            model.addAttribute("showName3",false);
+            model.addAttribute("showName4",false);
+            model.addAttribute("showName5",false);
+            model.addAttribute("showName6",false);
+            model.addAttribute("showName7",false);
+            model.addAttribute("showName8",false);
         }
         else{
             model.addAttribute("newTourID", tournamentService.countTournaments());
             model.addAttribute("redirect", "/cancelTournamentCreation");
+            List<Team> teamList = teamService.findTournamentsByTourName(tournamentService.countTournaments());
+            switch (teamList.size()){
+                case 0:
+                    model.addAttribute("showName1",false);
+                    model.addAttribute("showName2",false);
+                    model.addAttribute("showName3",false);
+                    model.addAttribute("showName4",false);
+                    model.addAttribute("showName5",false);
+                    model.addAttribute("showName6",false);
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 1:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",false);
+                    model.addAttribute("showName3",false);
+                    model.addAttribute("showName4",false);
+                    model.addAttribute("showName5",false);
+                    model.addAttribute("showName6",false);
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 2:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",false);
+                    model.addAttribute("showName4",false);
+                    model.addAttribute("showName5",false);
+                    model.addAttribute("showName6",false);
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 3:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",true);
+                    model.addAttribute("name3",teamList.get(2).getName());
+                    model.addAttribute("showName4",false);
+                    model.addAttribute("showName5",false);
+                    model.addAttribute("showName6",false);
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 4:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",true);
+                    model.addAttribute("name3",teamList.get(2).getName());
+                    model.addAttribute("showName4",true);
+                    model.addAttribute("name4",teamList.get(3).getName());
+                    model.addAttribute("showName5",false);
+                    model.addAttribute("showName6",false);
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 5:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",true);
+                    model.addAttribute("name3",teamList.get(2).getName());
+                    model.addAttribute("showName4",true);
+                    model.addAttribute("name4",teamList.get(3).getName());
+                    model.addAttribute("showName5",true);
+                    model.addAttribute("name5",teamList.get(4).getName());
+                    model.addAttribute("showName6",false);
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 6:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",true);
+                    model.addAttribute("name3",teamList.get(2).getName());
+                    model.addAttribute("showName4",true);
+                    model.addAttribute("name4",teamList.get(3).getName());
+                    model.addAttribute("showName5",true);
+                    model.addAttribute("name5",teamList.get(4).getName());
+                    model.addAttribute("showName6",true);
+                    model.addAttribute("name6",teamList.get(5).getName());
+                    model.addAttribute("showName7",false);
+                    model.addAttribute("showName8",false);
+                    break;
+                case 7:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",true);
+                    model.addAttribute("name3",teamList.get(2).getName());
+                    model.addAttribute("showName4",true);
+                    model.addAttribute("name4",teamList.get(3).getName());
+                    model.addAttribute("showName5",true);
+                    model.addAttribute("name5",teamList.get(4).getName());
+                    model.addAttribute("showName6",true);
+                    model.addAttribute("name6",teamList.get(5).getName());
+                    model.addAttribute("showName7",true);
+                    model.addAttribute("name7",teamList.get(6).getName());
+                    model.addAttribute("showName8",false);
+                    break;
+                case 8:
+                    model.addAttribute("showName1",true);
+                    model.addAttribute("name1",teamList.get(0).getName());
+                    model.addAttribute("showName2",true);
+                    model.addAttribute("name2",teamList.get(1).getName());
+                    model.addAttribute("showName3",true);
+                    model.addAttribute("name3",teamList.get(2).getName());
+                    model.addAttribute("showName4",true);
+                    model.addAttribute("name4",teamList.get(3).getName());
+                    model.addAttribute("showName5",true);
+                    model.addAttribute("name5",teamList.get(4).getName());
+                    model.addAttribute("showName6",true);
+                    model.addAttribute("name6",teamList.get(5).getName());
+                    model.addAttribute("showName7",true);
+                    model.addAttribute("name7",teamList.get(6).getName());
+                    model.addAttribute("showName8",true);
+                    model.addAttribute("name8",teamList.get(7).getName());
+                    break;
+                default:
+                    break;
+            }
         }
         return "tournamentCreate";
 
