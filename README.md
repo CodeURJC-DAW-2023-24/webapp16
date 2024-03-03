@@ -591,7 +591,7 @@ The diagram is a flow chart showing user permissions and navigation steps within
 Next, a diagram will be included depicting the entities within the database, their respective fields, and the relationships among them. 
 
 
-![*Diagram with the database entities*](readmeImg/database.jpg)
+![*Database*](readmeImg/database.jpg)
 
 ---
 # :🤝: Participation
