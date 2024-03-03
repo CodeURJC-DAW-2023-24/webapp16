@@ -31,13 +31,14 @@ public class UserController {
     public String signUpData(@RequestParam String nick, @RequestParam String email,@RequestParam String password, @RequestParam String date){
         System.out.println("Recibidos nick: "+nick+" email: "+ email+" pass: "+password+" date: "+date);
         User user = new User();
-        user.setNickname(nick);
+        user.setName(nick);
         user.setEmail(email);
         user.setEncodedPassword(password);
         user.setDateOfBirth(date);
         user.setAddress(null);
         user.setPhoneNumber(null);
         user.setGender(null);
+        user.setFirstName(null);
         user.setLastName(null);
         userService.addUser(user);
         return "redirect:/";

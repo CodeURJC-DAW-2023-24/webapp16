@@ -25,8 +25,9 @@ public class UserService {
         userPasswords.setPass(hashedPassword);
         userPasswords.setUser(user.getNickname());
         this.saveCredentials(userPasswords);
+
         user.setEncodedPassword(hashedPassword);//En un futuro hay que quitar pass de user
-        this.save(user);
+        userRepository.save(user);
     }
     public boolean checkUser(String pass, String nick){
         System.out.println(nick);
