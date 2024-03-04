@@ -31,9 +31,9 @@ ___
   - [**:computer: New Screens**](#computer-New-Screens)
   - [**:diamonds: New Flow Diagram**](#diamonds-New-Flow-Diagram)
   - [**:rocket: Execution Instructions**](#rocket-Execution-Instructions)
-  - [**:file_cabinet:Diagram with the database entities**](#file_cabinet-Diagram-with-the-database-entities)
-  - [**:handshake:Participation**](#handshake-Participation)
+  - [**:file_folder:Diagram with the database entities**](#file_folder-Diagram-with-the-database-entities)
   - [**:art:Class diagram and templates**](#art-Class-diagram-and-templates)
+  - [**:raised_hand: Participation**](#raised_hand-Participation)
 
 ___
 
@@ -554,7 +554,7 @@ The diagram is a flow chart showing user permissions and navigation steps within
 
 ---
 
-# Execution Instructions
+# :rocket: Execution Instructions
 
 ##  Steps
 1. **Download the Repository**
@@ -593,15 +593,17 @@ The diagram is a flow chart showing user permissions and navigation steps within
   - Visit https://localhost:8443 in your web browser.
 
 --- 
-# :🗄️: Diagram with the database entities
+# :file_folder: Diagram with the database entities
 
 Next, a diagram will be included depicting the entities within the database, their respective fields, and the relationships among them. 
 
 
 ![*Database*](readmeImg/database.jpg)
 
+# :art: Class diagram and templates
+![*templateDiagram*](readmeImg/templateDiagram.JPG)
 ---
-# :🤝: Participation
+# :raised_hand: Participation
 
 ---
 Ahmad
@@ -687,6 +689,3 @@ I've been in charge of all the AJAX page layout.
 | 3º  | [Add photo to team and tournament, fixed error in player names](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9340b414f5ff7651cb9586e01cd61dd491c9b928) | | 3º |       [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)        |
 | 4º  |    [CSS - Bracket Style done and migration success complete](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/28f1338a14476accf8ba0a076e926649547cebfc)    | | 4º |           [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)            |
 | 5º  |           [Add tournament saving and adjusting links](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/94bc64d9798d3d1ea52010c28e9718c999cab131)           | | 5º | [teamCreate.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/teamCreate.html)  |
-
-# :🎨: Class diagram and templates
-
