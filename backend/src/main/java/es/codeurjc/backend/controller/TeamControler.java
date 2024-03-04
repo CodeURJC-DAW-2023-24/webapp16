@@ -263,65 +263,91 @@ public class TeamControler {
                 e.printStackTrace();
             }
         }
+        field_7=field_7.trim().replaceAll("[^0-9]", "");
+        field_14=field_14.trim().replaceAll("[^0-9]", "");
+        field_21=field_21.trim().replaceAll("[^0-9]", "");
+        field_28=field_28.trim().replaceAll("[^0-9]", "");
+        field_35=field_35.trim().replaceAll("[^0-9]", "");
+        field_42=field_42.trim().replaceAll("[^0-9]", "");
+        field_49=field_49.trim().replaceAll("[^0-9]", "");
 
         String[] nameArray;
         String name;
         StringBuilder surname = new StringBuilder();
-        // public Player( String name, String lastName, String age, int jerseyNumber, String nationality, int goals, String position, String weight, String height, Team team)
         nameArray = field_5.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
             surname.append(nameArray[i]+" ");
+            }
         }
-        field_7=field_7.trim().replaceAll("[^0-9]", "");
-        field_14=field_7.trim().replaceAll("[^0-9]", "");
-        field_21=field_7.trim().replaceAll("[^0-9]", "");
-        field_28=field_7.trim().replaceAll("[^0-9]", "");
-        field_35=field_7.trim().replaceAll("[^0-9]", "");
-        field_42=field_7.trim().replaceAll("[^0-9]", "");
-        field_49=field_7.trim().replaceAll("[^0-9]", "");
-        System.out.println(field_7);
         Player player1 = new Player(name,surname.toString(),field_6,Integer.parseInt(field_7), field_8, 0, field_11, field_9, field_10, newTeam);
-
+        surname.setLength(0);
         nameArray = field_12.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
+                surname.append(nameArray[i]+" ");
+            }
         }
         Player player2 = new Player(name,surname.toString(),field_13,Integer.parseInt(field_14), field_15, 0, field_18, field_16, field_17, newTeam);
         surname.setLength(0);
         nameArray = field_19.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
+                surname.append(nameArray[i]+" ");
+            }
         }
         Player player3 = new Player(name,surname.toString(),field_20,Integer.parseInt(field_21), field_22, 0, field_25, field_23, field_24, newTeam);
         surname.setLength(0);
         nameArray = field_26.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
+                surname.append(nameArray[i]+" ");
+            }
         }
         Player player4 = new Player(name,surname.toString(),field_27,Integer.parseInt(field_28), field_29, 0, field_32, field_30, field_31, newTeam);
         surname.setLength(0);
         nameArray = field_33.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
+                surname.append(nameArray[i]+" ");
+            }
         }
         Player player5 = new Player(name,surname.toString(),field_34,Integer.parseInt(field_35), field_36, 0, field_39, field_37, field_38, newTeam);
         surname.setLength(0);
         nameArray = field_40.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
+                surname.append(nameArray[i]+" ");
+            }
         }
         Player player6 = new Player(name,surname.toString(),field_41,Integer.parseInt(field_42), field_43, 0, field_46, field_44, field_45, newTeam);
         surname.setLength(0);
         nameArray = field_47.split(" ");
         name=nameArray[0];
         for (int i=1;i<nameArray.length ;i++){
-            surname.append(nameArray[i]);
+            if (i==nameArray.length-1){
+                surname.append(nameArray[i]);
+            }else{
+                surname.append(nameArray[i]+" ");
+            }
         }
         Player player7 = new Player(name,surname.toString(),field_48,Integer.parseInt(field_49), field_50, 0, field_53, field_51, field_52, newTeam);
         teamService.save(newTeam);

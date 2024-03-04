@@ -19,6 +19,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Modifying
     @Query(value = "DELETE FROM Player p WHERE p.team.id = :teamId")
     void deletePlayerByTeamId(@Param("teamId") Long teamId);
+    @Query("SELECT p From Player p WHERE p.name = :playerName AND p.lastName = :lastName")
     Player findPlayerByNameAndLastName (String playerName, String lastName);
     Player findPlayerByName(String playerName);
     List<Player> findPlayerByNameContainingIgnoreCase(String name);
