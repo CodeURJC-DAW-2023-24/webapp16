@@ -68,7 +68,7 @@ public class SearchController {
                 String searchTerm = parts[1];
                 switch (field) {
                     case "tournament":
-                        List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(query);
+                        List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(searchTerm);
                         for(int i=0;i<tournaments.size();i++){
                             tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
                         }
