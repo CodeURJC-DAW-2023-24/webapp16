@@ -66,6 +66,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/loginSuccesfull").permitAll()
                         .requestMatchers("/signUpRequest").permitAll()
                         .requestMatchers("/error/**").permitAll()
+                        .requestMatchers("/api/tournaments").permitAll()
 
 
 

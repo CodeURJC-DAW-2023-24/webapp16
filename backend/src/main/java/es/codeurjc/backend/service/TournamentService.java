@@ -1,6 +1,8 @@
 package es.codeurjc.backend.service;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.repository.TournamentRepository;
@@ -15,8 +17,10 @@ public class TournamentService {
 
     @Autowired
     private TournamentRepository tournamentRepository;
-
-
+    private ObjectMapper objectMapper;
+    public TournamentService(ObjectMapper objectMapper){
+        this.objectMapper = objectMapper;
+    }
     public List<Tournament> findAllTournaments(){
         return tournamentRepository.findAllTournaments();
 
@@ -59,5 +63,13 @@ public class TournamentService {
     }
     public void save(Tournament tournament){
         tournamentRepository.save(tournament);
+    }
+
+    public TournamentDTO convertToDTO(Tournament tournament) {
+        return objectMapper.convertValue(tournament, TournamentDTO.class);
+    }
+
+    public Tournament convertToEntity(TournamentDTO tournamentDTO) {
+        return objectMapper.convertValue(tournamentDTO, Tournament.class);
     }
 }
