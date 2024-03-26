@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +39,27 @@ public class TeamRestController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @PostMapping
+    public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamDTO teamDTO) {
+        Team team = teamService.convertToEntity(teamDTO);
+        team.setImageFile(team.URLtoBlob(team.getImagePath()));
+        Team savedTeam = teamService.saveRest(team);
+        TeamDTO savedTeamDTO = teamService.convertToDTO(savedTeam);
+        URI location = URI.create("/api/teams/" + savedTeam.getId());
+        return ResponseEntity.created(location).body(savedTeamDTO);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<TeamDTO> updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
+        Team team = teamService.convertToEntity(teamDTO);
+        team.setId(id);
+        Team updatedTeam = teamService.updateTeam(id, team);
+        TeamDTO updatedTeamDTO = teamService.convertToDTO(updatedTeam);
+        return ResponseEntity.ok(updatedTeamDTO);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTeam(@PathVariable Long id){
+        teamService.deleteTeamById(id);
+        return ResponseEntity.noContent().build();
     }
 }

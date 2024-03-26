@@ -38,7 +38,7 @@ public class Team {
     private String imagePath ;
     @ManyToOne
     private Tournament tournament;
-
+    //, cascade = CascadeType.ALL, orphanRemoval = true
     @OneToMany(mappedBy = "team")
     private List<Player> listPlayer;
 

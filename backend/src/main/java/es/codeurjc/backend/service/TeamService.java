@@ -14,6 +14,7 @@ import es.codeurjc.backend.repository.TeamRepository;
 
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,9 @@ public class TeamService {
 
     @Autowired
     private TeamRepository teamRepository;
-
+    public Team saveRest(Team team){
+        return teamRepository.save(team);
+    }
     public void save(Team team){
         teamRepository.save(team);
     }
@@ -39,7 +42,43 @@ public class TeamService {
     public Page<Team> findAllTeams(Pageable pageable) {
         return teamRepository.findAll(pageable);
     }
+
+    public Team updateTeam(Long id, Team updatedTeam) {
+        Team existingTeam = teamRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Team with id " + id + " not found"));
+
+        if (updatedTeam.getName() != null) {
+            existingTeam.setName(updatedTeam.getName());
+        }
+        if (updatedTeam.getCoach() != null) {
+            existingTeam.setCoach(updatedTeam.getCoach());
+        }
+        if (updatedTeam.getStadium() != null) {
+            existingTeam.setStadium(updatedTeam.getStadium());
+        }
+        //
+        if (updatedTeam.getGamesPlayed() != 0) {
+            existingTeam.setGamesPlayed(updatedTeam.getGamesPlayed());
+        }
+        if (updatedTeam.getWins() != 0) {
+            existingTeam.setWins(updatedTeam.getWins());
+        }
+        if (updatedTeam.getLoses() != 0) {
+            existingTeam.setLoses(updatedTeam.getLoses());
+        }
+        if (updatedTeam.getImageFile() != null) {
+            existingTeam.setImageFile(updatedTeam.getImageFile());
+        }
+        if (updatedTeam.getImagePath() != null) {
+            existingTeam.setImagePath(updatedTeam.getImagePath());
+            existingTeam.setImageFile(existingTeam.URLtoBlob(existingTeam.getImagePath()));
+        }
+
+        return teamRepository.save(existingTeam);
+    }
+
     public void deleteTeam(Team team){teamRepository.delete(team);}
+    public void deleteTeamById(Long id){teamRepository.deleteById(id);}
 
     public TeamDTO convertToDTO(Team team) {
         return conversionService.convertToDTO(team, TeamDTO.class);
