@@ -27,8 +27,7 @@ public class TeamDTO {
         this.imagePath = imagePath;
     }
 
-    // Getters y setters para todos los campos
-    // También puedes generarlos automáticamente en tu IDE si lo prefieres
+    // Getters and setters
 
     public Long getId() {
         return id;

@@ -1,5 +1,7 @@
 package es.codeurjc.backend.service;
 
+import es.codeurjc.backend.DTOs.PlayerDTO;
+import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.repository.PlayerRepository;
@@ -9,8 +11,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 public class PlayerService {
+    @Autowired
+    private ConversionService conversionService;
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -21,10 +28,13 @@ public class PlayerService {
     public void save(Player player){
         playerRepository.save(player);
     }
+    public Player saveRest(Player player){
+        return playerRepository.save(player);
+    }
     public List<Player> findAll() {
         return playerRepository.findAll();
     }
-
+    public Optional<Player> findPlayerById(Long id){return playerRepository.findById(id);}
     public Page<Player> findAllPlayers(PageRequest pageRequest) {
         return playerRepository.findAll(pageRequest);
     }
@@ -34,5 +44,47 @@ public class PlayerService {
     public List<Player> findPlayerByLastNameSearch(String lastName){return playerRepository.findPlayerByLastNameContainingIgnoreCase(lastName);}
     public List<Player> findPlayerByNationalitySearch(String nationality){return playerRepository.findPlayerByNationalityContainingIgnoreCase(nationality);}
     public List<Player> findPlayerByPositionSearch(String position){return playerRepository.findPlayerByPositionContainingIgnoreCase(position);}
+    public Player updatePlayer(Long id, Player updatedPlayer) {
+        Player existingPlayer = playerRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Player with id " + id + " not found"));
+
+        if (updatedPlayer.getName() != null) {
+            existingPlayer.setName(updatedPlayer.getName());
+        }
+        if (updatedPlayer.getLastName() != null) {
+            existingPlayer.setLastName(updatedPlayer.getLastName());
+        }
+        if (updatedPlayer.getAge() != null) {
+            existingPlayer.setAge(updatedPlayer.getAge());
+        }
+        if (updatedPlayer.getJerseyNumber() != 0) {
+            existingPlayer.setJerseyNumber(updatedPlayer.getJerseyNumber());
+        }
+        if (updatedPlayer.getNationality() != null) {
+            existingPlayer.setNationality(updatedPlayer.getNationality());
+        }
+        if (updatedPlayer.getGoals() != 0) {
+            existingPlayer.setGoals(updatedPlayer.getGoals());
+        }
+        if (updatedPlayer.getPosition() != null) {
+            existingPlayer.setPosition(updatedPlayer.getPosition());
+        }
+        if (updatedPlayer.getWeight() != null) {
+            existingPlayer.setWeight(updatedPlayer.getWeight());
+        }
+        if (updatedPlayer.getHeight() != null) {
+            existingPlayer.setHeight(updatedPlayer.getHeight());
+        }
+
+        return playerRepository.save(existingPlayer);
+    }
+
     public void deletePlayerByTeamId(Long teamId){playerRepository.deletePlayerByTeamId(teamId);}
+    public void deletePlayerById(Long id){playerRepository.deleteById(id);}
+    public PlayerDTO convertToDTO(Player player) {
+        return conversionService.convertToDTO(player, PlayerDTO.class);
+    }
+    public Player convertToEntity(PlayerDTO playerDTO) {
+        return conversionService.convertToEntity(playerDTO, Player.class);
+    }
 }

@@ -55,15 +55,6 @@ public class PlayerController {
 
     }
 
-    @GetMapping("/api/players")
-    @ResponseBody
-    public List<Player> getPlayers(@RequestParam(defaultValue = "0") int page,
-                                   @RequestParam(defaultValue = "4") int pageSize) {
-        Page<Player> playersPage = playerService.findAllPlayers(PageRequest.of(page, pageSize));
-
-        return playersPage.getContent();
-    }
-
     @GetMapping("/players/stadistics")
     public String getPlayersStadistics(Model model,HttpServletRequest request){
         //get session id

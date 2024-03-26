@@ -3,24 +3,41 @@ package es.codeurjc.backend.controller;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
-    public String handleError(HttpServletResponse response) {
+    public String handleError(HttpServletResponse response, Model model) {
         int statusCode = response.getStatus();
 
-        if (statusCode == 404) {
-            return "notFound";  // Página de error personalizada para error 404
-        } else if (statusCode == 403) {
-            return "accessDenied";  // Página de error personalizada para error 403
+        String errorMessage = "";
+        switch(statusCode) {
+            case 400:
+                errorMessage = "Bad Request";
+                break;
+            case 401:
+                errorMessage = "Unauthorized";
+                break;
+            case 403:
+                errorMessage = "Forbidden";
+                break;
+            case 404:
+                errorMessage = "Not Found";
+                break;
+            case 500:
+                errorMessage = "Internal Server Error";
+                break;
+            default:
+                errorMessage = "Unknown Error";
         }
-
-        // En otros casos, redirige a una página de error general
-        return "notFound";
+        model.addAttribute("errorCode", statusCode);
+        model.addAttribute("errorMessage", errorMessage);
+        return "errorTemplate";
     }
+
 }
 
 //    @RequestMapping("/error/404")
