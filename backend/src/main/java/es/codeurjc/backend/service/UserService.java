@@ -1,5 +1,8 @@
 package es.codeurjc.backend.service;
 
+import es.codeurjc.backend.DTOs.TeamDTO;
+import es.codeurjc.backend.DTOs.UserDTO;
+import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.model.UserPasswords;
 import es.codeurjc.backend.repository.UserPasswordsRepository;
@@ -9,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +21,8 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private UserPasswordsRepository userPasswordsRepository;
+    @Autowired
+    private ConversionService conversionService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -24,6 +30,7 @@ public class UserService {
     private void save(User user){
         this.userRepository.save(user);
     }
+    public List<User> findAllUsers(){return userRepository.findAll();}
     public void addUser(User user){
         String hashedPassword = BCrypt.hashpw(user.getEncodedPassword(), BCrypt.gensalt(10));
         UserPasswords userPasswords = new UserPasswords();
@@ -58,5 +65,12 @@ public class UserService {
         userNew.setDateOfBirth(date);
         userRepository.save(userNew);
 
+    }
+    public UserDTO convertToDTO(User user) {
+        return conversionService.convertToDTO(user, UserDTO.class);
+    }
+
+    public User convertToEntity(UserDTO userDTO) {
+        return conversionService.convertToEntity(userDTO, User.class);
     }
 }

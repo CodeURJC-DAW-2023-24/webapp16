@@ -74,6 +74,8 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/teams", "/api/teams/**").permitAll()
                         .requestMatchers("/api/teams/{id}").permitAll()
                         .requestMatchers("/api/matches/{id}").permitAll()
+                        .requestMatchers("/api/users").permitAll()
+                        .requestMatchers("/api/users/{name}").permitAll()
 
 
 
