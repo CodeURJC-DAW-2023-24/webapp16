@@ -73,10 +73,12 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/tournaments/{id}").permitAll()
                         .requestMatchers("/api/teams", "/api/teams/**").permitAll()
                         .requestMatchers("/api/teams/{id}").permitAll()
+                        .requestMatchers("/api/matches/{id}").permitAll()
 
 
 
-                        // PRIVATE PAGES
+
+                                // PRIVATE PAGES
                         .requestMatchers("/profile").hasAnyRole("USER")
                         .requestMatchers("/profileMod").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/profile/save").hasAnyRole("USER")
