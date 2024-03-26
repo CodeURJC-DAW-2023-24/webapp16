@@ -7,11 +7,7 @@ import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.tomcat.util.modeler.BaseAttributeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -27,10 +23,9 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Base64;
 
 @Controller
-public class TeamControler {
+public class TeamController {
 
     @Autowired
     private TeamService teamService;
@@ -70,18 +65,6 @@ public class TeamControler {
     }
 
 
-    @GetMapping("/api/teams")
-    @ResponseBody
-    public List<Team> getTeams(@RequestParam(defaultValue = "0") int page,
-                               @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
-        Page<Team> teamsPage = teamService.findAllTeams(PageRequest.of(page, pageSize));
-
-        for (Team currentTeam : teamsPage.getContent()) {
-            currentTeam.setImagePath(currentTeam.blobToString(currentTeam.getImageFile(), currentTeam));
-        }
-
-        return teamsPage.getContent();
-    }
 
 
     @GetMapping("/teams/{name}")

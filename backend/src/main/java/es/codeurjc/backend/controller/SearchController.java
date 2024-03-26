@@ -52,11 +52,6 @@ public class SearchController {
 
         }
 
-
-
-
-
-
         if (query != null && !query.isEmpty()) {
             List<Player> players = new ArrayList<>();
             query = query.toLowerCase();

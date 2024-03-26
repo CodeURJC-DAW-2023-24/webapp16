@@ -14,13 +14,12 @@ import java.util.List;
 
 @Service
 public class TournamentService {
+    @Autowired
+    private ConversionService conversionService;
 
     @Autowired
     private TournamentRepository tournamentRepository;
-    private ObjectMapper objectMapper;
-    public TournamentService(ObjectMapper objectMapper){
-        this.objectMapper = objectMapper;
-    }
+
     public List<Tournament> findAllTournaments(){
         return tournamentRepository.findAllTournaments();
 
@@ -66,10 +65,10 @@ public class TournamentService {
     }
 
     public TournamentDTO convertToDTO(Tournament tournament) {
-        return objectMapper.convertValue(tournament, TournamentDTO.class);
+        return conversionService.convertToDTO(tournament, TournamentDTO.class);
     }
 
     public Tournament convertToEntity(TournamentDTO tournamentDTO) {
-        return objectMapper.convertValue(tournamentDTO, Tournament.class);
+        return conversionService.convertToEntity(tournamentDTO, Tournament.class);
     }
 }

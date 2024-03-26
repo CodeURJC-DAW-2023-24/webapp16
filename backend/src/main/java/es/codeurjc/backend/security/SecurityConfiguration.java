@@ -71,6 +71,8 @@ public class SecurityConfiguration{
                         // API REST
                         .requestMatchers("/api/tournaments").permitAll()
                         .requestMatchers("/api/tournaments/{id}").permitAll()
+                        .requestMatchers("/api/teams", "/api/teams/**").permitAll()
+                        .requestMatchers("/api/teams/{id}").permitAll()
 
 
 
