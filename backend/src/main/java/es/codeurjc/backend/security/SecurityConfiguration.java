@@ -69,6 +69,7 @@ public class SecurityConfiguration{
 
 
                         // API REST
+                                // POSTMAN
                         .requestMatchers("/api/tournaments").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/tournaments/{id}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/teams", "/api/teams/**").hasAnyRole("POSTMAN")
@@ -76,6 +77,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/matches/{id}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/{name}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/users/newUser").hasAnyRole("POSTMAN")
 
 
                         // PRIVATE PAGES
