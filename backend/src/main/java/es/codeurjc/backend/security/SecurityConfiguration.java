@@ -69,18 +69,16 @@ public class SecurityConfiguration{
 
 
                         // API REST
-                        .requestMatchers("/api/tournaments").permitAll()
-                        .requestMatchers("/api/tournaments/{id}").permitAll()
-                        .requestMatchers("/api/teams", "/api/teams/**").permitAll()
-                        .requestMatchers("/api/teams/{id}").permitAll()
-                        .requestMatchers("/api/matches/{id}").permitAll()
-                        .requestMatchers("/api/users").permitAll()
-                        .requestMatchers("/api/users/{name}").permitAll()
+                        .requestMatchers("/api/tournaments").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/tournaments/{id}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/teams", "/api/teams/**").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/teams/{id}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/matches/{id}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/users").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/users/{name}").hasAnyRole("POSTMAN")
 
 
-
-
-                                // PRIVATE PAGES
+                        // PRIVATE PAGES
                         .requestMatchers("/profile").hasAnyRole("USER")
                         .requestMatchers("/profileMod").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/profile/save").hasAnyRole("USER")
