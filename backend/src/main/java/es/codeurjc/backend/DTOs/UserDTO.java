@@ -117,4 +117,5 @@ public class UserDTO {
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
+
 }

@@ -27,9 +27,6 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private void save(User user){
-        this.userRepository.save(user);
-    }
     public List<User> findAllUsers(){return userRepository.findAll();}
     public void addUser(User user){
         String hashedPassword = BCrypt.hashpw(user.getEncodedPassword(), BCrypt.gensalt(10));
@@ -50,6 +47,7 @@ public class UserService {
         }
         return false;
     }
+
     private void saveCredentials(UserPasswords userPasswords){
         this.userPasswordsRepository.save(userPasswords);
     }
@@ -66,6 +64,10 @@ public class UserService {
         userRepository.save(userNew);
 
     }
+    public void deleteUser(User user){
+        userRepository.delete(user);
+    }
+
     public UserDTO convertToDTO(User user) {
         return conversionService.convertToDTO(user, UserDTO.class);
     }
