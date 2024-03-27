@@ -82,6 +82,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/users").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/{name}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/newUser").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/users/{idUser}").hasAnyRole("POSTMAN")
 
 
                         // PRIVATE PAGES
