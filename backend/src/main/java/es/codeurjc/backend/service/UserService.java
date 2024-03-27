@@ -56,6 +56,40 @@ public class UserService {
     public void saveUser(User user) {
         userRepository.save(user);
     }
+    public void modUser (User user){
+        User DBuser = userRepository.getReferenceById(user.getId());
+        if (user.getName() != null){
+            DBuser.setName(user.getName());
+
+        }if (user.getFirstName() != null){
+            DBuser.setFirstName(user.getFirstName());
+
+        }if (user.getLastName() != null){
+            DBuser.setLastName(user.getLastName());
+
+        }if (user.getDateOfBirth() != null){
+            DBuser.setDateOfBirth(user.getDateOfBirth());
+
+        }if (user.getPhoneNumber() != null){
+            DBuser.setPhoneNumber(user.getPhoneNumber());
+
+        }if (user.getAddress() != null){
+            DBuser.setAddress(user.getAddress());
+
+        }if (user.getEmail() != null){
+            DBuser.setEmail(user.getEmail());
+
+        }if (user.getGender() != null){
+            DBuser.setGender(user.getGender());
+
+        }if (user.getDni() != null){
+            DBuser.setDni(user.getDni());
+
+        }if (user.getNickname() != null){
+            DBuser.setNickname(user.getName());
+        }
+        userRepository.save(DBuser);
+    }
 
     public void newUser(String name, String email, String password, String date) {
         User userNew = new User(name, passwordEncoder.encode(password), "USER");
@@ -64,7 +98,8 @@ public class UserService {
         userRepository.save(userNew);
 
     }
-    public void deleteUser(User user){
+    public void deleteUserByID(long idUser){
+        User user = userRepository.getReferenceById(idUser);
         userRepository.delete(user);
     }
 

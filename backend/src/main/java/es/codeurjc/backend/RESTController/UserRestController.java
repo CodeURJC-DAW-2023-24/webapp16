@@ -51,12 +51,11 @@ public class UserRestController { //Añadir usuario, modificar usuario y borrar 
     public ResponseEntity<UserDTO> modUser(@RequestBody UserDTO userDTO){
         User user = userService.convertToEntity(userDTO);
         URI location = URI.create("/api/users/"+user.getName());
-        userService.addUser(user);
+        userService.modUser(user);
         return ResponseEntity.created(location).body(userDTO);
     }
     @DeleteMapping
-    public void deleteUser(@RequestBody UserDTO userDTO){ //Hacer by ID?
-        User user = userService.convertToEntity(userDTO);
-        userService.deleteUser(user);
+    public void deleteUser(@RequestBody long idUser){
+        userService.deleteUserByID(idUser);
     }
 }
