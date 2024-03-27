@@ -98,37 +98,6 @@ public class TeamController {
         return "teamInfo";
 
     }
-    @GetMapping("/teams/{name}/{playerName}/{lastName}")
-    public String showPlayerInfo(@PathVariable String name, @PathVariable String playerName,@PathVariable String lastName, Model model,HttpServletRequest request) {
-        //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name_session = principal.getName();
-            User user = userRepository.findByName(name_session).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
-        //get team by name in path
-        Team team = teamService.findTeamByName(name);
-        //get list of players by their name and lastname
-        Player player = playerService.findPlayerByNameAndLastName(playerName,lastName);
-
-        //add object team and players to model
-        model.addAttribute("team", team);
-        model.addAttribute("player", player);
-
-        //add pageTitle for page_banner
-        String pagePath = team.getName() + " / " + player.getName() + " " + player.getLastName();
-        model.addAttribute("pageTitle", pagePath);
-
-        return "playerInfo";
-
-    }
     @GetMapping("/tournamentCreation/{cup}/teamCreation/{teamNumber}")
     public String createTournamentTeam(@PathVariable String cup, Model model){
 

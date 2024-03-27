@@ -62,6 +62,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/players").permitAll()
                         .requestMatchers("/api/teams").permitAll()
                         .requestMatchers("/players").permitAll()
+                        .requestMatchers("/players/{playerName}/{lastName}").permitAll()
                         .requestMatchers("/teams/{name}/{playerName}/{lastName}").permitAll()
                         .requestMatchers("/loginSuccesfull").permitAll()
                         .requestMatchers("/signUpRequest").permitAll()

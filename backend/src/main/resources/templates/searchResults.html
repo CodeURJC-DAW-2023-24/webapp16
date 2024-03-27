@@ -50,14 +50,9 @@
                             <h4>{{name}} {{lastName}}</h4>
                             <p class="title">{{position}}</p>
                             <div class="center">
-                                {{#team}}
-                                <a href="/teams/{{name}}/{{../name}}/{{../lastName}}">
+                                <a href="/players/{{name}}/{{lastName}}">
                                     <button class="button">Info</button>
                                 </a>
-                                {{/team}}
-                                {{^team}}
-                                <span>Free Agent</span>
-                                {{/team}}
                             </div>
                         </div>
                     </div>

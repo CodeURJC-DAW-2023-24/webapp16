@@ -51,10 +51,37 @@ public class PlayerController {
         model.addAttribute("players", players.subList(0, Math.min(4, players.size())));
         model.addAttribute("pageTitle", "Players");
         return "players";
-
-
     }
+    @GetMapping("/players/{name}/{lastName}")
+    public String showPlayerInfo(@PathVariable String name,
+                                 @PathVariable String lastName,
+                                 Model model,
+                                 HttpServletRequest request) {
+        // get session id
+        Principal principal = request.getUserPrincipal();
+        if (principal != null) {
+            String name_session = principal.getName();
+            User user = userRepository.findByName(name_session).orElseThrow();
+            model.addAttribute("username", user.getName());
+            if (request.isUserInRole("ADMIN")) {
+                model.addAttribute("admin", request.isUserInRole("ADMIN"));
+                model.addAttribute("user", request.isUserInRole("USER"));
+            } else
+                model.addAttribute("user", request.isUserInRole("USER"));
+        }
 
+        // Search player
+        Player player = playerService.findPlayerByNameAndLastName(name, lastName);
+
+        // Add to model
+        model.addAttribute("player", player);
+
+
+        String pagePath = player.getName() + " " + player.getLastName();
+        model.addAttribute("pageTitle", pagePath);
+
+        return "playerInfo";
+    }
     @GetMapping("/players/stadistics")
     public String getPlayersStadistics(Model model,HttpServletRequest request){
         //get session id
