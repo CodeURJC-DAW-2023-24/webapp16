@@ -67,7 +67,8 @@ public class SecurityConfiguration{
                         .requestMatchers("/loginSuccesfull").permitAll()
                         .requestMatchers("/signUpRequest").permitAll()
                         .requestMatchers("/error/**").permitAll()
-
+                        .requestMatchers("/errorTemplate").permitAll()
+                        .requestMatchers("/EntityNotFound").permitAll()
 
                         // API REST
                                 // POSTMAN
@@ -75,6 +76,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/tournaments/{id}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/teams", "/api/teams/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/teams/{id}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/players", "/api/players/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/matches/{id}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/{name}").hasAnyRole("POSTMAN")

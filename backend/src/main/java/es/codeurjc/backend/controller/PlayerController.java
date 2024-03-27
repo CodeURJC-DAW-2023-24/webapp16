@@ -73,6 +73,11 @@ public class PlayerController {
         // Search player
         Player player = playerService.findPlayerByNameAndLastName(name, lastName);
 
+        // if null redirection to template
+        if (player == null) {
+            model.addAttribute("entityName", "player");
+            return "EntityNotFound";
+        }
         // Add to model
         model.addAttribute("player", player);
 

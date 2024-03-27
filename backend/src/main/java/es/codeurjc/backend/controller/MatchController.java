@@ -56,8 +56,16 @@ public class MatchController {
 
         //get tournament by cup in path
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
+        if (tournament == null) {
+            model.addAttribute("entityName", "tournament");
+            return "EntityNotFound";
+        }
         //get Match by id in path
         Matches match = matchService.findMatchById(id);
+        if (match == null) {
+            model.addAttribute("entityName", "match");
+            return "EntityNotFound";
+        }
         //get local and visitin teams of that match
         Team localTeam = match.getLocalTeam();
         Team visitingTeam = match.getVisitingTeam();
@@ -91,7 +99,7 @@ public class MatchController {
         Matches match = matchService.findMatchById(id);
 
         if (match != null && match.getReport() != null) {
-            return "/error"; //Incluir algo como ya hay un reporte para ese partido
+            return "/error";
         } else {
             model.addAttribute("match", match);
             model.addAttribute("report", new Report());

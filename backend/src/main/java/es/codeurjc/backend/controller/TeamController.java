@@ -87,6 +87,10 @@ public class TeamController {
 
         //get team by name in path
         Team team = teamService.findTeamByName(name);
+        if (team == null) {
+            model.addAttribute("entityName", "team");
+            return "EntityNotFound";
+        }
         //get list od players by team.id
         List<Player> players = playerService.findPlayerTeamById(team.getId());
         //add team and players to model
