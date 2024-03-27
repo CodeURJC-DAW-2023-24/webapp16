@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class MatchService {
@@ -47,6 +48,37 @@ public class MatchService {
 
     public Matches convertToEntity(MatchDTO matchDTO) {
         return objectMapper.convertValue(matchDTO, Matches.class);
+    }
+
+    public Matches updateMatch(Long id, MatchDTO updatedMatchDTO) {
+        Matches existingMatch = matchRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Match with id " + id + " not found"));
+
+        if (updatedMatchDTO.getLocalTeam() != null) {
+            existingMatch.setLocalTeam(updatedMatchDTO.getLocalTeam());
+        }
+        if (updatedMatchDTO.getVisitingTeam() != null) {
+            existingMatch.setVisitingTeam(updatedMatchDTO.getVisitingTeam());
+        }
+        if (updatedMatchDTO.getLocalGoals() != 0) {
+            existingMatch.setLocalGoals(updatedMatchDTO.getLocalGoals());
+        }
+        if (updatedMatchDTO.getVisitingGoals() != 0) {
+            existingMatch.setVisitingGoals(updatedMatchDTO.getVisitingGoals());
+        }
+        if (updatedMatchDTO.getRound() != 0) {
+            existingMatch.setRound(updatedMatchDTO.getRound());
+        }
+        if (updatedMatchDTO.getTournament() != null) {
+            existingMatch.setTournament(updatedMatchDTO.getTournament());
+        }
+
+        return matchRepository.save(existingMatch);
+    }
+
+
+    public void deleteMatch(Matches match) {
+        matchRepository.delete(match);
     }
 
 
