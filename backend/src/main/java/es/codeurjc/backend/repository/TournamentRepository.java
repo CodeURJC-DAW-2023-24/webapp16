@@ -24,10 +24,10 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
 
     List<Tournament> findTournamentByCupContainingIgnoreCase(@Param("cup") String cup);
 
-    @Query("SELECT m FROM Matches m WHERE m.tournament.id = :id") //todos los partidos de un torneo
+    @Query("SELECT m FROM Matches m WHERE m.tournament.id = :id")
     List<Matches> findBracketById(@Param("id") Long id);
 
-    @Query("SELECT m FROM Matches m WHERE m.tournament.id = :id AND m.round = :round") //devolver los partidos de una ronda de un torneo
+    @Query("SELECT m FROM Matches m WHERE m.tournament.id = :id AND m.round = :round")
     List<Matches> findRound( @Param("round") int round,@Param("id") Long id);
     @Query("SELECT COUNT(t) FROM Tournament t ")
     long countTournaments();

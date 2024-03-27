@@ -41,10 +41,9 @@ public class TeamRestController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<TeamDTO> getTeamById(@PathVariable Long id) {
-        Optional<Team> optionalTeam = teamService.findTeamById(id);
-        if (optionalTeam.isPresent()) {
-            Team team = optionalTeam.get();
-            TeamDTO teamDTO = teamService.convertToDTO(team);
+        Team existingTeam = teamService.findTeamById(id);
+        if (existingTeam != null) {
+            TeamDTO teamDTO = teamService.convertToDTO(existingTeam);
             return ResponseEntity.ok(teamDTO);
         } else {
             return ResponseEntity.notFound().build();
@@ -61,6 +60,11 @@ public class TeamRestController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<TeamDTO> updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
+        Team existingTeam = teamService.findTeamById(id);
+        if (existingTeam == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
         Team team = teamService.convertToEntity(teamDTO);
         team.setId(id);
         Team updatedTeam = teamService.updateTeam(id, team);

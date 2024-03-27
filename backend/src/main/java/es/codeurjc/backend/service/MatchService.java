@@ -27,7 +27,9 @@ public class MatchService {
 
     public Matches findMatchById(Long id){
         return matchRepository.findMatchById(id);
-
+    }
+    public List<Matches> findMatchesByTournamentId(Long id){
+        return matchRepository.findMatchesByTournamentId(id);
     }
     public List<Matches> findMatchByRound(int round){
         return matchRepository.findMatchesByRound(round);
