@@ -22,7 +22,7 @@ public class PlayerService {
     @Autowired
     private PlayerRepository playerRepository;
 
-    public List<Player> findPlayerTeamById(Long teamId){
+    public List<Player> findPlayersTeamById(Long teamId){
         return playerRepository.findPlayerByTeamId(teamId);
     }
     public void save(Player player){

@@ -92,7 +92,7 @@ public class TeamController {
             return "EntityNotFound";
         }
         //get list od players by team.id
-        List<Player> players = playerService.findPlayerTeamById(team.getId());
+        List<Player> players = playerService.findPlayersTeamById(team.getId());
         //add team and players to model
         model.addAttribute("team", team);
         model.addAttribute("players", players);

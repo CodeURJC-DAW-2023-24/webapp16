@@ -37,7 +37,10 @@ public class MatchService {
 
     public List<Matches> findMatchByRoundAndCup(int i, Tournament tournament) { return matchRepository.findMatchesByRoundAndTournament(i, tournament);
     }
-
+    public List<Matches> findMatchesByTeamId(Long id) { List<Matches> matches = matchRepository.findByLocalTeamId(id);
+        matches.addAll(matchRepository.findByVisitingTeamId(id));
+        return matches;
+    }
     public MatchDTO convertToDTO(Matches matches) {
         return objectMapper.convertValue(matches, MatchDTO.class);
     }
@@ -45,4 +48,6 @@ public class MatchService {
     public Matches convertToEntity(MatchDTO matchDTO) {
         return objectMapper.convertValue(matchDTO, Matches.class);
     }
+
+
 }

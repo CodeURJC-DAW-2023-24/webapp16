@@ -70,8 +70,8 @@ public class MatchController {
         Team localTeam = match.getLocalTeam();
         Team visitingTeam = match.getVisitingTeam();
         //get list of players of both teams by team_id
-        List <Player> playerListLocal = playerService.findPlayerTeamById(localTeam.getId());
-        List <Player> playerListVisiting = playerService.findPlayerTeamById(visitingTeam.getId());
+        List <Player> playerListLocal = playerService.findPlayersTeamById(localTeam.getId());
+        List <Player> playerListVisiting = playerService.findPlayersTeamById(visitingTeam.getId());
         //set images in base64
         localTeam.setImagePath(localTeam.blobToString(localTeam.getImageFile(), localTeam));
         visitingTeam.setImagePath(visitingTeam.blobToString(visitingTeam.getImageFile(), visitingTeam));
