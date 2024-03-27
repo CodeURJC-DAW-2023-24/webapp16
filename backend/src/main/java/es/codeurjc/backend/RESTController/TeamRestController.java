@@ -80,7 +80,7 @@ public class TeamRestController {
             List<Matches> matches = matchService.findMatchesByTeamId(id);
             if (!matches.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body("No se puede eliminar el equipo porque tiene partidos asociados.");
+                        .body("The team cannot be eliminated because it has associated matches.");
             }
 
             teamService.deleteTeamById(id);
