@@ -3,6 +3,7 @@ package es.codeurjc.backend.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -31,7 +32,7 @@ public class Matches {
     private Tournament tournament;
 
 
-
+    @JsonIgnore
     @OneToOne(mappedBy = "match")
     private Report report;
     public Matches() {

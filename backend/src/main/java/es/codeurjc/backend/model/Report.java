@@ -1,5 +1,6 @@
 package es.codeurjc.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class Report {
     //private String visitingTeamScorers;
     private String observations;
 
+    @JsonManagedReference
     @OneToOne
     private Matches match;
     public Report(){}

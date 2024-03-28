@@ -1,6 +1,7 @@
 package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.MatchDTO;
+import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
@@ -9,12 +10,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api/matches")
 public class MatchRestController {
 
     @Autowired
     private MatchService matchService;
+    @GetMapping
+    public ResponseEntity<List<MatchDTO>>getAllMatches(){
+        List<MatchDTO> matchDTOS = matchService.findAllMatches().stream()
+                .map(matchService::convertToDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(matchDTOS);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<MatchDTO> getMatchById(@PathVariable Long id) {

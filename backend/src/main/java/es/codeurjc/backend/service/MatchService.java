@@ -25,6 +25,9 @@ public class MatchService {
         this.objectMapper = objectMapper;
     }
 
+    public List<Matches> findAllMatches(){
+        return matchRepository.findAll();
+    }
     public Matches findMatchById(Long id){
         return matchRepository.findMatchById(id);
     }
