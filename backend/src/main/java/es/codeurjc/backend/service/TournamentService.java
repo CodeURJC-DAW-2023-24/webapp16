@@ -6,6 +6,7 @@ import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.repository.TournamentRepository;
+import es.codeurjc.backend.utils.BlobConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +18,10 @@ import java.util.NoSuchElementException;
 public class TournamentService {
     @Autowired
     private ConversionService conversionService;
-
     @Autowired
     private TournamentRepository tournamentRepository;
+    @Autowired
+    private BlobConverter blobConverter;
 
     public List<Tournament> findAllTournaments(){
         return tournamentRepository.findAllTournaments();
@@ -75,7 +77,7 @@ public class TournamentService {
             }
             if (updatedTournament.getTournamentImagePath() != null) {
                 existingTournament.setTournamentImagePath(updatedTournament.getTournamentImagePath());
-                existingTournament.setTournamentImageFile(existingTournament.URLtoBlob(existingTournament.getTournamentImagePath()));
+                existingTournament.setTournamentImageFile(blobConverter.URLtoBlob(existingTournament.getTournamentImagePath()));
             }
         } else {
             throw new NoSuchElementException("Tournament with id " + id + " not found");

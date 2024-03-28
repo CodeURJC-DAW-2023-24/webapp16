@@ -8,6 +8,7 @@ import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
+import es.codeurjc.backend.utils.BlobConverter;
 import es.codeurjc.backend.utils.UserInfoUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class SearchWebController {
     private UserRepository userRepository;
     @Autowired
     private UserInfoUtil userInfoUtil;
-
+    @Autowired
+    private BlobConverter blobConverter;
     @GetMapping("/search")
     public String search(@RequestParam(value = "query", required = false) String query, Model model,HttpServletRequest request) throws SQLException {
 
@@ -55,7 +57,7 @@ public class SearchWebController {
                     case "tournament":
                         List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(searchTerm);
                         for (int i=0;i<tournaments.size();i++){
-                            tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
+                            tournaments.get(i).setTournamentImagePath(tournaments.get(i).getTournamentImageAsString());
                         }
 
                         model.addAttribute("tournaments", tournaments);
@@ -63,7 +65,7 @@ public class SearchWebController {
                     case "team":
                         List<Team> teams = teamService.findTeamByNameSearch(searchTerm);
                         for(int i=0;i<teams.size();i++){
-                            teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
+                            teams.get(i).setImagePath(teams.get(i).getImageAsString());
                         }
 
                         model.addAttribute("teams", teams);
@@ -87,12 +89,11 @@ public class SearchWebController {
             } else {
                 List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(query);
                 for (int i=0;i<tournaments.size();i++){
-                    tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
+                    tournaments.get(i).setTournamentImagePath(tournaments.get(i).getTournamentImageAsString());
                 }
-                System.out.println(tournaments);
                 List<Team> teams = teamService.findTeamByNameSearch(query);
                 for (int i=0;i<teams.size();i++){
-                    teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
+                    teams.get(i).setImagePath(teams.get(i).getImageAsString());
                 }
                 players = playerService.findPlayerByNameSearch(query);
                 players.addAll(playerService.findPlayerByLastNameSearch(query));

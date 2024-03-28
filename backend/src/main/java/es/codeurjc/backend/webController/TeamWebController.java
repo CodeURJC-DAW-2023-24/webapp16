@@ -51,7 +51,7 @@ public class TeamWebController {
         List<Team> teams = teamService.findAll();
         //convert imageFile:blob to String and set it on imagePath on base64
         for(int i=0;i<4;i++){
-            teams.get(i).setImagePath(teams.get(i).blobToString(teams.get(i).getImageFile(), teams.get(i)));
+            teams.get(i).setImagePath(teams.get(i).getImageAsString());
         }
 
         model.addAttribute("teams", teams.subList(0, Math.min(4, teams.size())));

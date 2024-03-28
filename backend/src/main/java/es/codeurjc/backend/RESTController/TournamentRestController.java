@@ -5,6 +5,7 @@ import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.TournamentService;
+import es.codeurjc.backend.utils.BlobConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,8 @@ public class TournamentRestController {
     private TournamentService tournamentService;
     @Autowired
     private MatchService matchService;
-
+    @Autowired
+    private BlobConverter blobConverter;
     @GetMapping
     public ResponseEntity<List<TournamentDTO>>getAllTournaments(){
         List<TournamentDTO> tournamentDTOS = tournamentService.findAllTournaments().stream()
@@ -59,7 +61,7 @@ public class TournamentRestController {
     @PostMapping
     public ResponseEntity<TournamentDTO>getTournamentId(@RequestBody TournamentDTO tournamentDTO){
         Tournament tournament = tournamentService.convertToEntity(tournamentDTO);
-        tournament.setTournamentImageFile(tournament.URLtoBlob(tournament.getTournamentImagePath()));
+        tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
         Tournament savedTournament = tournamentService.saveRest(tournament);
         TournamentDTO savedTournamentDTO = tournamentService.convertToDTO(savedTournament);
         URI location = URI.create("/api/tournaments/" + savedTournament.getId());
@@ -88,7 +90,7 @@ public class TournamentRestController {
 
         try {
             existingTournament.setTournamentImagePath(imageUrl);
-            Blob imageBlob = existingTournament.URLtoBlob(imageUrl);
+            Blob imageBlob = blobConverter.URLtoBlob(imageUrl);
             existingTournament.setTournamentImageFile(imageBlob);
             tournamentService.save(existingTournament);
         } catch (Exception e) {

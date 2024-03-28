@@ -62,8 +62,8 @@ public class MatchWebController {
         List <Player> playerListLocal = playerService.findPlayersTeamById(localTeam.getId());
         List <Player> playerListVisiting = playerService.findPlayersTeamById(visitingTeam.getId());
         //set images in base64
-        localTeam.setImagePath(localTeam.blobToString(localTeam.getImageFile(), localTeam));
-        visitingTeam.setImagePath(visitingTeam.blobToString(visitingTeam.getImageFile(), visitingTeam));
+        localTeam.setImagePath(localTeam.getImageAsString());
+        visitingTeam.setImagePath(visitingTeam.getImageAsString());
 
         //check if report exists
         Report report =  reportService.findReportByMatchId(id);

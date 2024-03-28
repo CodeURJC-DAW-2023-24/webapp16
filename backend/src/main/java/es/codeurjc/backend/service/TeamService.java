@@ -6,6 +6,7 @@ import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.repository.TeamRepository;
+import es.codeurjc.backend.utils.BlobConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,14 +25,15 @@ import java.util.Optional;
 public class TeamService {
     @Autowired
     private ConversionService conversionService;
-
     @Autowired
     private TeamRepository teamRepository;
+    @Autowired
+    private BlobConverter blobConverter;
 
     public List<Team> findAllTeams(int page, int pageSize) throws SQLException {
         Page<Team> teamsPage = teamRepository.findAll(PageRequest.of(page, pageSize));
         for (Team team : teamsPage) {
-            team.setImagePath(team.blobToString(team.getImageFile(), team));
+            team.setImagePath(team.getImageAsString());
         }
         return teamsPage.getContent();
     }
@@ -93,7 +95,7 @@ public class TeamService {
         }
         if (updatedTeam.getImagePath() != null) {
             existingTeam.setImagePath(updatedTeam.getImagePath());
-            existingTeam.setImageFile(existingTeam.URLtoBlob(existingTeam.getImagePath()));
+            existingTeam.setImageFile(blobConverter.URLtoBlob(existingTeam.getImagePath()));
         }
     }
 

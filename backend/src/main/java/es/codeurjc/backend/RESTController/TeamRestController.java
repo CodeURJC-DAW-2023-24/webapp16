@@ -9,6 +9,7 @@ import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
+import es.codeurjc.backend.utils.BlobConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,7 +32,8 @@ public class TeamRestController {
     private PlayerService playerService;
     @Autowired
     private MatchService matchService;
-
+    @Autowired
+    private BlobConverter blobConverter;
     @GetMapping
     public ResponseEntity<List<Team>> getAllTeams(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
@@ -61,7 +63,7 @@ public class TeamRestController {
     @PostMapping
     public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamDTO teamDTO) {
         Team team = teamService.convertToEntity(teamDTO);
-        team.setImageFile(team.URLtoBlob(team.getImagePath()));
+        team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
         Team savedTeam = teamService.saveRest(team);
         TeamDTO savedTeamDTO = teamService.convertToDTO(savedTeam);
         URI location = URI.create("/api/teams/" + savedTeam.getId());
@@ -90,7 +92,7 @@ public class TeamRestController {
 
         try {
             existingTeam.setImagePath(imageUrl);
-            Blob imageBlob = existingTeam.URLtoBlob(imageUrl);
+            Blob imageBlob = blobConverter.URLtoBlob(imageUrl);
             existingTeam.setImageFile(imageBlob);
             teamService.save(existingTeam);
         } catch (Exception e) {

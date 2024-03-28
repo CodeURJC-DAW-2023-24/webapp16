@@ -4,6 +4,7 @@ package es.codeurjc.backend.model;
 import jakarta.persistence.*;
 @Entity
 public class Player {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +35,6 @@ public class Player {
         this.height = height;
         this.team = team;
     }
-
 
     public Long getId() {
       return this.id;

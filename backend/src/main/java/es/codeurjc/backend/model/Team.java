@@ -13,6 +13,7 @@ import java.util.Base64;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import es.codeurjc.backend.utils.BlobConverter;
 import jakarta.persistence.*;
 
 import javax.sql.rowset.serial.SerialBlob;
@@ -30,7 +31,6 @@ public class Team {
     private int wins;
     private int loses;
 
-
     @Lob
     @JsonIgnore
     private Blob imageFile ;
@@ -43,7 +43,6 @@ public class Team {
     private List<Player> listPlayer;
 
     protected Team(){
-
     }
 
     public Team(String name, String coach, String stadium, Tournament tournament, int gamesPlayed, int wins, int loses, String imagePath) {
@@ -74,7 +73,6 @@ public class Team {
         this.imagePath = imagePath;
     }
 
-    // Relación de uno a muchos con la clase player
     public Long getId() {
       return this.id;
     }
@@ -125,37 +123,8 @@ public class Team {
         this.loses = loses;
     }
 
-
-
-    public Blob URLtoBlob(String webURL){
-        try {
-            URL url = new URL(webURL);
-            InputStream in = url.openStream();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            // Read the image data into a byte array
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = in.read(buffer)) != -1) {
-                baos.write(buffer, 0, length);
-            }
-            in.close();
-            // Convert the ByteArrayOutputStream to a byte array
-            byte[] imageBytes = baos.toByteArray();
-            Blob imageBlob = new SerialBlob(imageBytes);
-            return imageBlob;
-        } catch (IOException | SQLException e) {
-            System.out.println("Error");
-            return null;
-        }
-    }
-
-    public String blobToString(Blob imageFile, Team teamE) throws SQLException {
-        //Convert image en base64
-        System.out.println("Este es el equipo, " + teamE.getName()+ " este es el file:   "+ teamE.getImageFile());
-
-        Blob blob = teamE.getImageFile();
-        byte[] bytes = blob.getBytes(1,(int) blob.length());
-        String teamImage = Base64.getEncoder().encodeToString(bytes);
-        return teamImage;
+    public String getImageAsString() throws SQLException {
+        BlobConverter converter = new BlobConverter();
+        return converter.blobToString(this.getImageFile());
     }
 }

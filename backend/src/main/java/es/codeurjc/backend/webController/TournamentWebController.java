@@ -55,8 +55,7 @@ public class TournamentWebController {
 
          for(int i=0;i<tournaments.size();i++) {
              if (tournaments.get(i).getTournamentImageFile() != null) {
-                 System.out.println("Este es el equipo, " + tournaments.get(i).getName()+ "   "+ tournaments.get(i).getTournamentImageFile());
-                 tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
+                 tournaments.get(i).setTournamentImagePath(tournaments.get(i).getTournamentImageAsString());
              }
              else
                  tournaments.remove(tournaments.get(i));

@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 @Entity
 public class Matches {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,17 +26,14 @@ public class Matches {
 
     private int round;
 
-
     @ManyToOne
     private Tournament tournament;
-
 
     @JsonIgnore
     @OneToOne(mappedBy = "match")
     private Report report;
     public Matches() {
     }
-
 
     public Matches(Team localTeam, Team visitingTeam, Tournament tournament, int localGoals, int visitingGoals, int round) {
         this.localTeam = localTeam;
@@ -79,7 +75,6 @@ public class Matches {
     public void setVisitingGoals(int value) {
         this.visitingGoals = value;
     }
-
 
     public void setReport(Report report) {
     }

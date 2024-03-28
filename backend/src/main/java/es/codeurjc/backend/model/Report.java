@@ -14,10 +14,7 @@ public class Report {
     private String matchOfficials;
     private int localTeamGoals;
     private int visitingTeamGoals;
-    //private String localTeamScorers;
-    //private String visitingTeamScorers;
     private String observations;
-
     @JsonManagedReference
     @OneToOne
     private Matches match;
@@ -97,20 +94,4 @@ public class Report {
         this.match = match;
     }
 
-    //public String getLocalTeamScorers() {
-    //return localTeamScorers;
-    //}
-
-    //public void setLocalTeamScorers(String localTeamScorers) {
-    //this.localTeamScorers = localTeamScorers;
-    //}
-
-    //public String getVisitingTeamScorers() {
-    // return visitingTeamScorers;
-    //}
-
-    //public void setVisitingTeamScorers(String visitingTeamScorers) {
-
-    //  this.visitingTeamScorers = visitingTeamScorers;
-    //}
 }
