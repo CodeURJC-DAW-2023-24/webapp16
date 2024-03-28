@@ -8,11 +8,8 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String date;
-
     private String time;
-
     private String matchOfficials;
     private int localTeamGoals;
     private int visitingTeamGoals;
@@ -20,13 +17,11 @@ public class Report {
     //private String visitingTeamScorers;
     private String observations;
 
-
-
     @OneToOne
     private Matches match;
     public Report(){}
 
-    public Report( String date, String time, String matchOfficials, int localTeamGoals, int visitingTeamGoals, String observations, Matches match) {
+    public Report(String date, String time, String matchOfficials, int localTeamGoals, int visitingTeamGoals, String observations, Matches match) {
         this.date = date;
         this.time = time;
         this.matchOfficials = matchOfficials;
@@ -35,8 +30,8 @@ public class Report {
         this.observations = observations;
         this.match = match;
     }
-    // Getters and setters
 
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -44,7 +39,6 @@ public class Report {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getTime() {
         return time;
@@ -61,7 +55,6 @@ public class Report {
     public void setDate(String date) {
         this.date = date;
     }
-
 
     public String getMatchOfficials() {
         return matchOfficials;
@@ -87,23 +80,6 @@ public class Report {
         this.visitingTeamGoals = visitingTeamGoals;
     }
 
-    //public String getLocalTeamScorers() {
-        //return localTeamScorers;
-    //}
-
-    //public void setLocalTeamScorers(String localTeamScorers) {
-        //this.localTeamScorers = localTeamScorers;
-    //}
-
-    //public String getVisitingTeamScorers() {
-       // return visitingTeamScorers;
-    //}
-
-    //public void setVisitingTeamScorers(String visitingTeamScorers) {
-
-      //  this.visitingTeamScorers = visitingTeamScorers;
-    //}
-
     public String getObservations() {
         return observations;
     }
@@ -119,4 +95,20 @@ public class Report {
         this.match = match;
     }
 
+    //public String getLocalTeamScorers() {
+    //return localTeamScorers;
+    //}
+
+    //public void setLocalTeamScorers(String localTeamScorers) {
+    //this.localTeamScorers = localTeamScorers;
+    //}
+
+    //public String getVisitingTeamScorers() {
+    // return visitingTeamScorers;
+    //}
+
+    //public void setVisitingTeamScorers(String visitingTeamScorers) {
+
+    //  this.visitingTeamScorers = visitingTeamScorers;
+    //}
 }
