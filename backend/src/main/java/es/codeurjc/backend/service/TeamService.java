@@ -15,6 +15,7 @@ import es.codeurjc.backend.repository.TeamRepository;
 
 import java.security.SecureRandom;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -53,7 +54,11 @@ public class TeamService {
     public Page<Team> findAllTeams(Pageable pageable) {
         return teamRepository.findAll(pageable);
     }
-
+    public List<Team> getTopTeamsByWins(int limit) {
+        List<Team> teams = findAll();
+        teams.sort(Comparator.comparingInt(Team::getWins).reversed());
+        return teams.subList(0, Math.min(limit, teams.size()));
+    }
     public Team updateTeam(Long id, Team updatedTeam) {
         Team existingTeam = teamRepository.findTeamById(id);
         if (existingTeam != null) {

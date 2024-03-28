@@ -65,13 +65,7 @@ public class PlayerWebController {
         //get session id
         userInfoUtil.addUserInfoToModel(model, request);
         //get list of all players
-        List<Player> players = playerService.findAll();
-        //sort players by goals scored
-        players.sort(Comparator.comparingInt(Player::getGoals).reversed());
-
-        if (players.size() > 10) {
-            players = players.subList(0, 10);
-        }
+        List<Player> players = playerService.findTopPlayersByGoals(10);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String playersJson = "";

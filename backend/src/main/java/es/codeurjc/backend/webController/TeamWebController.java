@@ -93,17 +93,11 @@ public class TeamWebController {
         return "teamCreate";
     }
     @GetMapping("/teams/stadistics")
-    public String getTeamsStadistics(Model model,HttpServletRequest request) {
+    public String getTeamsStadistics(Model model, HttpServletRequest request) {
         //get session id
         userInfoUtil.addUserInfoToModel(model, request);
-        //get all teams
-        List<Team> teams = teamService.findAll();
-        //sort teams by wins
-        teams.sort(Comparator.comparingInt(Team::getWins).reversed());
-        //set max number of teams in graphic
-        if (teams.size() > 10) {
-            teams = teams.subList(0, 10);
-        }
+
+        List<Team> teams = teamService.getTopTeamsByWins(10);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String teamsJson = "";
@@ -117,6 +111,7 @@ public class TeamWebController {
         model.addAttribute("pageTitle", "Teams Stadistics");
         return "teamsStadistics";
     }
+
     @PostMapping("/addTeamToTournament/{cup}")
     public String addTeamToTournament(@PathVariable String cup, Model model, //Request for team creation data
                                       @RequestParam String field_1, //Team name

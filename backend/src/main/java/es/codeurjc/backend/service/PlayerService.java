@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -44,6 +45,11 @@ public class PlayerService {
     public List<Player> findPlayerByLastNameSearch(String lastName){return playerRepository.findPlayerByLastNameContainingIgnoreCase(lastName);}
     public List<Player> findPlayerByNationalitySearch(String nationality){return playerRepository.findPlayerByNationalityContainingIgnoreCase(nationality);}
     public List<Player> findPlayerByPositionSearch(String position){return playerRepository.findPlayerByPositionContainingIgnoreCase(position);}
+    public List<Player> findTopPlayersByGoals(int numberOfPlayers) {
+        List<Player> players = findAll();
+        players.sort(Comparator.comparingInt(Player::getGoals).reversed());
+        return players.subList(0, Math.min(numberOfPlayers, players.size()));
+    }
     public Player updatePlayer(Long id, Player updatedPlayer) {
         Player existingPlayer = playerRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Player with id " + id + " not found"));
