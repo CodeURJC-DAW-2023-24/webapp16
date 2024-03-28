@@ -48,7 +48,25 @@ public class ReportRestController {
     }
 
     @PostMapping
-    public ResponseEntity<ReportDTO>getReportId(@RequestBody ReportDTO reportDTO){
+    public ResponseEntity<ReportDTO>newReportId(@RequestBody ReportDTO reportDTO){
         Report report = reportService.convertToEntity(reportDTO);
+        URI location = URI.create("/api/reports"+report.getId());
+        reportService.saveReport(report);
+        return ResponseEntity.created(location).body(reportDTO);
+    }
+
+    @PutMapping
+    public ResponseEntity<ReportDTO>updateReport(@RequestBody ReportDTO reportDTO){
+        Report report = reportService.convertToEntity(reportDTO);
+        URI location = URI.create("/api/reports"+report.getId());
+        reportService.updateReport(report);
+        return ResponseEntity.created(location).body(reportDTO);
+    }
+
+    @DeleteMapping("/{idReport}")
+    public ResponseEntity<List<ReportDTO>> deleteReport(@PathVariable long idReport){
+        reportService.deleteReportById(idReport);
+        URI location = URI.create("/api/reports");
+        return ResponseEntity.ok().location(location).body(this.getAllReports().getBody());
     }
 }
