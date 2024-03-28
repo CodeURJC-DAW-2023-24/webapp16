@@ -763,28 +763,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "tournaments/{id}/image",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:8443/api/tournaments/1/image",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "8443",
-							"path": [
-								"api",
-								"tournaments",
-								"1",
-								"image"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
