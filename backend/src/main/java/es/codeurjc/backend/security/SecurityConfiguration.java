@@ -73,9 +73,9 @@ public class SecurityConfiguration{
                         // API REST
                                 // POSTMAN
                         .requestMatchers("/api/tournaments").hasAnyRole("POSTMAN")
-                        .requestMatchers("/api/tournaments/{id}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/tournaments/{id}", "/api/tournaments/{id}/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/teams", "/api/teams/**").hasAnyRole("POSTMAN")
-                        .requestMatchers("/api/teams/{id}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/teams/{id}", "/api/teams/{id}/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/players", "/api/players/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/matches").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/matches/{id}").hasAnyRole("POSTMAN")

@@ -31,7 +31,7 @@ public class Tournament {
     @Lob
     @JsonIgnore
     private Blob tournamentImageFile ;
-
+    @Column(length = 2048)
     private String tournamentImagePath ;
 
 

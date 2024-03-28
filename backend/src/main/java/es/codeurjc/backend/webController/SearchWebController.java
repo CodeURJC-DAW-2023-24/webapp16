@@ -54,7 +54,7 @@ public class SearchWebController {
                 switch (field) {
                     case "tournament":
                         List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(searchTerm);
-                        for(int i=0;i<tournaments.size();i++){
+                        for (int i=0;i<tournaments.size();i++){
                             tournaments.get(i).setTournamentImagePath(tournaments.get(i).blobToString(tournaments.get(i).getTournamentImageFile(), tournaments.get(i)));
                         }
 

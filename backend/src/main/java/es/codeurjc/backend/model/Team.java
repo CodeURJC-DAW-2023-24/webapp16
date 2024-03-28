@@ -34,7 +34,7 @@ public class Team {
     @Lob
     @JsonIgnore
     private Blob imageFile ;
-
+    @Column(length = 1024)
     private String imagePath ;
     @ManyToOne
     private Tournament tournament;

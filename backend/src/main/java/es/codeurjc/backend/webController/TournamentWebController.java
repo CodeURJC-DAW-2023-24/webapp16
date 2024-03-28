@@ -103,7 +103,7 @@ public class TournamentWebController {
     }
     @GetMapping("/tournamentCreation/{created}")
     public String newTour(Model model, @PathVariable int created) {
-        //Hay que hacer un JS que redirija para no guardar todo el rato los datos en BDD
+
         if(created==0) {
             model.addAttribute("newTourID", tournamentService.countTournaments() + 1);
             model.addAttribute("redirect", "/");
