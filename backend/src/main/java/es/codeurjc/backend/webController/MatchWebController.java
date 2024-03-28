@@ -1,10 +1,10 @@
-package es.codeurjc.backend.controller;
+package es.codeurjc.backend.webController;
 
 import es.codeurjc.backend.model.*;
-import es.codeurjc.backend.repository.ReportRepository;
 import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.ReportService;
+import es.codeurjc.backend.utils.UserInfoUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import es.codeurjc.backend.service.MatchService;
@@ -20,7 +20,7 @@ import java.util.List;
 import static java.lang.Boolean.TRUE;
 
 @Controller
-public class MatchController {
+public class MatchWebController {
     @Autowired
     private MatchService matchService;
 
@@ -35,24 +35,13 @@ public class MatchController {
     private ReportService reportService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserInfoUtil userInfoUtil;
 
     @GetMapping("/tournament/{cup}/{id}")
     public String showMatch(Model model, @PathVariable String cup, @PathVariable  Long id, HttpServletRequest request) throws SQLException {
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name_session = principal.getName();
-            User user = userRepository.findByName(name_session).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
-
-
+        userInfoUtil.addUserInfoToModel(model, request);
 
         //get tournament by cup in path
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
@@ -179,14 +168,6 @@ public class MatchController {
                 for (Matches nextMatch : nextRoundMatches){
                     matchService.saveMatch(nextMatch);
                 }
-//                Matches nextMatch = new Matches();
-//                nextMatch.setTournament(tournament);
-//                nextMatch.setRound(match.getRound() + 1);
-//
-//                nextMatch.setLocalTeam(winner);
-//                nextMatch.setLocalGoals(0);
-//
-//                matchService.saveMatch(nextMatch);
             } else {
                 List<Matches> listNextMatches = matchService.findMatchByRoundAndCup(match.getRound() + 1, tournament);
 
@@ -217,18 +198,7 @@ public class MatchController {
     @GetMapping("/tournament/{cup}/{id}/report")
     public String showMatchReport(Model model, @PathVariable Long id, @PathVariable String cup,HttpServletRequest request) {
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name_session = principal.getName();
-            User user = userRepository.findByName(name_session).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
+        userInfoUtil.addUserInfoToModel(model, request);
 
         //get tournament by cup in path
         Tournament tournament =  tournamentService.findTournamentByCup(cup);
@@ -242,7 +212,7 @@ public class MatchController {
         if (report != null) {
             model.addAttribute("report", report);
             model.addAttribute("match", match);
-        } else{
+        } else {
             model.addAttribute("error", "The report for this match is not available. Please wait for it to be filled in.");
         }
         //add pageTitle to page_banner

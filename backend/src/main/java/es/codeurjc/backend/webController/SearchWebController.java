@@ -1,15 +1,14 @@
-package es.codeurjc.backend.controller;
+package es.codeurjc.backend.webController;
 
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.model.User;
-import es.codeurjc.backend.repository.PlayerRepository;
-import es.codeurjc.backend.repository.TeamRepository;
 import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
+import es.codeurjc.backend.utils.UserInfoUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SearchController {
+public class SearchWebController {
 
     @Autowired
     private TeamService teamService;
@@ -34,23 +33,14 @@ public class SearchController {
     private TournamentService tournamentService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserInfoUtil userInfoUtil;
 
     @GetMapping("/search")
     public String search(@RequestParam(value = "query", required = false) String query, Model model,HttpServletRequest request) throws SQLException {
 
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name_session = principal.getName();
-            User user = userRepository.findByName(name_session).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
+        userInfoUtil.addUserInfoToModel(model, request);
 
         if (query != null && !query.isEmpty()) {
             List<Player> players = new ArrayList<>();

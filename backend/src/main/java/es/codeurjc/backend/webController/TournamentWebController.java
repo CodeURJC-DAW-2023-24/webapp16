@@ -1,4 +1,4 @@
-package es.codeurjc.backend.controller;
+package es.codeurjc.backend.webController;
 
 
 import es.codeurjc.backend.model.*;
@@ -6,6 +6,8 @@ import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
+import es.codeurjc.backend.utils.BlobConverter;
+import es.codeurjc.backend.utils.UserInfoUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import es.codeurjc.backend.service.TournamentService;
@@ -25,7 +27,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Controller
-public class TournamentController {
+public class TournamentWebController {
 
     @Autowired
     private TournamentService tournamentService;
@@ -38,23 +40,17 @@ public class TournamentController {
     TeamService teamService;
     @Autowired
     PlayerService playerService;
+    @Autowired
+    private UserInfoUtil userInfoUtil;
+    @Autowired
+    private BlobConverter blobConverter;
 
 
     @GetMapping("/")
     public String showTournaments(Model model, HttpServletRequest request) throws SQLException {
 
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name = principal.getName();
-            User user = userRepository.findByName(name).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
+        userInfoUtil.addUserInfoToModel(model, request);
 
-        }
         List<Tournament> tournaments = tournamentService.findAllTournaments();
 
          for(int i=0;i<tournaments.size();i++) {
@@ -77,18 +73,7 @@ public class TournamentController {
     public String showBracket(Model model, @PathVariable String cup,HttpServletRequest request){
 
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name = principal.getName();
-            User user = userRepository.findByName(name).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
+        userInfoUtil.addUserInfoToModel(model, request);
 
 
         //get Tournament by cup name on URL
@@ -289,7 +274,7 @@ public class TournamentController {
         }
         if (!photo.isEmpty()) {
             try {
-                Blob blob = this.fileToBlob(photo.getBytes());
+                Blob blob = this.blobConverter.fileToBlob(photo.getBytes());
                 Tournament tournament = tournamentService.findTournamentById(tourId);
                 tournament.setTournamentImageFile(blob);
                 tournamentService.save(tournament);
@@ -299,12 +284,6 @@ public class TournamentController {
         }
         return "redirect:/";
     }
-    private Blob fileToBlob(byte[] fileBytes) throws SQLException {
-        try {
-            return new javax.sql.rowset.serial.SerialBlob(fileBytes);
-        } catch (SQLException e) {
-            throw new SQLException("Error al convertir bytes a Blob", e);
-        }
-    }
+
 
 }

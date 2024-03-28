@@ -1,4 +1,4 @@
-package es.codeurjc.backend.controller;
+package es.codeurjc.backend.webController;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.UserService;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.security.Principal;
 
 @Controller
-public class UserController {
+public class UserWebController {
     @Autowired
     private UserService userService;
     @Autowired
@@ -23,9 +23,6 @@ public class UserController {
 
         return "redirect:/";
     }
-
-    ;
-
 
     @PostMapping("/signUpRequest")
     public String signUpData(@RequestParam String name, @RequestParam String email,@RequestParam String password, @RequestParam String date, Model model){

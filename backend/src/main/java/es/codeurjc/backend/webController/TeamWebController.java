@@ -1,4 +1,4 @@
-package es.codeurjc.backend.controller;
+package es.codeurjc.backend.webController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import es.codeurjc.backend.model.*;
@@ -6,6 +6,8 @@ import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
+import es.codeurjc.backend.utils.BlobConverter;
+import es.codeurjc.backend.utils.UserInfoUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Controller
-public class TeamController {
+public class TeamWebController {
 
     @Autowired
     private TeamService teamService;
@@ -35,22 +37,15 @@ public class TeamController {
     private TournamentService tournamentService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserInfoUtil userInfoUtil;
+    @Autowired
+    private BlobConverter blobConverter;
     @GetMapping("/teams")
     public String showTeams(Model model, HttpServletRequest request) throws SQLException {
 
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name = principal.getName();
-            User user = userRepository.findByName(name).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
+        userInfoUtil.addUserInfoToModel(model, request);
 
         //get list of all teams
         List<Team> teams = teamService.findAll();
@@ -72,18 +67,7 @@ public class TeamController {
 
 
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name_session = principal.getName();
-            User user = userRepository.findByName(name_session).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
+        userInfoUtil.addUserInfoToModel(model, request);
 
         //get team by name in path
         Team team = teamService.findTeamByName(name);
@@ -111,18 +95,7 @@ public class TeamController {
     @GetMapping("/teams/stadistics")
     public String getTeamsStadistics(Model model,HttpServletRequest request) {
         //get session id
-        Principal principal = request.getUserPrincipal();
-        if(principal != null) {
-            String name_session = principal.getName();
-            User user = userRepository.findByName(name_session).orElseThrow();
-            model.addAttribute("username", user.getName());
-            if (request.isUserInRole("ADMIN")){
-                model.addAttribute("admin", request.isUserInRole("ADMIN"));
-                model.addAttribute("user", request.isUserInRole("USER"));
-            }else
-                model.addAttribute("user", request.isUserInRole("USER"));
-
-        }
+        userInfoUtil.addUserInfoToModel(model, request);
         //get all teams
         List<Team> teams = teamService.findAll();
         //sort teams by wins
@@ -213,7 +186,7 @@ public class TeamController {
         Team newTeam = new Team(field_1,field_2,field_3,tournament,0,0,0,null);
         if (!photo.isEmpty()) {
             try {
-                Blob blob = this.fileToBlob(photo.getBytes());
+                Blob blob = this.blobConverter.fileToBlob(photo.getBytes());
                 newTeam.setImageFile(blob);
             } catch (IOException | SQLException e) {
                 e.printStackTrace();
@@ -320,12 +293,5 @@ public class TeamController {
     public String addTeam(@RequestBody List<ImputData> dataList, @PathVariable String tourNumber){
 
     return "redirect:/tournamentCreation";
-    }
-    private Blob fileToBlob(byte[] fileBytes) throws SQLException {
-        try {
-            return new javax.sql.rowset.serial.SerialBlob(fileBytes);
-        } catch (SQLException e) {
-            throw new SQLException("Error al convertir bytes a Blob", e);
-        }
     }
 }

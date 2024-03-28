@@ -33,11 +33,7 @@ public class TeamRestController {
     @GetMapping
     public ResponseEntity<List<Team>> getAllTeams(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
-        Page<Team> teamsPage = teamService.findAllTeams(PageRequest.of(page, pageSize));
-        for (Team currentTeam : teamsPage.getContent()) {
-            currentTeam.setImagePath(currentTeam.blobToString(currentTeam.getImageFile(), currentTeam));
-        }
-        return ResponseEntity.ok(teamsPage.getContent());
+        return ResponseEntity.ok(teamService.findAllTeams(page, pageSize));
     }
     @GetMapping("/{id}")
     public ResponseEntity<TeamDTO> getTeamById(@PathVariable Long id) {

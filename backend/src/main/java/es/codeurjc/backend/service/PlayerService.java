@@ -48,6 +48,11 @@ public class PlayerService {
         Player existingPlayer = playerRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Player with id " + id + " not found"));
 
+        updatePlayerFields(existingPlayer, updatedPlayer);
+
+        return playerRepository.save(existingPlayer);
+    }
+    private void updatePlayerFields(Player existingPlayer, Player updatedPlayer) {
         if (updatedPlayer.getName() != null) {
             existingPlayer.setName(updatedPlayer.getName());
         }
@@ -75,10 +80,7 @@ public class PlayerService {
         if (updatedPlayer.getHeight() != null) {
             existingPlayer.setHeight(updatedPlayer.getHeight());
         }
-
-        return playerRepository.save(existingPlayer);
     }
-
     public void deletePlayerByTeamId(Long teamId){playerRepository.deletePlayerByTeamId(teamId);}
     public void deletePlayerById(Long id){playerRepository.deleteById(id);}
     public PlayerDTO convertToDTO(Player player) {

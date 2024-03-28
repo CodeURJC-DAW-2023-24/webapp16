@@ -8,11 +8,13 @@ import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import es.codeurjc.backend.repository.TeamRepository;
 
 import java.security.SecureRandom;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -24,6 +26,15 @@ public class TeamService {
 
     @Autowired
     private TeamRepository teamRepository;
+
+    public List<Team> findAllTeams(int page, int pageSize) throws SQLException {
+        Page<Team> teamsPage = teamRepository.findAll(PageRequest.of(page, pageSize));
+        for (Team team : teamsPage) {
+            team.setImagePath(team.blobToString(team.getImageFile(), team));
+        }
+        return teamsPage.getContent();
+    }
+
     public Team saveRest(Team team){
         return teamRepository.save(team);
     }
@@ -46,36 +57,39 @@ public class TeamService {
     public Team updateTeam(Long id, Team updatedTeam) {
         Team existingTeam = teamRepository.findTeamById(id);
         if (existingTeam != null) {
-            if (updatedTeam.getName() != null) {
-                existingTeam.setName(updatedTeam.getName());
-            }
-            if (updatedTeam.getCoach() != null) {
-                existingTeam.setCoach(updatedTeam.getCoach());
-            }
-            if (updatedTeam.getStadium() != null) {
-                existingTeam.setStadium(updatedTeam.getStadium());
-            }
-            //
-            if (updatedTeam.getGamesPlayed() != 0) {
-                existingTeam.setGamesPlayed(updatedTeam.getGamesPlayed());
-            }
-            if (updatedTeam.getWins() != 0) {
-                existingTeam.setWins(updatedTeam.getWins());
-            }
-            if (updatedTeam.getLoses() != 0) {
-                existingTeam.setLoses(updatedTeam.getLoses());
-            }
-            if (updatedTeam.getImageFile() != null) {
-                existingTeam.setImageFile(updatedTeam.getImageFile());
-            }
-            if (updatedTeam.getImagePath() != null) {
-                existingTeam.setImagePath(updatedTeam.getImagePath());
-                existingTeam.setImageFile(existingTeam.URLtoBlob(existingTeam.getImagePath()));
-            }
+            updateTeamFields(existingTeam, updatedTeam);
         } else {
             throw new NoSuchElementException("Team with id " + id + " not found");
         }
         return teamRepository.save(existingTeam);
+    }
+    private void updateTeamFields(Team existingTeam, Team updatedTeam) {
+        if (updatedTeam.getName() != null) {
+            existingTeam.setName(updatedTeam.getName());
+        }
+        if (updatedTeam.getCoach() != null) {
+            existingTeam.setCoach(updatedTeam.getCoach());
+        }
+        if (updatedTeam.getStadium() != null) {
+            existingTeam.setStadium(updatedTeam.getStadium());
+        }
+        //
+        if (updatedTeam.getGamesPlayed() != 0) {
+            existingTeam.setGamesPlayed(updatedTeam.getGamesPlayed());
+        }
+        if (updatedTeam.getWins() != 0) {
+            existingTeam.setWins(updatedTeam.getWins());
+        }
+        if (updatedTeam.getLoses() != 0) {
+            existingTeam.setLoses(updatedTeam.getLoses());
+        }
+        if (updatedTeam.getImageFile() != null) {
+            existingTeam.setImageFile(updatedTeam.getImageFile());
+        }
+        if (updatedTeam.getImagePath() != null) {
+            existingTeam.setImagePath(updatedTeam.getImagePath());
+            existingTeam.setImageFile(existingTeam.URLtoBlob(existingTeam.getImagePath()));
+        }
     }
 
     public void deleteTeam(Team team){teamRepository.delete(team);}

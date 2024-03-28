@@ -40,11 +40,13 @@ public class ReportRestController {
     @GetMapping("/{id}")
     public ResponseEntity<ReportDTO>getReportId(@PathVariable Long id){
         Optional<Report> report = reportService.findReportById(id);
-        if (report.isEmpty()){
+        if (report.isPresent()){
+            ReportDTO reportDTO = reportService.convertToDTO(report.get());
+            return ResponseEntity.ok(reportDTO);
+        }
+        else {
             return ResponseEntity.notFound().build();
         }
-        ReportDTO reportDTO = reportService.convertToDTO(report);
-        return ResponseEntity.ok(reportDTO);
     }
 
     @PostMapping
