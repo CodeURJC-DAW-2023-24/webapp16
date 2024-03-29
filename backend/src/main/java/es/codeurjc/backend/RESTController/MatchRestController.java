@@ -40,9 +40,8 @@ public class MatchRestController {
     @PostMapping
     public ResponseEntity<MatchDTO> createMatch(@RequestBody MatchDTO matchDTO) {
         Matches match = matchService.convertToEntity(matchDTO);
-        Matches savedMatch = matchService.saveMatch(match);
-        MatchDTO savedMatchDTO = matchService.convertToDTO(savedMatch);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedMatchDTO);
+        matchService.saveMatch(match);
+        return ResponseEntity.status(HttpStatus.CREATED).body(matchDTO);
     }
 
     @PutMapping("/{id}")
