@@ -1,6 +1,8 @@
 package es.codeurjc.backend.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 @Entity
 public class Player {
@@ -21,6 +23,7 @@ public class Player {
     private String height;
     
     @ManyToOne
+    @JsonBackReference
     private Team team;
     public Player(){}
     public Player( String name, String lastName, String age, int jerseyNumber, String nationality, int goals, String position, String weight, String height, Team team) {

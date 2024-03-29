@@ -41,8 +41,10 @@ public class BlobConverter {
         }
     }
     public String blobToString(Blob imageFile) throws SQLException {
-        byte[] bytes = imageFile.getBytes(1, (int) imageFile.length());
-        String imageString = Base64.getEncoder().encodeToString(bytes);
-        return imageString;
+        if (imageFile!=null) {
+            byte[] bytes = imageFile.getBytes(1, (int) imageFile.length());
+            String imageString = Base64.getEncoder().encodeToString(bytes);
+            return imageString;
+        }else return "";
     }
 }

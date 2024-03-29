@@ -2,6 +2,7 @@ package es.codeurjc.backend.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import es.codeurjc.backend.DTOs.MatchDTO;
 import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.MatchRepository;
@@ -19,10 +20,7 @@ public class MatchService {
     private MatchRepository matchRepository;
 
     private ObjectMapper objectMapper;
-    public MatchService(ObjectMapper objectMapper){
-        this.objectMapper = objectMapper;
-    }
-
+    public MatchService(ObjectMapper objectMapper){this.objectMapper = objectMapper;}
     public List<Matches> findAllMatches(){
         return matchRepository.findAll();
     }
@@ -60,6 +58,7 @@ public class MatchService {
         return matches;
     }
     public MatchDTO convertToDTO(Matches matches) {
+        objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
         return objectMapper.convertValue(matches, MatchDTO.class);
     }
 

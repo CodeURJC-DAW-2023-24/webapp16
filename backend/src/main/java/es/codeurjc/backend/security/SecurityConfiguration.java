@@ -80,7 +80,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/matches").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/matches/{id}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users").hasAnyRole("POSTMAN")
-                        .requestMatchers("/api/users/{name}").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/users/{id}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/newUser").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/{idUser}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/statistics/**").hasAnyRole("POSTMAN")

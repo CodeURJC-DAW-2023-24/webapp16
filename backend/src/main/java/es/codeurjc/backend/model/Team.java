@@ -13,6 +13,7 @@ import java.util.Base64;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import es.codeurjc.backend.utils.BlobConverter;
 import jakarta.persistence.*;
 
@@ -33,12 +34,13 @@ public class Team {
 
     @Lob
     @JsonIgnore
-    private Blob imageFile ;
+    private Blob imageFile;
     @Column(length = 1024)
     private String imagePath ;
     @ManyToOne
     private Tournament tournament;
     @OneToMany(mappedBy = "team")
+    @JsonManagedReference
     private List<Player> listPlayer;
 
     protected Team(){
