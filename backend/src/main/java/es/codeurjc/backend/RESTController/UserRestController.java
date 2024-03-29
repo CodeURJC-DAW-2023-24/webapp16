@@ -21,14 +21,18 @@ public class UserRestController {
         List<UserDTO> userDTOS = userService.findAllUsers().stream()
                 .map(userService::convertToDTO)
                 .collect(Collectors.toList());
+        for (UserDTO userDTO: userDTOS){
+            userDTO.setEncodedPassword("NothingToSeeHere");
+        }
         return ResponseEntity.ok(userDTOS);
     }
-    @GetMapping("/{name}")
-    public ResponseEntity<UserDTO>getUserByName(@PathVariable String name){
-        Optional<User> optionalUser = userService.findUserByName(name);
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO>getUserByID(@PathVariable long id){
+        Optional<User> optionalUser = userService.findUserByID(id);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             UserDTO userDTO = userService.convertToDTO(user);
+            userDTO.setEncodedPassword("NothingToSeeHere");
             return ResponseEntity.ok(userDTO);
         } else {
             return ResponseEntity.notFound().build();
@@ -45,7 +49,7 @@ public class UserRestController {
     public ResponseEntity<UserDTO> modUser(@RequestBody UserDTO userDTO){
         User user = userService.convertToEntity(userDTO);
         URI location = URI.create("/api/users/"+user.getId());
-        userService.modUser(user);
+        userService.modUser(user);//modified by ID
         return ResponseEntity.created(location).body(userDTO);
     }
     @DeleteMapping("/{idUser}")

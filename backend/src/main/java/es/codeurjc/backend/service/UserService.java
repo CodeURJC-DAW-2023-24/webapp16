@@ -52,7 +52,7 @@ public class UserService {
         this.userPasswordsRepository.save(userPasswords);
     }
 
-    public Optional<User> findUserByName(String userName){return userRepository.findByName(userName);}
+    public Optional<User> findUserByID(long id){return userRepository.findById(id);}
     public void saveUser(User user) {
         userRepository.save(user);
     }
