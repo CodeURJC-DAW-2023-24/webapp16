@@ -29,6 +29,7 @@ public class PlayerService {
     public void save(Player player){
         playerRepository.save(player);
     }
+    public List<Player> saveAll(List<Player> players){return playerRepository.saveAll(players);}
     public Player saveRest(Player player){
         return playerRepository.save(player);
     }
