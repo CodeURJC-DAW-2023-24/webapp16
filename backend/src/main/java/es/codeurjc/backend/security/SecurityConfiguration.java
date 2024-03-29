@@ -84,6 +84,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/users/newUser").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/users/{idUser}").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/statistics/**").hasAnyRole("POSTMAN")
+                        .requestMatchers("/api/reports/**").hasAnyRole("POSTMAN")
 
 
 
