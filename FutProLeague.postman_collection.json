@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "cb3d3eab-5634-4536-8ddd-e8ab2cc9eb24",
+		"_postman_id": "39e83e0b-467f-442a-8b02-271cacdf94fa",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33711570"
+		"_exporter_id": "33851283"
 	},
 	"item": [
 		{
@@ -310,6 +310,88 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "search?team={teamName}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Name</th>\r",
+									"        <th>Coach</th>\r",
+									"        <th>Stadium</th>\r",
+									"        <th>Games Played</th>\r",
+									"        <th>Wins</th>\r",
+									"        <th>Loses</th>\r",
+									"        <th>Tournament ID</th>\r",
+									"        <th>Tournament Name</th>\r",
+									"        <th>Tournament Category</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response.teams}}\r",
+									"        <tr>\r",
+									"            <td>{{id}}</td>\r",
+									"            <td>{{name}}</td>\r",
+									"            <td>{{coach}}</td>\r",
+									"            <td>{{stadium}}</td>\r",
+									"            <td>{{gamesPlayed}}</td>\r",
+									"            <td>{{wins}}</td>\r",
+									"            <td>{{loses}}</td>\r",
+									"            <td>{{tournament.id}}</td>\r",
+									"            <td>{{tournament.name}}</td>\r",
+									"            <td>{{tournament.category}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/search?team=real%20madrid",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "team",
+									"value": "real%20madrid"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -457,6 +539,84 @@
 								{
 									"key": "page",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search?player={playerName}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/search?player=Lionel",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "Lionel"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search?position=forward",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/search?position=forward",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "position",
+									"value": "forward"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search?nationality=español",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/search?nationality=español",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "nationality",
+									"value": "español"
 								}
 							]
 						}
@@ -770,6 +930,32 @@
 								"api",
 								"tournaments",
 								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search?tournament={tournamentName}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/search?tournament=champion",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "tournament",
+									"value": "champion"
+								}
 							]
 						}
 					},
