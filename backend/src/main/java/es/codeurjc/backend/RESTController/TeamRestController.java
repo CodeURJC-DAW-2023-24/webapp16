@@ -131,7 +131,9 @@ public class TeamRestController {
             }
 
             teamService.deleteTeamById(id);
-            return ResponseEntity.noContent().build();
+            String msg = "Team with id " + id + " deleted .";
+
+            return ResponseEntity.status(HttpStatus.OK).body(msg);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

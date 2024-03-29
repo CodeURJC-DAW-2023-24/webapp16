@@ -9,6 +9,7 @@ import es.codeurjc.backend.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
@@ -33,10 +34,9 @@ public class PlayerRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PlayerDTO> getPlayerById(@PathVariable Long id) {
-        Optional<Player> optionalPlayer = playerService.findPlayerById(id);
-        if (optionalPlayer.isPresent()) {
-            Player player = optionalPlayer.get();
-            PlayerDTO playerDTO = playerService.convertToDTO(player);
+        Player optionalPlayer = playerService.findPlayerById(id);
+        if (optionalPlayer != null) {
+            PlayerDTO playerDTO = playerService.convertToDTO(optionalPlayer);
             return ResponseEntity.ok(playerDTO);
         } else {
             return ResponseEntity.notFound().build();
@@ -53,7 +53,12 @@ public class PlayerRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlayerDTO> updatePlayer(@PathVariable Long id, @RequestBody PlayerDTO playerDTO) {
+    public ResponseEntity<?> updatePlayer(@PathVariable Long id, @RequestBody PlayerDTO playerDTO) {
+        Player existingPlayer = playerService.findPlayerById(id);
+        if (existingPlayer == null) {
+            return new ResponseEntity<>("Player with ID " + id + " not found", HttpStatus.NOT_FOUND);
+        }
+
         Player player = playerService.convertToEntity(playerDTO);
         player.setId(id);
         Player updatedPlayer = playerService.updatePlayer(id, player);
@@ -62,8 +67,10 @@ public class PlayerRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlayer(@PathVariable Long id) {
+    public ResponseEntity<?> deletePlayer(@PathVariable Long id) {
         playerService.deletePlayerById(id);
-        return ResponseEntity.noContent().build();
+        String msg = "Player with id " + id + " deleted .";
+
+        return ResponseEntity.status(HttpStatus.OK).body(msg);
     }
 }

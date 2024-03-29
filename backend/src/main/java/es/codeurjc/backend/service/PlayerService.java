@@ -36,7 +36,7 @@ public class PlayerService {
     public List<Player> findAll() {
         return playerRepository.findAll();
     }
-    public Optional<Player> findPlayerById(Long id){return playerRepository.findById(id);}
+    public Player findPlayerById(Long id){return playerRepository.findPlayerById(id);}
     public Page<Player> findAllPlayers(PageRequest pageRequest) {
         return playerRepository.findAll(pageRequest);
     }

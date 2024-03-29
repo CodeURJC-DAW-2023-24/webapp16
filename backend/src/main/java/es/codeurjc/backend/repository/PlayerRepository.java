@@ -29,4 +29,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     List<Player> findPlayerByPositionContainingIgnoreCase(String Position);
 
+
+    Player findPlayerById(Long id);
 }

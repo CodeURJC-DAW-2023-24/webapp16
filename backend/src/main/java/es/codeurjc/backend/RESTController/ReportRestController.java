@@ -71,9 +71,13 @@ public class ReportRestController {
     }
 
     @DeleteMapping("/{idReport}")
-    public ResponseEntity<List<ReportDTO>> deleteReport(@PathVariable long idReport){
+    public ResponseEntity<?> deleteReport(@PathVariable long idReport){
         reportService.deleteReportById(idReport);
-        URI location = URI.create("/api/reports");
-        return ResponseEntity.ok().location(location).body(this.getAllReports().getBody());
+/*        URI location = URI.create("/api/reports");
+        return ResponseEntity.ok().location(location).body(this.getAllReports().getBody());*/
+
+        String msg = "Report with id " + idReport + " deleted .";
+
+        return ResponseEntity.status(HttpStatus.OK).body(msg);
     }
 }

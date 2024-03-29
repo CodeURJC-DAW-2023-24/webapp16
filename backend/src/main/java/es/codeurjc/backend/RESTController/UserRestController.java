@@ -4,6 +4,7 @@ import es.codeurjc.backend.DTOs.UserDTO;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.net.URI;
@@ -53,10 +54,13 @@ public class UserRestController {
         return ResponseEntity.created(location).body(userDTO);
     }
     @DeleteMapping("/{idUser}")
-    public ResponseEntity<List<UserDTO>> deleteUser(@PathVariable long idUser){
+    public ResponseEntity<?> deleteUser(@PathVariable long idUser){
         userService.deleteUserByID(idUser);
-        URI location = URI.create("/api/users");
-        return ResponseEntity.ok().location(location).body(this.getAllUsers().getBody());
-        //devuelve lista de usuarios para ver la eliminación
+        //URI location = URI.create("/api/users");
+        String msg = "User with id " + idUser+ " deleted .";
+
+        return ResponseEntity.status(HttpStatus.OK).body(msg);
+       // return ResponseEntity.ok().location(location).body(this.getAllUsers().getBody());
+        //return user list to check delete
     }
 }
