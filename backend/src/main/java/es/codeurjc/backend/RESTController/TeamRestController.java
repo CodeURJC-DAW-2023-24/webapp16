@@ -1,7 +1,9 @@
 package es.codeurjc.backend.RESTController;
 
 import com.fasterxml.jackson.databind.deser.DataFormatReaders;
+import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.DTOs.TeamDTO;
+import es.codeurjc.backend.DTOs.TeamWithPlayersDTO;
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,10 +64,20 @@ public class TeamRestController {
         }
     }
     @PostMapping
-    public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamDTO teamDTO) {
-        Team team = teamService.convertToEntity(teamDTO);
+    public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamWithPlayersDTO teamWithPlayersDTO) {
+        Team team = teamService.convertToEntity(teamWithPlayersDTO.getTeam());
         team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
         Team savedTeam = teamService.saveRest(team);
+
+        List<PlayerDTO> playerDTOS = teamWithPlayersDTO.getPlayers();
+        List<Player> players = new ArrayList<>();
+        for (PlayerDTO playerDTO : playerDTOS) {
+            Player player = playerService.convertToEntity(playerDTO);
+            player.setTeam(savedTeam);
+            players.add(player);
+        }
+        playerService.saveAll(players);
+
         TeamDTO savedTeamDTO = teamService.convertToDTO(savedTeam);
         URI location = URI.create("/api/teams/" + savedTeam.getId());
         return ResponseEntity.created(location).body(savedTeamDTO);
