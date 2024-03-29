@@ -26,7 +26,7 @@ public class PlayerRestController {
 
     @GetMapping
     public ResponseEntity<List<Player>> getAllPlayers(@RequestParam(defaultValue = "0") int page,
-                                                      @RequestParam(defaultValue = "10") int pageSize) {
+                                                      @RequestParam(defaultValue = "4") int pageSize) {
         Page<Player> playersPage = playerService.findAllPlayers(PageRequest.of(page, pageSize));
         return ResponseEntity.ok(playersPage.getContent());
     }

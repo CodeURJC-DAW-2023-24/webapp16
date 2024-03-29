@@ -18,7 +18,7 @@ $(document).ready(function() {
                                         <img class="img-responsive" src="/images/default_avatar_player.png" alt="${player.name}" style="width:100%">
                                         <h4 style="margin-bottom:20px ;margin-top:20px">${player.name} ${player.lastName}</h4>
                                         <p class="title" style="margin-bottom:10px">${player.position}</p>
-                                        <div class="center"><a href="/teams/${player.team.name}/${player.name}"><button class="button">Info</button></a></div>
+                                        <div class="center"><a href="/players/${player.name}/${player.lastName}"><button class="button">Info</button></a></div>
                                     </div>
                                 </div>
                             </div>`;
