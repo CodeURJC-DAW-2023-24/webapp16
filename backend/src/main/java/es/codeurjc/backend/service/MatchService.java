@@ -3,14 +3,12 @@ package es.codeurjc.backend.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import es.codeurjc.backend.DTOs.MatchDTO;
-import es.codeurjc.backend.model.Matches;
-import es.codeurjc.backend.model.Player;
-import es.codeurjc.backend.model.Report;
-import es.codeurjc.backend.model.Tournament;
+import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -45,6 +43,20 @@ public class MatchService {
     }
     public List<Matches> findMatchesByTeamId(Long id) { List<Matches> matches = matchRepository.findByLocalTeamId(id);
         matches.addAll(matchRepository.findByVisitingTeamId(id));
+        return matches;
+    }
+    public List<Matches> generateMatches(List<Team> teams, Tournament tournament) {
+        List<Matches> matches = new ArrayList<>();
+
+        for (int i = 0; i < teams.size() - 1; i += 2) {
+            Team homeTeam = teams.get(i);
+            Team awayTeam = teams.get(i + 1);
+
+            Matches match = new Matches(homeTeam, awayTeam, tournament, 0, 0, 1);
+            matches.add(match);
+
+        }
+
         return matches;
     }
     public MatchDTO convertToDTO(Matches matches) {
@@ -87,4 +99,7 @@ public class MatchService {
     }
 
 
+    public List<Matches> saveAll(List<Matches> matches){
+        return matchRepository.saveAll(matches);
+    }
 }

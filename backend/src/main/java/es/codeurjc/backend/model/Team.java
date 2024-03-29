@@ -38,11 +38,17 @@ public class Team {
     private String imagePath ;
     @ManyToOne
     private Tournament tournament;
-    //, cascade = CascadeType.ALL, orphanRemoval = true
     @OneToMany(mappedBy = "team")
     private List<Player> listPlayer;
 
     protected Team(){
+    }
+    public List<Player> getListPlayer() {
+        return listPlayer;
+    }
+
+    public void setListPlayer(List<Player> listPlayer) {
+        this.listPlayer = listPlayer;
     }
 
     public Team(String name, String coach, String stadium, Tournament tournament, int gamesPlayed, int wins, int loses, String imagePath) {
@@ -121,6 +127,14 @@ public class Team {
 
     public void setLoses(int loses) {
         this.loses = loses;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public String getImageAsString() throws SQLException {

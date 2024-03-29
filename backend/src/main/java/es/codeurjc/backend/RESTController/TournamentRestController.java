@@ -1,9 +1,13 @@
 package es.codeurjc.backend.RESTController;
 
+import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.DTOs.TournamentDTO;
+import es.codeurjc.backend.DTOs.TournamentWithTeamsDTO;
 import es.codeurjc.backend.model.Matches;
+import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
+import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
 import es.codeurjc.backend.utils.BlobConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +35,9 @@ public class TournamentRestController {
     private MatchService matchService;
     @Autowired
     private BlobConverter blobConverter;
+    @Autowired
+    private TeamService teamService;
+
     @GetMapping
     public ResponseEntity<List<TournamentDTO>>getAllTournaments(){
         List<TournamentDTO> tournamentDTOS = tournamentService.findAllTournaments().stream()
@@ -59,10 +67,24 @@ public class TournamentRestController {
     }
 
     @PostMapping
-    public ResponseEntity<TournamentDTO>getTournamentId(@RequestBody TournamentDTO tournamentDTO){
-        Tournament tournament = tournamentService.convertToEntity(tournamentDTO);
+    public ResponseEntity<TournamentDTO>getTournamentId(@RequestBody TournamentWithTeamsDTO tournamentWithTeamsDTO){
+        Tournament tournament = tournamentService.convertToEntity(tournamentWithTeamsDTO.getTournament());
         tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
         Tournament savedTournament = tournamentService.saveRest(tournament);
+
+        List<TeamDTO> teamDTOs = tournamentWithTeamsDTO.getTeams();
+        List<Team> teams = new ArrayList<>();
+        for (TeamDTO teamDTO : teamDTOs) {
+            Team team = teamService.convertToEntity(teamDTO);
+            team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
+            team.setTournament(savedTournament);
+            teams.add(team);
+        }
+        teamService.saveAllRest(teams);
+
+        List<Matches> matches = matchService.generateMatches(teams, savedTournament);
+        matchService.saveAll(matches);
+
         TournamentDTO savedTournamentDTO = tournamentService.convertToDTO(savedTournament);
         URI location = URI.create("/api/tournaments/" + savedTournament.getId());
         return ResponseEntity.created(location).body(savedTournamentDTO);

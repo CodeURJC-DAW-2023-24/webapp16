@@ -23,14 +23,10 @@ import static java.lang.Boolean.TRUE;
 public class MatchWebController {
     @Autowired
     private MatchService matchService;
-
     @Autowired
     private TournamentService tournamentService;
-
-
     @Autowired
     private PlayerService playerService;
-
     @Autowired
     private ReportService reportService;
     @Autowired

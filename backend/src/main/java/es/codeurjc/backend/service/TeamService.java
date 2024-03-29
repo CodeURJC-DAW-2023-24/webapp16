@@ -44,6 +44,9 @@ public class TeamService {
     public void save(Team team){
         teamRepository.save(team);
     }
+    public List<Team> saveAllRest(List<Team> teams){
+        return teamRepository.saveAll(teams);
+    }
     public Team findTeamById(Long id){return teamRepository.findTeamById(id);}
     public List<Team> findAll() {
         return teamRepository.findAllTeams();
