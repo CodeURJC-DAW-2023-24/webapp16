@@ -57,12 +57,17 @@ public class ReportRestController {
         return ResponseEntity.created(location).body(reportDTO);
     }
 
-    @PutMapping
-    public ResponseEntity<ReportDTO>updateReport(@RequestBody ReportDTO reportDTO){
+    @PutMapping("/{idReport}")
+    public ResponseEntity<ReportDTO>updateReport(@RequestBody ReportDTO reportDTO, @PathVariable long idReport){
+        Optional<Report> existingReport = reportService.findReportById(idReport);
+        if (existingReport.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Report report = reportService.convertToEntity(reportDTO);
-        URI location = URI.create("/api/reports"+report.getId());
-        reportService.updateReport(report);
-        return ResponseEntity.created(location).body(reportDTO);
+        report.setId(idReport);
+        Report updateReport = reportService.updateReport(report);
+        ReportDTO updateReportDTO = reportService.convertToDTO(updateReport);
+        return ResponseEntity.ok(updateReportDTO);
     }
 
     @DeleteMapping("/{idReport}")

@@ -43,7 +43,7 @@ public class ReportService {
         reportNew.setObservations(observations);
         reportNew.setMatch(match);
     }
-    public void updateReport(Report report){
+    public Report updateReport(Report report){
         Report DBreport = reportRepository.getReferenceById(report.getId());
         if (report.getDate() != null){
             DBreport.setDate(report.getDate());
@@ -60,7 +60,7 @@ public class ReportService {
         }if (report.getMatch() != null){
             DBreport.setMatch(report.getMatch());
         }
-        reportRepository.save(DBreport);
+        return reportRepository.save(DBreport);
     }
 
     public ReportDTO convertToDTO(Report report) {
