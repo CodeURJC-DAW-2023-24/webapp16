@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,9 @@ public class MatchRestController {
     public ResponseEntity<MatchDTO> createMatch(@RequestBody MatchDTO matchDTO) {
         Matches match = matchService.convertToEntity(matchDTO);
         matchService.saveMatch(match);
-        return ResponseEntity.status(HttpStatus.CREATED).body(matchDTO);
+        URI location = URI.create("/api/matches/" + match.getId());
+        return ResponseEntity.created(location).body(matchDTO);
+
     }
 
     @PutMapping("/{id}")

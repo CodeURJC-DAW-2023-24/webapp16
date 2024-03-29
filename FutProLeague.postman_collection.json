@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "55fb4d24-39a0-44ab-97d4-1086e0cf5187",
+		"_postman_id": "cb3d3eab-5634-4536-8ddd-e8ab2cc9eb24",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33851341"
+		"_exporter_id": "33711570"
 	},
 	"item": [
 		{
@@ -773,7 +773,10 @@
 					"name": "/users",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -781,7 +784,10 @@
 					"name": "/users/{id}",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
