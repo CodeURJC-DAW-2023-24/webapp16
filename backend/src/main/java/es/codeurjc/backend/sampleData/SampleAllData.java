@@ -135,7 +135,7 @@ public class SampleAllData {
             players.save(new Player("Virgil", "van Dijk", "30", 4, "Holandés", 1, "defender", "92 kg", "1.93",levante));
             players.save(new Player("Kevin", "De Bruyne", "30", 17, "Belga", 6, "midfielder", "70 kg", "1.81",levante));
             players.save(new Player("Luka", "Modric", "36", 10, "Croata", 2, "midfielder", "66 kg", "1.72",levante));
-            players.save(new Player("N'Golo", "Kanté", "31", 7, "Francés", 3, "midfielder", "70 kg", "1.68",levante));
+            players.save(new Player("NGolo", "Kanté", "31", 7, "Francés", 3, "midfielder", "70 kg", "1.68",levante));
             players.save(new Player("Eden", "Hazard", "31", 7, "Belga", 14, "forward", "74 kg", "1.75",levante));
             players.save(new Player("Mohamed", "Salah", "29", 11, "Egipcio", 2, "forward", "71 kg", "1.75",levante));
 
