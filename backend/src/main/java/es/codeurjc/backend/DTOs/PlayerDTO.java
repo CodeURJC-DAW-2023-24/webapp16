@@ -1,10 +1,13 @@
 package es.codeurjc.backend.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import es.codeurjc.backend.model.Team;
+
 public class PlayerDTO {
     private Long id;
     private String name;
     private String lastName;
-    private String teamName;
+    //private String teamName;
     private String age;
     private int jerseyNumber;
     private String nationality;
@@ -13,9 +16,12 @@ public class PlayerDTO {
     private String weight;
     private String height;
 
+    @JsonBackReference
+    private Team team;
+
     // Constructor
     public PlayerDTO(Long id, String name, String lastName, String age, int jerseyNumber,
-                     String nationality, int goals, String position, String weight, String height) {
+                     String nationality, int goals, String position, String weight, String height, Team team) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -26,6 +32,7 @@ public class PlayerDTO {
         this.position = position;
         this.weight = weight;
         this.height = height;
+        this.team = team;
     }
 
     public Long getId() {
@@ -52,13 +59,15 @@ public class PlayerDTO {
         this.lastName = lastName;
     }
 
-    public String getTeamName() {
+/*
+   // public String getTeamName() {
         return teamName;
     }
 
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
+*/
 
     public String getAge() {
         return age;
@@ -114,6 +123,14 @@ public class PlayerDTO {
 
     public void setHeight(String height) {
         this.height = height;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
 

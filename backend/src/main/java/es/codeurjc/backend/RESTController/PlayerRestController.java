@@ -46,10 +46,13 @@ public class PlayerRestController {
     @PostMapping
     public ResponseEntity<PlayerDTO> createPlayer(@RequestBody PlayerDTO playerDTO) {
         Player player = playerService.convertToEntity(playerDTO);
-        Player savedPlayer = playerService.saveRest(player);
-        PlayerDTO savedPlayerDTO = playerService.convertToDTO(savedPlayer);
-        URI location = URI.create("/api/players/" + savedPlayer.getId());
-        return ResponseEntity.created(location).body(savedPlayerDTO);
+        playerService.save(player);
+       // Player savedPlayer = playerService.saveRest(player);
+      //  PlayerDTO savedPlayerDTO = playerService.convertToDTO(savedPlayer);
+       // URI location = URI.create("/api/players/" + savedPlayer.getId());
+       // return ResponseEntity.created(location).body(savedPlayerDTO);
+        URI location = URI.create("/api/players/" + player.getId());
+        return ResponseEntity.created(location).body(playerDTO);
     }
 
     @PutMapping("/{id}")
