@@ -165,6 +165,7 @@ public class ReportWebController {
             model.addAttribute("match", match);
         } else {
             model.addAttribute("errorMessage", "The report for this match is not available. Please wait for it to be filled in.");
+            return "/errorTemplate";
         }
         //add pageTitle to page_banner
         model.addAttribute("pageTitle", "Report");
