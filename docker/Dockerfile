@@ -19,7 +19,7 @@ FROM openjdk:17.0.2 AS runtime
 WORKDIR /futProLeague
 
 # Copia el JAR del contenedor de compilación
-COPY --from=builder /futProLeague/target/backend-0.0.1-SNAPSHOT.jar .
+COPY --from=builder /futProLeague/target/*.jar .
 
 # Indica el puerto que expone el contenedor
 EXPOSE 8443

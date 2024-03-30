@@ -1,18 +1,19 @@
-version: '3.1'
+version: "3.9"
 services:
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: webapp16
-      MYSQL_DATABASE: futProLeague
   web:
-    image: nicohht/webapp16
+    image: aadrisoriiano03/webapp16:latest
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
     ports:
       - 8443:8443
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/futProLeague
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: webbapp16
-    depends_on:
-      - db
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/futProLeague
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=webapp16
+  db:
+    image: mysql:8.0.36
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=webapp16
+      - MYSQL_DATABASE=futProLeague
