@@ -69,6 +69,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/error/**").permitAll()
                         .requestMatchers("/errorTemplate").permitAll()
                         .requestMatchers("/EntityNotFound").permitAll()
+                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui/index.html").permitAll()
 
                         // API REST
                                 // POSTMAN

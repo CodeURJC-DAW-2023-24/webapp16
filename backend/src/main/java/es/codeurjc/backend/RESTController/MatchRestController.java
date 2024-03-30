@@ -5,6 +5,11 @@ import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +32,14 @@ public class MatchRestController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(matchDTOS);
     }
+
+    @Operation(summary = "Get a match by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the match", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Matches.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Match not found", content = @Content)
+    })
 
     @GetMapping("/{id}")
     public ResponseEntity<MatchDTO> getMatchById(@PathVariable Long id) {
