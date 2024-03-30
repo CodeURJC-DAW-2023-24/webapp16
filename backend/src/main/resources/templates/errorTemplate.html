@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginerror.css" type="text/css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
-    <title>Error {{errorCode}} - {{errorMessage}}</title>
+    <title>Error - {{errorMessage}}</title>
 </head>
 <body>
 <header>
@@ -16,7 +16,12 @@
 </header>
 <section class="section">
     <div class="login-container">
+        {{#errorCode}}
         <h2>Error {{errorCode}}</h2>
+        {{/errorCode}}
+        {{^errorCode}}
+        <h2>Error</h2>
+        {{/errorCode}}
         <p>{{errorMessage}}</p>
         <a href="/" class="retry-button">Go back</a>
     </div>

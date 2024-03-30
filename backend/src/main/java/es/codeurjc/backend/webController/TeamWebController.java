@@ -20,10 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.IOException;
-import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -92,25 +90,7 @@ public class TeamWebController {
         model.addAttribute("cup",cup);
         return "teamCreate";
     }
-    @GetMapping("/teams/stadistics")
-    public String getTeamsStadistics(Model model, HttpServletRequest request) {
-        //get session id
-        userInfoUtil.addUserInfoToModel(model, request);
 
-        List<Team> teams = teamService.getTopTeamsByWins(10);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String teamsJson = "";
-        try {
-            teamsJson = objectMapper.writeValueAsString(teams);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        model.addAttribute("teamsJson", teamsJson);
-        model.addAttribute("pageTitle", "Teams Stadistics");
-        return "teamsStadistics";
-    }
 
     @PostMapping("/addTeamToTournament/{cup}")
     public String addTeamToTournament(@PathVariable String cup, Model model, //Request for team creation data

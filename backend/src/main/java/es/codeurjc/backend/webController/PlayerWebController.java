@@ -60,24 +60,6 @@ public class PlayerWebController {
 
         return "playerInfo";
     }
-    @GetMapping("/players/stadistics")
-    public String getPlayersStadistics(Model model,HttpServletRequest request){
-        //get session id
-        userInfoUtil.addUserInfoToModel(model, request);
-        //get list of all players
-        List<Player> players = playerService.findTopPlayersByGoals(10);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String playersJson = "";
-        try {
-            playersJson = objectMapper.writeValueAsString(players);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        model.addAttribute("playersJson", playersJson);
-        model.addAttribute("pageTitle", "Players Stadistics");
-        return "playersStadistics";
-    }
 
 }
