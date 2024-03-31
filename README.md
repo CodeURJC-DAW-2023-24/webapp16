@@ -699,7 +699,7 @@ ___
 
 
 
-## Instructions for Running the Dockerized Application
+# Instructions for Running the Dockerized Application
 
 To run the application using the docker-compose.yml file, follow these instructions:
 
@@ -732,7 +732,30 @@ Once the application is ready to be used, you can access it through a web browse
    ```
 
 ---
+# Documentation for Building the Docker Image
 
+To build the dockerized image of the application, follow these instructions:
+
+### Requirements:
+- Docker installed on the host machine
+
+### Steps:
+1. Clone the repository of the application using Git: 
+
+   ```bash
+    git clone https://github.com/CodeURJC-DAW-2023-24/webapp16
+   ```
+2. Navigate to the docker directory of the application.
+3. Open a terminal or command prompt.
+4. Execute the following command to build docker image and push it to your repository to publish the image:
+
+  ```bash
+    ./create_image.ps1 
+   ```
+  :grey_exclamation: You will have to modify the username to your docker username to run it. This script will publish the docker image.
+5. Wait for the docker image to be built.
+
+---
 
 # Deployment on Virtual Machine 
 ## Requirements
