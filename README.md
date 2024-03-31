@@ -688,3 +688,59 @@ Next, a diagram will be included depicting the entities within the database, the
 | 3º  |  [Update Mustache Controller](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/22249564fc6f3fc2debc2acc0c680f9274c85206)  | | 3º |                     [notFound.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/notFound.html)                     |
 | 4º  | [Create Error Pages Templates](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/925e9a1510596fc1df70f8af182567d9068b74ff) | | 4º |             [tournamentCreate.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/tournamentCreate.html)             |
 | 5º  |      [Navegation Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/925e9a1510596fc1df70f8af182567d9068b74ff)      | | 5º |      [teamCreate.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/teamCreate.html)      |
+
+
+
+___
+# Phase 3
+___
+
+# Deployment on Virtual Machine 
+## Requirements
+* Operating system: Ubuntu 22.04 
+* Provided Private Key : 'prAppWeb16.key'
+* Active internet connection to Eduroam 
+
+## Steps 
+
+1. **Ssh connection**
+
+   Connect to the virtual machine using SSH with the provided private key.
+
+``` bash 
+ssh -i prAppWeb16.key vmuser@10.100.139.173
+``` 
+2. **Docker and Docker Compose Installation**
+
+   Install Docker and Docker Compose on the virtual machine following the official instructions:
+
+  - Docker: [Installation instructions for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - Docker Compose: [Installation instructions](https://docs.docker.com/compose/install/)
+
+3. **Repository Cloning**
+
+   Clone the application repository using Git. Replace `URL-REPOSITORIO` with your repository URL.
+
+   ```bash
+   git clone https://github.com/CodeURJC-DAW-2023-24/webapp16
+   ```
+
+4. **Application Execution**
+
+   Run the application using the `docker-compose.yml` file. Add the `-d` option to run in the background.
+
+   ```bash
+   sudo docker-compose up -d
+   ```
+
+5. **Accessing the Application**
+
+   Once the application is running, you can access it from a web browser using the virtual machine's IP address and port 8443.
+
+   ```plaintext
+   https://10.100.139.173:8443
+   ```
+
+---
+
+These steps will guide you through the process of deploying the application on the provided vi
