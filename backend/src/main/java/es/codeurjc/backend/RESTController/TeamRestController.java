@@ -43,6 +43,19 @@ public class TeamRestController {
     @Autowired
     private BlobConverter blobConverter;
 
+
+    @GetMapping
+    @Operation(summary = "Get all teams")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found teams", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
+    public ResponseEntity<List<Team>> getAllTeams(@RequestParam(defaultValue = "0") int page,
+                                                  @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
+        return ResponseEntity.ok(teamService.findAllTeams(page, pageSize));
+    }
+    @GetMapping("/{id}")
     @Operation(summary = "Get a team by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the team", content = {
@@ -50,13 +63,6 @@ public class TeamRestController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
     })
-
-    @GetMapping
-    public ResponseEntity<List<Team>> getAllTeams(@RequestParam(defaultValue = "0") int page,
-                                                  @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
-        return ResponseEntity.ok(teamService.findAllTeams(page, pageSize));
-    }
-    @GetMapping("/{id}")
     public ResponseEntity<TeamDTO> getTeamById(@PathVariable Long id) {
         Team existingTeam = teamService.findTeamById(id);
         if (existingTeam != null) {
@@ -67,6 +73,13 @@ public class TeamRestController {
         }
     }
     @GetMapping("/{id}/image")
+    @Operation(summary = "Get a team image")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the image", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Image not found", content = @Content)
+    })
     public ResponseEntity<String>getTeamImage(@PathVariable Long id){
         try {
             Team team = teamService.findTeamById(id);
@@ -78,6 +91,12 @@ public class TeamRestController {
         }
     }
     @PostMapping
+    @Operation(summary = "Create a Team")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created Team", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<TeamDTO> createTeam(@RequestBody TeamWithPlayersDTO teamWithPlayersDTO) {
         Team team = teamService.convertToEntity(teamWithPlayersDTO.getTeam());
         team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
@@ -98,6 +117,13 @@ public class TeamRestController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a team by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the team", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
+    })
     public ResponseEntity<TeamDTO> updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
         Team existingTeam = teamService.findTeamById(id);
         if (existingTeam == null) {
@@ -111,6 +137,13 @@ public class TeamRestController {
         return ResponseEntity.ok(updatedTeamDTO);
     }
     @PutMapping("/{id}/image")
+    @Operation(summary = "Update a team image")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the image", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
+    })
     public ResponseEntity<String> updateTeamImage(@PathVariable Long id, @RequestBody String imageUrl) {
         Team existingTeam = teamService.findTeamById(id);
         if (existingTeam == null) {
@@ -129,6 +162,14 @@ public class TeamRestController {
         return ResponseEntity.ok("URL of successfully updated image for the team with ID: " + id);
     }
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a team by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Deleted the team", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Operation not permitted", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
+    })
     public ResponseEntity<?> deleteTeam(@PathVariable Long id) {
         try {
             List<Player> players = playerService.findPlayersTeamById(id);
