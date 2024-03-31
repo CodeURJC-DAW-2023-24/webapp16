@@ -1,4 +1,4 @@
-package es.codeurjc.backend.service;
+package es.codeurjc.backend.security;
 
 
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.List;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@DependsOn("userRepository")
 public class RepositoryUserDetailsService implements UserDetailsService {
 
     @Autowired
