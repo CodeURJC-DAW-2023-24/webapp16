@@ -31,15 +31,14 @@ public class PlayerRestController {
     @Autowired
     private PlayerService playerService;
 
-    @Operation(summary = "Get a player by its id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the player", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
-    })
 
     @GetMapping
+    @Operation(summary = "Get all players")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found players", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<List<Player>> getAllPlayers(@RequestParam(defaultValue = "0") int page,
                                                       @RequestParam(defaultValue = "4") int pageSize) {
         Page<Player> playersPage = playerService.findAllPlayers(PageRequest.of(page, pageSize));
@@ -47,6 +46,13 @@ public class PlayerRestController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a player by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the player", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
+    })
     public ResponseEntity<PlayerDTO> getPlayerById(@PathVariable Long id) {
         Player optionalPlayer = playerService.findPlayerById(id);
         if (optionalPlayer != null) {
@@ -58,6 +64,12 @@ public class PlayerRestController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a Player")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created Player", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<PlayerDTO> createPlayer(@RequestBody PlayerDTO playerDTO) {
         Player player = playerService.convertToEntity(playerDTO);
         playerService.save(player);
@@ -70,6 +82,13 @@ public class PlayerRestController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a player by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the player", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
+    })
     public ResponseEntity<?> updatePlayer(@PathVariable Long id, @RequestBody PlayerDTO playerDTO) {
         Player existingPlayer = playerService.findPlayerById(id);
         if (existingPlayer == null) {
@@ -84,6 +103,14 @@ public class PlayerRestController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a player by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Deleted the player", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Operation not permitted", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
+    })
     public ResponseEntity<?> deletePlayer(@PathVariable Long id) {
         playerService.deletePlayerById(id);
         String msg = "Player with id " + id + " deleted .";
