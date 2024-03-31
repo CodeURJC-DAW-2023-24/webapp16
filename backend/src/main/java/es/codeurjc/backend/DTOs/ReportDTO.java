@@ -35,6 +35,8 @@ public class ReportDTO {
     public void setDate(String date) {this.date = date;}
     public String getTime() {return time;}
     public void setTime(String time) {this.time = time;}
+    public String getMatchOfficials() {return matchOfficials;}
+    public void setMatchOfficials(String matchOfficials) {this.matchOfficials = matchOfficials;}
     public int getLocalTeamGoals() {return localTeamGoals;}
     public void setLocalTeamGoals(int localTeamGoals) {this.localTeamGoals = localTeamGoals;}
     public int getVisitingTeamGoals() {return visitingTeamGoals;}
