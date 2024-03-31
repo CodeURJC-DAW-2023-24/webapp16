@@ -70,8 +70,10 @@ public class SecurityConfiguration{
                         .requestMatchers("/errorTemplate").permitAll()
                         .requestMatchers("/EntityNotFound").permitAll()
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui/index.html").permitAll()
+                        .requestMatchers("/api/**").permitAll()
 
-                        // API REST
+
+                                // API REST
                                 // POSTMAN
                         .requestMatchers("/api/tournaments").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/tournaments/{id}", "/api/tournaments/{id}/**").hasAnyRole("POSTMAN")
