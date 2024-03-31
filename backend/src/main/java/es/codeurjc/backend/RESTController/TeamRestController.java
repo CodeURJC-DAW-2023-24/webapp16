@@ -12,6 +12,11 @@ import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.utils.BlobConverter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,6 +42,15 @@ public class TeamRestController {
     private MatchService matchService;
     @Autowired
     private BlobConverter blobConverter;
+
+    @Operation(summary = "Get a team by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the team", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Team.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
+    })
+
     @GetMapping
     public ResponseEntity<List<Team>> getAllTeams(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam(defaultValue = "4") int pageSize) throws SQLException {

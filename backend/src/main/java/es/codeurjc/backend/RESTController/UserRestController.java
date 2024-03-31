@@ -1,8 +1,14 @@
 package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.UserDTO;
+import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +23,14 @@ import java.util.stream.Collectors;
 public class UserRestController {
     @Autowired
     private UserService userService;
+
+    @Operation(summary = "Get a user by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+    })
     @GetMapping
     public ResponseEntity<List<UserDTO>>getAllUsers(){
         List<UserDTO> userDTOS = userService.findAllUsers().stream()

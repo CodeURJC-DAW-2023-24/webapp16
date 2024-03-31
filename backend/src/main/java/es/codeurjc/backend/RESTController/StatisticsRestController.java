@@ -2,11 +2,18 @@ package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.DTOs.TeamDTO;
+import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +33,14 @@ public class StatisticsRestController {
 
     @Autowired
     private PlayerService playerService;
+
+    @Operation(summary = "Get a statistic by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the statistic", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Statistics.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Statistic not found", content = @Content)
+    })
 
     @GetMapping("/teams")
     public ResponseEntity<List<TeamDTO>> getTeamsStatistics() {

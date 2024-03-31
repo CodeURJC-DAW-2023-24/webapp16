@@ -2,8 +2,14 @@ package es.codeurjc.backend.RESTController;
 
 import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import es.codeurjc.backend.DTOs.ReportDTO;
+import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Report;
 import es.codeurjc.backend.service.ReportService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +25,14 @@ import java.util.stream.Collectors;
 public class ReportRestController {
     @Autowired
     private ReportService reportService;
+    @Operation(summary = "Get a report by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the report", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Report not found", content = @Content)
+    })
+
     @GetMapping
     public ResponseEntity<List<ReportDTO>>getAllReports(){
         List<ReportDTO> reportDTOS = reportService.findAllReports().stream()

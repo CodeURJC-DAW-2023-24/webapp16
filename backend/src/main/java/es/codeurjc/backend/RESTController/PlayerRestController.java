@@ -2,10 +2,16 @@ package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.DTOs.TeamDTO;
+import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +30,14 @@ import java.util.Optional;
 public class PlayerRestController {
     @Autowired
     private PlayerService playerService;
+
+    @Operation(summary = "Get a player by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the player", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Player.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
+    })
 
     @GetMapping
     public ResponseEntity<List<Player>> getAllPlayers(@RequestParam(defaultValue = "0") int page,

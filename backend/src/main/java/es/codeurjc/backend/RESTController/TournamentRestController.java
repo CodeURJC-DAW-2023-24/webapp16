@@ -10,6 +10,11 @@ import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
 import es.codeurjc.backend.utils.BlobConverter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -37,6 +42,14 @@ public class TournamentRestController {
     private BlobConverter blobConverter;
     @Autowired
     private TeamService teamService;
+
+    @Operation(summary = "Get a tournament by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the tournament", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
+    })
 
     @GetMapping
     public ResponseEntity<List<TournamentDTO>>getAllTournaments(){
