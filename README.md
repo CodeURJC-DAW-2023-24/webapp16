@@ -707,9 +707,9 @@ ___
 
    Connect to the virtual machine using SSH with the provided private key.
 
-``` bash 
-ssh -i prAppWeb16.key vmuser@10.100.139.173
-``` 
+    ``` bash 
+    ssh -i prAppWeb16.key vmuser@10.100.139.173
+    ``` 
 2. **Docker and Docker Compose Installation**
 
    Install Docker and Docker Compose on the virtual machine following the official instructions:
@@ -719,7 +719,7 @@ ssh -i prAppWeb16.key vmuser@10.100.139.173
 
 3. **Repository Cloning**
 
-   Clone the application repository using Git. Replace `URL-REPOSITORIO` with your repository URL.
+   Clone the application repository using Git.
 
    ```bash
    git clone https://github.com/CodeURJC-DAW-2023-24/webapp16
