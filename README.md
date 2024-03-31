@@ -695,6 +695,45 @@ ___
 # Phase 3
 ___
 
+
+
+
+
+## Instructions for Running the Dockerized Application
+
+To run the application using the docker-compose.yml file, follow these instructions:
+
+### Requirements:
+- Docker installed on the host machine
+- Docker Compose installed on the host machine
+
+### Steps:
+1. Clone the repository of the application using Git: 
+   ```bash
+    git clone https://github.com/CodeURJC-DAW-2023-24/webapp16
+   ```
+2. Navigate to the directory where the docker-compose.yml file is located.
+3. Open a terminal or command prompt.
+4. Run the following command to start the application:
+
+   ```bash
+    docker-compose up 
+   ```
+    This command will start the application.
+
+
+5. Wait for the application to be fully deployed.
+
+### Accessing the Application:
+Once the application is ready to be used, you can access it through a web browser using the following URL:
+
+  ```plaintext
+   http://localhost:8443
+   ```
+
+---
+
+
 # Deployment on Virtual Machine 
 ## Requirements
 * Operating system: Ubuntu 22.04 
@@ -730,6 +769,7 @@ ___
    Run the application using the `docker-compose.yml` file. Add the `-d` option to run in the background.
 
    ```bash
+   cd webapp16/docker
    sudo docker-compose up -d
    ```
 
@@ -741,6 +781,111 @@ ___
    https://10.100.139.173:8443
    ```
 
+
+These steps will guide you through the process of deploying the application on the provided virtual machine. Make sure to follow each step carefully to ensure a successful deployment.
+
+
 ---
 
-These steps will guide you through the process of deploying the application on the provided vi
+# Deployed application URL
+  The application can be accessed at the following URL:
+   ```plaintext
+   https://10.100.139.173:8443
+   ```
+## User Examples 
+Below are the credentials for example users, including an administrator user, to test the application:
+
+
+| User Type    | :construction_worker: Username | :lock: Password |
+|--------------|--------------------------------|-----------------|
+| Administrator| admin                          | adminpass       |
+| Regular User | user                           | pass            |
+
+
+---
+# :raised_hand: Participation
+
+---
+
+#### Ahmad Abdel Raziq Al Otaibi
+
+*  I have created different screens with mustache.
+*  I have helped to make the different pages more dynamic.
+*  I've been in charge of all the AJAX page layout.
+
+
+| #   |                                                              Commit                                                               |     | #   |                                                                                                File                                                                                                |
+| :-: |:---------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |  [Add: Show player whit AJAX](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/e2feaba0f41753ab1351a5596fb11bded63a745b)   | | 1º |   [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java)    |
+| 2º  |   [Add: Show teams whit AJAX](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/a31df930fc246c4a22125624924b0417c8b05ed6)   | |2º | [PlayerController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/PlayerController.java) |
+| 3º  |        [Add: Pagination](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f5ccfcf9f9d2d5225658111e143ae8ec8f6529f)        | | 3º | [SearchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java) |
+| 4º  | [Add: Templates with Mustaches](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/d6a39cc16a2119168f7401610f65090913a826ad) | | 4º |             [playersScripts.js](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/playersScript.js)              |
+| 5º  |     [Fix: Fixing templates](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f5ccfcf9f9d2d5225658111e143ae8ec8f6529f)     | | 5º |                          [scripts.js](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/script.js)                          |
+
+
+#### Nicolás Hernández Tejero
+
+*  Developed screens for showTeams and showInfo, including a search bar with filters.
+*  Gathered and modified information from the user profiles.
+*  Implemented tournament functionality, including the creation of matches, deciding winners, and updating data accordingly.
+*  Designed statistical graphics to visualize data trends.
+*  Generated reports and match results calculated through reporting mechanisms.
+
+| #   |                                                               Commit                                                               |     | #   |                                                                                         File                                                                                          |
+| :-: |:----------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |         [Add: tournament working!!!](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f521f1bb3588cf58f0755dc41c4bdbbce8e0997)          | | 1º |             [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)              |
+| 2º  |         [Fix:bracket issue](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/ea1b3ad7e76d76963ccb34559af3fca5f0cd838b)         | |2º |            [SearchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java)             |
+| 3º  | [Add: search controller and functionality](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/54cb1bb2f8be67c53b7002e4b0e6d84fcc8cb779)  | | 3º | [SingUpController.java](https://github.com/CodeURJC-DAW-2022-23/webapp8/blob/main/ProjectBackEnd/src/main/java/com/TwitterClone/ProjectBackend/Controller/UserSignupController.java)  |
+| 4º  | [Add: new graphic of players](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/862a2160e819f628faa80fa4205b5ed11ef9bf85) | | 4º |            [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)             |
+| 5º  |        [Add: new option off filters in the search bar](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/6ec37310609d0d5c48e3ee2277845550c5e92661)        | | 5º | [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java) |
+
+#### Adrián Soriano Aragón
+
+* I have implemented the security part and https.
+* I have been in charge of managing the users' session
+* I have implemented the technology to be able to download a match report in PDF format.
+* I have done the redirect to an error page when a status error occurs
+* I have implemented some methods to be able to convert URL to actual images in the view.
+
+
+| #   |                                                               Commit                                                                |     | #   |                                                                                  File                                                                                   |
+| :-: |:-----------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |        [Add Bracket Logic](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3f22816419e1dae61d40bb36a2d3142916efe872)        | | 1º |      [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)       |
+| 2º  |      [Images from Database](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/0a2e8bb2ecbbca4e859ca909214bf668e6f6e388)       | |2º | [SecurityConfiguration.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/security/SecurityConfiguration.java)  |
+| 3º  |            [Add Https](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/fe8000c240dddf4419abd5947fd6fc1e73a2dfdf)            | | 3º |       [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)        |
+| 4º  | [Add Security and Authentication](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/29c97b5da3c281cd068b792ce3cd9e71a7bd6d70) | | 4º | [CustomErrorControler.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/CustomErrorController.java) |
+| 5º  |       [Add PDF Technology](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/c1396b2143030c307e52e3a883b12359372d2306)        | | 5º | [TournamentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TournamentController.java)  |
+
+#### Manuel López Corchado
+
+* Added entities for database and database set up
+* Created bracket for tournaments
+* Designed html form to fulfill a tournament
+* Designed html form to fulfill a team
+* Added logic to collect text data from form
+* Added logic to collect images from user files.
+
+
+| #   |                                                                              Commit                                                                               |     | #   |                                                                                              File                                                                                               |
+| :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |   [Add Tournament - Team - Player html, Java and SQL config](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/353810e6c85d7305d016445d7e7b3da8c82c24ed)    | | 1º |                    [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java)                    |
+| 2º  |         [Models added to proyect and DB configuration](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/514c5de469c2c3a0177d1f6fdc8fd75c07a7a15d)          | |2º |             [TournamentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TournamentController.java)              |
+| 3º  | [Add photo to team and tournament, fixed error in player names](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9340b414f5ff7651cb9586e01cd61dd491c9b928) | | 3º |       [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)        |
+| 4º  |    [CSS - Bracket Style done and migration success complete](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/28f1338a14476accf8ba0a076e926649547cebfc)    | | 4º |           [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)            |
+| 5º  |           [Add tournament saving and adjusting links](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/94bc64d9798d3d1ea52010c28e9718c999cab131)           | | 5º | [teamCreate.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/teamCreate.html)  |
+
+
+#### Natalia Hernández Vargas
+
+* I have done the error templates.
+
+
+
+| #   |                                                              Commit                                                              |     | #   |                                                                                  File                                                                                  |
+| :-: |:--------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |     [Create Team Template](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/f4d902eaf249610410e219dd2af1dacf2b53fc86)     | | 1º |   [MustacheController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MustacheController.java)   |
+| 2º  |   [Create New Team Players](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/fea7e1b426d828555dc697b85291d2ad3beb302f)    | |2º | [SecurityConfiguration.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/security/SecurityConfiguration.java) |
+| 3º  |  [Update Mustache Controller](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/22249564fc6f3fc2debc2acc0c680f9274c85206)  | | 3º |                     [notFound.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/notFound.html)                     |
+| 4º  | [Create Error Pages Templates](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/925e9a1510596fc1df70f8af182567d9068b74ff) | | 4º |             [tournamentCreate.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/tournamentCreate.html)             |
+| 5º  |      [Navegation Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/925e9a1510596fc1df70f8af182567d9068b74ff)      | | 5º |      [teamCreate.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/teamCreate.html)      |
+
