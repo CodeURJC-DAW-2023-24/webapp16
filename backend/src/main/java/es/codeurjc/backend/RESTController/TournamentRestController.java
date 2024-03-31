@@ -43,15 +43,14 @@ public class TournamentRestController {
     @Autowired
     private TeamService teamService;
 
-    @Operation(summary = "Get a tournament by its id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the tournament", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
-    })
 
     @GetMapping
+    @Operation(summary = "Get all tournaments")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found tournaments", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<List<TournamentDTO>>getAllTournaments(){
         List<TournamentDTO> tournamentDTOS = tournamentService.findAllTournaments().stream()
                 .map(tournamentService::convertToDTO)
@@ -59,6 +58,13 @@ public class TournamentRestController {
         return ResponseEntity.ok(tournamentDTOS);
     }
     @GetMapping("/{id}")
+    @Operation(summary = "Get a tournament by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the tournament", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
+    })
     public ResponseEntity<TournamentDTO>getTournamentId(@PathVariable Long id){
         Tournament tournament = tournamentService.findTournamentById(id);
         if (tournament == null) {
@@ -68,6 +74,13 @@ public class TournamentRestController {
         return ResponseEntity.ok(tournamentDTO);
     }
     @GetMapping("/{id}/image")
+    @Operation(summary = "Get a tournament image")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the image", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
+    })
     public ResponseEntity<String>getTournamentImage(@PathVariable Long id){
         try {
             Tournament tournament = tournamentService.findTournamentById(id);
@@ -80,6 +93,12 @@ public class TournamentRestController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a tournament")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created tournament", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<TournamentDTO>getTournamentId(@RequestBody TournamentWithTeamsDTO tournamentWithTeamsDTO){
         Tournament tournament = tournamentService.convertToEntity(tournamentWithTeamsDTO.getTournament());
         tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
@@ -104,6 +123,13 @@ public class TournamentRestController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a tournament by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the tournament", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
+    })
     public ResponseEntity<TournamentDTO> updateTournament(@PathVariable Long id, @RequestBody TournamentDTO tournamentDTO) {
         Tournament existingTournament = tournamentService.findTournamentById(id);
         if (existingTournament == null) {
@@ -117,6 +143,13 @@ public class TournamentRestController {
         return ResponseEntity.ok(updatedTournamentDTO);
     }
     @PutMapping("/{id}/image")
+    @Operation(summary = "Update a tournament image")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the image", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
+    })
     public ResponseEntity<String> updateTournamentImage(@PathVariable Long id, @RequestBody String imageUrl) {
         Tournament existingTournament = tournamentService.findTournamentById(id);
         if (existingTournament == null) {
@@ -136,6 +169,14 @@ public class TournamentRestController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a tournament by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Deleted the tournament", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Operation not permitted", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
+    })
     public ResponseEntity<?> deleteTournament(@PathVariable Long id) {
         try {
             List<Matches> matches = matchService.findMatchesByTournamentId(id);
