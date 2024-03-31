@@ -34,15 +34,14 @@ public class StatisticsRestController {
     @Autowired
     private PlayerService playerService;
 
-    @Operation(summary = "Get a statistic by its id")
+
+    @GetMapping("/teams")
+    @Operation(summary = "Get a team statistic")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the statistic", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = Statistics.class))}),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Statistic not found", content = @Content)
     })
-
-    @GetMapping("/teams")
     public ResponseEntity<List<TeamDTO>> getTeamsStatistics() {
         List<Team> topTeams = teamService.getTopTeamsByWins(10);
         List<TeamDTO> topTeamsDTO = new ArrayList<>();
@@ -52,6 +51,13 @@ public class StatisticsRestController {
         return ResponseEntity.ok(topTeamsDTO);
     }
     @GetMapping("/teams/{position}")
+    @Operation(summary = "Get a team by its position")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the team", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Statistics.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
+    })
     public ResponseEntity<TeamDTO> getTeamByPosition(@PathVariable int position) {
         List<Team> allTeams = teamService.findAll();
         allTeams.sort(Comparator.comparingInt(Team::getWins).reversed());
@@ -68,6 +74,12 @@ public class StatisticsRestController {
     }
 
     @GetMapping("/players")
+    @Operation(summary = "Get best players")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found players", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Statistics.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<List<PlayerDTO>> getTopPlayersStatistics() {
         List<Player> topPlayers = playerService.findTopPlayersByGoals(10);
         List<PlayerDTO> topPlayersDTO = new ArrayList<>();
@@ -77,6 +89,13 @@ public class StatisticsRestController {
         return ResponseEntity.ok(topPlayersDTO);
     }
     @GetMapping("/players/{position}")
+    @Operation(summary = "Get a player by its position")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the player", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Statistics.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
+    })
     public ResponseEntity<PlayerDTO> getPlayerByPosition(@PathVariable int position) {
         List<Player> allPlayers = playerService.findAll();
         allPlayers.sort(Comparator.comparingInt(Player::getGoals).reversed());

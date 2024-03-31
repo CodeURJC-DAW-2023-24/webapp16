@@ -36,6 +36,9 @@ public class SearchRestController {
     @Autowired
     private PlayerService playerService;
 
+
+
+    @GetMapping
     @Operation(summary = "Get a search by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the search", content = {
@@ -43,8 +46,6 @@ public class SearchRestController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Search not found", content = @Content)
     })
-
-    @GetMapping
     public ResponseEntity<Map<String, Object>> search(
             @RequestParam(value = "tournament", required = false) String tournament,
             @RequestParam(value = "team", required = false) String team,
