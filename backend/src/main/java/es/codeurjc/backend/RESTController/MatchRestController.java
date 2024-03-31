@@ -26,6 +26,12 @@ public class MatchRestController {
     @Autowired
     private MatchService matchService;
     @GetMapping
+    @Operation(summary = "Get all matches")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found matches", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Matches.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<List<MatchDTO>>getAllMatches(){
         List<MatchDTO> matchDTOS = matchService.findAllMatches().stream()
                 .map(matchService::convertToDTO)
@@ -33,6 +39,8 @@ public class MatchRestController {
         return ResponseEntity.ok(matchDTOS);
     }
 
+
+    @GetMapping("/{id}")
     @Operation(summary = "Get a match by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the match", content = {
@@ -40,8 +48,6 @@ public class MatchRestController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Match not found", content = @Content)
     })
-
-    @GetMapping("/{id}")
     public ResponseEntity<MatchDTO> getMatchById(@PathVariable Long id) {
         Matches match = matchService.findMatchById(id);
         if (match == null) {
@@ -52,6 +58,12 @@ public class MatchRestController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a Match")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created Match", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Matches.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<MatchDTO> createMatch(@RequestBody MatchDTO matchDTO) {
         Matches match = matchService.convertToEntity(matchDTO);
         matchService.saveMatch(match);
@@ -61,6 +73,13 @@ public class MatchRestController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a match by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the match", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Matches.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Match not found", content = @Content)
+    })
     public ResponseEntity<MatchDTO> updateMatch(@PathVariable Long id, @RequestBody MatchDTO matchDTO) {
         Matches updatedMatch = matchService.updateMatch(id, matchDTO);
 
@@ -75,6 +94,14 @@ public class MatchRestController {
 
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a match by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Deleted the match", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Matches.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Operation not permitted", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Match not found", content = @Content)
+    })
     public ResponseEntity<?> deleteMatch(@PathVariable Long id) {
         try {
             Matches match = matchService.findMatchById(id);
