@@ -25,15 +25,15 @@ import java.util.stream.Collectors;
 public class ReportRestController {
     @Autowired
     private ReportService reportService;
-    @Operation(summary = "Get a report by its id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the report", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Report not found", content = @Content)
-    })
+
 
     @GetMapping
+    @Operation(summary = "Get all Reports")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found reports", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<List<ReportDTO>>getAllReports(){
         List<ReportDTO> reportDTOS = reportService.findAllReports().stream()
                 .map(reportService::convertToDTO)
@@ -42,6 +42,13 @@ public class ReportRestController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a report by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the report", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Report not found", content = @Content)
+    })
     public ResponseEntity<ReportDTO>getReportId(@PathVariable Long id){
         Report report = reportService.findReportById(id);
         if (report == null){
@@ -53,6 +60,12 @@ public class ReportRestController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a Report")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created report", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
     public ResponseEntity<ReportDTO>newReportId(@RequestBody ReportDTO reportDTO){
         Report report = reportService.convertToEntity(reportDTO);
         URI location = URI.create("/api/reports"+report.getId());
@@ -61,6 +74,13 @@ public class ReportRestController {
     }
 
     @PutMapping("/{idReport}")
+    @Operation(summary = "Update a report by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Updated the report", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Report not found", content = @Content)
+    })
     public ResponseEntity<ReportDTO>updateReport(@RequestBody ReportDTO reportDTO, @PathVariable long idReport){
         Report existingReport = reportService.findReportById(idReport);
         if (existingReport == null){
@@ -74,6 +94,14 @@ public class ReportRestController {
     }
 
     @DeleteMapping("/{idReport}")
+    @Operation(summary = "Delete a report by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Deleted the report", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Operation not permitted", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Report not found", content = @Content)
+    })
     public ResponseEntity<?> deleteReport(@PathVariable long idReport){
         reportService.deleteReportById(idReport);
 /*        URI location = URI.create("/api/reports");
