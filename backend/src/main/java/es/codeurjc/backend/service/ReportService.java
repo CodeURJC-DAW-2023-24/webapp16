@@ -21,8 +21,8 @@ public class ReportService {
     private ReportRepository reportRepository;
 
     public List<Report> findAllReports(){return reportRepository.findAll();}
-    public Optional<Report> findReportById(Long id) {
-        return reportRepository.findById(id);
+    public Report findReportById(Long id) {
+        return reportRepository.findReportById(id);
     }
     public Report saveReport(Report report){
         return reportRepository.save(report);

@@ -2,22 +2,12 @@ package es.codeurjc.backend.RESTController;
 
 import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import es.codeurjc.backend.DTOs.ReportDTO;
-import es.codeurjc.backend.DTOs.TeamDTO;
-import es.codeurjc.backend.model.Matches;
-import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Report;
-import es.codeurjc.backend.model.Team;
-import es.codeurjc.backend.service.MatchService;
-import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.ReportService;
-import es.codeurjc.backend.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
@@ -39,14 +29,13 @@ public class ReportRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ReportDTO>getReportId(@PathVariable Long id){
-        Optional<Report> report = reportService.findReportById(id);
-        if (report.isPresent()){
-            ReportDTO reportDTO = reportService.convertToDTO(report.get());
-            return ResponseEntity.ok(reportDTO);
-        }
-        else {
+        Report report = reportService.findReportById(id);
+        if (report == null){
             return ResponseEntity.notFound().build();
         }
+        ReportDTO reportDTO = reportService.convertToDTO(report);
+        return ResponseEntity.ok(reportDTO);
+
     }
 
     @PostMapping
@@ -59,8 +48,8 @@ public class ReportRestController {
 
     @PutMapping("/{idReport}")
     public ResponseEntity<ReportDTO>updateReport(@RequestBody ReportDTO reportDTO, @PathVariable long idReport){
-        Optional<Report> existingReport = reportService.findReportById(idReport);
-        if (existingReport.isEmpty()){
+        Report existingReport = reportService.findReportById(idReport);
+        if (existingReport == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Report report = reportService.convertToEntity(reportDTO);
