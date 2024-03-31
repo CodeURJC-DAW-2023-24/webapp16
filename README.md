@@ -753,6 +753,7 @@ To build the dockerized image of the application, follow these instructions:
     ./create_image.ps1 
    ```
   :grey_exclamation: You will have to modify the username to your docker username to run it. This script will publish the docker image.
+
 5. Wait for the docker image to be built.
 
 ---
