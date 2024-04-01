@@ -5,7 +5,7 @@ ___
   - [**:busts_in_silhouette: Development team member**](#busts_in_silhouette-development-team-members)
   - [**:hammer_and_wrench: Team coordination tool**](#hammer_and_wrench-team-coordination-tool)
   - [**:memo: Entities**](#memo-entities)
-  - [**:gear: Funcionalities**](#gear-functionalities)
+  - [**:gear: Functionalities**](#gear-functionalities)
   - [**:key: User permissions**](#key-user-permissions)
   - [**:framed_picture: Images**](#framed_picture-Images)
   - [**:bar_chart: Graphics**](#bar_chart-Graphics)
@@ -120,7 +120,7 @@ The information that will be displayed using graphics is:
 ___
 ### :bulb: Complementary technology
 The complementary technology to be used is:
-- PDF autogeneration  for match reports.
+- PDF autogenerate  for match reports.
 - Google Maps API integration for stadiums location.
 - Weather API for match weather information.
 - Email notifications for players, coaches, referee and registered users.
@@ -129,7 +129,7 @@ ___
 
 ### :chart_with_upwards_trend: Algorithm and advanced query
 The algorithm or advanced query to be implemented is:
-- Automatic clasification when submitting the match report.
+- Automatic classification when submitting the match report.
 - Advanced statistics of  matches by team/player.
 - Search bar on teams and players pages.
 ___
@@ -182,21 +182,21 @@ A button labeled “Match Report” located below the white box, which leads to 
 
 ___
 
-## Stadistics:
+## Statistics:
 The Statistics Page of the web page shows four bar graphs with different statistics about the football matches. It provides a simple and visual way to compare the performance of the teams and players.
 
 The Statistics Page consists of: 
 
-Four graphs for the following stadistics: goals, shots, passes, and fouls.
+Four graphs for the following statistics: goals, shots, passes, and fouls.
 
-![*Stadistics*](readmeImg/stadistics.png)
+![*Statistics*](readmeImg/stadistics.png)
 
 ___
 
 ## View Player:
 The Player Info is a section where users can input information about a football player of their choice.
 
-- The club logo is visible on the top right corner.
+- The club logo is visible in the top right corner.
 - A large image of a stadium filled with spectators serves as the background at the upper part of the webpage. The UEFA Champions League trophy is prominently displayed on this background.
 - In front of this background, there's an empty form titled “PLAYER INFO” with various fields like “Name,” “Nationality,” “Age,” etc., for inputting information about a player.
   
@@ -223,7 +223,7 @@ The create new team section is a section where the user can enter information ab
 - The form has a light gray background and contains several fields to fill in, including:
   - Team Name
   - Players
-  - Basic stadistics
+  - Basic statistics
 - There is an orange "Save Changes" button at the bottom of the form to submit the completed information.
 
 ![*Create Team*](readmeImg/createTeam.png)
@@ -244,7 +244,7 @@ The profile section is a section where the user can enter and update personal in
 ___
 
 ## About Us:
-The About Us is a section where users can learn more about the FUTBOLPRO  League platform and its features.
+The About Us is a section where users can learn more about the FUTBOLPRO League platform and its features.
 
 - In the middle section, there is an article or blog post titled “FutPro League” accompanied by an image. The article explains what FUTBOLPRO LEAGUE is and how it helps users manage their football leagues in minutes.
 - Below this section, there’s another part titled “Our Testimonials” featuring a quote from someone praising the website/platform.
@@ -267,7 +267,7 @@ ___
 The Team Info is a section where users can view information about a specific football team.
 
 - All the players registered in the team.
-- Stadistics off that football team.
+- Statistics off that football team.
 
 ![*Team Info*](readmeImg/teamInfo.png)
 
@@ -331,7 +331,7 @@ ___
 The main page is dedicated to football, showcasing a vibrant and dynamic design. It features the following elements:
 
 A navigation bar at the top with options for “Home,” “Teams,” “Players,” and “Profile.” There is also a search bar and a sign in/register button on the right side.
-All available tournaments are shown below along with two buttons for players stadistics and teams stadistics.
+All available tournaments are shown below along with two buttons for players statistics and teams statistics.
 A footer menu at the bottom, including options like “Menu”, "Profile", "Teams", "Players", “About us,” social media profiles, an email contact option, and some information about the website creator and the copyright.
 
 ![*HomePage*](readmeImg/newImg/Index.png)
@@ -375,17 +375,17 @@ A button labeled “Report” located at the bottom, which leads to a page with 
 
 ___
 
-## Player Stadistics:
+## Player Statistics:
 The Player Statistics Page shows the players with the most goals.
 
-![*Player Stadistics*](readmeImg/newImg/PlayerStadistics.png)
+![*Player Statistics*](readmeImg/newImg/PlayerStadistics.png)
 
 ___
 
-## Team Stadistics:
+## Team Statistics:
 The Team Statistics Page shows the teams with the most wins.
 
-![*Team Stadistics*](readmeImg/newImg/TeamStadistics.png)
+![*Team Statistics*](readmeImg/newImg/TeamStadistics.png)
 
 
 ___
@@ -429,7 +429,7 @@ The create new team section is a section where the user can enter information ab
 - The form has a light gray background and contains several fields to fill in, including:
   - Team Name
   - Players
-  - Basic stadistics
+  - Basic statistics
 
 ![*Create Team*](readmeImg/newImg/PlayerCreate.png)
 
@@ -485,7 +485,7 @@ ___
 The Team Info is a section where users can view information about a specific football team.
 
 - All the players registered in the team.
-- Stadistics off that football team.
+- Statistics off that football team.
 
 ![*Team Info*](readmeImg/newImg/TeamInfo.png)
 
