@@ -694,9 +694,22 @@ Next, a diagram will be included depicting the entities within the database, the
 ___
 # Phase 3
 ___
+# API REST documentation
+
+### Link .yaml
+
+[api-docs.yaml]("https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml")
 
 
+### Link .html 
 
+[api-docs.html]("https://raw.githack.com/CodeURJC-DAW-2023-24/webapp16/main/backend/api-docs/api-docs.html")
+
+---
+# API REST documentation
+
+
+---
 
 
 # Instructions for Running the Dockerized Application
