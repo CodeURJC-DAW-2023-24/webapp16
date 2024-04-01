@@ -2,7 +2,6 @@ package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.DTOs.TeamDTO;
-import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.service.PlayerService;
@@ -12,7 +11,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.servlet.http.HttpServletRequest;
 import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,13 +41,13 @@ public class StatisticsRestController {
             @ApiResponse(responseCode = "404", description = "Statistic not found", content = @Content)
     })
     public ResponseEntity<List<TeamDTO>> getTeamsStatistics() {
-        List<Team> topTeams = teamService.getTopTeamsByWins(10);
         List<TeamDTO> topTeamsDTO = new ArrayList<>();
-        for (Team team : topTeams){
+        for (Team team : teamService.getTopTeamsByWins(10)){
             topTeamsDTO.add(teamService.convertToDTO(team));
         }
         return ResponseEntity.ok(topTeamsDTO);
     }
+
     @GetMapping("/teams/{position}")
     @Operation(summary = "Get a team by its position")
     @ApiResponses(value = {
@@ -61,16 +59,11 @@ public class StatisticsRestController {
     public ResponseEntity<TeamDTO> getTeamByPosition(@PathVariable int position) {
         List<Team> allTeams = teamService.findAll();
         allTeams.sort(Comparator.comparingInt(Team::getWins).reversed());
-
-        int index = position - 1;
-
-        if (index < 0 || index >= allTeams.size()) {
+        position--; //Deleted index, used position instead
+        if (position < 0 || position >= allTeams.size()) {
             return ResponseEntity.notFound().build();
         }
-
-        Team team = allTeams.get(index);
-        TeamDTO teamDTO = teamService.convertToDTO(team);
-        return ResponseEntity.ok(teamDTO);
+        return ResponseEntity.ok(teamService.convertToDTO(allTeams.get(position)));
     }
 
     @GetMapping("/players")
@@ -81,13 +74,13 @@ public class StatisticsRestController {
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
     })
     public ResponseEntity<List<PlayerDTO>> getTopPlayersStatistics() {
-        List<Player> topPlayers = playerService.findTopPlayersByGoals(10);
         List<PlayerDTO> topPlayersDTO = new ArrayList<>();
-        for (Player player : topPlayers){
+        for (Player player : playerService.findTopPlayersByGoals(10)){
             topPlayersDTO.add(playerService.convertToDTO(player));
         }
         return ResponseEntity.ok(topPlayersDTO);
     }
+
     @GetMapping("/players/{position}")
     @Operation(summary = "Get a player by its position")
     @ApiResponses(value = {
@@ -99,15 +92,10 @@ public class StatisticsRestController {
     public ResponseEntity<PlayerDTO> getPlayerByPosition(@PathVariable int position) {
         List<Player> allPlayers = playerService.findAll();
         allPlayers.sort(Comparator.comparingInt(Player::getGoals).reversed());
-
-        int index = position - 1;
-
-        if (index < 0 || index >= allPlayers.size()) {
+        position--; //Deleted index, used position instead
+        if (position < 0 || position >= allPlayers.size()) {
             return ResponseEntity.notFound().build();
         }
-
-        Player player = allPlayers.get(index);
-        PlayerDTO playerDTO = playerService.convertToDTO(player);
-        return ResponseEntity.ok(playerDTO);
+        return ResponseEntity.ok(playerService.convertToDTO(allPlayers.get(position)));
     }
 }

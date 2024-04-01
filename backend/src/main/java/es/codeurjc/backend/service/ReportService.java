@@ -1,17 +1,13 @@
 package es.codeurjc.backend.service;
 
 import es.codeurjc.backend.DTOs.ReportDTO;
-import es.codeurjc.backend.DTOs.UserDTO;
 import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Report;
-import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-
 @Service
 public class ReportService {
     @Autowired

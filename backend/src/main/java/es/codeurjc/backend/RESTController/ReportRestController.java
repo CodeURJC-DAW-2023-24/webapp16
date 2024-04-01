@@ -1,8 +1,6 @@
 package es.codeurjc.backend.RESTController;
 
-import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import es.codeurjc.backend.DTOs.ReportDTO;
-import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Report;
 import es.codeurjc.backend.service.ReportService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,9 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -25,7 +21,6 @@ import java.util.stream.Collectors;
 public class ReportRestController {
     @Autowired
     private ReportService reportService;
-
 
     @GetMapping
     @Operation(summary = "Get all Reports")
@@ -54,8 +49,7 @@ public class ReportRestController {
         if (report == null){
             return ResponseEntity.notFound().build();
         }
-        ReportDTO reportDTO = reportService.convertToDTO(report);
-        return ResponseEntity.ok(reportDTO);
+        return ResponseEntity.ok(reportService.convertToDTO(report));
 
     }
 
@@ -88,9 +82,7 @@ public class ReportRestController {
         }
         Report report = reportService.convertToEntity(reportDTO);
         report.setId(idReport);
-        Report updateReport = reportService.updateReport(report);
-        ReportDTO updateReportDTO = reportService.convertToDTO(updateReport);
-        return ResponseEntity.ok(updateReportDTO);
+        return ResponseEntity.ok(reportService.convertToDTO(reportService.updateReport(report)));
     }
 
     @DeleteMapping("/{idReport}")
@@ -104,11 +96,7 @@ public class ReportRestController {
     })
     public ResponseEntity<?> deleteReport(@PathVariable long idReport){
         reportService.deleteReportById(idReport);
-/*        URI location = URI.create("/api/reports");
-        return ResponseEntity.ok().location(location).body(this.getAllReports().getBody());*/
-
         String msg = "Report with id " + idReport + " deleted .";
-
         return ResponseEntity.status(HttpStatus.OK).body(msg);
     }
 }
