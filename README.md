@@ -711,6 +711,10 @@ To generate or update this documentation, follow these commands:
    mvn verify
 
 ---
+# :art: Class diagram and templates
+![*templateDiagram*](readmeImg/diagramaClass2.png)
+
+---
 
 
 # Instructions for Running the Dockerized Application
