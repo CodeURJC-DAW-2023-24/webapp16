@@ -7,6 +7,8 @@ import es.codeurjc.backend.DTOs.MatchDTO;
 import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -92,9 +94,25 @@ public class MatchService {
         return matchRepository.save(existingMatch);
     }
 
+ public void deleteMatch(Matches matches) {
+        matchRepository.delete(matches);
+ }
+    public int deleteMatchRest(Long id) {
+        try {
+            Matches match = this.findMatchById(id);
 
-    public void deleteMatch(Matches match) {
-        matchRepository.delete(match);
+            if (match == null) {
+                return 1;
+            }
+            Tournament tournament = match.getTournament();
+            if (tournament != null) {
+                return 2;
+            }
+            this.deleteMatch(match);
+            return 0;
+        } catch (Exception e) {
+            return 3;
+        }
     }
 
 

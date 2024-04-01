@@ -82,13 +82,10 @@ public class MatchRestController {
     })
     public ResponseEntity<MatchDTO> updateMatch(@PathVariable Long id, @RequestBody MatchDTO matchDTO) {
         Matches updatedMatch = matchService.updateMatch(id, matchDTO);
-
         if (updatedMatch == null) {
             return ResponseEntity.notFound().build();
         }
-
         MatchDTO updatedMatchDTO = matchService.convertToDTO(updatedMatch);
-
         return ResponseEntity.ok(updatedMatchDTO);
     }
 
@@ -103,27 +100,17 @@ public class MatchRestController {
             @ApiResponse(responseCode = "404", description = "Match not found", content = @Content)
     })
     public ResponseEntity<?> deleteMatch(@PathVariable Long id) {
-        try {
-            Matches match = matchService.findMatchById(id);
-
-            if (match == null) {
-                return ResponseEntity.notFound().build();
-            }
-
-            Tournament tournament = match.getTournament();
-            if (tournament != null) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body("The match cannot be deleted because it is associated with a tournament.");
-            }
-
-            matchService.deleteMatch(match);
+        int result = matchService.deleteMatchRest(id);
+        if (result==0){
             String msg = "Match with id " + id + " deleted .";
-
             return ResponseEntity.status(HttpStatus.OK).body(msg);
-        } catch (Exception e) {
+        }else if (result==1){
+            return ResponseEntity.notFound().build();
+        }else if (result==2){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("The match cannot be deleted because it is associated with a tournament.");
+        }//else if (result==3) Not necessary nowadays
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
     }
-
 }
 
