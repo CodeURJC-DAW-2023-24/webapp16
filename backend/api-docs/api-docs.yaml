@@ -1,0 +1,1394 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: https://localhost:8443
+  description: Generated server url
+paths:
+  /api/users:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get all users
+      operationId: getAllUsers
+      responses:
+        "400":
+          description: Bad request
+        "200":
+          description: Found users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      tags:
+      - user-rest-controller
+      summary: Update a user
+      operationId: modUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+        required: true
+      responses:
+        "201":
+          description: Updated the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: User not found
+    post:
+      tags:
+      - user-rest-controller
+      summary: Create a User
+      operationId: newUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+        required: true
+      responses:
+        "400":
+          description: Bad request
+        "201":
+          description: Created User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/tournaments/{id}:
+    get:
+      tags:
+      - tournament-rest-controller
+      summary: Get a tournament by its id
+      operationId: getTournamentId_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Found the tournament
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Tournament not found
+    put:
+      tags:
+      - tournament-rest-controller
+      summary: Update a tournament by its id
+      operationId: updateTournament
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TournamentDTO'
+        required: true
+      responses:
+        "201":
+          description: Updated the tournament
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Tournament not found
+    delete:
+      tags:
+      - tournament-rest-controller
+      summary: Delete a tournament by its id
+      operationId: deleteTournament
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "201":
+          description: Deleted the tournament
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "403":
+          description: Operation not permitted
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Tournament not found
+  /api/tournaments/{id}/image:
+    get:
+      tags:
+      - tournament-rest-controller
+      summary: Get a tournament image
+      operationId: getTournamentImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Found the image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Tournament not found
+    put:
+      tags:
+      - tournament-rest-controller
+      summary: Update a tournament image
+      operationId: updateTournamentImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "201":
+          description: Updated the image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Tournament not found
+  /api/teams/{id}:
+    get:
+      tags:
+      - team-rest-controller
+      summary: Get a team by its id
+      operationId: getTeamById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Found the team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        "404":
+          description: Team not found
+        "400":
+          description: Invalid id supplied
+    put:
+      tags:
+      - team-rest-controller
+      summary: Update a team by its id
+      operationId: updateTeam
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamDTO'
+        required: true
+      responses:
+        "404":
+          description: Team not found
+        "201":
+          description: Updated the team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        "400":
+          description: Invalid id supplied
+    delete:
+      tags:
+      - team-rest-controller
+      summary: Delete a team by its id
+      operationId: deleteTeam
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "201":
+          description: Deleted the team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        "404":
+          description: Team not found
+        "403":
+          description: Operation not permitted
+        "400":
+          description: Invalid id supplied
+  /api/teams/{id}/image:
+    get:
+      tags:
+      - team-rest-controller
+      summary: Get a team image
+      operationId: getTeamImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Image not found
+        "200":
+          description: Found the image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        "400":
+          description: Invalid id supplied
+    put:
+      tags:
+      - team-rest-controller
+      summary: Update a team image
+      operationId: updateTeamImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "404":
+          description: Team not found
+        "400":
+          description: Invalid id supplied
+        "201":
+          description: Updated the image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /api/reports/{idReport}:
+    put:
+      tags:
+      - report-rest-controller
+      summary: Update a report by its id
+      operationId: updateReport
+      parameters:
+      - name: idReport
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportDTO'
+        required: true
+      responses:
+        "201":
+          description: Updated the report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        "404":
+          description: Report not found
+        "400":
+          description: Invalid id supplied
+    delete:
+      tags:
+      - report-rest-controller
+      summary: Delete a report by its id
+      operationId: deleteReport
+      parameters:
+      - name: idReport
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Report not found
+        "201":
+          description: Deleted the report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        "403":
+          description: Operation not permitted
+        "400":
+          description: Invalid id supplied
+  /api/players/{id}:
+    get:
+      tags:
+      - player-rest-controller
+      summary: Get a player by its id
+      operationId: getPlayerById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Found the player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Player not found
+    put:
+      tags:
+      - player-rest-controller
+      summary: Update a player by its id
+      operationId: updatePlayer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerDTO'
+        required: true
+      responses:
+        "201":
+          description: Updated the player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Player not found
+    delete:
+      tags:
+      - player-rest-controller
+      summary: Delete a player by its id
+      operationId: deletePlayer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "201":
+          description: Deleted the player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        "403":
+          description: Operation not permitted
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Player not found
+  /api/matches/{id}:
+    get:
+      tags:
+      - match-rest-controller
+      summary: Get a match by its id
+      operationId: getMatchById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Match not found
+        "400":
+          description: Invalid id supplied
+        "200":
+          description: Found the match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matches'
+    put:
+      tags:
+      - match-rest-controller
+      summary: Update a match by its id
+      operationId: updateMatch
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchDTO'
+        required: true
+      responses:
+        "404":
+          description: Match not found
+        "201":
+          description: Updated the match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matches'
+        "400":
+          description: Invalid id supplied
+    delete:
+      tags:
+      - match-rest-controller
+      summary: Delete a match by its id
+      operationId: deleteMatch
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Match not found
+        "201":
+          description: Deleted the match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matches'
+        "403":
+          description: Operation not permitted
+        "400":
+          description: Invalid id supplied
+  /api/tournaments:
+    get:
+      tags:
+      - tournament-rest-controller
+      summary: Get all tournaments
+      operationId: getAllTournaments
+      responses:
+        "200":
+          description: Found tournaments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "400":
+          description: Bad request
+    post:
+      tags:
+      - tournament-rest-controller
+      summary: Create a tournament
+      operationId: getTournamentId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TournamentWithTeamsDTO'
+        required: true
+      responses:
+        "400":
+          description: Bad request
+        "201":
+          description: Created tournament
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+  /api/teams:
+    get:
+      tags:
+      - team-rest-controller
+      summary: Get all teams
+      operationId: getAllTeams
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 4
+      responses:
+        "400":
+          description: Bad request
+        "200":
+          description: Found teams
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    post:
+      tags:
+      - team-rest-controller
+      summary: Create a Team
+      operationId: createTeam
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamWithPlayersDTO'
+        required: true
+      responses:
+        "400":
+          description: Bad request
+        "201":
+          description: Created Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /api/reports:
+    get:
+      tags:
+      - report-rest-controller
+      summary: Get all Reports
+      operationId: getAllReports
+      responses:
+        "400":
+          description: Bad request
+        "200":
+          description: Found reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+    post:
+      tags:
+      - report-rest-controller
+      summary: Create a Report
+      operationId: newReportId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportDTO'
+        required: true
+      responses:
+        "400":
+          description: Bad request
+        "201":
+          description: Created report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+  /api/players:
+    get:
+      tags:
+      - player-rest-controller
+      summary: Get all players
+      operationId: getAllPlayers
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 4
+      responses:
+        "400":
+          description: Bad request
+        "200":
+          description: Found players
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+    post:
+      tags:
+      - player-rest-controller
+      summary: Create a Player
+      operationId: createPlayer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerDTO'
+        required: true
+      responses:
+        "400":
+          description: Bad request
+        "201":
+          description: Created Player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+  /api/matches:
+    get:
+      tags:
+      - match-rest-controller
+      summary: Get all matches
+      operationId: getAllMatches
+      responses:
+        "400":
+          description: Bad request
+        "200":
+          description: Found matches
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matches'
+    post:
+      tags:
+      - match-rest-controller
+      summary: Create a Match
+      operationId: createMatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchDTO'
+        required: true
+      responses:
+        "400":
+          description: Bad request
+        "201":
+          description: Created Match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matches'
+  /api/users/{id}:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get a user by its id
+      operationId: getUserByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: User not found
+        "200":
+          description: Found the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/statistics/teams:
+    get:
+      tags:
+      - statistics-rest-controller
+      summary: Get a team statistic
+      operationId: getTeamsStatistics
+      responses:
+        "200":
+          description: Found the statistic
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statistics'
+        "404":
+          description: Statistic not found
+  /api/statistics/teams/{position}:
+    get:
+      tags:
+      - statistics-rest-controller
+      summary: Get a team by its position
+      operationId: getTeamByPosition
+      parameters:
+      - name: position
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Found the team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statistics'
+        "404":
+          description: Team not found
+        "400":
+          description: Invalid id supplied
+  /api/statistics/players:
+    get:
+      tags:
+      - statistics-rest-controller
+      summary: Get best players
+      operationId: getTopPlayersStatistics
+      responses:
+        "400":
+          description: Bad request
+        "200":
+          description: Found players
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statistics'
+  /api/statistics/players/{position}:
+    get:
+      tags:
+      - statistics-rest-controller
+      summary: Get a player by its position
+      operationId: getPlayerByPosition
+      parameters:
+      - name: position
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Found the player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statistics'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Player not found
+  /api/search:
+    get:
+      tags:
+      - search-rest-controller
+      summary: Get a search by its id
+      operationId: search
+      parameters:
+      - name: tournament
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: team
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: player
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: position
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: nationality
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Search not found
+        "200":
+          description: Found the search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search'
+        "400":
+          description: Invalid id supplied
+  /api/reports/{id}:
+    get:
+      tags:
+      - report-rest-controller
+      summary: Get a report by its id
+      operationId: getReportId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Report not found
+        "400":
+          description: Invalid id supplied
+        "200":
+          description: Found the report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+  /api/users/{idUser}:
+    delete:
+      tags:
+      - user-rest-controller
+      summary: Delete a user by its id
+      operationId: deleteUser
+      parameters:
+      - name: idUser
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "201":
+          description: Deleted the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "400":
+          description: Invalid id supplied
+components:
+  schemas:
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        dni:
+          type: string
+        nickname:
+          type: string
+        encodedPassword:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        dni:
+          type: string
+        encodedPassword:
+          type: string
+        nickname:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+    TournamentDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        category:
+          type: string
+        cup:
+          type: string
+        tournamentImagePath:
+          type: string
+    Tournament:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        category:
+          type: string
+        cup:
+          type: string
+        tournamentImagePath:
+          type: string
+        tournamentImageAsString:
+          type: string
+    TeamDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        coach:
+          type: string
+        stadium:
+          type: string
+        gamesPlayed:
+          type: integer
+          format: int32
+        wins:
+          type: integer
+          format: int32
+        loses:
+          type: integer
+          format: int32
+        imagePath:
+          type: string
+    Player:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: string
+        jerseyNumber:
+          type: integer
+          format: int32
+        nationality:
+          type: string
+        goals:
+          type: integer
+          format: int32
+        position:
+          type: string
+        weight:
+          type: string
+        height:
+          type: string
+        team:
+          $ref: '#/components/schemas/Team'
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        coach:
+          type: string
+        stadium:
+          type: string
+        gamesPlayed:
+          type: integer
+          format: int32
+        wins:
+          type: integer
+          format: int32
+        loses:
+          type: integer
+          format: int32
+        imagePath:
+          type: string
+        tournament:
+          $ref: '#/components/schemas/Tournament'
+        listPlayer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Player'
+        imageAsString:
+          type: string
+    Matches:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        localTeam:
+          $ref: '#/components/schemas/Team'
+        visitingTeam:
+          $ref: '#/components/schemas/Team'
+        localGoals:
+          type: integer
+          format: int32
+        visitingGoals:
+          type: integer
+          format: int32
+        round:
+          type: integer
+          format: int32
+        tournament:
+          $ref: '#/components/schemas/Tournament'
+    ReportDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+        time:
+          type: string
+        matchOfficials:
+          type: string
+        localTeamGoals:
+          type: integer
+          format: int32
+        visitingTeamGoals:
+          type: integer
+          format: int32
+        observations:
+          type: string
+        match:
+          $ref: '#/components/schemas/Matches'
+    Report:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+        time:
+          type: string
+        matchOfficials:
+          type: string
+        localTeamGoals:
+          type: integer
+          format: int32
+        visitingTeamGoals:
+          type: integer
+          format: int32
+        observations:
+          type: string
+        match:
+          $ref: '#/components/schemas/Matches'
+    PlayerDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: string
+        jerseyNumber:
+          type: integer
+          format: int32
+        nationality:
+          type: string
+        goals:
+          type: integer
+          format: int32
+        position:
+          type: string
+        weight:
+          type: string
+        height:
+          type: string
+        team:
+          $ref: '#/components/schemas/Team'
+    MatchDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        localTeam:
+          $ref: '#/components/schemas/Team'
+        visitingTeam:
+          $ref: '#/components/schemas/Team'
+        localGoals:
+          type: integer
+          format: int32
+        visitingGoals:
+          type: integer
+          format: int32
+        round:
+          type: integer
+          format: int32
+        tournament:
+          $ref: '#/components/schemas/Tournament'
+    TournamentWithTeamsDTO:
+      type: object
+      properties:
+        tournament:
+          $ref: '#/components/schemas/TournamentDTO'
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamDTO'
+    TeamWithPlayersDTO:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamDTO'
+        players:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlayerDTO'
+    Statistics:
+      type: object
+      properties:
+        startTime:
+          type: integer
+          format: int64
+          deprecated: true
+        start:
+          type: string
+          format: date-time
+        statisticsEnabled:
+          type: boolean
+        naturalIdQueryExecutionCount:
+          type: integer
+          format: int64
+        entityInsertCount:
+          type: integer
+          format: int64
+        queryExecutionCount:
+          type: integer
+          format: int64
+        queryExecutionMaxTime:
+          type: integer
+          format: int64
+        entityFetchCount:
+          type: integer
+          format: int64
+        entityUpdateCount:
+          type: integer
+          format: int64
+        entityDeleteCount:
+          type: integer
+          format: int64
+        queryCacheHitCount:
+          type: integer
+          format: int64
+        queryCachePutCount:
+          type: integer
+          format: int64
+        queryCacheMissCount:
+          type: integer
+          format: int64
+        successfulTransactionCount:
+          type: integer
+          format: int64
+        optimisticFailureCount:
+          type: integer
+          format: int64
+        secondLevelCacheMissCount:
+          type: integer
+          format: int64
+        secondLevelCachePutCount:
+          type: integer
+          format: int64
+        collectionRecreateCount:
+          type: integer
+          format: int64
+        updateTimestampsCacheHitCount:
+          type: integer
+          format: int64
+        secondLevelCacheHitCount:
+          type: integer
+          format: int64
+        sessionCloseCount:
+          type: integer
+          format: int64
+        naturalIdCachePutCount:
+          type: integer
+          format: int64
+        collectionFetchCount:
+          type: integer
+          format: int64
+        closeStatementCount:
+          type: integer
+          format: int64
+        collectionLoadCount:
+          type: integer
+          format: int64
+        collectionUpdateCount:
+          type: integer
+          format: int64
+        queryPlanCacheHitCount:
+          type: integer
+          format: int64
+        queryPlanCacheMissCount:
+          type: integer
+          format: int64
+        naturalIdQueryExecutionMaxTime:
+          type: integer
+          format: int64
+        secondLevelCacheRegionNames:
+          type: array
+          items:
+            type: string
+        collectionRoleNames:
+          type: array
+          items:
+            type: string
+        collectionRemoveCount:
+          type: integer
+          format: int64
+        naturalIdCacheHitCount:
+          type: integer
+          format: int64
+        updateTimestampsCachePutCount:
+          type: integer
+          format: int64
+        updateTimestampsCacheMissCount:
+          type: integer
+          format: int64
+        transactionCount:
+          type: integer
+          format: int64
+        naturalIdCacheMissCount:
+          type: integer
+          format: int64
+        sessionOpenCount:
+          type: integer
+          format: int64
+        prepareStatementCount:
+          type: integer
+          format: int64
+        connectCount:
+          type: integer
+          format: int64
+        entityNames:
+          type: array
+          items:
+            type: string
+        entityLoadCount:
+          type: integer
+          format: int64
+        slowQueries:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
+        queries:
+          type: array
+          items:
+            type: string
+        flushCount:
+          type: integer
+          format: int64
+        queryExecutionMaxTimeQueryString:
+          type: string
+        naturalIdQueryExecutionMaxTimeEntity:
+          type: string
+        naturalIdQueryExecutionMaxTimeRegion:
+          type: string
+    Search:
+      type: object

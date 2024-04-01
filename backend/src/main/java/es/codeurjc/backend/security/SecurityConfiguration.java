@@ -70,7 +70,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/error/**").permitAll()
                         .requestMatchers("/errorTemplate").permitAll()
                         .requestMatchers("/EntityNotFound").permitAll()
-                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui/index.html").permitAll()
+                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/**", "/swagger-ui/index.html").permitAll()
                         .requestMatchers("/api/**").permitAll()
 
 
