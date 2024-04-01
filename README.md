@@ -833,18 +833,20 @@ Below are the credentials for example users, including an administrator user, to
 
 #### Ahmad Abdel Raziq Al Otaibi
 
-*  I have created different screens with mustache.
-*  I have helped to make the different pages more dynamic.
-*  I've been in charge of all the AJAX page layout.
+*  I created some DTOs needed to show the elements on the API's requests.
+*  I implemented many Project CRUD Rest functions and Images CRUD Rest functions.
+*  I created Postman requests.
+*  I documentated the Rest controllers using Swagger.
+*  I helped generate dynamically the api-docs documentation.
 
 
 | #   |                                                              Commit                                                               |     | #   |                                                                                                File                                                                                                |
 | :-: |:---------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 1º  |  [Add: Show player whit AJAX](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/e2feaba0f41753ab1351a5596fb11bded63a745b)   | | 1º |   [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java)    |
-| 2º  |   [Add: Show teams whit AJAX](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/a31df930fc246c4a22125624924b0417c8b05ed6)   | |2º | [PlayerController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/PlayerController.java) |
-| 3º  |        [Add: Pagination](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f5ccfcf9f9d2d5225658111e143ae8ec8f6529f)        | | 3º | [SearchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/java/es/codeurjc/backend/controller/SearchController.java) |
-| 4º  | [Add: Templates with Mustaches](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/d6a39cc16a2119168f7401610f65090913a826ad) | | 4º |             [playersScripts.js](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/playersScript.js)              |
-| 5º  |     [Fix: Fixing templates](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/8f5ccfcf9f9d2d5225658111e143ae8ec8f6529f)     | | 5º |                          [scripts.js](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/9340b414f5ff7651cb9586e01cd61dd491c9b928/backend/src/main/resources/static/js/script.js)                          |
+| 1º  |  [Add: REST match getById](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4753b90309b084007093a06d5892eae6f5cc4007)   | | 1º |   [MatchDTO.java](backend/src/main/java/es/codeurjc/backend/DTOs/MatchDTO.java)    |
+| 2º  |   [Add: Rest Match Post, Put and Delete](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/ad9c3606325eff2b3a07cf731c79c9e2ef00766f)   | |2º | [MatchRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/MatchRestController.java) |
+| 3º  |        [Update collections Json](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/d352afcb8c9c1170fa1cb74da1f64c453423deef)        | | 3º | [TournamentRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/TournamentRestController.java) |
+| 4º  | [Add: documentation MatchRestController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/502bc571f04e6a7ec8ae3c9943f85c27e440b6ef) | | 4º |             [TeamRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/TeamRestController.java)              |
+| 5º  |     [Add: documentation TournamentRestController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/12ee750e57af7ee7a7f87cc72cbe7062df82ab3f)     | | 5º |                          [UserRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/UserRestController.java)                          |
 
 
 #### Nicolás Hernández Tejero
