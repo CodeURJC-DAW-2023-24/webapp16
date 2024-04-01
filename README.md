@@ -840,10 +840,11 @@ These steps will guide you through the process of deploying the application on t
 Below are the credentials for example users, including an administrator user, to test the application:
 
 
-| User Type    | :construction_worker: Username | :lock: Password |
-|--------------|--------------------------------|-----------------|
-| Administrator| admin                          | adminpass       |
-| Regular User | user                           | pass            |
+| User Type     | :construction_worker: Username | :lock: Password |
+|---------------|--------------------------------|-----------------|
+| Administrator | admin                          | adminpass       |
+| Regular User  | user                           | pass            |
+| Postman User  | postman                        | P0sTm4N            |
 
 
 ---
@@ -888,11 +889,12 @@ Below are the credentials for example users, including an administrator user, to
 
 #### Adrián Soriano Aragón
 
-* I have implemented the security part and https.
-* I have been in charge of managing the users' session
-* I have implemented the technology to be able to download a match report in PDF format.
-* I have done the redirect to an error page when a status error occurs
-* I have implemented some methods to be able to convert URL to actual images in the view.
+* Fix bugs or problems that have arisen throughout the development of the application to ensure its correct functioning.
+* Implemented OpenAPI documentation generation to streamline API documentation processes.
+* Strong help for implementation of Docker Compose: I helped add Docker Compose to the project, which allowed us to define and manage multi-container Docker applications.
+* Added new collections to postman to have the demo ready.
+* Wrote most of the project documentation in the Readme file.
+
 
 
 | #   |                                                              Commit                                                               |     | #   |                                                                  File                                                                   |
