@@ -68,8 +68,8 @@ public class UserRestController {
     })
     public ResponseEntity<UserDTO> newUser(@RequestBody UserDTO userDTO){
         User user = userService.convertToEntity(userDTO);
-        URI location = URI.create("/api/users/"+user.getId());
         userService.saveUser(user);
+        URI location = URI.create("/api/users/"+user.getId());
         return ResponseEntity.created(location).body(userDTO);
     }
     @PutMapping

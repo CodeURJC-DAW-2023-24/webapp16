@@ -68,8 +68,9 @@ public class ReportRestController {
     })
     public ResponseEntity<ReportDTO>newReportId(@RequestBody ReportDTO reportDTO){
         Report report = reportService.convertToEntity(reportDTO);
-        URI location = URI.create("/api/reports"+report.getId());
+
         reportService.saveReport(report);
+        URI location = URI.create("/api/reports/"+report.getId());
         return ResponseEntity.created(location).body(reportDTO);
     }
 
@@ -104,9 +105,6 @@ public class ReportRestController {
     })
     public ResponseEntity<?> deleteReport(@PathVariable long idReport){
         reportService.deleteReportById(idReport);
-/*        URI location = URI.create("/api/reports");
-        return ResponseEntity.ok().location(location).body(this.getAllReports().getBody());*/
-
         String msg = "Report with id " + idReport + " deleted .";
 
         return ResponseEntity.status(HttpStatus.OK).body(msg);
