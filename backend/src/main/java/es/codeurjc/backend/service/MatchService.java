@@ -7,8 +7,6 @@ import es.codeurjc.backend.DTOs.MatchDTO;
 import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,7 +18,6 @@ public class MatchService {
 
     @Autowired
     private MatchRepository matchRepository;
-
     private ObjectMapper objectMapper;
     public MatchService(ObjectMapper objectMapper){this.objectMapper = objectMapper;}
     public List<Matches> findAllMatches(){

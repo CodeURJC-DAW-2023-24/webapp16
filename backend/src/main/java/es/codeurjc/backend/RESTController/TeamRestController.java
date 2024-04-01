@@ -1,13 +1,10 @@
 package es.codeurjc.backend.RESTController;
 
-import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.DTOs.TeamWithPlayersDTO;
-import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
-import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
 import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
@@ -18,18 +15,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/teams")
@@ -66,12 +59,12 @@ public class TeamRestController {
     public ResponseEntity<TeamDTO> getTeamById(@PathVariable Long id) {
         Team existingTeam = teamService.findTeamById(id);
         if (existingTeam != null) {
-            TeamDTO teamDTO = teamService.convertToDTO(existingTeam);
-            return ResponseEntity.ok(teamDTO);
+            return ResponseEntity.ok(teamService.convertToDTO(existingTeam));
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("/{id}/image")
     @Operation(summary = "Get a team image")
     @ApiResponses(value = {
@@ -82,14 +75,13 @@ public class TeamRestController {
     })
     public ResponseEntity<String>getTeamImage(@PathVariable Long id){
         try {
-            Team team = teamService.findTeamById(id);
-            String imageUrl = team.getImagePath();
-            return ResponseEntity.ok(imageUrl);
+            return ResponseEntity.ok(teamService.findTeamById(id).getImagePath());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error getting the image link: " + e.getMessage());
         }
     }
+
     @PostMapping
     @Operation(summary = "Create a Team")
     @ApiResponses(value = {
@@ -101,19 +93,15 @@ public class TeamRestController {
         Team team = teamService.convertToEntity(teamWithPlayersDTO.getTeam());
         team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
         Team savedTeam = teamService.saveRest(team);
-
-        List<PlayerDTO> playerDTOS = teamWithPlayersDTO.getPlayers();
         List<Player> players = new ArrayList<>();
-        for (PlayerDTO playerDTO : playerDTOS) {
+        for (PlayerDTO playerDTO : teamWithPlayersDTO.getPlayers()) {
             Player player = playerService.convertToEntity(playerDTO);
             player.setTeam(savedTeam);
             players.add(player);
         }
         playerService.saveAll(players);
-
-        TeamDTO savedTeamDTO = teamService.convertToDTO(savedTeam);
         URI location = URI.create("/api/teams/" + savedTeam.getId());
-        return ResponseEntity.created(location).body(savedTeamDTO);
+        return ResponseEntity.created(location).body(teamService.convertToDTO(savedTeam));
     }
 
     @PutMapping("/{id}")
@@ -125,16 +113,12 @@ public class TeamRestController {
             @ApiResponse(responseCode = "404", description = "Team not found", content = @Content)
     })
     public ResponseEntity<TeamDTO> updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
-        Team existingTeam = teamService.findTeamById(id);
-        if (existingTeam == null) {
+        if (teamService.findTeamById(id) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
         Team team = teamService.convertToEntity(teamDTO);
         team.setId(id);
-        Team updatedTeam = teamService.updateTeam(id, team);
-        TeamDTO updatedTeamDTO = teamService.convertToDTO(updatedTeam);
-        return ResponseEntity.ok(updatedTeamDTO);
+        return ResponseEntity.ok(teamService.convertToDTO(teamService.updateTeam(id, team)));
     }
     @PutMapping("/{id}/image")
     @Operation(summary = "Update a team image")
@@ -152,8 +136,7 @@ public class TeamRestController {
 
         try {
             existingTeam.setImagePath(imageUrl);
-            Blob imageBlob = blobConverter.URLtoBlob(imageUrl);
-            existingTeam.setImageFile(imageBlob);
+            existingTeam.setImageFile(blobConverter.URLtoBlob(imageUrl));
             teamService.save(existingTeam);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to update image for team with ID " + id + ": " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -172,22 +155,17 @@ public class TeamRestController {
     })
     public ResponseEntity<?> deleteTeam(@PathVariable Long id) {
         try {
-            List<Player> players = playerService.findPlayersTeamById(id);
-
-            for (Player player : players) {
+            for (Player player : playerService.findPlayersTeamById(id)) {
                 player.setTeam(null);
                 playerService.save(player);
             }
 
-            List<Matches> matches = matchService.findMatchesByTeamId(id);
-            if (!matches.isEmpty()) {
+            if (!matchService.findMatchesByTeamId(id).isEmpty()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("The team cannot be eliminated because it has associated matches.");
             }
-
             teamService.deleteTeamById(id);
             String msg = "Team with id " + id + " deleted .";
-
             return ResponseEntity.status(HttpStatus.OK).body(msg);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

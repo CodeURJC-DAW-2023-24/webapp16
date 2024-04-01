@@ -1,9 +1,7 @@
 package es.codeurjc.backend.service;
 
 import es.codeurjc.backend.DTOs.PlayerDTO;
-import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.model.Player;
-import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,8 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
-
 @Service
 public class PlayerService {
     @Autowired
@@ -52,11 +48,10 @@ public class PlayerService {
         return players.subList(0, Math.min(numberOfPlayers, players.size()));
     }
     public Player updatePlayer(Long id, Player updatedPlayer) {
+        updatedPlayer.setId(id);
         Player existingPlayer = playerRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Player with id " + id + " not found"));
-
-        updatePlayerFields(existingPlayer, updatedPlayer);
-
+        this.updatePlayerFields(existingPlayer, updatedPlayer);
         return playerRepository.save(existingPlayer);
     }
     private void updatePlayerFields(Player existingPlayer, Player updatedPlayer) {

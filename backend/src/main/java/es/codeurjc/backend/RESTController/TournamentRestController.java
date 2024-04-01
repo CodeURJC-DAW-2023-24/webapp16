@@ -3,7 +3,6 @@ package es.codeurjc.backend.RESTController;
 import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.DTOs.TournamentWithTeamsDTO;
-import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
@@ -16,18 +15,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,8 +63,7 @@ public class TournamentRestController {
         if (tournament == null) {
             return ResponseEntity.notFound().build();
         }
-        TournamentDTO tournamentDTO = tournamentService.convertToDTO(tournament);
-        return ResponseEntity.ok(tournamentDTO);
+        return ResponseEntity.ok(tournamentService.convertToDTO(tournament));
     }
     @GetMapping("/{id}/image")
     @Operation(summary = "Get a tournament image")
@@ -83,9 +75,7 @@ public class TournamentRestController {
     })
     public ResponseEntity<String>getTournamentImage(@PathVariable Long id){
         try {
-            Tournament tournament = tournamentService.findTournamentById(id);
-            String imageUrl = tournament.getTournamentImagePath();
-            return ResponseEntity.ok(imageUrl);
+            return ResponseEntity.ok(tournamentService.findTournamentById(id).getTournamentImagePath());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error getting the image link: " + e.getMessage());
@@ -103,23 +93,17 @@ public class TournamentRestController {
         Tournament tournament = tournamentService.convertToEntity(tournamentWithTeamsDTO.getTournament());
         tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
         Tournament savedTournament = tournamentService.saveRest(tournament);
-
-        List<TeamDTO> teamDTOs = tournamentWithTeamsDTO.getTeams();
         List<Team> teams = new ArrayList<>();
-        for (TeamDTO teamDTO : teamDTOs) {
+        for (TeamDTO teamDTO : tournamentWithTeamsDTO.getTeams()) {
             Team team = teamService.convertToEntity(teamDTO);
             team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
             team.setTournament(savedTournament);
             teams.add(team);
         }
         teamService.saveAllRest(teams);
-
-        List<Matches> matches = matchService.generateMatches(teams, savedTournament);
-        matchService.saveAll(matches);
-
-        TournamentDTO savedTournamentDTO = tournamentService.convertToDTO(savedTournament);
+        matchService.saveAll(matchService.generateMatches(teams, savedTournament));
         URI location = URI.create("/api/tournaments/" + savedTournament.getId());
-        return ResponseEntity.created(location).body(savedTournamentDTO);
+        return ResponseEntity.created(location).body(tournamentService.convertToDTO(savedTournament));
     }
 
     @PutMapping("/{id}")
@@ -131,16 +115,13 @@ public class TournamentRestController {
             @ApiResponse(responseCode = "404", description = "Tournament not found", content = @Content)
     })
     public ResponseEntity<TournamentDTO> updateTournament(@PathVariable Long id, @RequestBody TournamentDTO tournamentDTO) {
-        Tournament existingTournament = tournamentService.findTournamentById(id);
-        if (existingTournament == null) {
+        if (tournamentService.findTournamentById(id) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         Tournament tournament = tournamentService.convertToEntity(tournamentDTO);
         tournament.setId(id);
-        Tournament updatedTournament = tournamentService.updateTournament(id, tournament);
-        TournamentDTO updatedTournamentDTO = tournamentService.convertToDTO(updatedTournament);
-        return ResponseEntity.ok(updatedTournamentDTO);
+        return ResponseEntity.ok(tournamentService.convertToDTO(tournamentService.updateTournament(id, tournament)));
     }
     @PutMapping("/{id}/image")
     @Operation(summary = "Update a tournament image")
@@ -158,8 +139,7 @@ public class TournamentRestController {
 
         try {
             existingTournament.setTournamentImagePath(imageUrl);
-            Blob imageBlob = blobConverter.URLtoBlob(imageUrl);
-            existingTournament.setTournamentImageFile(imageBlob);
+            existingTournament.setTournamentImageFile(blobConverter.URLtoBlob(imageUrl));
             tournamentService.save(existingTournament);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to update image for tournament with ID " + id + ": " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -179,9 +159,7 @@ public class TournamentRestController {
     })
     public ResponseEntity<?> deleteTournament(@PathVariable Long id) {
         try {
-            List<Matches> matches = matchService.findMatchesByTournamentId(id);
-
-            if (!matches.isEmpty()) {
+            if (!matchService.findMatchesByTournamentId(id).isEmpty()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("The tournament cannot be deleted because it has associated matches.");
             }

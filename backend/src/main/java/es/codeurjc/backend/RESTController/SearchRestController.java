@@ -1,6 +1,5 @@
 package es.codeurjc.backend.RESTController;
 
-import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;

@@ -1,9 +1,7 @@
 package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.MatchDTO;
-import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.model.Matches;
-import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -53,8 +51,7 @@ public class MatchRestController {
         if (match == null) {
             return ResponseEntity.notFound().build();
         }
-        MatchDTO matchDTO = matchService.convertToDTO(match);
-        return ResponseEntity.ok(matchDTO);
+        return ResponseEntity.ok(matchService.convertToDTO(match));
     }
 
     @PostMapping
@@ -85,8 +82,7 @@ public class MatchRestController {
         if (updatedMatch == null) {
             return ResponseEntity.notFound().build();
         }
-        MatchDTO updatedMatchDTO = matchService.convertToDTO(updatedMatch);
-        return ResponseEntity.ok(updatedMatchDTO);
+        return ResponseEntity.ok(matchService.convertToDTO(updatedMatch));
     }
 
 

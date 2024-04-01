@@ -1,7 +1,6 @@
 package es.codeurjc.backend.RESTController;
 
 import es.codeurjc.backend.DTOs.UserDTO;
-import es.codeurjc.backend.model.Matches;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -51,8 +50,7 @@ public class UserRestController {
     public ResponseEntity<UserDTO>getUserByID(@PathVariable long id){
         Optional<User> optionalUser = userService.findUserByID(id);
         if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            UserDTO userDTO = userService.convertToDTO(user);
+            UserDTO userDTO = userService.convertToDTO(optionalUser.get());
             userDTO.setEncodedPassword("NothingToSeeHere");
             return ResponseEntity.ok(userDTO);
         } else {
@@ -94,11 +92,7 @@ public class UserRestController {
     })
     public ResponseEntity<?> deleteUser(@PathVariable long idUser){
         userService.deleteUserByID(idUser);
-        //URI location = URI.create("/api/users");
         String msg = "User with id " + idUser+ " deleted .";
-
         return ResponseEntity.status(HttpStatus.OK).body(msg);
-       // return ResponseEntity.ok().location(location).body(this.getAllUsers().getBody());
-        //return user list to check delete
     }
 }
