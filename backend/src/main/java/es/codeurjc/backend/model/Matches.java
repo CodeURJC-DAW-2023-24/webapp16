@@ -3,6 +3,7 @@ package es.codeurjc.backend.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -29,7 +30,7 @@ public class Matches {
     @ManyToOne
     private Tournament tournament;
 
-    @JsonIgnore
+    @JsonBackReference
     @OneToOne(mappedBy = "match")
     private Report report;
     public Matches() {

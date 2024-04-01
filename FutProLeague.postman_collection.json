@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "59e09bab-6e23-4280-b584-7c65c7947478",
+		"_postman_id": "2870f7e7-c105-4add-ba9a-6d0f90ed2930",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33930086"
+		"_exporter_id": "33711570"
 	},
 	"item": [
 		{
@@ -683,7 +683,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"localTeam\": {\r\n        \"id\": 1,\r\n        \"name\": \"nudfbgdldfgl\",\r\n        \"coach\": \"nudfbgdldfgl\",\r\n        \"stadium\": \"nudfbgdldfgl\",\r\n        \"gamesPlayed\": 0,\r\n        \"wins\": 0,\r\n        \"loses\": 0,\r\n        \"imagePath\": null\r\n    },\r\n    \"visitingTeam\": {\r\n        \"id\": 2,\r\n        \"name\": \"nudfbgdldfgl\",\r\n        \"coach\": \"nudfbgdldfgl\",\r\n        \"stadium\": \"nudfbgdldfgl\",\r\n        \"gamesPlayed\": 0,\r\n        \"wins\": 0,\r\n        \"loses\": 0,\r\n        \"imagePath\": null\r\n    },\r\n    \"localGoals\": 2,\r\n    \"visitingGoals\": 1,\r\n    \"round\": 3,\r\n    \"tournament\": {\r\n        \"id\": 1,\r\n        \"name\": \"nudfbgdldfgl\",\r\n        \"category\": \"nudfbgdldfgl\",\r\n        \"cup\": \"nudfbgdldfgl\",\r\n        \"tournamentImagePath\": \"nudfbgdldfgl\"\r\n    }\r\n}",
+							"raw": "{\r\n    \r\n    \"localTeam\": {\r\n        \"id\": 10,\r\n        \"name\": \"Getafe CF\"\r\n      \r\n    },\r\n    \"visitingTeam\": {\r\n        \"id\": 11,\r\n        \"name\": \"Eibar\"\r\n    } ,\r\n    \"localGoals\" : 6,\r\n    \"visitingGoals\" : 34,\r\n    \"round\" : 2,\r\n    \"tournament\" :{\r\n        \"id\" :2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1063,7 +1063,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://localhost:8443/api/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users"
+							]
 						}
 					},
 					"response": []
@@ -1074,7 +1083,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://localhost:8443/api/users/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"4"
+							]
 						}
 					},
 					"response": []
@@ -1109,7 +1128,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "users",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -1138,7 +1157,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "users/{id}",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1167,7 +1186,19 @@
 					"name": "reports",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/reports",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"reports"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1175,15 +1206,49 @@
 					"name": "reports/{id}",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/reports/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"reports",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "reports",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2024-04-02\",\r\n    \"time\": \"09:00\",\r\n    \"matchOfficials\": \"Referee Oscar\",\r\n    \"localTeamGoals\": 6,\r\n    \"visitingTeamGoals\": 34,\r\n    \"observations\": \"This is a created Report\",\r\n    \"match\": {\r\n        \"id\"  : 12,\r\n        \"localTeam\" : { \"id\":10},\r\n        \"visitingTeam\": { \"id\":11},\r\n        \"tournament\" :{ \"id\" : 2},\r\n        \"localGoals\":6,\r\n        \"visitingGoals\": 34,\r\n        \"round\" : 2\r\n        \r\n\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/reports",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"reports"
+							]
+						}
 					},
 					"response": []
 				}
