@@ -814,7 +814,7 @@ To build the dockerized image of the application, follow these instructions:
 
    ```bash
    cd webapp16/docker
-   sudo docker-compose up -d
+   sudo docker compose up -d
    ```
 
 5. **Accessing the Application**
