@@ -855,7 +855,7 @@ Below are the credentials for example users, including an administrator user, to
 *  Development of REST APIs: I developed several REST APIs for our application, including those for teams, players, and tournaments also the filter option for each one of then. This included creating, modifying, and deleting resources, as well as fetching resource details.
 *  Introduction of Sample Data via Postman: I introduced sample data into our application using Postman. This involved creating a collection of requests, each with its own set of parameters, headers, and body data.
 * Refactoring for Code Reusability: As part of my efforts to improve the maintainability and readability of our codebase, I separated the functions for converting images to blobs and determining a user’s role into separate files.
-
+ 
 | #   |                                                               Commit                                                               |     | #   |                                                                                         File                                                                                          |
 | :-: |:----------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | 1º  |         [Complete: dockerizar app](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/f3573a8db146fc319af367bc9a6cb735960e45fd)          | | 1º |             [Dockerfile](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/Dockerfile)              |
