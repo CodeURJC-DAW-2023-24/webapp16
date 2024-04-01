@@ -71,11 +71,11 @@ public class SecurityConfiguration{
                         .requestMatchers("/errorTemplate").permitAll()
                         .requestMatchers("/EntityNotFound").permitAll()
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/**", "/swagger-ui/index.html").permitAll()
-                        .requestMatchers("/api/**").permitAll()
 
 
                                 // API REST
                                 // POSTMAN
+                        .requestMatchers("/api/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/tournaments").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/tournaments/{id}", "/api/tournaments/{id}/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/teams", "/api/teams/**").hasAnyRole("POSTMAN")
