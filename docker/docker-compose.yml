@@ -8,7 +8,7 @@ services:
       - MYSQL_DATABASE=futProLeague
 
   web:
-    image: aadrisoriiano03/webapp16:latest
+    image: aadrisoriiano03/webappp16:latest
     restart: on-failure
     build:
       context: ../
