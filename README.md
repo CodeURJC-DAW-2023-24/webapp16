@@ -611,7 +611,7 @@ Next, a diagram will be included depicting the entities within the database, the
 # :art: Class diagram and templates
 ![*templateDiagram*](readmeImg/templateDiagram.JPG)
 ---
-# :raised_hand: Participation phase 3
+# :raised_hand: Participation phase 2
 
 ---
 
@@ -856,7 +856,7 @@ Below are the credentials for example users, including an administrator user, to
 
 
 ---
-# :raised_hand: Participation phase 2
+# :raised_hand: Participation phase 3
 
 ---
 
