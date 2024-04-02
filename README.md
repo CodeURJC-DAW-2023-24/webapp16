@@ -33,8 +33,16 @@ ___
   - [**:rocket: Execution Instructions**](#rocket-Execution-Instructions)
   - [**:file_folder:Diagram with the database entities**](#file_folder-Diagram-with-the-database-entities)
   - [**:art:Class diagram and templates**](#art-Class-diagram-and-templates)
-  - [**:raised_hand: Participation**](#raised_hand-Participation)
-
+  - [**:raised_hand: Participation**](#raised_hand-participation-phase-2)
+- [**Phase 3**](#phase-3)
+  - [**:globe_with_meridians:API REST documentation**](#globe_with_meridians-API-REST-documentation)
+  - [**:art:Class diagram and templates**](#art-class-diagram-and-templates)
+  - [**:feet:Instructions for Running the Dockerized Application**](#feet-Instructions-for-Running-the-Dockerized-Application)
+  - [**:paperclip: Documentation for Building the Docker Image**](#paperclip-Documentation-for-Building-the-Docker-Image)
+  - [**:dash: Deployment on Virtual Machine**](#dash-Deployment-on-Virtual-Machine)
+  - [**:dash: Deployed application URL**](#dash-Deployed-application-URL)
+  - [**:bust_in_silhouette: User Examples**](#bust_in_silhouette-User-Examples)
+  - [**:raised_hand: Participation**](#raised_hand-Participation-phase-3)
 ___
 
 ___
@@ -603,7 +611,7 @@ Next, a diagram will be included depicting the entities within the database, the
 # :art: Class diagram and templates
 ![*templateDiagram*](readmeImg/templateDiagram.JPG)
 ---
-# :raised_hand: Participation
+# :raised_hand: Participation phase 3
 
 ---
 
@@ -696,7 +704,7 @@ Next, a diagram will be included depicting the entities within the database, the
 ___
 # Phase 3
 ___
-# 🌐 API REST documentation
+# :globe_with_meridians: API REST documentation
 The REST API documentation is automatically generated and can be accessed in the following formats:
 
 - **OpenAPI Specification (YAML):** [api-docs.yaml](backend/api-docs/api-docs.yaml)
@@ -719,7 +727,7 @@ To generate or update this documentation, follow these commands:
 ---
 
 
-# Instructions for Running the Dockerized Application
+# :feet: Instructions for Running the Dockerized Application
 
 To run the application using the docker-compose.yml file, follow these instructions:
 
@@ -752,7 +760,7 @@ Once the application is ready to be used, you can access it through a web browse
    ```
 
 ---
-# Documentation for Building the Docker Image
+# :paperclip: Documentation for Building the Docker Image
 
 To build the dockerized image of the application, follow these instructions:
 
@@ -778,7 +786,7 @@ To build the dockerized image of the application, follow these instructions:
 
 ---
 
-# Deployment on Virtual Machine 
+# :dash: Deployment on Virtual Machine
 ## Requirements
 * Operating system: Ubuntu 22.04 
 * Provided Private Key : 'prAppWeb16.key'
@@ -831,12 +839,12 @@ These steps will guide you through the process of deploying the application on t
 
 ---
 
-# Deployed application URL
+# :dash: Deployed application URL
   The application can be accessed at the following URL:
    ```plaintext
    https://10.100.139.173:8443
    ```
-## User Examples 
+## :bust_in_silhouette: User Examples
 Below are the credentials for example users, including an administrator user, to test the application:
 
 
@@ -848,7 +856,7 @@ Below are the credentials for example users, including an administrator user, to
 
 
 ---
-# :raised_hand: Participation
+# :raised_hand: Participation phase 2
 
 ---
 
@@ -907,21 +915,20 @@ Below are the credentials for example users, including an administrator user, to
 
 #### Manuel López Corchado
 
-* Added entities for database and database set up
-* Created bracket for tournaments
-* Designed html form to fulfill a tournament
-* Designed html form to fulfill a team
-* Added logic to collect text data from form
-* Added logic to collect images from user files.
+* Implemented and updated UserDTO, UserService and UserRestController. 
+* Research and bug fixing (such as json from matches related to infinite recursion).
+* Added spring security role to postman, so postman's requests can only be done by the API. Without role, anyone could access database entities and its operations.
+* Code optimization and shortening to ensure the best VM performance. I have reviewed the all the code in rest controllers and services to guarantee the best efficiency and encapsulation.
+* API Rest (postman) research and structure ideation. In collaboration with Nicolás Hernandez Tejero.
 
 
-| #   |                                                                              Commit                                                                               |     | #   |                                                                                              File                                                                                               |
-| :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 1º  |   [Add Tournament - Team - Player html, Java and SQL config](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/353810e6c85d7305d016445d7e7b3da8c82c24ed)    | | 1º |                    [TeamController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TeamControler.java)                    |
-| 2º  |         [Models added to proyect and DB configuration](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/514c5de469c2c3a0177d1f6fdc8fd75c07a7a15d)          | |2º |             [TournamentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/TournamentController.java)              |
-| 3º  | [Add photo to team and tournament, fixed error in player names](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9340b414f5ff7651cb9586e01cd61dd491c9b928) | | 3º |       [UserController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/UserController.java)        |
-| 4º  |    [CSS - Bracket Style done and migration success complete](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/28f1338a14476accf8ba0a076e926649547cebfc)    | | 4º |           [MatchController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/controller/MatchController.java)            |
-| 5º  |           [Add tournament saving and adjusting links](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/94bc64d9798d3d1ea52010c28e9718c999cab131)           | | 5º | [teamCreate.html](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/resources/templates/teamCreate.html)  |
+| #   |                                                                                        Commit                                                                                         |     | #   |                                                                                        File                                                                                        |
+| :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  | [Add: REST User addition, modification and delete V0.4. Add: JSON postman requests](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/2ef1789539689ced7abe8940d717b6d327bec37b) | | 1º | [UserRestController.java and related](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/UserRestController.java) |
+| 2º  |                          [Add: REST team getAll, getById](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/c20455de1c8438d60931e13030741a9b42defeac)                           | |2º | [TeamRestController.java and related](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/TeamRestController.java) |
+| 3º  |                       [Optimization: Code shorted and reduced instances, deleted unused imports](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/da9844f8c8c5a8c7c961a3acacba3a7b593d9132)                     | | 3º |        [MatchService.java and related](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/service/MatchService.java)        |
+| 4º  |              [Add : docker compose almost finished](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3d85bf30a8d397f08f31741cd9868b9cede82531)                 | | 4º |        [RESTController folder files](https://github.com/CodeURJC-DAW-2023-24/webapp16/tree/main/backend/src/main/java/es/codeurjc/backend/RESTController)         |
+| 5º  |                        [Add: REST security by role POSTMAN](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/a9c737afc46c503413848f8168d254e06d4ae981)                         | | 5º |                       [docker-compose.yml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/docker-compose.yml)                        |
 
 
 #### Natalia Hernández Vargas
