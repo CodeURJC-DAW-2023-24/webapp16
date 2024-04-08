@@ -280,7 +280,6 @@ public class SampleAllData {
 
             userRepository.save(new User("user", passwordEncoder.encode("pass"), "USER"));
             userRepository.save(new User("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
-            userRepository.save(new User("postman", passwordEncoder.encode("P0sTm4N"), "USER","POSTMAN"));
 
 
     }

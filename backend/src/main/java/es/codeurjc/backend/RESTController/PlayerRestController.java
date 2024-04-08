@@ -96,8 +96,14 @@ public class PlayerRestController {
             @ApiResponse(responseCode = "404", description = "Player not found", content = @Content)
     })
     public ResponseEntity<?> deletePlayer(@PathVariable Long id) {
-        playerService.deletePlayerById(id);
-        String msg = "Player with id " + id + " deleted .";
-        return ResponseEntity.status(HttpStatus.OK).body(msg);
+        Player player = playerService.findPlayerById(id);
+        if (player!=null) {
+            playerService.deletePlayerById(id);
+            String msg = "Player with id " + id + " deleted .";
+            return ResponseEntity.status(HttpStatus.OK).body(msg);
+        }else {
+            String msg = "Player with id " + id + " does not exist .";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+        }
     }
 }

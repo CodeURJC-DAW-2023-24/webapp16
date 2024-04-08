@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "dc38faab-84d6-421e-9b39-3c0d1bae9afc",
+		"_postman_id": "6824d7ff-7eff-4b28-8ee0-324645dfebc9",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33711570"
+		"_exporter_id": "33851341"
 	},
 	"item": [
 		{
@@ -404,10 +404,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/players",
+							"raw": "https://{{HTTPS DIR}}:8443/api/players",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -424,10 +424,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/players/1",
+							"raw": "https://{{HTTPS DIR}}:8443/api/players/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -454,10 +454,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/players",
+							"raw": "https://{{HTTPS DIR}}:8443/api/players",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -483,10 +483,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/players/113",
+							"raw": "https://{{HTTPS DIR}}:8443/api/players/113",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -504,16 +504,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/players/113",
+							"raw": "https://{{HTTPS DIR}}:8443/api/players/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
 								"api",
 								"players",
-								"113"
+								"1"
 							]
 						}
 					},
@@ -525,10 +525,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/players?page=1",
+							"raw": "https://{{HTTPS DIR}}:8443/api/players?page=1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -551,10 +551,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/search?player=Lionel",
+							"raw": "https://{{HTTPS DIR}}:8443/api/search?player=Lionel",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -577,10 +577,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/search?position=forward",
+							"raw": "https://{{HTTPS DIR}}:8443/api/search?position=forward",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -603,10 +603,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/search?nationality=español",
+							"raw": "https://{{HTTPS DIR}}:8443/api/search?nationality=español",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1306,7 +1306,7 @@
 			]
 		},
 		{
-			"name": "login",
+			"name": "login USER",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -1315,25 +1315,78 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "postman",
+							"value": "user",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "P0sTm4N",
+							"value": "pass",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "https://localhost:8443/login",
+					"raw": "https://{{HTTPS DIR}}:8443/login",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"{{HTTPS DIR}}"
 					],
 					"port": "8443",
 					"path": [
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login ADMIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "adminpass",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{HTTPS DIR}}:8443/login",
+					"protocol": "https",
+					"host": [
+						"{{HTTPS DIR}}"
+					],
+					"port": "8443",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{HTTPS DIR}}:8443/logout",
+					"protocol": "https",
+					"host": [
+						"{{HTTPS DIR}}"
+					],
+					"port": "8443",
+					"path": [
+						"logout"
 					]
 				}
 			},

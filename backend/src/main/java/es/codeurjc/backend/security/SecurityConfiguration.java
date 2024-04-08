@@ -75,6 +75,37 @@ public class SecurityConfiguration{
 
                                 // API REST
                                 // POSTMAN
+                        .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET,"/api/tournaments/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/api/tournaments/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/tournaments/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/api/tournaments/**").hasAnyRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET,"/api/teams/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/api/teams/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/teams/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/api/teams/**").hasAnyRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET,"/api/players/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/api/players/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/players/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/api/players/**").hasAnyRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET,"/api/reports/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/api/reports/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/reports/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/api/reports/**").hasAnyRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET,"/api/matches/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/api/matches/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/matches/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/api/matches/**").hasAnyRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET,"/api/search/**").hasAnyRole("USER")
+                        .requestMatchers("/api/statistics/**").hasAnyRole("USER")
+
+                        /*
                         .requestMatchers("/api/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/tournaments").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/tournaments/{id}", "/api/tournaments/{id}/**").hasAnyRole("POSTMAN")
@@ -90,7 +121,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/api/statistics/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/reports/**").hasAnyRole("POSTMAN")
                         .requestMatchers("/api/search/**").hasAnyRole("POSTMAN")
-
+                        */
 
 
                         // PRIVATE PAGES
