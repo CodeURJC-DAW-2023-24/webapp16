@@ -709,7 +709,7 @@ The REST API documentation is automatically generated and can be accessed in the
 
 ### Link .yaml
 
-[api-docs.yaml]("https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml")
+[api-docs.yaml]("https://github.com/CodeURJC-DAW-2023-24/webapp16/main/backend/api-docs/api-docs.yaml")
 
 
 ### Link .html
