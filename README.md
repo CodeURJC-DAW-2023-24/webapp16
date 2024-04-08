@@ -36,7 +36,7 @@ ___
   - [**:raised_hand: Participation**](#raised_hand-participation-phase-2)
 - [**Phase 3**](#phase-3)
   - [**:globe_with_meridians:API REST documentation**](#globe_with_meridians-API-REST-documentation)
-  - [**:art:Class diagram and templates**](#art-class-diagram-and-templates)
+  - [**:art:Class diagram and templates 2**](#art-Class-diagram-and-templates-2)
   - [**:feet:Instructions for Running the Dockerized Application**](#feet-Instructions-for-Running-the-Dockerized-Application)
   - [**:paperclip: Documentation for Building the Docker Image**](#paperclip-Documentation-for-Building-the-Docker-Image)
   - [**:dash: Deployment on Virtual Machine**](#dash-Deployment-on-Virtual-Machine)
@@ -705,6 +705,7 @@ ___
 # Phase 3
 ___
 # :globe_with_meridians: API REST documentation
+
 The REST API documentation is automatically generated and can be accessed in the following formats:
 
 ### Link .yaml
@@ -727,7 +728,8 @@ To generate or update this documentation, follow these commands:
    mvn verify
 
 ---
-# :art: Class diagram and templates
+# :art: Class diagram and templates 2
+
 ![*templateDiagram*](readmeImg/diagramaClass2.png)
 
 ---
