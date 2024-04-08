@@ -707,8 +707,14 @@ ___
 # :globe_with_meridians: API REST documentation
 The REST API documentation is automatically generated and can be accessed in the following formats:
 
-- **OpenAPI Specification (YAML):** [api-docs.yaml](backend/api-docs/api-docs.yaml)
-- **HTML Documentation (Viewable in browser):** [api-docs.html]("https://raw.githack.com/CodeURJC-DAW-2023-24/webapp16/main/backend/api-docs/api-docs.html")
+### Link .yaml
+
+[api-docs.yaml]("https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml")
+
+
+### Link .html
+
+[api-docs.html]("https://raw.githack.com/CodeURJC-DAW-2023-24/webapp16/main/backend/api-docs/api-docs.html")
 
 To generate or update this documentation, follow these commands:
 
