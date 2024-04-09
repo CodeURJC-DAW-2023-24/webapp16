@@ -15,10 +15,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/teams",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -35,10 +35,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/teams/1",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -56,10 +56,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/teams/1/image",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams/1/image",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -139,10 +139,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/teams",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -168,10 +168,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/teams/1",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -198,10 +198,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/teams/1/image",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams/1/image",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -220,10 +220,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/teams/17",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams/17",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -291,10 +291,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/teams?page=1",
+							"raw": "https://{{HTTPS DIR}}:8443/api/teams?page=1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -373,10 +373,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/search?team=real%20madrid",
+							"raw": "https://{{HTTPS DIR}}:8443/api/search?team=real%20madrid",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -634,10 +634,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/matches",
+							"raw": "https://{{HTTPS DIR}}:8443/api/matches",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -661,10 +661,10 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/matches/2",
+							"raw": "https://{{HTTPS DIR}}:8443/api/matches/2",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -691,10 +691,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/matches",
+							"raw": "https://{{HTTPS DIR}}:8443/api/matches",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -720,10 +720,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/matches/4",
+							"raw": "https://{{HTTPS DIR}}:8443/api/matches/4",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -741,10 +741,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/matches/3",
+							"raw": "https://{{HTTPS DIR}}:8443/api/matches/3",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -767,10 +767,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -787,10 +787,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments/1",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -808,10 +808,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments/1/image",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments/1/image",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -839,10 +839,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -868,10 +868,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments/3",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments/3",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -898,10 +898,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments/1/image",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments/1/image",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -920,10 +920,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/tournaments/3",
+							"raw": "https://{{HTTPS DIR}}:8443/api/tournaments/3",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -941,10 +941,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/search?tournament=champion",
+							"raw": "https://{{HTTPS DIR}}:8443/api/search?tournament=champion",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -972,10 +972,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/statistics/teams",
+							"raw": "https://{{HTTPS DIR}}:8443/api/statistics/teams",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -993,10 +993,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/statistics/teams/3",
+							"raw": "https://{{HTTPS DIR}}:8443/api/statistics/teams/3",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1015,10 +1015,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/statistics/players",
+							"raw": "https://{{HTTPS DIR}}:8443/api/statistics/players",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1036,10 +1036,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/statistics/players/3",
+							"raw": "https://{{HTTPS DIR}}:8443/api/statistics/players/3",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1063,10 +1063,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/users",
+							"raw": "https://{{HTTPS DIR}}:8443/api/users",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1083,10 +1083,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/users/4",
+							"raw": "https://{{HTTPS DIR}}:8443/api/users/4",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1113,10 +1113,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/users",
+							"raw": "https://{{HTTPS DIR}}:8443/api/users",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1142,10 +1142,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/users",
+							"raw": "https://{{HTTPS DIR}}:8443/api/users",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1162,10 +1162,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/users/4",
+							"raw": "https://{{HTTPS DIR}}:8443/api/users/4",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1188,10 +1188,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/reports",
+							"raw": "https://{{HTTPS DIR}}:8443/api/reports",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1208,10 +1208,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/reports/2",
+							"raw": "https://{{HTTPS DIR}}:8443/api/reports/2",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1238,10 +1238,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/reports",
+							"raw": "https://{{HTTPS DIR}}:8443/api/reports",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1267,10 +1267,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/reports/6",
+							"raw": "https://{{HTTPS DIR}}:8443/api/reports/6",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
@@ -1288,10 +1288,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/api/reports/6",
+							"raw": "https://{{HTTPS DIR}}:8443/api/reports/6",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{HTTPS DIR}}"
 							],
 							"port": "8443",
 							"path": [
