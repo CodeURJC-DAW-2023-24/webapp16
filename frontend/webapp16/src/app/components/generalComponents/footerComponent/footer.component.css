@@ -1,0 +1,152 @@
+
+/*------------------------------------------------------------------
+    IMPORT FILES
+-------------------------------------------------------------------
+
+
+@import url(../../../../../../../backend/src/main/resources/static/css/imports/animate.css);
+@import url(../../../../../../../backend/src/main/resources/static/css/imports/flaticon.css);
+@import url(../../../../../../../backend/src/main/resources/static/css/imports/prettyPhoto.css);
+@import url(../../../../../../../backend/src/main/resources/static/css/imports/font-awesome.min.css);
+@import url(../../../../../../../backend/src/main/resources/static/css/imports/font-awesome.css);*/
+
+.full {
+  position:relative;
+}
+body{
+  margin: 0;
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+  color:white !important;
+}
+* {
+  font-family: 'Poppins', sans-serif;
+}
+footer#footer {
+  min-height: auto;
+  background: #111;
+  float: left;
+  width: 100%;
+  padding: 0;
+  bottom: 0;
+  border-top: solid #ddd 1px;
+  position: relative;
+  background-position: center top;
+  background-size: cover;
+  flex:1;
+}
+.footer-widget {
+  float: left;
+  width: 100%;
+  padding: 50px 0 10px;
+}
+.footer-widget p {
+  font-size: 14px;
+  color: #fff;
+  margin: 20px 0 10px;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+.footer-widget h3 {
+  color: #fff;
+  text-transform: none;
+  font-weight: 500;
+  font-size: 18px;
+  float: left;
+  width: 100%;
+  padding-left: 0;
+  padding-bottom: 0;
+  line-height: 20px;
+  margin-bottom: 10px;
+  border-bottom: solid #333 1px;
+  padding-bottom: 15px;
+  padding-top: 7px;
+}
+.footer-menu {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 32px;
+}
+.footer-bottom {
+  float: left;
+  width: 100%;
+  text-align: center;
+  min-height: 45px;
+  line-height: 45px;
+  border-top: solid #222 1px;
+  background: #111;
+  color: #fff;
+}
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  line-height: 50px;
+  font-weight: 300;
+}
+footer div.full p {
+  text-align: left;
+}
+.footer-menu li {
+  font-weight: 300;
+  font-size: 14px;
+}
+.footer-logo img {
+  width: 180px;
+  padding-top: 10px;
+}
+.footer-bottom p a {
+  color: #fff;
+}
+.footer-menu li a {
+  color: #fff;
+}
+.address-list {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+}
+.address-list li {
+  float: left;
+  width: 100%;
+  position:relative;
+}
+.address-list li i {
+  font-size: 24px;
+  width: 25px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+}
+.address-list li {
+  float: left;
+  width: 100%;
+  position: relative;
+  line-height: 30px;
+  padding-left: 35px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-size: 14px;
+}
+a,
+.btn {
+  text-decoration: none !important;
+  outline: none !important;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+.footer-links a:hover, .footer a:hover {
+  color: #d8302f !important;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
