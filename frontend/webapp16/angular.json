@@ -20,6 +20,22 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "webapp16:build",
+            "proxyConfig": "proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "webapp16:build:production"
+            },
+            "development": {
+              "buildTarget": "webapp16:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
@@ -36,7 +52,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/styles/stadistics.css"
             ],
             "scripts": []
           },
@@ -64,18 +81,7 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "webapp16:build:production"
-            },
-            "development": {
-              "buildTarget": "webapp16:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
+
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
