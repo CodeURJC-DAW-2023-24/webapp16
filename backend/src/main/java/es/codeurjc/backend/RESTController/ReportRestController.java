@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/reports")
+@CrossOrigin(origins = "https://localhost:4200")
 public class ReportRestController {
     @Autowired
     private ReportService reportService;

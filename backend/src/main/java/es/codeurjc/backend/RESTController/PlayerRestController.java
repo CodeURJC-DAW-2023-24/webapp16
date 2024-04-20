@@ -21,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/players")
+@CrossOrigin(origins = "https://localhost:4200")
 public class PlayerRestController {
     @Autowired
     private PlayerService playerService;

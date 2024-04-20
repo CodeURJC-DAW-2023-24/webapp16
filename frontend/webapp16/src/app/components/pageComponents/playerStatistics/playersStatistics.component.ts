@@ -1,11 +1,13 @@
 // playersStatistics.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, BarController, BarElement, LinearScale, CategoryScale } from 'chart.js';
 import { Player } from '../../../models/player.model';
 import { PlayerService } from '../../../services/player.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+
+Chart.register(BarController, BarElement, LinearScale, CategoryScale);
 
 @Component({
   selector: 'app-playersStatistics',

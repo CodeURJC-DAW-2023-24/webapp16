@@ -46,6 +46,7 @@ public class SecurityConfiguration{
 
         http
                 .authorizeHttpRequests(authorize -> authorize
+
                         // PUBLIC PAGES
                         .requestMatchers("https://localhost:8443").permitAll()
                         .requestMatchers("/").permitAll()
@@ -60,8 +61,6 @@ public class SecurityConfiguration{
                         .requestMatchers("/teams/{name}/{playerName}").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/api/players").permitAll()
-                        .requestMatchers("/api/teams").permitAll()
                         .requestMatchers("/players").permitAll()
                         .requestMatchers("/players/{playerName}/{lastName}").permitAll()
                         .requestMatchers("/teams/{name}/{playerName}/{lastName}").permitAll()
@@ -73,37 +72,42 @@ public class SecurityConfiguration{
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/**", "/swagger-ui/index.html").permitAll()
 
 
-                                // API REST
-                                // POSTMAN
+                        // API REST
+                        // POSTMAN
                         .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET,"/api/tournaments").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/tournaments/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/tournaments/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/tournaments/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/tournaments/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET,"/api/teams").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/teams/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/teams/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/teams/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/teams/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET,"/api/players").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/players/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/players/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/players/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/players/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET,"/api/reports").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.GET,"/api/reports/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/reports/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/reports/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/reports/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET,"/api/matches").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.GET,"/api/matches/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/matches/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/matches/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/matches/**").hasAnyRole("ADMIN")
 
                         .requestMatchers(HttpMethod.GET,"/api/search/**").hasAnyRole("USER")
-                        .requestMatchers("/api/statistics/**").hasAnyRole("USER")
+                        .requestMatchers("/api/statistics/**").permitAll()
 
                         /*
                         .requestMatchers("/api/**").hasAnyRole("POSTMAN")

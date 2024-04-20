@@ -26,6 +26,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/teams")
+@CrossOrigin(origins = "https://localhost:4200")
 public class TeamRestController {
     @Autowired
     private TeamService teamService;

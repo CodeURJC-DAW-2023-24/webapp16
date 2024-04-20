@@ -5,13 +5,14 @@ import { Player } from '../models/player.model';
 import { SessionService } from './session.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import {API_URL} from "../../config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
-  private apiUrl = '/api/players';
-  private statisticsUrl = '/api/statistics/players';
+  private apiUrl = `${API_URL}/players`;
+  private statisticsUrl = `${API_URL}/statistics/players`;
 
   constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
 
@@ -24,7 +25,8 @@ export class PlayerService {
 getTopPlayers(): Observable<Player[]> {
   return this.http.get<Player[]>(this.statisticsUrl).pipe(
     catchError(err => {
-      this.router.navigate(['/error']);
+      console.error('Error occurred while fetching players:', err);
+      //this.router.navigate(['/error']);
       return throwError(err);
     })
   );
