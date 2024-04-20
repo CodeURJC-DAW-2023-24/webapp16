@@ -10,6 +10,8 @@ import {PlayersStatisticsComponent} from "./components/pageComponents/playerStat
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./components/viewsComponents/loginComponent/login.component";
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginErrorComponent } from "./components/viewsComponents/loginErrorComponent/loginError.component";
+
 
 
 
@@ -19,7 +21,8 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     HeaderComponent,
     PlayersStatisticsComponent,
-    LoginComponent
+    LoginComponent,
+    LoginErrorComponent
   ],
   imports: [
     BrowserModule,
