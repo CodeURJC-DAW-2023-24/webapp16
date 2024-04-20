@@ -11,7 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./components/viewsComponents/loginComponent/login.component";
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginErrorComponent } from "./components/viewsComponents/loginErrorComponent/loginError.component";
-
+import {TeamsStatisticsComponent} from "./components/pageComponents/teamStatistics/teamStatistics.component";
 
 
 
@@ -22,7 +22,8 @@ import { LoginErrorComponent } from "./components/viewsComponents/loginErrorComp
     HeaderComponent,
     PlayersStatisticsComponent,
     LoginComponent,
-    LoginErrorComponent
+    LoginErrorComponent,
+    TeamsStatisticsComponent
   ],
   imports: [
     BrowserModule,
