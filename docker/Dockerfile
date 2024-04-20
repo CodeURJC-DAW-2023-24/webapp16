@@ -1,15 +1,23 @@
-# Imagen base para el contenedor de compilación
+# Imagen base para el contenedor de compilación de Angular
+FROM node:18 as angular
+WORKDIR /app
+COPY frontend/webapp16/package*.json ./
+RUN npm install
+COPY frontend/webapp16 .
+RUN npm run build
+
+# Imagen base para el contenedor de compilación de Spring Boot
 FROM maven:3.6.3-openjdk-17 as builder
 WORKDIR /futProLeague
 
 # Copia las dependencias del proyecto
-COPY ../backend/pom.xml ./pom.xml
-
-# Descarga las dependencias del proyecto
-#RUN mvn clean verify
+COPY /backend/pom.xml ./pom.xml
 
 # Copia el código del proyecto
-COPY ../backend/src ./src
+COPY /backend/src ./src
+
+# Copia la aplicación Angular construida a la carpeta de recursos estáticos de Spring Boot
+COPY --from=angular /app/dist/webapp16 src/main/resources/public/new
 
 # Compila el proyecto
 RUN mvn clean package -DskipTests=true
