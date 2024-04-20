@@ -1,0 +1,74 @@
+<div class="content" style="background-color: #1f2029;">
+  <a routerLink="/" style="margin-left: 20px; color: #d8302f;">
+    <i class='input-icon uil uil-arrow-left' style="font-size: 2rem;"></i>
+  </a>
+  <div class="container">
+    <div class="row align-items-stretch no-gutters contact-wrap">
+      <div class="col-md-12">
+        <div class="form h-100">
+          <h3>Football Referee Report</h3>
+          <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 form-group mb-3">
+                <label for="dateOfBirth" class="col-form-label">Date of Match *</label>
+                <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth" required>
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                <label for="matchTime" class="col-form-label">Time of Match *</label>
+                <input type="time" class="form-control" formControlName="matchTime" id="matchTime" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group mb-3">
+                <label for="team1" class="col-form-label">Home Team *</label>
+                <input type="text" class="form-control" formControlName="team1" id="team1" readonly>
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                <label for="team2" class="col-form-label">Away Team *</label>
+                <input type="text" class="form-control" formControlName="team2" id="team2" readonly>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group mb-3">
+                <label for="team1Goals" class="col-form-label">Home Team Goals *</label>
+                <input type="number" class="form-control" formControlName="team1Goals" id="team1Goals" placeholder="Home team goals" required min="0">
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                <label for="team2Goals" class="col-form-label">Away Team Goals *</label>
+                <input type="number" class="form-control" formControlName="team2Goals" id="team2Goals" placeholder="Away team goals" required min="0">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 form-group mb-3">
+                <label for="matchOfficials" class="col-form-label">Match Officials *</label>
+                <input type="text" class="form-control" formControlName="matchOfficials" id="matchOfficials" placeholder="Match Officials" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 form-group mb-3">
+                <label for="matchSummary" class="col-form-label">Match Summary *</label>
+                <textarea class="form-control" formControlName="matchSummary" id="matchSummary" cols="30" rows="4" placeholder="Match Summary" required></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <input type="submit" value="Submit Report" class="btn btn-primary rounded-0 py-2 px-4">
+              </div>
+            </div>
+          </form>
+
+          <div id="form-message-warning mt-4"></div>
+          <div id="form-message-success">
+            Your referee report was submitted, thank you!
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

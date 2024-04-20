@@ -12,6 +12,9 @@ import {LoginComponent} from "./components/viewsComponents/loginComponent/login.
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginErrorComponent } from "./components/viewsComponents/loginErrorComponent/loginError.component";
 import {TeamsStatisticsComponent} from "./components/pageComponents/teamStatistics/teamStatistics.component";
+import { FillMatchReportComponent } from './components/viewsComponents/fillMatchReportComponent/fillMatchReport.component';
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 
@@ -23,14 +26,17 @@ import {TeamsStatisticsComponent} from "./components/pageComponents/teamStatisti
     PlayersStatisticsComponent,
     LoginComponent,
     LoginErrorComponent,
-    TeamsStatisticsComponent
+    TeamsStatisticsComponent,
+    FillMatchReportComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgbNavModule
+    NgbNavModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
