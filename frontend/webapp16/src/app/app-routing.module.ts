@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PlayersStatisticsComponent } from './components/pageComponents/playerStatistics/playersStatistics.component';
-import { LoginComponent } from './components/pageComponents/login/login.component';
+import { LoginComponent } from './components/viewsComponents/loginComponent/login.component';
+
 
 const routes: Routes = [
   { path: 'new', component: PlayersStatisticsComponent },
