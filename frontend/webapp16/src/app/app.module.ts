@@ -8,7 +8,10 @@ import {FooterComponent} from "./components/generalComponents/footerComponent/fo
 import {HeaderComponent} from "./components/generalComponents/headerComponent/header.component";
 import {PlayersStatisticsComponent} from "./components/pageComponents/playerStatistics/playersStatistics.component";
 import {HttpClientModule} from "@angular/common/http";
-import {LoginComponent} from "./components/pageComponents/login/login.component";
+import {LoginComponent} from "./components/viewsComponents/loginComponent/login.component";
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import {LoginComponent} from "./components/pageComponents/login/login.component"
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbNavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
