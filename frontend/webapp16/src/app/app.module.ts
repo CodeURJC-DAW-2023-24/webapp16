@@ -14,6 +14,8 @@ import { LoginErrorComponent } from "./components/viewsComponents/loginErrorComp
 import {TeamsStatisticsComponent} from "./components/pageComponents/teamStatistics/teamStatistics.component";
 import { FillMatchReportComponent } from './components/viewsComponents/fillMatchReportComponent/fillMatchReport.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ShowReportComponent } from './components/viewsComponents/showReportComponent/showReport.component';
+
 
 
 
@@ -27,7 +29,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     LoginErrorComponent,
     TeamsStatisticsComponent,
-    FillMatchReportComponent
+    FillMatchReportComponent,
+    ShowReportComponent
 
   ],
   imports: [

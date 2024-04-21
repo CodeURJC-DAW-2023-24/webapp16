@@ -1,0 +1,69 @@
+<div class="container" style="padding-bottom: 50px;">
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+
+  <div *ngIf="!error" class="row align-items-stretch no-gutters contact-wrap">
+    <div class="col-md-12">
+      <div class="form h-100" id="allInfo">
+        <h3>Match Report</h3>
+
+        <form class="mb-5" >
+          <div class="row">
+            <div class="col-md-6 form-group mb-3">
+              <label for="date" class="col-form-label">Date of Match</label>
+              <input type="text" class="form-control" id="date" formControlName="date" readonly>
+            </div>
+            <div class="col-md-6 form-group mb-3">
+              <label for="time" class="col-form-label">Time of Match</label>
+              <input type="text" class="form-control" id="time" formControlName="time" readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group mb-3">
+              <label for="team1" class="col-form-label">Home Team</label>
+              <input type="text" class="form-control" id="team1" formControlName="team1" readonly>
+            </div>
+            <div class="col-md-6 form-group mb-3">
+              <label for="team2" class="col-form-label">Away Team</label>
+              <input type="text" class="form-control" id="team2" formControlName="team2" readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group mb-3">
+              <label for="team1Goals" class="col-form-label">Home Team Goals</label>
+              <input type="number" class="form-control" id="team1Goals" formControlName="team1Goals" readonly>
+            </div>
+            <div class="col-md-6 form-group mb-3">
+              <label for="team2Goals" class="col-form-label">Away Team Goals</label>
+              <input type="number" class="form-control" id="team2Goals" formControlName="team2Goals" readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="matchOfficials" class="col-form-label">Match Officials</label>
+              <input type="text" class="form-control" id="matchOfficials" formControlName="matchOfficials" readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="observations" class="col-form-label">Observations</label>
+              <textarea class="form-control" id="observations" formControlName="observations" rows="4" readonly></textarea>
+            </div>
+          </div>
+        </form>
+
+        <div class="fillDiv">
+          <a >
+            <button type="button" class="btn btn-outline-primary">Bracket</button>
+          </a>
+        </div>
+        <div class="fillDiv">
+          <button type="button"  class="btn btn-outline-primary">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
