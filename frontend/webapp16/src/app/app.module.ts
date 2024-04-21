@@ -15,6 +15,8 @@ import {TeamsStatisticsComponent} from "./components/pageComponents/teamStatisti
 import { FillMatchReportComponent } from './components/viewsComponents/fillMatchReportComponent/fillMatchReport.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ShowReportComponent } from './components/viewsComponents/showReportComponent/showReport.component';
+import { ErrorComponent } from "./components/viewsComponents/errorComponent/error.component";
+
 
 
 
@@ -30,7 +32,8 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
     LoginErrorComponent,
     TeamsStatisticsComponent,
     FillMatchReportComponent,
-    ShowReportComponent
+    ShowReportComponent,
+    ErrorComponent
 
   ],
   imports: [

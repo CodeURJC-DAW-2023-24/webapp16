@@ -1,0 +1,18 @@
+<header>
+  <div>
+    <a routerLink="/" style="margin-left: 20px; color: #d8302f;"><i class='input-icon uil uil-arrow-left' style="font-size: 2rem;"></i></a>
+    <a routerLink="/" style="justify-content: center; align-items: center; display: flex;"><img class="show-logo" src="assets/images/logo_top.png" alt="#"/></a>
+  </div>
+</header>
+<section class="section">
+  <div class="login-container">
+    <ng-container *ngIf="errorCode; else noErrorCode">
+      <h2>Error {{errorCode}}</h2>
+    </ng-container>
+    <ng-template #noErrorCode>
+      <h2>Error</h2>
+    </ng-template>
+    <p>{{errorMessage}}</p>
+    <a routerLink="/" class="retry-button">Go back</a>
+  </div>
+</section>
