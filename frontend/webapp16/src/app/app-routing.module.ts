@@ -6,10 +6,11 @@ import { LoginErrorComponent } from './components/viewsComponents/loginErrorComp
 import {TeamsStatisticsComponent} from "./components/pageComponents/teamStatistics/teamStatistics.component";
 import { FillMatchReportComponent } from './components/viewsComponents/fillMatchReportComponent/fillMatchReport.component';
 import { ShowReportComponent } from './components/viewsComponents/showReportComponent/showReport.component';
+import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 
 
 const routes: Routes = [
- // { path: '', component: TournmamentComponent },
+  { path: '', component: AboutUsComponent },
   { path: 'new', component: PlayersStatisticsComponent },
   { path: 'new/statistics/players', component: PlayersStatisticsComponent },
   { path: 'new/statistics/teams', component: TeamsStatisticsComponent },
