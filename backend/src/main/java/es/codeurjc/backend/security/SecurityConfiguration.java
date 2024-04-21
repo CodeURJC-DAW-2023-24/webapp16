@@ -74,6 +74,7 @@ public class SecurityConfiguration{
 
                         // API REST
                         // POSTMAN
+                        .requestMatchers("/api/users").hasAnyRole("ADMIN")
                         .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
 
                         .requestMatchers(HttpMethod.GET, "/api/users/me").hasAuthority("USER")
