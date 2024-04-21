@@ -6,6 +6,7 @@ import { SessionService } from './session.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import {API_URL} from "../../config";
+import {Player} from "../models/player.model";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,9 @@ export class TeamService {
 
   constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
 
+  getTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>(this.apiUrl);
+  }
 
   // team.service.ts
   getTopTeams(): Observable<Team[]> {

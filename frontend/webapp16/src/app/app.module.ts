@@ -19,7 +19,10 @@ import { ErrorComponent } from "./components/viewsComponents/errorComponent/erro
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
 
-import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
+import {PlayerComponent} from "./components/viewsComponents/playerComponent/player.component";
+import {PlayerCardsComponent} from "./components/generalComponents/playerCardsComponent/playerCards.component";
+import {TeamComponent} from "./components/viewsComponents/teamComponent/team.component";
+import {TeamCardsComponent} from "./components/generalComponents/teamCardsComponent/teamCards.component";
 import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
 import {TournamentCardsComponent} from "./components/generalComponents/tournamentCardsComponent/tournamentCards.component";
 
@@ -38,7 +41,10 @@ import {TournamentCardsComponent} from "./components/generalComponents/tournamen
     ErrorComponent,
     AboutUsComponent,
     ProfileComponent,
-    PlayersComponent,
+    PlayerComponent,
+    PlayerCardsComponent,
+    TeamComponent,
+    TeamCardsComponent,
     TournamentComponent,
     TournamentCardsComponent
 

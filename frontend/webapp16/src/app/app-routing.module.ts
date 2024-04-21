@@ -12,22 +12,24 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 import { ErrorComponent } from './components/viewsComponents/errorComponent/error.component';
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
-import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
 import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
+import {PlayerComponent} from "./components/viewsComponents/playerComponent/player.component";
+import {TeamComponent} from "./components/viewsComponents/teamComponent/team.component";
+
 
 const routes: Routes = [
   { path: 'new/aboutUs', component: AboutUsComponent },
   { path: 'new', component: TournamentComponent },
   { path: 'new/statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'new/statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
-
+  { path: 'new/player', component: PlayerComponent },
+  { path: 'new/team', component: TeamComponent },
   { path: 'new/login', component: LoginComponent },
   { path: 'new/login-error', component: LoginErrorComponent },
   { path: 'new/fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'new/show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'new/error', component: ErrorComponent },
-  { path: 'new/profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
-  { path: 'new/players', component: PlayersComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } }
+  { path: 'new/profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } }
 ];
 
 @NgModule({
