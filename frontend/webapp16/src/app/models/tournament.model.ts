@@ -2,6 +2,6 @@ export interface Tournament {
   id: number;
   name: string;
   category: string;
-  cup: number;
+  cup: string;
   tournamentImagePath: string;
 }

@@ -17,7 +17,7 @@ import {TournamentComponent} from "./components/viewsComponents/TournamentCompon
 
 const routes: Routes = [
   { path: 'new/aboutUs', component: AboutUsComponent },
-  { path: 'new', component: TournamentComponent, canActivate: [AuthGuard] },
+  { path: 'new', component: TournamentComponent },
   { path: 'new/statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'new/statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
 

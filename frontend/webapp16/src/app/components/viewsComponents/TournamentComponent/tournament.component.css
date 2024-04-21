@@ -272,3 +272,18 @@ a {
   align-items: center;
   flex-wrap: wrap; /* Añade esto para permitir que los elementos se envuelvan a la siguiente línea si no hay suficiente espacio */
 }
+
+.login li a {
+  padding: 9px 25px;
+  color: #fff;
+  font-size: 13px;
+  background: #d8302f;
+  border-radius: 50px;
+  float: left;
+}
+.login {
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

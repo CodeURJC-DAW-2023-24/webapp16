@@ -1,17 +1,15 @@
 
 
 <div class="containerCards">
-
-        <div class="col-md-3 " style="margin-top:20px">
-          <div class="team-column style-2">
-            <a href="">
-              <img src="" href="" alt="" style="width: 250px ; height:350px">
-              <div class="player-name">
-                <div class="desination-2">SITIO</div>
-                <h5>NOMBRE TORNEO</h5>
-              </div>
-            </a>
-          </div>
+  <div class="col-md-3 " style="margin-top:20px" *ngFor="let tournament of tournament">
+    <div class="team-column style-2">
+      <a href="">
+        <img [src]="tournament.tournamentImagePath" href="" alt="" style="width: 250px ; height:350px">
+        <div class="player-name">
+          <div class="desination-2">{{tournament.name}}</div>
+          <h5>{{tournament.cup}}</h5>
         </div>
-
+      </a>
+    </div>
+  </div>
 </div>
