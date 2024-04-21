@@ -1,14 +1,14 @@
 
 /*------------------------------------------------------------------
     IMPORT FILES
--------------------------------------------------------------------
+-------------------------------------------------------------------*/
 
-
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/animate.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/flaticon.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/prettyPhoto.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/font-awesome.min.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/font-awesome.css);*/
+/*
+@import url(./assets/imports/animate.css);
+@import url(./assets/fonts/flaticon.css);
+@import url(./assets/imports/prettyPhoto.css);
+@import url(./assets/imports/font-awesome.css);
+@import url(./assets/imports/font-awesome.min.css);*/
 
 .full {
   position:relative;
@@ -149,4 +149,7 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+li {
+  color: white;
 }

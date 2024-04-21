@@ -9,6 +9,7 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 
 
 const routes: Routes = [
+ // { path: '', component: TournmamentComponent },
   { path: 'new', component: PlayersStatisticsComponent },
   { path: 'new/statistics/players', component: PlayersStatisticsComponent },
   { path: 'new/statistics/teams', component: TeamsStatisticsComponent },
