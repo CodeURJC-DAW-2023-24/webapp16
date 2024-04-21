@@ -9,6 +9,7 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 import { ErrorComponent } from './components/viewsComponents/errorComponent/error.component';
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
+import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'new/fill-match-report', component: FillMatchReportComponent },
   { path: 'new/show-report', component: ShowReportComponent },
   { path: 'new/error', component: ErrorComponent },
-  { path: 'new/profile', component: ProfileComponent }
+  { path: 'new/profile', component: ProfileComponent },
+  { path: 'new/players', component: PlayersComponent }
 ];
 
 @NgModule({

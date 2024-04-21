@@ -18,7 +18,7 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 import { ErrorComponent } from "./components/viewsComponents/errorComponent/error.component";
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
-
+import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
 
 
 
@@ -37,7 +37,8 @@ import {ProfileComponent} from "./components/viewsComponents/profileComponent/pr
     ShowReportComponent,
     ErrorComponent,
     AboutUsComponent,
-    ProfileComponent
+    ProfileComponent,
+    PlayersComponent
 
 
   ],
