@@ -25,12 +25,15 @@ export class TeamsStatisticsComponent implements OnInit {
         console.error('Error occurred while fetching teams:', error);
         return throwError(error);
       })
-    ).subscribe(teams => {
-      console.log('Received teams data:', teams);
-      this.teams = teams;
-      this.generateChart();
-    }, error => {
-      console.error('Error occurred while fetching teams:', error);
+    ).subscribe({
+      next: (teams) => {
+        console.log('Received players data:', teams);
+        this.teams = teams;
+        this.generateChart();
+      },
+      error: (error) => {
+        console.error('Error occurred while fetching players:', error);
+      }
     });
   }
 

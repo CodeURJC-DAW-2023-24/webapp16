@@ -24,11 +24,6 @@ import {TournamentComponent} from "./components/viewsComponents/TournamentCompon
 import {TournamentCardsComponent} from "./components/generalComponents/tournamentCardsComponent/tournamentCards.component";
 
 
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
