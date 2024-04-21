@@ -13,12 +13,14 @@ import { ErrorComponent } from './components/viewsComponents/errorComponent/erro
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
 import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
+import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
 
 const routes: Routes = [
-  { path: '', component: AboutUsComponent },
-  { path: 'new', component: PlayersStatisticsComponent, canActivate: [AuthGuard] },
+  { path: 'new/aboutUs', component: AboutUsComponent },
+  { path: 'new', component: TournamentComponent, canActivate: [AuthGuard] },
   { path: 'new/statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'new/statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+
   { path: 'new/login', component: LoginComponent },
   { path: 'new/login-error', component: LoginErrorComponent },
   { path: 'new/fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },

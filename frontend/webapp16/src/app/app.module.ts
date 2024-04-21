@@ -18,7 +18,12 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 import { ErrorComponent } from "./components/viewsComponents/errorComponent/error.component";
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
+
 import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
+import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
+import {TournamentCardsComponent} from "./components/generalComponents/tournamentCardsComponent/tournamentCards.component";
+
+
 
 
 
@@ -38,7 +43,10 @@ import {PlayersComponent} from "./components/viewsComponents/playersComponent/pl
     ErrorComponent,
     AboutUsComponent,
     ProfileComponent,
-    PlayersComponent
+    PlayersComponent,
+    TournamentComponent,
+    TournamentCardsComponent
+
 
 
   ],
