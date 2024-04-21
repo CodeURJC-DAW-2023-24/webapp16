@@ -1,5 +1,8 @@
+// app-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 import { PlayersStatisticsComponent } from './components/viewsComponents/playerStatistics/playersStatistics.component';
 import { LoginComponent } from './components/viewsComponents/loginComponent/login.component';
 import { LoginErrorComponent } from './components/viewsComponents/loginErrorComponent/loginError.component';
@@ -11,20 +14,18 @@ import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/ab
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
 import {PlayersComponent} from "./components/viewsComponents/playersComponent/players.component";
 
-
-
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
-  { path: 'new', component: PlayersStatisticsComponent },
-  { path: 'new/statistics/players', component: PlayersStatisticsComponent },
-  { path: 'new/statistics/teams', component: TeamsStatisticsComponent },
+  { path: 'new', component: PlayersStatisticsComponent, canActivate: [AuthGuard] },
+  { path: 'new/statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'new/statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'new/login', component: LoginComponent },
   { path: 'new/login-error', component: LoginErrorComponent },
-  { path: 'new/fill-match-report', component: FillMatchReportComponent },
-  { path: 'new/show-report', component: ShowReportComponent },
+  { path: 'new/fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
+  { path: 'new/show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'new/error', component: ErrorComponent },
-  { path: 'new/profile', component: ProfileComponent },
-  { path: 'new/players', component: PlayersComponent }
+  { path: 'new/profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'new/players', component: PlayersComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } }
 ];
 
 @NgModule({
