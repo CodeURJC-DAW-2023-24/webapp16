@@ -76,6 +76,9 @@ public class SecurityConfiguration{
                         // POSTMAN
                         .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET, "/api/users/me").hasAuthority("USER")
+                        .requestMatchers(HttpMethod.PUT, "/api/users/me").hasAuthority("USER")
+
                         .requestMatchers(HttpMethod.GET,"/api/tournaments").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/tournaments/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/tournaments/**").hasAnyRole("ADMIN")
@@ -145,6 +148,9 @@ public class SecurityConfiguration{
                         .requestMatchers("/cancelTournamentCreation").hasAnyRole("ADMIN")
                         .requestMatchers("/saveTournament").hasAnyRole("ADMIN")
                         //
+
+                        //ANGULAR PAGES
+                        .requestMatchers("/new/**").permitAll()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

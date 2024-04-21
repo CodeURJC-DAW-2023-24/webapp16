@@ -8,6 +8,7 @@ import es.codeurjc.backend.model.UserPasswords;
 import es.codeurjc.backend.repository.UserPasswordsRepository;
 import es.codeurjc.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
@@ -90,7 +91,21 @@ public class UserService {
         }
         userRepository.save(DBuser);
     }
+    public User getUserById(String username, Long userId) {
+        if (canAccessUser(username, userId)) {
+            return userRepository.findById(userId).orElse(null);
+        } else {
+            throw new AccessDeniedException("No tienes permiso para acceder a este perfil");
+        }
+    }
 
+    public User updateUser(String username, User updatedUser) {
+        if (canAccessUser(username, updatedUser.getId())) {
+            return userRepository.save(updatedUser);
+        } else {
+            throw new AccessDeniedException("No tienes permiso para modificar este perfil");
+        }
+    }
     public void newUser(String name, String email, String password, String date) {
         User userNew = new User(name, passwordEncoder.encode(password), "USER");
         userNew.setEmail(email);
@@ -102,7 +117,15 @@ public class UserService {
         User user = userRepository.getReferenceById(idUser);
         userRepository.delete(user);
     }
-
+    public boolean canAccessUser(String username, Long userId) {
+        Optional<User> optionalUser = userRepository.findByName(username);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            return user.getId().equals(userId);
+        } else {
+            return false;
+        }
+    }
     public UserDTO convertToDTO(User user) {
         return conversionService.convertToDTO(user, UserDTO.class);
     }

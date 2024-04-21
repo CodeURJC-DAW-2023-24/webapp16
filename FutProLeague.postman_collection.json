@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6824d7ff-7eff-4b28-8ee0-324645dfebc9",
+		"_postman_id": "f769e148-da03-4e49-9da6-bfaf0ec74592",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33851341"
+		"_exporter_id": "33851283"
 	},
 	"item": [
 		{
@@ -1099,6 +1099,27 @@
 					"response": []
 				},
 				{
+					"name": "users/me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{HTTPS DIR}}:8443/api/users/me",
+							"protocol": "https",
+							"host": [
+								"{{HTTPS DIR}}"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "/users",
 					"request": {
 						"method": "POST",
@@ -1151,6 +1172,36 @@
 							"path": [
 								"api",
 								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/me",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"newUser\",\r\n    \"lastName\": \"PutLastName\",\r\n    \"dateOfBirth\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{HTTPS DIR}}:8443/api/users/me",
+							"protocol": "https",
+							"host": [
+								"{{HTTPS DIR}}"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"me"
 							]
 						}
 					},
