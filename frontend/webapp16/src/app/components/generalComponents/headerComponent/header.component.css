@@ -13,16 +13,40 @@
 /*------------------------------------------------------------------
     IMPORT FILES
 -------------------------------------------------------------------
+*/
+/*
+@import url(./assets/imports/animate.css);
+@import url(./assets/fonts/flaticon.css);
+@import url(./assets/imports/prettyPhoto.css);
+@import url(./assets/imports/font-awesome.css);
+@import url(./assets/imports/font-awesome.min.css)*/
 
 
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/animate.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/flaticon.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/prettyPhoto.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/font-awesome.min.css);
-@import url(../../../../../../../backend/src/main/resources/static/css/imports/font-awesome.css);*/
+
+
+
+nav{
+  height: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.background-pers{
+  background: #111;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+
+
+
+
 
 .header-top {
-  margin: 15px 0 10px;
+  margin-left: 200px;
+  margin-right:200px;
+  margin-bottom:20px;
   float: right;
   width: 100%;
 }
