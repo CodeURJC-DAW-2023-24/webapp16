@@ -270,3 +270,13 @@ a {
   margin-right : 10%;
 
 }
+button.button {
+  background: #d8302f;
+  color: #fff;
+  border: none;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+}
+

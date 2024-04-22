@@ -7,7 +7,10 @@
         <img [src]="team.imagePath" href="" alt="" style="width: 250px ; height:350px">
         <div class="player-name">
           <div class="desination-2">{{team.name}}</div>
-          <h5></h5>
+          <h5>
+            {{team.stadium}}
+            <button style="float: right" id="loadMoreTeams" class="button">Info</button>
+          </h5>
         </div>
       </a>
     </div>
