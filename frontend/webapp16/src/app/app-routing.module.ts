@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'error', component: ErrorComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } }
+  { path: 'profile', component: ProfileComponent } //, canActivate: [AuthGuard], data: { expectedRole: 'USER' }
 ];
 
 @NgModule({

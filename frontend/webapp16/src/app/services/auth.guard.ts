@@ -13,20 +13,19 @@ export class AuthGuard implements CanActivate {
   constructor(private sessionService: SessionService, private router: Router) { }
 
   canActivate(
-  route: ActivatedRouteSnapshot,
+  next: ActivatedRouteSnapshot,
   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  const expectedRole = route.data['expectedRole'];
+  const expectedRole = next.data['expectedRole'];
   const userRole = this.sessionService.getRole();
 
   if (!userRole) {
-    return this.router.parseUrl('new/login');
+    return this.router.parseUrl('/login');
   }
 
   if (expectedRole && userRole !== expectedRole) {
-    return this.router.parseUrl('new/login');
+    return this.router.parseUrl('/login');
   }
 
   return true;
-}
-
+  }
 }
