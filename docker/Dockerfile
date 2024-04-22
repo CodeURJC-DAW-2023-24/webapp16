@@ -4,7 +4,7 @@ WORKDIR /app
 COPY frontend/webapp16/package*.json ./
 RUN npm install
 COPY frontend/webapp16 .
-RUN npm run build
+RUN ng build --prod --base-href="/new/"
 
 # Imagen base para el contenedor de compilación de Spring Boot
 FROM maven:3.6.3-openjdk-17 as builder
