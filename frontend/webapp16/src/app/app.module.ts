@@ -18,13 +18,14 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 import { ErrorComponent } from "./components/viewsComponents/errorComponent/error.component";
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
-
+import {PlayerInfoComponent} from "./components/viewsComponents/playerInfoComponent/playerInfo.component";
 import {PlayerComponent} from "./components/viewsComponents/playerComponent/player.component";
 import {PlayerCardsComponent} from "./components/generalComponents/playerCardsComponent/playerCards.component";
 import {TeamComponent} from "./components/viewsComponents/teamComponent/team.component";
 import {TeamCardsComponent} from "./components/generalComponents/teamCardsComponent/teamCards.component";
 import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
 import {TournamentCardsComponent} from "./components/generalComponents/tournamentCardsComponent/tournamentCards.component";
+import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/teamInfo.component";
 
 
 @NgModule({
@@ -42,11 +43,13 @@ import {TournamentCardsComponent} from "./components/generalComponents/tournamen
     AboutUsComponent,
     ProfileComponent,
     PlayerComponent,
+    PlayerInfoComponent,
     PlayerCardsComponent,
     TeamComponent,
     TeamCardsComponent,
     TournamentComponent,
-    TournamentCardsComponent
+    TournamentCardsComponent,
+    TeamInfoComponent
 
 
 

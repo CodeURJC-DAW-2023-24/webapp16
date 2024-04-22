@@ -1,0 +1,55 @@
+<header-web> </header-web>
+<link href="/css/teamInfo.css" rel="stylesheet" type="text/css"/>
+<link href="/css/team.css" rel="stylesheet" type="text/css"/>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="table-container">
+        <table>
+          <thead>
+          <tr>
+            <th>Players name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let player of players">
+            <td style="display: flex; justify-content: space-between;">
+              <span>{{player.name}} {{player.lastName}}</span>
+              <a [routerLink]="['/players', player.id]">
+                <button class="button">Info</button>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="table-container">
+        <table class="second-table">
+          <thead>
+          <tr>
+            <th colspan="2">Game stats</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Games played</td>
+            <td>{{team.gamesPlayed}}</td>
+          </tr>
+          <tr>
+            <td>Wins</td>
+            <td>{{team.wins}}</td>
+          </tr>
+          <tr>
+            <td>Loses</td>
+            <td>{{team.loses}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<footer-web></footer-web>

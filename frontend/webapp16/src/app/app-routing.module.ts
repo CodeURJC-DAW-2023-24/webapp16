@@ -15,6 +15,8 @@ import {ProfileComponent} from "./components/viewsComponents/profileComponent/pr
 import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
 import {PlayerComponent} from "./components/viewsComponents/playerComponent/player.component";
 import {TeamComponent} from "./components/viewsComponents/teamComponent/team.component";
+import {PlayerInfoComponent} from "./components/viewsComponents/playerInfoComponent/playerInfo.component";
+import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/teamInfo.component";
 
 
 const routes: Routes = [
@@ -29,7 +31,9 @@ const routes: Routes = [
   { path: 'fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'error', component: ErrorComponent },
-  { path: 'profile', component: ProfileComponent } //, canActivate: [AuthGuard], data: { expectedRole: 'USER' }
+  { path: 'profile', component: ProfileComponent }, //, canActivate: [AuthGuard], data: { expectedRole: 'USER' }
+  { path: 'playerInfo/:id', component: PlayerInfoComponent },
+  { path: 'teamInfo/:id', component: TeamInfoComponent }
 ];
 
 @NgModule({

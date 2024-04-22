@@ -30,7 +30,9 @@ export class TeamService {
       })
     );
   }
-
+  getTeam(id: number): Observable<Team> {
+    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`);
+  }
   getBase64ImageFromURL(url: string): Promise<string> {
     return this.http.get(url, { responseType: 'blob' }).toPromise()
       .then(blob => {

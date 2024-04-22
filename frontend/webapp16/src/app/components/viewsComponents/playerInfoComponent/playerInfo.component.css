@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.content-section {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 80%;
+  margin: auto;
+  border: 2px solid #ddd;
+  background-color: #fff;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #d8302f;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+td {
+  color: #000000;
+}
+
+.second-table {
+  width: 80%;
+  margin: auto;
+  border: 2px solid #ddd;
+}
+
+.table-container {
+  padding: 20px;
+}
