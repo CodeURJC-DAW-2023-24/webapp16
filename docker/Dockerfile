@@ -4,7 +4,8 @@ WORKDIR /app
 COPY frontend/webapp16/package*.json ./
 RUN npm install
 COPY frontend/webapp16 .
-RUN ng build --prod --base-href="/new/"
+RUN npx ng build --configuration production --base-href="/new/"
+
 
 # Imagen base para el contenedor de compilación de Spring Boot
 FROM maven:3.6.3-openjdk-17 as builder
@@ -17,7 +18,7 @@ COPY /backend/pom.xml ./pom.xml
 COPY /backend/src ./src
 
 # Copia la aplicación Angular construida a la carpeta de recursos estáticos de Spring Boot
-COPY --from=angular /app/dist/webapp16 src/main/resources/public/new
+COPY --from=angular /app/dist/webapp16/ ./src/main/resources/public/new
 
 # Compila el proyecto
 RUN mvn clean package -DskipTests=true

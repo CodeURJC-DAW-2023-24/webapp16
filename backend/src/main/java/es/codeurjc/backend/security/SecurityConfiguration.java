@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -23,6 +26,13 @@ public class SecurityConfiguration{
 
     @Autowired
     public RepositoryUserDetailsService userDetailService;
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -50,6 +60,8 @@ public class SecurityConfiguration{
                         // PUBLIC PAGES
                         .requestMatchers("https://localhost:8443").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/new/**").permitAll()
+
                         .requestMatchers("./").permitAll()
                         .requestMatchers("/css/**","/js/**","/fonts/**","/images/**").permitAll()
                         .requestMatchers("/tournament/{cup}").permitAll()
