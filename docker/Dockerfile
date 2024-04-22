@@ -4,7 +4,7 @@ WORKDIR /app
 COPY frontend/webapp16/package*.json ./
 RUN npm install
 COPY frontend/webapp16 .
-RUN npx ng build --configuration production --base-href="/new/"
+RUN npx ng build --configuration production
 
 
 # Imagen base para el contenedor de compilación de Spring Boot

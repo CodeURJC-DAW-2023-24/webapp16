@@ -35,13 +35,18 @@
                <div class="col-md-6">
                   <div class="right_top_section">
                      {{#user}}
-                     <!-- button section -->
+                     <!-- button section
                      <ul class="login">
                         <li class="login-modal">
                            <a href="/logout" class="login"><i class="fa fa-user"></i>LogOut</a>
                         </li>
                      </ul>
-                     <!-- end button section -->
+                    end button section -->
+                     <form action="/logout" method="post" class="logout">
+                        <button type="submit" class="btn logout-btn">
+                           <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+                        </button>
+                     </form>
 
                      {{/user}}
                      {{^user}}
