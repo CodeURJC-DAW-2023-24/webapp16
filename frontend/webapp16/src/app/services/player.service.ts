@@ -31,4 +31,16 @@ getTopPlayers(): Observable<Player[]> {
     })
   );
 }
+  getBase64ImageFromURL(url: string): Promise<string> {
+    return this.http.get(url, { responseType: 'blob' }).toPromise()
+      .then(blob => {
+        let reader = new FileReader();
+        reader.readAsDataURL(<Blob>blob);
+        return new Promise<string>((resolve, reject) => {
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+        });
+      });
+  }
+
 }

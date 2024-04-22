@@ -4,7 +4,7 @@
   <div class="col-md-3 " style="margin-top:20px" *ngFor="let team of team">
     <div class="team-column style-2">
       <a href="">
-        <img href="" alt="" style="width: 250px ; height:350px">
+        <img [src]="team.imagePath" href="" alt="" style="width: 250px ; height:350px">
         <div class="player-name">
           <div class="desination-2">{{team.name}}</div>
           <h5></h5>
