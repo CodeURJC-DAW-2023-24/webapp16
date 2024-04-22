@@ -18,18 +18,18 @@ import {TeamComponent} from "./components/viewsComponents/teamComponent/team.com
 
 
 const routes: Routes = [
-  { path: '/aboutUs', component: AboutUsComponent },
-  { path: '/', component: TournamentComponent },
-  { path: '/statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
-  { path: '/statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
-  { path: '/players', component: PlayerComponent },
-  { path: '/teams', component: TeamComponent },
-  { path: '/login', component: LoginComponent },
-  { path: '/login-error', component: LoginErrorComponent },
-  { path: '/fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
-  { path: '/show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
-  { path: '/error', component: ErrorComponent },
-  { path: '/profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } }
+  { path: 'aboutUs', component: AboutUsComponent },
+  { path: '', component: TournamentComponent },
+  { path: 'statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'players', component: PlayerComponent },
+  { path: 'teams', component: TeamComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'login-error', component: LoginErrorComponent },
+  { path: 'fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
+  { path: 'show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'error', component: ErrorComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } }
 ];
 
 @NgModule({
