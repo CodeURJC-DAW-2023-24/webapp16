@@ -19,7 +19,13 @@ export class PlayerInfoComponent implements OnInit {
     if (id != null) {
       this.playerService.getPlayer(parseInt(id)).subscribe(data => {
         this.player = data;
+        console.log(this.player)
         this.titleService.setTitle(this.player.name + ' ' + this.player.lastName + ' Info');
+        if (this.titleService.getTitle() != null){
+          // @ts-ignore
+          document.getElementById("pageTitle").innerHTML =this.titleService.getTitle();
+        }
+        console.log(this.titleService.getTitle());
     });
     }
   }
