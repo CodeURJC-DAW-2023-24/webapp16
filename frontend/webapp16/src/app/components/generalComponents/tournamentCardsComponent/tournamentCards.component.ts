@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Tournament} from "../../../models/tournament.model";
 import {TournamentService} from "../../../services/tournament.service";
 import {catchError} from "rxjs/operators";
@@ -10,7 +10,7 @@ import {throwError} from "rxjs";
   styleUrl: './tournamentCards.component.css'
 })
 export class TournamentCardsComponent {
-  tournament: Tournament[] = [];
+  @Input() tournamentData: any;
   constructor(private tournamentService: TournamentService) {
 
   }
@@ -24,7 +24,7 @@ export class TournamentCardsComponent {
     ).subscribe({
       next: (tournament) => {
         console.log('Received tournaments data:', tournament);
-        this.tournament = tournament;
+        this.tournamentData = tournament;
       },
       error: (error) => {
         console.error('Error occurred while fetching tournaments:', error);

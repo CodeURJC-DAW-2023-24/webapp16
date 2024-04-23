@@ -27,6 +27,7 @@ import {TeamCardsComponent} from "./components/generalComponents/teamCardsCompon
 import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
 import {TournamentCardsComponent} from "./components/generalComponents/tournamentCardsComponent/tournamentCards.component";
 import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/teamInfo.component";
+import {SearchComponent} from "./components/viewsComponents/searchComponent/search.component";
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/
     TeamCardsComponent,
     TournamentComponent,
     TournamentCardsComponent,
-    TeamInfoComponent
+    TeamInfoComponent,
+    SearchComponent
 
 
 

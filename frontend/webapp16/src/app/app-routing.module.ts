@@ -17,6 +17,7 @@ import {PlayerComponent} from "./components/viewsComponents/playerComponent/play
 import {TeamComponent} from "./components/viewsComponents/teamComponent/team.component";
 import {PlayerInfoComponent} from "./components/viewsComponents/playerInfoComponent/playerInfo.component";
 import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/teamInfo.component";
+import {SearchComponent} from "./components/viewsComponents/searchComponent/search.component";
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'error', component: ErrorComponent },
   { path: 'profile', component: ProfileComponent }, //, canActivate: [AuthGuard], data: { expectedRole: 'USER' }
   { path: 'playerInfo/:id', component: PlayerInfoComponent },
-  { path: 'teamInfo/:id', component: TeamInfoComponent }
+  { path: 'teamInfo/:id', component: TeamInfoComponent },
+  { path: 'search', component: SearchComponent }
 ];
 
 @NgModule({

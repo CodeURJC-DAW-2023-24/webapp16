@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Player} from "../../../models/player.model";
 import {PlayerService} from "../../../services/player.service";
 import {catchError} from "rxjs/operators";
@@ -10,7 +10,7 @@ import {throwError} from "rxjs";
   styleUrl: './playerCards.component.css'
 })
 export class PlayerCardsComponent {
-  player: Player[] = [];
+  @Input() playerData: any;
   constructor(private playerService: PlayerService) {
 
   }
@@ -24,7 +24,7 @@ export class PlayerCardsComponent {
     ).subscribe({
       next: (player) => {
         console.log('Received players data:', player);
-        this.player = player;
+        this.playerData = player;
       },
       error: (error) => {
         console.error('Error occurred while fetching players:', error);

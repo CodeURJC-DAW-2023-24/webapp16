@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Team} from "../../../models/team.model";
 import {TeamService} from "../../../services/team.service";
 import {catchError} from "rxjs/operators";
@@ -10,7 +10,7 @@ import {throwError} from "rxjs";
   styleUrl: './teamCards.component.css'
 })
 export class TeamCardsComponent {
-  team: Team[] = [];
+  @Input() teamData: any;
   constructor(private teamsService: TeamService) {
 
   }
@@ -24,7 +24,7 @@ export class TeamCardsComponent {
     ).subscribe({
       next: (team) => {
         console.log('Received teams data:', team);
-        this.team = team
+        this.teamData = team
       },
       error: (error) => {
         console.error('Error occurred while fetching teams:', error);

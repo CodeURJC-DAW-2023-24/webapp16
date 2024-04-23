@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {query} from "@angular/animations";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'header-web',
@@ -8,4 +10,9 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
 
+  constructor(private router: Router) { }
+
+  search(query: string): void {
+    this.router.navigate(['/search'], { queryParams: { query: query } });
+  }
 }

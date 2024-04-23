@@ -1,0 +1,10 @@
+
+
+<header-web> </header-web>
+<app-banner></app-banner>
+
+<teamCard *ngFor="let team of results?.teams" [teamData]="team"></teamCard>
+<playerCard *ngFor="let player of results?.players" [playerData]="player"></playerCard>
+<tournamentCard *ngFor="let tournament of results?.tournaments" [tournamentData]="tournament"></tournamentCard>
+
+<footer-web> </footer-web>
