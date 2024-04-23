@@ -70,8 +70,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         // PRIVATE ENDPOINTS
                           // API REST
-                        .requestMatchers("/api/users").hasAnyRole("ADMIN")
-                        .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
+                        //.requestMatchers("/api/users").hasAnyRole("ADMIN")
+                        //.requestMatchers("/api/users/**").hasAnyRole("ADMIN")
 
                         .requestMatchers(HttpMethod.GET, "/api/users/me").hasAuthority("USER")
                         .requestMatchers(HttpMethod.PUT, "/api/users/me").hasAuthority("USER")

@@ -30,12 +30,12 @@
 			<version>0.9.1</version>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>-->
 
 
 
@@ -78,6 +78,12 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- NEEDED IN JAVA 11+ -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
