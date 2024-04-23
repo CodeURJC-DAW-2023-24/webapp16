@@ -110,7 +110,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/api/statistics/**").permitAll()
 
                         // PUBLIC ENDPOINTS (anything that's not filtered by the above rules, is public. It is not necessary to add anything here)
-                        //.anyRequest().permitAll()
+                        .anyRequest().permitAll()
                 );
 
         // Disable Form login Authentication
