@@ -8,7 +8,7 @@ import {FooterComponent} from "./components/generalComponents/footerComponent/fo
 import {HeaderComponent} from "./components/generalComponents/headerComponent/header.component";
 import {BannerComponent} from "./components/generalComponents/bannerComponent/banner.component";
 import {PlayersStatisticsComponent} from "./components/viewsComponents/playerStatistics/playersStatistics.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./components/viewsComponents/loginComponent/login.component";
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginErrorComponent } from "./components/viewsComponents/loginErrorComponent/loginError.component";
@@ -28,6 +28,7 @@ import {TournamentComponent} from "./components/viewsComponents/TournamentCompon
 import {TournamentCardsComponent} from "./components/generalComponents/tournamentCardsComponent/tournamentCards.component";
 import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/teamInfo.component";
 import {SearchComponent} from "./components/viewsComponents/searchComponent/search.component";
+import {AuthInterceptor} from "./services/auth.interceptor";
 
 
 @NgModule({
@@ -67,7 +68,9 @@ import {SearchComponent} from "./components/viewsComponents/searchComponent/sear
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import { AuthService } from '../../../services/auth.service'
 
 
 @Component({
@@ -9,5 +10,13 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 
 export class LoginComponent {
+constructor(private authService: AuthService) { }
+
+login(username: string, password: string) {
+  this.authService.login(username, password).subscribe();
+  }
+  logout() {
+    this.authService.logout();
+  }
 
 }

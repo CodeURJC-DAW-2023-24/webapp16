@@ -35,7 +35,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent }, //, canActivate: [AuthGuard], data: { expectedRole: 'USER' }
   { path: 'playerInfo/:id', component: PlayerInfoComponent },
   { path: 'teamInfo/:id', component: TeamInfoComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({
