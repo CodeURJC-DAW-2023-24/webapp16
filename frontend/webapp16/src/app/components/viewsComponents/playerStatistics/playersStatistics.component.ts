@@ -6,6 +6,7 @@ import { Player } from '../../../models/player.model';
 import { PlayerService } from '../../../services/player.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import {Title} from "@angular/platform-browser";
 
 Chart.register(BarController, BarElement, LinearScale, CategoryScale);
 
@@ -16,23 +17,24 @@ Chart.register(BarController, BarElement, LinearScale, CategoryScale);
 })
 export class PlayersStatisticsComponent implements OnInit {
   players: Player[] = [];
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private titleService: Title) { }
 
   ngOnInit(): void {
-    console.log('Making request to get top players...');
+    this.titleService.setTitle('Players Statistics');
+    //console.log('Making request to get top players...');
     this.playerService.getTopPlayers().pipe(
       catchError(error => {
-        console.error('Error occurred while fetching players:', error);
+        //console.error('Error occurred while fetching players:', error);
         return throwError(error);
       })
     ).subscribe({
       next: (players) => {
-        console.log('Received players data:', players);
+        //console.log('Received players data:', players);
         this.players = players;
         this.generateChart();
       },
       error: (error) => {
-        console.error('Error occurred while fetching players:', error);
+        //console.error('Error occurred while fetching players:', error);
       }
     });
   }

@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-show-report',
@@ -10,10 +11,10 @@ export class ShowReportComponent implements OnInit {
   error: string | null = null;
   report: any;
 
-  constructor() {}
+  constructor(private titleService: Title) {}
 
   ngOnInit() {
-
+    this.titleService.setTitle('Report page');
   }
 
 }

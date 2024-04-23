@@ -1,7 +1,7 @@
 
 
 <header-web></header-web>
-
+<app-banner></app-banner>
 
 <div class="team-holder theme-padding container ">
   <div class="main-heading-holder">
@@ -11,13 +11,11 @@
     </div>
   </div>
   <div class="">
-
-
-
-<teamCard   *ngIf="type =='team'"    [teamData]="data"></teamCard>
-<playerCard  *ngIf="type =='player'" [playerData]="data"></playerCard>
-<tournamentCard  *ngIf="type =='tournament'" [tournamentData]="data"></tournamentCard>
+    <teamCard   *ngIf="type =='team'"    [teamData]="data"></teamCard>
+    <playerCard  *ngIf="type =='player'" [playerData]="data"></playerCard>
+    <tournamentCard  *ngIf="type =='tournament'" [tournamentData]="data"></tournamentCard>
 
   </div>
+</div>
 
 <footer-web> </footer-web>
