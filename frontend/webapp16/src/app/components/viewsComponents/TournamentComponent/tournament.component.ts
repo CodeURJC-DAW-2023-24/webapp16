@@ -13,7 +13,7 @@ export class TournamentComponent implements OnInit{
   constructor(private titleService: Title) {
   }
   ngOnInit(): void {
-    this.titleService.setTitle(' ');
+    this.titleService.setTitle('Tournament');
   }
 }
 

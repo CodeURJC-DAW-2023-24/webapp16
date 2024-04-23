@@ -7,6 +7,8 @@ import { TeamService } from '../../../services/team.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import {Title} from "@angular/platform-browser";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 Chart.register(LineController, LineElement,PointElement, LinearScale, CategoryScale);
 
@@ -17,13 +19,15 @@ Chart.register(LineController, LineElement,PointElement, LinearScale, CategorySc
 })
 export class TeamsStatisticsComponent implements OnInit {
   teams: Team[] = [];
-  constructor(private teamService: TeamService, private titleService: Title) { }
+  constructor(private teamService: TeamService, private titleService: Title, private router: Router) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Teams Statistics');
     //console.log('Making request to get top teams...');
     this.teamService.getTopTeams().pipe(
       catchError(error => {
+        const errorCode = error.status;
+        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
         //console.error('Error occurred while fetching teams:', error);
         return throwError(error);
       })
@@ -34,6 +38,9 @@ export class TeamsStatisticsComponent implements OnInit {
         this.generateChart();
       },
       error: (error) => {
+        const errorCode = error.status;
+        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+        return throwError(error);
         //console.error('Error occurred while fetching players:', error);
       }
     });
