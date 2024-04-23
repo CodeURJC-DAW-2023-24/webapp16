@@ -15,7 +15,7 @@ export class UserService {
 
   // Method to get user profile
   getUserProfile(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/me`).pipe(
+    return this.http.get<User>(`${this.apiUrl}/me`,{withCredentials:true}).pipe(
       catchError(err => {
         console.error('Error occurred while fetching user profile:', err);
         return throwError(err);
@@ -25,7 +25,7 @@ export class UserService {
 
   // Method to update user profile
   updateUserProfile(userProfile: User): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/me`, userProfile).pipe(
+    return this.http.put<User>(`${this.apiUrl}/me`, userProfile,{withCredentials:true}).pipe(
       catchError(err => {
         console.error('Error occurred while updating user profile:', err);
         return throwError(err);

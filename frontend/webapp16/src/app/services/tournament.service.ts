@@ -15,7 +15,7 @@ export class TournamentService {
   }
 
   getBase64ImageFromURL(url: string): Promise<string> {
-    return this.http.get(url, { responseType: 'blob' }).toPromise()
+    return this.http.get(url, { responseType: 'blob' , withCredentials:true},).toPromise()
       .then(blob => {
         let reader = new FileReader();
         reader.readAsDataURL(<Blob>blob);
@@ -27,7 +27,7 @@ export class TournamentService {
   }
 
 getTournament(): Observable<Tournament[]> {
-  return this.http.get<Tournament[]>(this.apiUrl).pipe(
+  return this.http.get<Tournament[]>(this.apiUrl,{withCredentials:true}).pipe(
     switchMap((tournaments: Tournament[]) => {
       return from(tournaments).pipe(
         concatMap(tournament => {

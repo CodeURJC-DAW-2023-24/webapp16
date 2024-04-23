@@ -17,13 +17,13 @@ export class PlayerService {
   constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
 
   getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.apiUrl);
+    return this.http.get<Player[]>(this.apiUrl, {withCredentials:true});
   }
 
   // player.service.ts
 
 getTopPlayers(): Observable<Player[]> {
-  return this.http.get<Player[]>(this.statisticsUrl).pipe(
+  return this.http.get<Player[]>(this.statisticsUrl, {withCredentials:true}).pipe(
     catchError(err => {
       console.error('Error occurred while fetching players:', err);
       //this.router.navigate(['/error']);
@@ -32,7 +32,7 @@ getTopPlayers(): Observable<Player[]> {
   );
 }
 getPlayer(id: number): Observable<Player> {
-  return this.http.get<Player>(`${this.apiUrl}/players/${id}`, {withCredentials:true});
+  return this.http.get<Player>(`${this.apiUrl}/${id}`, {withCredentials:true});
 }
   getBase64ImageFromURL(url: string): Promise<string> {
     return this.http.get(url, { responseType: 'blob' }).toPromise()

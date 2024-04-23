@@ -13,14 +13,14 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   search(query: string): Observable<any> {
-    return this.http.get(`/api/search?query=${query}`);
+    return this.http.get(`/api/search?query=${query}`,{withCredentials:true});
   }
 
   searchAll(query: string): Observable<any> {
-    console.log("query received in searchPlayer: ", query)
+   /* console.log("query received in searchPlayer: ", query)*/
     query = query.replace(":", "="); //replace : with =
-    console.log("query after replace:", query)
-    return this.http.get(`/api/search?${query}`);
+  /*  console.log("query after replace:", query)*/
+    return this.http.get(`/api/search?${query}`,{withCredentials:true});
   }
 
   setData(data: any) {

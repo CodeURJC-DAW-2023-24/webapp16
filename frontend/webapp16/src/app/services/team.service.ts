@@ -18,12 +18,12 @@ export class TeamService {
   constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
 
   getTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.apiUrl);
+    return this.http.get<Team[]>(this.apiUrl,{withCredentials:true});
   }
 
   // team.service.ts
   getTopTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.statisticsUrl).pipe(
+    return this.http.get<Team[]>(this.statisticsUrl,{withCredentials:true}).pipe(
       catchError(err => {
         console.error('Error occurred while fetching teams:', err);
         return throwError(err);
@@ -31,10 +31,10 @@ export class TeamService {
     );
   }
   getTeam(id: number): Observable<Team> {
-    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`);
+    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`,{withCredentials:true});
   }
   getBase64ImageFromURL(url: string): Promise<string> {
-    return this.http.get(url, { responseType: 'blob' }).toPromise()
+    return this.http.get(url, { responseType: 'blob' ,withCredentials:true}).toPromise()
       .then(blob => {
         let reader = new FileReader();
         reader.readAsDataURL(<Blob>blob);
