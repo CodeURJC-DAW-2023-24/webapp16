@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { PlayerService } from '../../../services/player.service';
 import {Player} from "../../../models/player.model";
 import {catchError} from "rxjs/operators";
@@ -9,7 +9,7 @@ import {Title} from "@angular/platform-browser";
   templateUrl: './player.component.html',
   styleUrl: './player.component.css'
 })
-export class PlayerComponent {
+export class PlayerComponent implements OnInit{
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {

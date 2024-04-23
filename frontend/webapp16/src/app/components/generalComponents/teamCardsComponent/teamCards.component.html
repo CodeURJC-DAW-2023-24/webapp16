@@ -2,11 +2,15 @@
   <div class="col-md-3 " style="margin-top:20px" *ngFor="let team of teamData">
     <div class="team-column style-2">
       <a href="">
-        <img [src]="team.teamImagePath" href="" alt="" style="width: 250px ; height:350px">
+        <img [src]="team.imagePath"  alt="" style="width: 250px ; height:350px">
         <div class="player-name">
           <div class="desination-2">{{team.name}}</div>
-          <h5>{{team.cup}}</h5>
+          <div style="text-align: center; margin-bottom: 10px">{{team.stadium}}</div>
+          <div style="text-align: center;">
+            <button id="loadMorePlayers" class="button">Info</button>
+          </div>
         </div>
+
       </a>
     </div>
   </div>

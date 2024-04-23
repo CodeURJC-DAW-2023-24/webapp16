@@ -21,12 +21,12 @@ export class HeaderComponent {
     this.router.navigate(['/search'], { queryParams: { query: query } });
   }
 
- searchPlayer(query: string): void {
+ searchAll(query: string): void {
     console.log("Making request to get players...");
    let parts = query.split(":"); //  array ["type", "name"]
    let type = parts[0].trim();
    console.log("Type: ", type);
-    this.searchService.searchPlayer(query).subscribe({
+    this.searchService.searchAll(query).subscribe({
       next: (results) => {
         console.log('Received players data:', results);
         this.results = results;
