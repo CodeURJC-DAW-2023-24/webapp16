@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SearchService } from '../../../services/search.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SearchService } from '../../../services/search.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit{
 
 
   data: any;
@@ -14,12 +14,13 @@ export class SearchComponent {
 
   constructor(private searchService: SearchService) { }
 
-
 ngOnInit(): void {
-  this.data = this.searchService.getData();
-  this.type = this.searchService.getType();
-}
+  this.searchService.getData().subscribe(data => this.data = data);
 
+  this.searchService.getType().subscribe(type => {
+    this.type = type;
+  });
+}
 
 
 

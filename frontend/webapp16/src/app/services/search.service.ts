@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
+  private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private typeSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   constructor(private http: HttpClient) { }
- data: any [] = [];
-  type = ''; //type of search
+
   search(query: string): Observable<any> {
     return this.http.get(`/api/search?query=${query}`);
   }
+
   searchPlayer(query: string): Observable<any> {
     console.log("query received in searchPlayer: ", query)
     query = query.replace(":", "="); //replace : with =
@@ -20,17 +23,19 @@ export class SearchService {
     return this.http.get(`/api/search?${query}`);
   }
 
-
   setData(data: any) {
-    this.data = data;
+    this.dataSubject.next(data);
   }
-  getData() {
-    return this.data;
+
+  getData(): Observable<any[]> {
+    return this.dataSubject.asObservable();
   }
+
   setType(type: string) {
-    this.type = type;
+    this.typeSubject.next(type);
   }
-  getType() {
-    return this.type;
+
+  getType(): Observable<string> {
+    return this.typeSubject.asObservable();
   }
 }

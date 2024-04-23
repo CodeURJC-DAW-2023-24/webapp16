@@ -15,21 +15,23 @@ export class TournamentCardsComponent {
 
   }
   ngOnInit(): void {
-    console.log('Making request to get tournaments...');
-    this.tournamentService.getTournament().pipe(
-      catchError(error => {
-        console.error('Error occurred while fetching tournaments:', error);
-        return throwError(error);
-      })
-    ).subscribe({
-      next: (tournament) => {
-        console.log('Received tournaments data:', tournament);
-        this.tournamentData = tournament;
-      },
-      error: (error) => {
-        console.error('Error occurred while fetching tournaments:', error);
-      }
-    });
+    if (!this.tournamentData || this.tournamentData.length === 0) {
+      console.log('Making request to get tournaments...');
+      this.tournamentService.getTournament().pipe(
+        catchError(error => {
+          console.error('Error occurred while fetching tournaments:', error);
+          return throwError(error);
+        })
+      ).subscribe({
+        next: (tournament) => {
+          console.log('Received tournaments data:', tournament);
+          this.tournamentData = tournament;
+        },
+        error: (error) => {
+          console.error('Error occurred while fetching tournaments:', error);
+        }
+      });
+    }
   }
 
 

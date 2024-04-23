@@ -1,10 +1,23 @@
 
 
 <header-web></header-web>
-<app-banner></app-banner>
+
+
+<div class="team-holder theme-padding container ">
+  <div class="main-heading-holder">
+    <div class="main-heading sytle-2">
+      <h2>Results</h2>
+      <p>Explore the results available.</p>
+    </div>
+  </div>
+  <div class="">
+
+
 
 <teamCard   *ngIf="type =='team'"    [teamData]="data"></teamCard>
 <playerCard  *ngIf="type =='player'" [playerData]="data"></playerCard>
 <tournamentCard  *ngIf="type =='tournament'" [tournamentData]="data"></tournamentCard>
+
+  </div>
 
 <footer-web> </footer-web>

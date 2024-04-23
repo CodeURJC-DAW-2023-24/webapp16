@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Player} from "../../../models/player.model";
 import {PlayerService} from "../../../services/player.service";
 import {catchError} from "rxjs/operators";
@@ -9,7 +9,7 @@ import {throwError} from "rxjs";
   templateUrl: './playerCards.component.html',
   styleUrl: './playerCards.component.css'
 })
-export class PlayerCardsComponent {
+export class PlayerCardsComponent  implements  OnInit{
   @Input() playerData: any;
   constructor(private playerService: PlayerService) {
 

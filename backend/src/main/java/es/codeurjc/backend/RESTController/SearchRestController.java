@@ -1,5 +1,7 @@
 package es.codeurjc.backend.RESTController;
 
+import es.codeurjc.backend.DTOs.TeamDTO;
+import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/search")
@@ -43,13 +46,14 @@ public class SearchRestController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Search not found", content = @Content)
     })
-    public ResponseEntity<Map<String, Object>> search(
+    public ResponseEntity<List<?>> search(
             @RequestParam(value = "tournament", required = false) String tournament,
             @RequestParam(value = "team", required = false) String team,
             @RequestParam(value = "player", required = false) String player,
             @RequestParam(value = "position", required = false) String position,
             @RequestParam(value = "nationality", required = false) String nationality) {
-        Map<String, Object> response = new HashMap<>();
+        //Map<String, Object> response = new HashMap<>();
+
 
         if (tournament != null) {
             List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(tournament);
@@ -60,7 +64,10 @@ public class SearchRestController {
                     throw new RuntimeException(e);
                 }
             });
-            response.put("tournaments", tournaments);
+            List<TournamentDTO> tournamentDTOs = tournaments.stream()
+                    .map(tournamentService::convertToDTO)
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok((tournamentDTOs));
         }
         if (team != null) {
             List<Team> teams = teamService.findTeamByNameSearch(team);
@@ -71,23 +78,27 @@ public class SearchRestController {
                     throw new RuntimeException(e);
                 }
             });
-            response.put("teams", teams);
+
+            List<TeamDTO> teamDTOs = teams.stream()
+                    .map(teamService::convertToDTO)
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(teamDTOs);
         }
         if (player != null) {
             List<Player> players = new ArrayList<>();
             players.addAll(playerService.findPlayerByNameSearch(player));
             players.addAll(playerService.findPlayerByLastNameSearch(player));
-            response.put("players", players);
+            return ResponseEntity.ok(players);
         }
         if (position != null) {
             List<Player> playersByPosition = playerService.findPlayerByPositionSearch(position);
-            response.put("players", playersByPosition);
+            return ResponseEntity.ok(playersByPosition);
         }
         if (nationality != null) {
             List<Player> playersByNationality = playerService.findPlayerByNationalitySearch(nationality);
-            response.put("players", playersByNationality);
+            return ResponseEntity.ok(playersByNationality);
         }
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.badRequest().build();
     }
+
 }
