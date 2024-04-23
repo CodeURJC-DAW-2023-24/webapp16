@@ -70,8 +70,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         // PRIVATE ENDPOINTS
                           // API REST
-                        //.requestMatchers("/api/users").hasAnyRole("ADMIN")
-                        //.requestMatchers("/api/users/**").hasAnyRole("ADMIN")
+                        .requestMatchers("/api/users").hasAnyRole("ADMIN")
+                        .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
 
                         .requestMatchers(HttpMethod.GET, "/api/users/me").hasAuthority("USER")
                         .requestMatchers(HttpMethod.PUT, "/api/users/me").hasAuthority("USER")
@@ -110,7 +110,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/api/statistics/**").permitAll()
 
                         // PUBLIC ENDPOINTS (anything that's not filtered by the above rules, is public. It is not necessary to add anything here)
-                        .anyRequest().permitAll()
+                        //.anyRequest().permitAll()
                 );
 
         // Disable Form login Authentication

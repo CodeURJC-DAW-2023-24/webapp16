@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f769e148-da03-4e49-9da6-bfaf0ec74592",
+		"_postman_id": "05fadb41-46b8-4bed-9e76-0361ddfdaa2a",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33851283"
+		"_exporter_id": "33851341"
 	},
 	"item": [
 		{
@@ -1362,28 +1362,24 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "user",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "pass",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\"username\":\"user\",\"password\":\"pass\"}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "https://{{HTTPS DIR}}:8443/login",
+					"raw": "https://{{HTTPS DIR}}:8443/api/auth/login",
 					"protocol": "https",
 					"host": [
 						"{{HTTPS DIR}}"
 					],
 					"port": "8443",
 					"path": [
+						"api",
+						"auth",
 						"login"
 					]
 				}
@@ -1396,28 +1392,24 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "adminpass",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\"username\":\"admin\",\"password\":\"adminpass\"}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "https://{{HTTPS DIR}}:8443/login",
+					"raw": "https://{{HTTPS DIR}}:8443/api/auth/login",
 					"protocol": "https",
 					"host": [
 						"{{HTTPS DIR}}"
 					],
 					"port": "8443",
 					"path": [
+						"api",
+						"auth",
 						"login"
 					]
 				}
@@ -1427,16 +1419,18 @@
 		{
 			"name": "logout",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://{{HTTPS DIR}}:8443/logout",
+					"raw": "https://{{HTTPS DIR}}:8443/api/auth/logout",
 					"protocol": "https",
 					"host": [
 						"{{HTTPS DIR}}"
 					],
 					"port": "8443",
 					"path": [
+						"api",
+						"auth",
 						"logout"
 					]
 				}
