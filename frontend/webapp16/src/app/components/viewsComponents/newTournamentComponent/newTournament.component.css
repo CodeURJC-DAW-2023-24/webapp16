@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #000000;
+  background-color: #1f2029;
+}
+
+.show-logo{
+  height: 75px;
+  width: 75px;
+  align-content: center;
+}
+a:hover {
+  text-decoration: none;
+}
+.link {
+  color: #0b0b0b;
+}
+.link:hover {
+  transition: 0.5s;
+  color: #000000;
+}
+.link:not(:hover){
+  color: #000000;
+  transition: 0.5s;
+}
+h2 {
+  text-align: center;    color: #f9f9f9;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+input[type="field"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.marginDefined {
+  margin-top: 10px;
+}
+.labelDesign{
+  text-align: center;
+}
+
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  transition: 0.5s;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="button"] {
+  background-color: #ad4c4c;
+  color: white;
+  transition: 0.5s;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #00ff08;
+  transition: 0.5s;
+}
+button[type="button"]:hover {
+  background-color: #ff0000;
+  transition: 0.5s;
+}
+a.addTeam {
+  background-color: #555555;
+  color: white;
+  transition: 0.5s;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none; /* Para quitar el subrayado del enlace */
+  margin-top: 5px;
+}
+
+a.addTeam:hover {
+  background-color: #000000;
+}
