@@ -8,13 +8,20 @@ import { SearchService } from '../../../services/search.service';
 })
 export class SearchComponent {
 
-  results: any;
+
+  data: any;
+  type = ''; //type of search
 
   constructor(private searchService: SearchService) { }
-  ngOnInit(): void {
-    this.searchService.search('Lionel').subscribe(results => {
-      this.results = results;
-    });
-  }
+
+
+ngOnInit(): void {
+  this.data = this.searchService.getData();
+  this.type = this.searchService.getType();
+}
+
+
+
+
 }
 

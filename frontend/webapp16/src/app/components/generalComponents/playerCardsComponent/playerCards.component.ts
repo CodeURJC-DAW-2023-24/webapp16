@@ -14,7 +14,9 @@ export class PlayerCardsComponent {
   constructor(private playerService: PlayerService) {
 
   }
-  ngOnInit(): void {
+ngOnInit(): void {
+    console.log("ACTUAL DATA IS: ", this.playerData)
+  if (!this.playerData || this.playerData.length === 0) {
     console.log('Making request to get players...');
     this.playerService.getPlayers().pipe(
       catchError(error => {
@@ -31,4 +33,5 @@ export class PlayerCardsComponent {
       }
     });
   }
+}
 }

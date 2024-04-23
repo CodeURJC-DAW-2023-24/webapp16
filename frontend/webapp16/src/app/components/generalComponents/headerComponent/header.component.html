@@ -57,9 +57,9 @@
                   <a class="nav-link" routerLink="/profile">Profile</a>
                 </li>
               </ul>
-              <form class="d-flex" (submit)="search(query.value)">
-                <input #query class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-danger" type="submit">Search</button>
+              <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="query" name="query">
+                <button class="btn btn-outline-danger" type="submit" (click) = searchPlayer(query)>Search</button>
               </form>
             </div>
           </div>
