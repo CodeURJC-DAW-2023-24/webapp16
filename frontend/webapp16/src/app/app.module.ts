@@ -6,6 +6,7 @@ import { AppComponent } from './components/app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FooterComponent} from "./components/generalComponents/footerComponent/footer.component";
 import {HeaderComponent} from "./components/generalComponents/headerComponent/header.component";
+import {BannerComponent} from "./components/generalComponents/bannerComponent/banner.component";
 import {PlayersStatisticsComponent} from "./components/viewsComponents/playerStatistics/playersStatistics.component";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./components/viewsComponents/loginComponent/login.component";
@@ -33,6 +34,7 @@ import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    BannerComponent,
     PlayersStatisticsComponent,
     LoginComponent,
     LoginErrorComponent,
