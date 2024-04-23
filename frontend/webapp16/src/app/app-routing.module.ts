@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'playerInfo/:id', component: PlayerInfoComponent },
   { path: 'teamInfo/:id', component: TeamInfoComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
 
 ];
 

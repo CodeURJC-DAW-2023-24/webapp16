@@ -32,7 +32,7 @@ getTopPlayers(): Observable<Player[]> {
   );
 }
 getPlayer(id: number): Observable<Player> {
-  return this.http.get<Player>(`${this.apiUrl}/players/${id}`);
+  return this.http.get<Player>(`${this.apiUrl}/players/${id}`, {withCredentials:true});
 }
   getBase64ImageFromURL(url: string): Promise<string> {
     return this.http.get(url, { responseType: 'blob' }).toPromise()

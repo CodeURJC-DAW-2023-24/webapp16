@@ -5,17 +5,17 @@ import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
+import {API_URL} from "../../config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'https://localhost:8443/api';
 
   constructor(private http: HttpClient, private router:Router, private cookieService: CookieService) { }
 
   login(username: string, password: string): Observable<HttpResponse<any>> {
-    return this.http.post<any>(`${this.API_URL}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
+    return this.http.post<any>(`${API_URL}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
       .pipe(tap(response => {
         // ...
         const accessToken = this.cookieService.get('AuthToken'); // Reemplaza 'access_token_name' con el nombre real de tu cookie de token de acceso
