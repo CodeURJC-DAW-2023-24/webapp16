@@ -12,10 +12,10 @@
   </div>
   <div class="">
 
-    <playerCard></playerCard>
+    <playerCard (hasMoreDataChange)="handleHasMoreDataChange($event)"></playerCard>
 
     <div style = "margin-bottom: 50px; margin-top: 50px" class="text-center">
-      <button id="loadMorePlayers" class="button">Cargar más jugadores</button>
+      <button id="loadMorePlayers" class="button" (click)="loadMorePlayers()" *ngIf="hasMoreData">{{loadMoreButtonText}}</button>
     </div>
 
 </div>

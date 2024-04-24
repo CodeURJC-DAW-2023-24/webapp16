@@ -6,18 +6,26 @@ import { SessionService } from './session.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import {API_URL} from "../../config";
+import {Team} from "../models/team.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
   private apiUrl = `${API_URL}/players`;
+  private apiUrlPage = `${API_URL}/players?page=`;
   private statisticsUrl = `${API_URL}/statistics/players`;
 
   constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
 
-  getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.apiUrl, {withCredentials:true});
+
+  getPlayers(page: number): Observable<Player[]> {
+    return this.http.get<Player[]>(`${this.apiUrlPage}${page}`, {withCredentials: true}).pipe(
+      catchError(err => {
+        console.error('Error occurred while fetching players:', err);
+        return throwError(err);
+      })
+    );
   }
 
   // player.service.ts

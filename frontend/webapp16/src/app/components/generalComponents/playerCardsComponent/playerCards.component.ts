@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Player} from "../../../models/player.model";
 import {PlayerService} from "../../../services/player.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import {PaginationService} from "../../../services/pagination.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,16 +11,24 @@ import {Router} from "@angular/router";
   templateUrl: './playerCards.component.html',
   styleUrl: './playerCards.component.css'
 })
-export class PlayerCardsComponent  implements  OnInit{
+export class PlayerCardsComponent implements OnInit{
   @Input() playerData: any;
-  constructor(private playerService: PlayerService, private router: Router) {
+  @Output() hasMoreDataChange = new EventEmitter<boolean>();
+  page: number = 0;
+  hasMoreData: boolean = true;
 
+  constructor(private playersService: PlayerService, private paginationService: PaginationService, private router: Router) {
+    this.paginationService.currentPage.subscribe(page => {
+      this.page = page;
+      this.loadMorePlayers();
+    });
   }
-ngOnInit(): void {
-    console.log("ACTUAL DATA IS: ", this.playerData)
-  if (!this.playerData || this.playerData.length === 0) {
-    console.log('Making request to get players...');
-    this.playerService.getPlayers().pipe(
+
+  ngOnInit(): void {
+  }
+
+  loadMorePlayers(): void {
+    this.playersService.getPlayers(this.page).pipe(
       catchError(error => {
         const errorCode = error.status;
         this.router.navigate(['/error'], { state: { errorCode: errorCode } });
@@ -27,9 +36,21 @@ ngOnInit(): void {
         return throwError(error);
       })
     ).subscribe({
-      next: (player) => {
-        console.log('Received players data:', player);
-        this.playerData = player;
+      next: (players) => {
+        if (players.length === 0) {
+          this.hasMoreData = false;
+          console.log('No more players. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
+          return;
+        }
+        // If playerData is not initialized, initialize it with the players from the first page
+        if (!this.playerData) {
+          this.playerData = players;
+        } else {
+          // If playerData is already initialized, add the new players to the end of the existing players
+          this.playerData = [...this.playerData, ...players];
+        }
+        console.log('Page incremented. Current page:', this.page); // Log the current page
+        this.page += 1;
       },
       error: (error) => {
         const errorCode = error.status;
@@ -39,5 +60,4 @@ ngOnInit(): void {
       }
     });
   }
-}
 }

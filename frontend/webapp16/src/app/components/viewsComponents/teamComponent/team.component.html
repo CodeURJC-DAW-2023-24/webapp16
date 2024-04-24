@@ -12,13 +12,12 @@
   </div>
   <div class="">
 
-    <teamCard></teamCard>
+    <teamCard (hasMoreDataChange)="handleHasMoreDataChange($event)"></teamCard>
 
   </div>
 
   <div style = "margin-bottom: 50px; margin-top: 50px"  class="text-center">
-    <button id="loadMoreTeams" class="button" (click)="loadMoreTeams()">Cargar más equipos</button>
-  </div>
+<button id="loadMoreTeams" class="button" (click)="loadMoreTeams()" *ngIf="hasMoreData">{{loadMoreButtonText}}</button>  </div>
 
 </div>
 <footer-web> </footer-web>
