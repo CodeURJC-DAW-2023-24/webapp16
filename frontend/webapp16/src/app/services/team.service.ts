@@ -12,14 +12,19 @@ import {Player} from "../models/player.model";
   providedIn: 'root'
 })
 export class TeamService {
-  private apiUrl = `${API_URL}/teams`;
+  private apiUrl = `${API_URL}/teams?page=`;
   private statisticsUrl = `${API_URL}/statistics/teams`;
 
   constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
 
-  getTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.apiUrl,{withCredentials:true});
-  }
+ getTeams(page: number): Observable<Team[]> {
+  return this.http.get<Team[]>(`${this.apiUrl}${page}`, {withCredentials: true}).pipe(
+    catchError(err => {
+      console.error('Error occurred while fetching teams:', err);
+      return throwError(err);
+    })
+  );
+}
 
   // team.service.ts
   getTopTeams(): Observable<Team[]> {

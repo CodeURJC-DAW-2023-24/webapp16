@@ -3,55 +3,54 @@ import {Team} from "../../../models/team.model";
 import {TeamService} from "../../../services/team.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import { PaginationService } from '../../../services/pagination.service';
 
 @Component({
   selector: 'teamCard',
   templateUrl: './teamCards.component.html',
-  styleUrl: './teamCards.component.css'
+  styleUrls: ['./teamCards.component.css']
 })
 export class TeamCardsComponent implements OnInit{
   @Input() teamData: any;
-  constructor(private teamsService: TeamService) {
+  page: number = 0;
 
-  }
-ngOnInit(): void {
-  if (!this.teamData || this.teamData.length === 0) {
-    console.log('Making request to get teams...');
-    this.teamsService.getTeams().pipe(
-      catchError(error => {
-        console.error('Error occurred while fetching teams:', error);
-        return throwError(error);
-      })
-    ).subscribe({
-      next: (teams) => {
-        console.log('Received teams data:', teams);
-        this.teamData = teams.map(team => {
-          // Add base64 image prefix if not already present
-          if (!team.imagePath.startsWith('data:image')) {
-            team.imagePath = 'data:image/jpeg;base64,' + team.imagePath;
-          }
-          return team;
-        });
-      },
-      error: (error) => {
-        console.error('Error occurred while fetching teams:', error);
-      }
+  constructor(private teamsService: TeamService, private paginationService: PaginationService) {
+    this.paginationService.currentPage.subscribe(page => {
+      this.page = page;
+      this.loadMoreTeams();
     });
-  }else {
-    // Add base64 image prefix if not already present for each team in the array teamData
-this.teamData = this.teamData.map((team: any) => {
-  if (!team.imagePath.startsWith('data:image')) {
-    team.imagePath = 'data:image/jpeg;base64,' + team.imagePath;
   }
-  return team;
-});
 
-
+  ngOnInit(): void {
   }
+
+  loadMoreTeams(): void {
+  this.teamsService.getTeams(this.page).pipe(
+    catchError(error => {
+      console.error('Error occurred while fetching teams:', error);
+      return throwError(error);
+    })
+  ).subscribe({
+    next: (teams) => {
+      teams = teams.map(team => {
+        // Add base64 image prefix if not already present
+        if (!team.imagePath.startsWith('data:image')) {
+          team.imagePath = 'data:image/jpeg;base64,' + team.imagePath;
+        }
+        return team;
+      });
+      // If teamData is not initialized, initialize it with the teams from the first page
+      if (!this.teamData) {
+        this.teamData = teams;
+      } else {
+        // If teamData is already initialized, add the new teams to the end of the existing teams
+        this.teamData = [...this.teamData, ...teams];
+      }
+      this.page += 1;
+    },
+    error: (error) => {
+      console.error('Error occurred while fetching teams:', error);
+    }
+  });
 }
-
-
-
-
-
 }

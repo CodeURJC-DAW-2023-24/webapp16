@@ -4,6 +4,7 @@ import {Team} from "../../../models/team.model";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {Title} from "@angular/platform-browser";
+import {PaginationService} from "../../../services/pagination.service";
 @Component({
   selector: 'team',
   templateUrl: './team.component.html',
@@ -11,9 +12,13 @@ import {Title} from "@angular/platform-browser";
 })
 
 export class TeamComponent implements OnInit {
-  constructor(private titleService: Title) {
+  constructor(private paginationService: PaginationService,private titleService: Title) {
   }
   ngOnInit(): void {
     this.titleService.setTitle('Teams');
+    //this.paginationService.resetPage();
+  }
+  loadMoreTeams(): void {
+    this.paginationService.incrementPage();
   }
 }
