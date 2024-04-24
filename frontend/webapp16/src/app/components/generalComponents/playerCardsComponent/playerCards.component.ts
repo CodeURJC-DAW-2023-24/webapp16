@@ -3,6 +3,7 @@ import {Player} from "../../../models/player.model";
 import {PlayerService} from "../../../services/player.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'playerCard',
@@ -11,7 +12,7 @@ import {throwError} from "rxjs";
 })
 export class PlayerCardsComponent  implements  OnInit{
   @Input() playerData: any;
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private router: Router) {
 
   }
 ngOnInit(): void {
@@ -20,7 +21,9 @@ ngOnInit(): void {
     console.log('Making request to get players...');
     this.playerService.getPlayers().pipe(
       catchError(error => {
-        console.error('Error occurred while fetching players:', error);
+        const errorCode = error.status;
+        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+        //console.error('Error occurred while fetching teams:', error);
         return throwError(error);
       })
     ).subscribe({
@@ -29,7 +32,10 @@ ngOnInit(): void {
         this.playerData = player;
       },
       error: (error) => {
-        console.error('Error occurred while fetching players:', error);
+        const errorCode = error.status;
+        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+        return throwError(error);
+        //console.error('Error occurred while fetching players:', error);
       }
     });
   }

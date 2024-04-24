@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {query} from "@angular/animations";
 import {Router} from "@angular/router";
 import {SearchService} from "../../../services/search.service";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'header-web',
@@ -35,7 +36,10 @@ export class HeaderComponent {
         this.router.navigate(['/search']);
       },
       error: (error) => {
-        console.error('Error occurred while fetching players:', error);
+        const errorCode = error.status;
+        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+        return throwError(error);
+        //console.error('Error occurred while fetching players:', error);
       }
     });
 

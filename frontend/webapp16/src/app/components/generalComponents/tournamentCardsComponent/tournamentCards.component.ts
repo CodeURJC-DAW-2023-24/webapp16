@@ -3,6 +3,7 @@ import {Tournament} from "../../../models/tournament.model";
 import {TournamentService} from "../../../services/tournament.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'tournamentCard',
@@ -11,7 +12,7 @@ import {throwError} from "rxjs";
 })
 export class TournamentCardsComponent implements OnInit{
   @Input() tournamentData: any;
-  constructor(private tournamentService: TournamentService) {
+  constructor(private tournamentService: TournamentService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -19,7 +20,9 @@ export class TournamentCardsComponent implements OnInit{
       console.log('Making request to get tournaments...');
       this.tournamentService.getTournament().pipe(
         catchError(error => {
-          console.error('Error occurred while fetching tournaments:', error);
+          const errorCode = error.status;
+          this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+          //console.error('Error occurred while fetching tournaments:', error);
           return throwError(error);
         })
       ).subscribe({
@@ -28,7 +31,10 @@ export class TournamentCardsComponent implements OnInit{
           this.tournamentData = tournament;
         },
         error: (error) => {
-          console.error('Error occurred while fetching tournaments:', error);
+          const errorCode = error.status;
+          this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+          return throwError(error);
+          //console.error('Error occurred while fetching tournaments:', error);
         }
       });
     }else {

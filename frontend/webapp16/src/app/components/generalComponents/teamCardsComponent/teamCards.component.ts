@@ -4,6 +4,7 @@ import {TeamService} from "../../../services/team.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import { PaginationService } from '../../../services/pagination.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'teamCard',
@@ -14,7 +15,7 @@ export class TeamCardsComponent implements OnInit{
   @Input() teamData: any;
   page: number = 0;
 
-  constructor(private teamsService: TeamService, private paginationService: PaginationService) {
+  constructor(private teamsService: TeamService, private paginationService: PaginationService, private router: Router) {
     this.paginationService.currentPage.subscribe(page => {
       this.page = page;
       this.loadMoreTeams();
@@ -27,7 +28,9 @@ export class TeamCardsComponent implements OnInit{
   loadMoreTeams(): void {
   this.teamsService.getTeams(this.page).pipe(
     catchError(error => {
-      console.error('Error occurred while fetching teams:', error);
+      const errorCode = error.status;
+      this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+     //console.error('Error occurred while fetching teams:', error);
       return throwError(error);
     })
   ).subscribe({
@@ -49,6 +52,9 @@ export class TeamCardsComponent implements OnInit{
       this.page += 1;
     },
     error: (error) => {
+      const errorCode = error.status;
+      this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+      return throwError(error);
       console.error('Error occurred while fetching teams:', error);
     }
   });
