@@ -23,6 +23,7 @@ import {SearchComponent} from "./components/viewsComponents/searchComponent/sear
 const routes: Routes = [
   { path: 'aboutUs', component: AboutUsComponent },
   { path: '', component: TournamentComponent },
+  { path: '/', component: TournamentComponent },
   { path: 'statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'players', component: PlayerComponent },
