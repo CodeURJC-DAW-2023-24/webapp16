@@ -3,6 +3,7 @@ package es.codeurjc.backend.RESTController;
 import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.service.PlayerService;
+import es.codeurjc.backend.service.ReportService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -25,7 +27,8 @@ import java.util.List;
 public class PlayerRestController {
     @Autowired
     private PlayerService playerService;
-
+    @Autowired
+    private ReportService reportService;
 
     @GetMapping
     @Operation(summary = "Get all players")
@@ -106,5 +109,13 @@ public class PlayerRestController {
             String msg = "Player with id " + id + " does not exist .";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
         }
+    }
+
+    @GetMapping("/team/{teamId}")
+    public ResponseEntity<List<PlayerDTO>>  getTPlayersByTeamId(@PathVariable Long teamId){
+        List<PlayerDTO> playerDTOS = playerService.findPlayersTeamById(teamId).stream()
+                .map(playerService::convertToDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(playerDTOS);
     }
 }

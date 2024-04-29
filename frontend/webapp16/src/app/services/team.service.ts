@@ -13,6 +13,7 @@ import {Player} from "../models/player.model";
 })
 export class TeamService {
   private apiUrl = `${API_URL}/teams`;
+  private apiPlayersUrl = `${API_URL}/players`;
   private apiUrlPage = `${API_URL}/teams?page=`;
   private statisticsUrl = `${API_URL}/statistics/teams`;
 
@@ -36,8 +37,16 @@ export class TeamService {
       })
     );
   }
-  getTeam(id: number): Observable<Team> {
-    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`,{withCredentials:true});
+  getTeam(id:string): Observable<Team> {
+    return this.http.get<Team>(`${this.apiUrl}/${id}`,{withCredentials:true});
+  }
+  getTeamPlayers(id: string): Observable<Player[]> {
+    return this.http.get<Player[]>(`${this.apiPlayersUrl}/team/${id}`, {withCredentials: true}).pipe(
+      catchError(err => {
+        console.error('Error occurred while fetching team players:', err);
+        return throwError(err);
+      })
+    );
   }
   getBase64ImageFromURL(url: string): Promise<string> {
     return this.http.get(url, { responseType: 'blob' ,withCredentials:true}).toPromise()
