@@ -46,3 +46,18 @@ td {
 .table-container {
   padding: 20px;
 }
+button.button {
+  background: #d8302f;
+  color: #fff;
+  border: #d8302f solid 1px;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+}
+button.button:hover {
+  transition: 0.5s;
+  background: #fff;
+  color: #d8302f;
+  border: #d8302f solid 1px;
+}

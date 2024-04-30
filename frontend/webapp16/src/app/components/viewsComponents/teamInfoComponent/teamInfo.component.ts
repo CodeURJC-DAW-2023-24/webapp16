@@ -19,12 +19,16 @@ export class TeamInfoComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id != null) {
-      this.teamService.getTeam(id).subscribe(data => {
-        this.team = data;
-        this.titleService.setTitle(this.team.name);
+      this.teamService.getTeam(id).subscribe(team => {
+        this.team = team;
+        this.titleService.setTitle(this.team.name + 'Info');
+        if (this.titleService.getTitle() != null){
+          // @ts-ignore
+          document.getElementById("pageTitle").innerHTML =this.titleService.getTitle();
+        }
       });
-      this.teamService.getTeamPlayers(id).subscribe(data => {
-        this.players = data;
+      this.teamService.getTeamPlayers(id).subscribe(players => {
+        this.players = players;
       });
     }
   }

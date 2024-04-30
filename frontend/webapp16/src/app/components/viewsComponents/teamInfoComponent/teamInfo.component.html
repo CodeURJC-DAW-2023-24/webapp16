@@ -19,7 +19,7 @@
           <tr *ngFor="let player of players">
             <td style="display: flex; justify-content: space-between;">
               <span>{{player.name}} {{player.lastName}}</span>
-              <a [routerLink]="['/players', player.id]">
+              <a [routerLink]="['/playerInfo', player.id]">
                 <button class="button">Info</button>
               </a>
             </td>
