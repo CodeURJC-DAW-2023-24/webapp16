@@ -23,8 +23,8 @@ import {SearchComponent} from "./components/viewsComponents/searchComponent/sear
 const routes: Routes = [
   { path: 'aboutUs', component: AboutUsComponent },
   { path: '', component: TournamentComponent },
-  { path: 'statistics/players', component: PlayersStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
-  { path: 'statistics/teams', component: TeamsStatisticsComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'statistics/players', component: PlayersStatisticsComponent},
+  { path: 'statistics/teams', component: TeamsStatisticsComponent},
   { path: 'players', component: PlayerComponent },
   { path: 'teams', component: TeamComponent },
   { path: 'login', component: LoginComponent },
@@ -32,10 +32,10 @@ const routes: Routes = [
   { path: 'fill-match-report', component: FillMatchReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'show-report', component: ShowReportComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'error', component: ErrorComponent },
-  { path: 'profile', component: ProfileComponent }, //, canActivate: [AuthGuard], data: { expectedRole: 'USER' }
+  { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
   { path: 'playerInfo/:id', component: PlayerInfoComponent },
   { path: 'teamInfo/:id', component: TeamInfoComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' }  },
   { path: 'logout', component: LoginComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
 ];
 

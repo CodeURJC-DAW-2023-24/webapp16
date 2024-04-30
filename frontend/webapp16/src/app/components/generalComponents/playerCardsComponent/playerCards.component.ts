@@ -42,7 +42,7 @@ export class PlayerCardsComponent implements OnInit{
       next: (players) => {
         if (players.length === 0) {
           this.hasMoreData = false;
-          console.log('No more players. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
+          //console.log('No more players. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
           return;
         }
         // If playerData is not initialized, initialize it with the players from the first page
@@ -52,7 +52,7 @@ export class PlayerCardsComponent implements OnInit{
           // If playerData is already initialized, add the new players to the end of the existing players
           this.playerData = [...this.playerData, ...players];
         }
-        console.log('Page incremented. Current page:', this.page); // Log the current page
+        //console.log('Page incremented. Current page:', this.page); // Log the current page
         this.page += 1;
       },
       error: (error) => {

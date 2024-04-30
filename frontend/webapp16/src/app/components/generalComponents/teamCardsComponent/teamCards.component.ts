@@ -42,7 +42,7 @@ export class TeamCardsComponent implements OnInit{
       next: (teams) => {
         if (teams.length === 0) {
           this.hasMoreData = false;
-          console.log('No more teams. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
+          //console.log('No more teams. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
           // Set hasMoreData to false when there are no more teams
           return;
         }
@@ -60,7 +60,7 @@ export class TeamCardsComponent implements OnInit{
           // If teamData is already initialized, add the new teams to the end of the existing teams
           this.teamData = [...this.teamData, ...teams];
         }
-        console.log('Page incremented. Current page:', this.page); // Log the current page
+        //console.log('Page incremented. Current page:', this.page); // Log the current page
         this.page += 1;
     },
     error: (error) => {

@@ -22,7 +22,7 @@ export class TeamService {
  getTeams(page: number): Observable<Team[]> {
   return this.http.get<Team[]>(`${this.apiUrlPage}${page}`, {withCredentials: true}).pipe(
     catchError(err => {
-      console.error('Error occurred while fetching teams:', err);
+      //console.error('Error occurred while fetching teams:', err);
       return throwError(err);
     })
   );
@@ -32,7 +32,7 @@ export class TeamService {
   getTopTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.statisticsUrl,{withCredentials:true}).pipe(
       catchError(err => {
-        console.error('Error occurred while fetching teams:', err);
+        //console.error('Error occurred while fetching teams:', err);
         return throwError(err);
       })
     );
@@ -43,7 +43,7 @@ export class TeamService {
   getTeamPlayers(id: string): Observable<Player[]> {
     return this.http.get<Player[]>(`${this.apiPlayersUrl}/team/${id}`, {withCredentials: true}).pipe(
       catchError(err => {
-        console.error('Error occurred while fetching team players:', err);
+        //console.error('Error occurred while fetching team players:', err);
         return throwError(err);
       })
     );

@@ -22,7 +22,7 @@ export class PlayerService {
   getPlayers(page: number): Observable<Player[]> {
     return this.http.get<Player[]>(`${this.apiUrlPage}${page}`, {withCredentials: true}).pipe(
       catchError(err => {
-        console.error('Error occurred while fetching players:', err);
+        //console.error('Error occurred while fetching players:', err);
         return throwError(err);
       })
     );
@@ -33,8 +33,8 @@ export class PlayerService {
 getTopPlayers(): Observable<Player[]> {
   return this.http.get<Player[]>(this.statisticsUrl, {withCredentials:true}).pipe(
     catchError(err => {
-      console.error('Error occurred while fetching players:', err);
-      //this.router.navigate(['/error']);
+      //console.error('Error occurred while fetching players:', err);
+      this.router.navigate(['/error']);
       return throwError(err);
     })
   );

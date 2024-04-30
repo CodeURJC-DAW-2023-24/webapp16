@@ -106,7 +106,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.PUT,"/api/matches/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/matches/**").hasAnyRole("ADMIN")
 
-                       // .requestMatchers(HttpMethod.GET,"/api/search/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.GET,"/api/search/**").hasAnyRole("USER")
                         .requestMatchers("/api/statistics/**").permitAll()
 
                         // PUBLIC ENDPOINTS (anything that's not filtered by the above rules, is public. It is not necessary to add anything here)
