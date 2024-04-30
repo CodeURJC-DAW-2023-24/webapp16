@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "05fadb41-46b8-4bed-9e76-0361ddfdaa2a",
+		"_postman_id": "db7ea05c-9ea3-43e6-aa3a-395bf1859e59",
 		"name": "FutProLeague",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33851341"
+		"_exporter_id": "33851283"
 	},
 	"item": [
 		{
@@ -388,6 +388,28 @@
 									"key": "team",
 									"value": "real%20madrid"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "playersInTeam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/players/team/6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"players",
+								"team",
+								"6"
 							]
 						}
 					},
@@ -1099,12 +1121,12 @@
 					"response": []
 				},
 				{
-					"name": "users/me",
+					"name": "/me",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{HTTPS DIR}}:8443/api/users/me",
+							"raw": "https://{{HTTPS DIR}}:8443/api/me",
 							"protocol": "https",
 							"host": [
 								"{{HTTPS DIR}}"
@@ -1112,7 +1134,6 @@
 							"port": "8443",
 							"path": [
 								"api",
-								"users",
 								"me"
 							]
 						}
@@ -1178,7 +1199,7 @@
 					"response": []
 				},
 				{
-					"name": "users/me",
+					"name": "/me",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -1192,7 +1213,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{HTTPS DIR}}:8443/api/users/me",
+							"raw": "https://{{HTTPS DIR}}:8443/api/me",
 							"protocol": "https",
 							"host": [
 								"{{HTTPS DIR}}"
@@ -1200,7 +1221,6 @@
 							"port": "8443",
 							"path": [
 								"api",
-								"users",
 								"me"
 							]
 						}
