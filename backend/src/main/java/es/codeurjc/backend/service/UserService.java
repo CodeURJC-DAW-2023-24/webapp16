@@ -1,8 +1,6 @@
 package es.codeurjc.backend.service;
 
-import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.DTOs.UserDTO;
-import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.User;
 import es.codeurjc.backend.model.UserPasswords;
 import es.codeurjc.backend.repository.UserPasswordsRepository;
@@ -57,6 +55,7 @@ public class UserService {
     public void saveUser(User user) {
         userRepository.save(user);
     }
+
     public void modUser (User user){
         User DBuser = userRepository.getReferenceById(user.getId());
         if (user.getName() != null){

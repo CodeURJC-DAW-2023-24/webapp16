@@ -9,10 +9,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 
 @RestController
@@ -34,6 +34,7 @@ public class MeRestController {
         Principal currentUser = request.getUserPrincipal();
 
         User user = userService.getUserByName(currentUser.getName());
+        Hibernate.initialize(user);
         UserDTO userDTO = userService.convertToDTO(user);
         return ResponseEntity.ok(userDTO);
     }
@@ -47,12 +48,16 @@ public class MeRestController {
     })
     public ResponseEntity<UserDTO> updateMyProfile(HttpServletRequest request, @RequestBody UserDTO updatedUserDTO) {
         Principal currentUser = request.getUserPrincipal();
-
+        if (currentUser == null || !currentUser.getName().equals(updatedUserDTO.getName())){
+            return ResponseEntity.badRequest().build();
+        }
         User updatedUser = userService.convertToEntity(updatedUserDTO);
-        User user = userService.updateUser(currentUser.getName(), updatedUser);
+        userService.modUser(updatedUser);
+        User user = userService.getUserByName(currentUser.getName());
+        Hibernate.initialize(user);
         UserDTO userDTO = userService.convertToDTO(user);
+        System.out.println(userDTO);
         return ResponseEntity.ok(userDTO);
-
     }
 
 }
