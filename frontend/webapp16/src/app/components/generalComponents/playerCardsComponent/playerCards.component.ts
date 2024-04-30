@@ -25,8 +25,11 @@ export class PlayerCardsComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.page= 0;
   }
-
+  ngOnDestroy(): void {
+    this.paginationService.resetPage();
+  }
   loadMorePlayers(): void {
     this.playersService.getPlayers(this.page).pipe(
       catchError(error => {

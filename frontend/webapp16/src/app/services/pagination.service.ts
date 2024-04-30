@@ -14,7 +14,7 @@ export class PaginationService {
   incrementPage() {
     this.pageSource.next(this.pageSource.value + 1);
   }
-  //resetPage() {
-  //  this.pageSource.next(0);
-  //}
+  resetPage() {
+    this.pageSource.next(0);
+  }
 }

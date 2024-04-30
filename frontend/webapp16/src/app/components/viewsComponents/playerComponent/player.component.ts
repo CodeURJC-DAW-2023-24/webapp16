@@ -22,13 +22,13 @@ export class PlayerComponent implements OnInit {
   }
 
   loadMorePlayers(): void {
-    console.log('loadMorePlayers called. Incrementing page.');
+    //console.log('loadMorePlayers called. Incrementing page.');
     this.paginationService.incrementPage();
   }
 
   handleHasMoreDataChange(newHasMoreData: boolean): void {
     this.hasMoreData = newHasMoreData;
-    console.log('hasMoreData changed. New value:', newHasMoreData);
+    //console.log('hasMoreData changed. New value:', newHasMoreData);
     this.loadMoreButtonText = 'No more players to load';
     if (!this.hasMoreData) {
       this.loadMoreButtonText = 'No more players to load'; // Change the button text when there are no more players to load

@@ -25,8 +25,11 @@ export class TeamCardsComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.page= 0;
   }
-
+  ngOnDestroy(): void {
+    this.paginationService.resetPage();
+  }
   loadMoreTeams(): void {
   this.teamsService.getTeams(this.page).pipe(
     catchError(error => {
