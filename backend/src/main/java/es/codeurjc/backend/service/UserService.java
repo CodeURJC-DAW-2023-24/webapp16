@@ -99,6 +99,10 @@ public class UserService {
         }
     }
 
+    public User getUserByName(String username) {
+        return userRepository.findByName(username).orElse(null);
+    }
+
     public User updateUser(String username, User updatedUser) {
         if (canAccessUser(username, updatedUser.getId())) {
             return userRepository.save(updatedUser);
