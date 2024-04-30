@@ -17,14 +17,6 @@ export class AuthService {
   login(username: string, password: string): Observable<HttpResponse<any>> {
     return this.http.post<any>(`${API_URL}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
       .pipe(tap(response => {
-        // ...
-        const accessToken = this.cookieService.get('AuthToken'); // Reemplaza 'access_token_name' con el nombre real de tu cookie de token de acceso
-        const refreshToken = this.cookieService.get('RefreshToken'); // Reemplaza 'refresh_token_name' con el nombre real de tu cookie de token de actualización
-        console.log(refreshToken,accessToken)
-        if (accessToken)
-          localStorage.setItem('accessToken', accessToken); // Almacena el token de acceso
-        if (refreshToken)
-          localStorage.setItem('refreshToken', refreshToken); // Almacena el token de actualización
         this.router.navigate(['/']);
       }));
   }

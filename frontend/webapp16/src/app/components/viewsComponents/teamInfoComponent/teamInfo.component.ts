@@ -21,7 +21,7 @@ export class TeamInfoComponent implements OnInit {
     if (id != null) {
       this.teamService.getTeam(id).subscribe(team => {
         this.team = team;
-        this.titleService.setTitle(this.team.name + 'Info');
+        this.titleService.setTitle(this.team.name + ' Info');
         if (this.titleService.getTitle() != null){
           // @ts-ignore
           document.getElementById("pageTitle").innerHTML =this.titleService.getTitle();

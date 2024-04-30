@@ -47,6 +47,7 @@ td {
   padding: 20px;
 }
 button.button {
+  transition: 0.5s;
   background: #d8302f;
   color: #fff;
   border: #d8302f solid 1px;

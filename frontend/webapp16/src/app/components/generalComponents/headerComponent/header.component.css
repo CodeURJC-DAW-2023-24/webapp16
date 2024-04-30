@@ -37,7 +37,20 @@ nav{
   align-items: center;
   display: flex;
 }
-
+#searchbutton{
+  transition: 0.5s;
+  background-color: #d8302f;
+  color: white;
+  border-radius: 5px;
+  border: #d8302f solid 1px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#searchbutton:hover{
+  transition: 0.5s;
+  background-color: #fff;
+  color:#d8302f;
+}
 
 
 
@@ -113,7 +126,7 @@ a {
 
 .login li a:hover, .login li a:focus {
   background: #fff;
-  color: #333;
+  color: #d8302f;
 }
 .login li a i {
   margin: 0 5px 0 0;
