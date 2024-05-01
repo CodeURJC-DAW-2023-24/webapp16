@@ -30,6 +30,7 @@ import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/
 import {SearchComponent} from "./components/viewsComponents/searchComponent/search.component";
 import {AuthInterceptor} from "./services/auth.interceptor";
 import {TournamentBracketComponent} from "./components/viewsComponents/tournamentBracketComponent/tournamentBracket.component";
+import {MatchInfoComponent} from "./components/viewsComponents/matchInfoComponent/matchInfo.component";
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import {TournamentBracketComponent} from "./components/viewsComponents/tournamen
     TournamentCardsComponent,
     TeamInfoComponent,
     SearchComponent,
-    TournamentBracketComponent
+    TournamentBracketComponent,
+    MatchInfoComponent
 
 
 

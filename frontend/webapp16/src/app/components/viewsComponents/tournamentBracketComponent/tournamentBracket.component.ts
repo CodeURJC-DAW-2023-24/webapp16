@@ -27,6 +27,7 @@ export class TournamentBracketComponent implements OnInit {
           next : (matches) => {
            this.matches = matches;
            this.getMatchesByRound(this.matches);
+           console.log(matches)
           },
           error: (error) => {
             const errorCode = error.status;
@@ -61,8 +62,10 @@ getMatchesByRound(matches: Match[]) {
           case 4:
             this.matchesRound4.push(match);
             break;
+
         }
       }
+
     }
 
 }

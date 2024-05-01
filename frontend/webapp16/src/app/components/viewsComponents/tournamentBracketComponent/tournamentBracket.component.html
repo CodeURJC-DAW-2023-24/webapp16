@@ -9,7 +9,7 @@
   <div class="winners" *ngIf="matchesRound1.length > 0">
     <div class="matchups">
       <div class="matchup" *ngFor="let match of matchesRound1">
-        <div class="participants">
+        <div class="participants" routerLink="/matchInfo/{{match.id}}">
           <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> {{match.localGoals}}</span></span></div>
           <div class="participant"><span>{{match.visitingTeam.name}} <span class="spanClass"> {{match.visitingGoals}}</span></span></div>
         </div>
@@ -22,7 +22,7 @@
     <div class="winners" *ngIf="matchesRound2.length > 0">
       <div class="matchups">
         <div class="matchup" *ngFor="let match of matchesRound2">
-          <div class="participants">
+          <div class="participants"  routerLink="/matchInfo/{{match.id}}">
             <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> {{match.localGoals}}</span></span></div>
             <div class="participant"><span>{{match.visitingTeam.name}} <span class="spanClass"> {{match.visitingGoals}}</span></span></div>
           </div>
@@ -34,7 +34,7 @@
     <div class="winners" *ngIf="matchesRound3.length > 0">
       <div class="matchups">
         <div class="matchup" *ngFor="let match of matchesRound3">
-          <div class="participants">
+          <div class="participants" routerLink="/matchInfo/{{match.id}}">
             <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> {{match.localGoals}}</span></span></div>
             <div class="participant"><span>{{match.visitingTeam.name}} <span class="spanClass"> {{match.visitingGoals}}</span></span></div>
           </div>

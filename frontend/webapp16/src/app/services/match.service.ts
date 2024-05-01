@@ -25,7 +25,16 @@ export class MatchService {
     );
 
   }
+  getMatchesById(id: string): Observable<Match> {
+    return this.http.get<Match>(`${this.apiUrl}/${id}`, {withCredentials: true}).pipe(
+      catchError(err => {
+        //console.error('Error occurred while fetching matches:', err);
+        this.router.navigate(['/error']);
+        return new Observable<Match>();
+      })
+    );
 
+  }
 
 
 
