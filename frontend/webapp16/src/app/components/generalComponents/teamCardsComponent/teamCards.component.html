@@ -1,7 +1,6 @@
 <div class="containerCards">
   <div class="col-md-3 " style="margin-top:20px" *ngFor="let team of teamData">
     <div class="team-column style-2">
-      <a href="">
         <img [src]="team.imagePath"  routerLink="/teamInfo/{{team.id}}" alt="" style="width: 250px ; height:350px">
         <div class="player-name">
           <div class="desination-2">{{team.name}}</div>
@@ -11,7 +10,6 @@
           </div>
         </div>
 
-      </a>
     </div>
   </div>
 </div>
