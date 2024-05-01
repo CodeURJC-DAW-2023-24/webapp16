@@ -1,0 +1,60 @@
+<header-web></header-web>
+<app-banner></app-banner>
+
+
+<div class="containerPers">
+<div class="bracket">
+
+  <section class="round quarterfinals" id="round1">
+  <div class="winners" *ngIf="matchesRound1.length > 0">
+    <div class="matchups">
+      <div class="matchup" *ngFor="let match of matchesRound1">
+        <div class="participants">
+          <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> {{match.localGoals}}</span></span></div>
+          <div class="participant"><span>{{match.visitingTeam.name}} <span class="spanClass"> {{match.visitingGoals}}</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="round semifinals" id="round2">
+    <div class="winners" *ngIf="matchesRound2.length > 0">
+      <div class="matchups">
+        <div class="matchup" *ngFor="let match of matchesRound2">
+          <div class="participants">
+            <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> {{match.localGoals}}</span></span></div>
+            <div class="participant"><span>{{match.visitingTeam.name}} <span class="spanClass"> {{match.visitingGoals}}</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="round finals" id="round3">
+    <div class="winners" *ngIf="matchesRound3.length > 0">
+      <div class="matchups">
+        <div class="matchup" *ngFor="let match of matchesRound3">
+          <div class="participants">
+            <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> {{match.localGoals}}</span></span></div>
+            <div class="participant"><span>{{match.visitingTeam.name}} <span class="spanClass"> {{match.visitingGoals}}</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="round finals" id="round4">
+    <div class="winners" *ngIf="matchesRound4.length > 0">
+      <div class="matchups">
+        <div class="matchup" *ngFor="let match of matchesRound4">
+          <div class="participants">
+            <div class="participant winner"><span>{{match.localTeam.name}} <span class="spanClass"> Winner!!</span></span></div>
+          </div>
+    </div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+
+<footer-web></footer-web>
+

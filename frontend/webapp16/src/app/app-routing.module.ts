@@ -18,11 +18,13 @@ import {TeamComponent} from "./components/viewsComponents/teamComponent/team.com
 import {PlayerInfoComponent} from "./components/viewsComponents/playerInfoComponent/playerInfo.component";
 import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/teamInfo.component";
 import {SearchComponent} from "./components/viewsComponents/searchComponent/search.component";
+import {TournamentBracketComponent} from "./components/viewsComponents/tournamentBracketComponent/tournamentBracket.component";
 
 
 const routes: Routes = [
   { path: 'aboutUs', component: AboutUsComponent },
   { path: '', component: TournamentComponent },
+  { path: 'tournament/:id', component: TournamentBracketComponent },
   { path: 'statistics/players', component: PlayersStatisticsComponent},
   { path: 'statistics/teams', component: TeamsStatisticsComponent},
   { path: 'players', component: PlayerComponent },

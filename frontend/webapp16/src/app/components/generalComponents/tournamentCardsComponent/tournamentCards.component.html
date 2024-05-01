@@ -2,14 +2,12 @@
 
 <div class="containerCards">
   <div class="col-md-3 " style="margin-top:20px" *ngFor="let tournament of tournamentData">
-    <div class="team-column style-2">
-      <a href="">
-        <img [src]="tournament.tournamentImagePath" href="" alt="" style="width: 250px ; height:350px">
+    <div class="team-column style-2" routerLink="/tournament/{{tournament.id}}" >
+        <img [src]="tournament.tournamentImagePath"  style="width: 250px ; height:350px">
         <div class="player-name">
           <div class="desination-2">{{tournament.name}}</div>
           <h5>{{tournament.cup}}</h5>
         </div>
-      </a>
     </div>
   </div>
 </div>

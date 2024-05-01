@@ -109,5 +109,24 @@ public class MatchRestController {
         }//else if (result==3) Not necessary nowadays
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
+
+
+    //matches by tournament id
+    @GetMapping("/tournament/{id}")
+    @Operation(summary = "Get all matches by tournament id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found matches", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Matches.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+    })
+    public ResponseEntity<List<MatchDTO>>getMatchesByTournamentId(@PathVariable Long id){
+        List<MatchDTO> matchDTOS = matchService.findMatchesByTournamentId(id).stream()
+                .map(matchService::convertToDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(matchDTOS);
+    }
+
+
+
 }
 
