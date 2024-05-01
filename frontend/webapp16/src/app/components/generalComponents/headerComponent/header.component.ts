@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {query} from "@angular/animations";
 import {Router} from "@angular/router";
 import {SearchService} from "../../../services/search.service";
+import { AuthService } from '../../../services/auth.service';
 import {throwError} from "rxjs";
 
 @Component({
@@ -11,11 +12,20 @@ import {throwError} from "rxjs";
 })
 
 export class HeaderComponent {
+  isAuth: boolean = false;
 
-  constructor(private router: Router, private searchService: SearchService) { }
+  constructor(private router: Router, private searchService: SearchService, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.isLoggedIn.subscribe(
+      (loggedIn: boolean) => {
+        this.isAuth = loggedIn;
+      }
+    )
+  }
+
 
   query =""; //search query
- //crea una variable results que sea un array de string vacio
   results: any[] = [];
 
   search(query: string): void {

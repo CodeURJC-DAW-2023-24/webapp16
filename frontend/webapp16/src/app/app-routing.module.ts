@@ -12,7 +12,7 @@ import { ShowReportComponent } from './components/viewsComponents/showReportComp
 import { ErrorComponent } from './components/viewsComponents/errorComponent/error.component';
 import {AboutUsComponent} from "./components/viewsComponents/aboutUsComponent/aboutUs.component";
 import {ProfileComponent} from "./components/viewsComponents/profileComponent/profile.component";
-import {TournamentComponent} from "./components/viewsComponents/TournamentComponent/tournament.component";
+import {TournamentComponent} from "./components/viewsComponents/tournamentComponent/tournament.component";
 import {PlayerComponent} from "./components/viewsComponents/playerComponent/player.component";
 import {TeamComponent} from "./components/viewsComponents/teamComponent/team.component";
 import {PlayerInfoComponent} from "./components/viewsComponents/playerInfoComponent/playerInfo.component";

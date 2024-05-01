@@ -6,36 +6,37 @@ import { Observable, of } from 'rxjs';
 import {Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import {API_URL} from "../../config";
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
   constructor(private http: HttpClient, private router:Router, private cookieService: CookieService) { }
 
   login(username: string, password: string): Observable<HttpResponse<any>> {
     return this.http.post<any>(`${API_URL}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
       .pipe(tap(response => {
+        if (response.status === 200) {
+          this.loggedIn.next(true); // Update loggedIn status
+        }
         this.router.navigate(['/']);
       }));
   }
-    /*login(username: string, password: string): Observable<any> {
-      return this.http.post<any>(`${this.API_URL}/auth/login`, { username, password })
-        .pipe(tap(user => {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.router.navigate(['/']);
-        }));
-    } */
 
-
-  logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
+  logout():Observable<HttpResponse<any>> {
+    return this.http.post<any>(`${API_URL}/auth/logout`, {}, { observe: 'response', withCredentials: true })
+      .pipe(tap(response => {
+        if (response.status === 200) {
+          this.loggedIn.next(false); // Update loggedIn status
+        }
+        this.router.navigate(['/']);
+      }));
   }
 
-  isLoggedIn() {
-    return !!localStorage.getItem('user');
-  }
 }

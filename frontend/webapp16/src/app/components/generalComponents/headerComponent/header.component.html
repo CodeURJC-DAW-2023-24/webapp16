@@ -12,26 +12,17 @@
 
       <div class="col-md-6">
         <div class="right_top_section">
-          <!-- {{#user}}
-           button section
+
           <ul class="login">
-            <li class="login-modal">
-              <a href="/logout" class="login"><i class="fa fa-user"></i>LogOut</a>
+            <li class="login-modal" *ngIf="isAuth; else loginTemplate">
+              <a routerLink="/logout" class="login"><i class="fa fa-user"></i>LogOut</a>
             </li>
           </ul>
-           end button section -->
-
-          <!--   {{/user}}
-           {{^user}}
-            button section -->
-          <ul class="login">
+          <ng-template #loginTemplate>
             <li class="login-modal">
               <a routerLink="/login" class="login"><i class="fa fa-user"></i>Login/Register</a>
             </li>
-          </ul>
-          <!-- end button section
-          {{/user}}-->
-
+          </ng-template>
         </div>
       </div>
       <div class="col-md 6">
