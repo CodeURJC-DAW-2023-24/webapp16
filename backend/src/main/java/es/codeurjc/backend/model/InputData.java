@@ -1,6 +1,6 @@
 package es.codeurjc.backend.model;
 
-public class ImputData {
+public class InputData {
     private String name;
     private String value;
 

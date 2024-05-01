@@ -1,6 +1,4 @@
 package es.codeurjc.backend.webController;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import es.codeurjc.backend.model.*;
 import es.codeurjc.backend.repository.UserRepository;
 import es.codeurjc.backend.service.PlayerService;
@@ -265,7 +263,7 @@ public class TeamWebController {
         return ("redirect:/tournamentCreation/1");
     }
     @PostMapping("/addTeam/{tourNumber}")
-    public String addTeam(@RequestBody List<ImputData> dataList, @PathVariable String tourNumber){
+    public String addTeam(@RequestBody List<InputData> dataList, @PathVariable String tourNumber){
 
     return "redirect:/tournamentCreation";
     }
