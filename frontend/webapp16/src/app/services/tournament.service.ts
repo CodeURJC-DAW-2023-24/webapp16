@@ -27,22 +27,12 @@ export class TournamentService {
   }
 
 getTournament(): Observable<Tournament[]> {
-  return this.http.get<Tournament[]>(this.apiUrl,{withCredentials:true}).pipe(
-    switchMap((tournaments: Tournament[]) => {
-      return from(tournaments).pipe(
-        concatMap(tournament => {
-          return this.getBase64ImageFromURL(tournament.tournamentImagePath).then(base64Image => {
-            tournament.tournamentImagePath = base64Image;
-            return tournament;
-          });
-        }),
-        toArray()
-      );
-    }),
+  return this.http.get<Tournament[]>(this.apiUrl, {withCredentials: true}).pipe(
     catchError(error => {
       console.error('Error occurred while fetching tournaments:', error);
       return throwError(error);
     })
   );
 }
+
 }
