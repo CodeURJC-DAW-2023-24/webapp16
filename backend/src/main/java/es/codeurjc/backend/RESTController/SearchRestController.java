@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/search")
-@CrossOrigin(origins = "https://localhost:4200")
 public class SearchRestController {
     @Autowired
     private TournamentService tournamentService;

@@ -17,7 +17,6 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/me")
-@CrossOrigin(origins = "https://localhost:4200")
 public class MeRestController {
     @Autowired
     private UserService userService;

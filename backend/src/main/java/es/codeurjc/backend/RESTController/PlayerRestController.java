@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/players")
-@CrossOrigin(origins = "https://localhost:4200")
 public class PlayerRestController {
     @Autowired
     private PlayerService playerService;

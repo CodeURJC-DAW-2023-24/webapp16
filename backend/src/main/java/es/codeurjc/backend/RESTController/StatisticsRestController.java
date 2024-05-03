@@ -22,7 +22,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/statistics")
-@CrossOrigin(origins = "https://localhost:4200")
 public class StatisticsRestController {
     @Autowired
     private TeamService teamService;
