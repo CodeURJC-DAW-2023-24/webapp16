@@ -18,7 +18,7 @@ COPY /backend/pom.xml ./pom.xml
 COPY /backend/src ./src
 
 # Copia la aplicación Angular construida a la carpeta de recursos estáticos de Spring Boot
-COPY --from=angular /app/dist/webapp16/ ./src/main/resources/public/new
+COPY --from=angular /app/dist/webapp16/browser/ ./src/main/resources/static/new
 
 # Compila el proyecto
 RUN mvn clean package -DskipTests=true

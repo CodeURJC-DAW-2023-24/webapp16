@@ -63,7 +63,7 @@ public class UserRestController {
     }
 
 
-    @PostMapping
+    @PostMapping("/")
     @Operation(summary = "Create a User")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created User", content = {
