@@ -39,4 +39,13 @@ export class AuthService {
       }));
   }
 
+  register(name: string, password: string, email: string, date: Date): Observable<any> {
+    return this.http.post(`${API_URL}/users`, {name, password, email, date}, { observe: 'response', withCredentials: true })
+      .pipe(tap(response => {
+      if (response.status === 200) {
+        this.loggedIn.next(true); // Update loggedIn status
+      }
+      this.router.navigate(['/']);
+    }));
+  }
 }
