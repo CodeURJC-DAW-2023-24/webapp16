@@ -24,7 +24,9 @@ export class HeaderComponent {
     )
   }
 
-
+  logout() {
+    this.authService.logout().subscribe();
+  }
   query =""; //search query
   results: any[] = [];
 

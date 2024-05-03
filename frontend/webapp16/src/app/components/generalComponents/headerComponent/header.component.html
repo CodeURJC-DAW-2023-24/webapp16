@@ -15,7 +15,7 @@
 
           <ul class="login">
             <li class="login-modal" *ngIf="isAuth; else loginTemplate">
-              <a routerLink="/logout" class="login"><i class="fa fa-user"></i>LogOut</a>
+              <a (click)="logout()" class="login"><i class="fa fa-user"></i>LogOut</a>
             </li>
           </ul>
           <ng-template #loginTemplate>
