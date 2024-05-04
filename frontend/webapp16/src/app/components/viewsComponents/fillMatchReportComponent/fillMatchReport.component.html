@@ -10,54 +10,54 @@
           <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-md-6 form-group mb-3">
-                <label for="dateOfBirth" class="col-form-label">Date of Match *</label>
-                <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth" required>
+                <label for="date" class="col-form-label">Date of Match *</label>
+                <input type="date" class="form-control" formControlName="date" id="date" value="date" required>
               </div>
               <div class="col-md-6 form-group mb-3">
-                <label for="matchTime" class="col-form-label">Time of Match *</label>
-                <input type="time" class="form-control" formControlName="matchTime" id="matchTime" required>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 form-group mb-3">
-                <label for="team1" class="col-form-label">Home Team *</label>
-                <input type="text" class="form-control" formControlName="team1" id="team1" readonly>
-              </div>
-              <div class="col-md-6 form-group mb-3">
-                <label for="team2" class="col-form-label">Away Team *</label>
-                <input type="text" class="form-control" formControlName="team2" id="team2" readonly>
+                <label for="time" class="col-form-label">Time of Match *</label>
+                <input type="time" class="form-control" formControlName="time" id="time" value="time" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 form-group mb-3">
-                <label for="team1Goals" class="col-form-label">Home Team Goals *</label>
-                <input type="number" class="form-control" formControlName="team1Goals" id="team1Goals" placeholder="Home team goals" required min="0">
+                <label for="localTeam" class="col-form-label">Home Team *</label>
+                <input type="text" class="form-control" formControlName="localTeam" id="localTeam" readonly>
               </div>
               <div class="col-md-6 form-group mb-3">
-                <label for="team2Goals" class="col-form-label">Away Team Goals *</label>
-                <input type="number" class="form-control" formControlName="team2Goals" id="team2Goals" placeholder="Away team goals" required min="0">
+                <label for="visitingTeam" class="col-form-label">Away Team *</label>
+                <input type="text" class="form-control" formControlName="visitingTeam" id="visitingTeam" readonly>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group mb-3">
+                <label for="localTeamGoals" class="col-form-label">Home Team Goals *</label>
+                <input type="number" class="form-control" formControlName="localTeamGoals" id="localTeamGoals" value="localTeamsGoals" placeholder="Home team goals" required min="0">
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                <label for="visitingTeamGoals" class="col-form-label">Away Team Goals *</label>
+                <input type="number" class="form-control" formControlName="visitingTeamGoals" id="visitingTeamGoals" value="visitingTeamGoals" placeholder="Away team goals" required min="0">
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12 form-group mb-3">
                 <label for="matchOfficials" class="col-form-label">Match Officials *</label>
-                <input type="text" class="form-control" formControlName="matchOfficials" id="matchOfficials" placeholder="Match Officials" required>
+                <input type="text" class="form-control" formControlName="matchOfficials" id="matchOfficials" value="matchOfficials" placeholder="Match Officials" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12 form-group mb-3">
-                <label for="matchSummary" class="col-form-label">Match Summary *</label>
-                <textarea class="form-control" formControlName="matchSummary" id="matchSummary" cols="30" rows="4" placeholder="Match Summary" required></textarea>
+                <label for="observations" class="col-form-label">Match Summary *</label>
+                <textarea class="form-control" formControlName="observations" id="observations" cols="30" rows="4" value="observations" placeholder="Match Summary" required></textarea>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12 form-group">
-                <input type="submit" value="Submit Report" class="btn btn-primary rounded-0 py-2 px-4">
+                <input type="submit" value="Submit Report" (click)="onSubmit()" class="btn btn-primary rounded-0 py-2 px-4">
               </div>
             </div>
           </form>

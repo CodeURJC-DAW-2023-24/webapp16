@@ -53,7 +53,24 @@ public class ReportRestController {
 
     }
 
-    @PostMapping
+    @GetMapping("/matchReport/{id}")
+    @Operation(summary = "Get a report by match id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the report", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Report.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Report not found", content = @Content)
+    })
+    public ResponseEntity<ReportDTO>getReportByMatchId(@PathVariable Long id){
+        Report report = reportService.findReportByMatchId(id);
+        if (report == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(reportService.convertToDTO(report));
+
+    }
+
+    @PostMapping("/")
     @Operation(summary = "Create a Report")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created report", content = {

@@ -36,7 +36,25 @@ export class MatchService {
 
   }
 
+  getReportById(id: string): Observable<Report> {
+    return this.http.get<Report>(`${API_URL}/reports/matchReport/${id}`, {withCredentials: true}).pipe(
+      catchError(err => {
+        //console.error('Error occurred while fetching report:', err);
+        this.router.navigate(['/error']);
+        return new Observable<Report>();
+      })
+    );
+  }
 
+  postMatchReport(report: any): Observable<any> {
+    return this.http.post(`${API_URL}/reports/`, report, {withCredentials: true}).pipe(
+      catchError(err => {
+        console.error('Error occurred while posting match report:', err);
+        this.router.navigate(['/error']);
+        return new Observable<any>();
+      })
+    );
+  }
 
 
 
