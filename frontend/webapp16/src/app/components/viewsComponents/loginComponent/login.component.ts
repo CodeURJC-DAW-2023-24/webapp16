@@ -84,6 +84,13 @@ export class LoginComponent {
       const passwordConfirm = passwordConfirmControl.value;
       const dateOfBirth = dateOfBirthControl.value;
 
+      const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+      if (!emailPattern.test(email)) {
+        this.passwordError = 'The email format is not valid';
+        emailControl.setValue(''); 
+        return;
+      }
+
       if (password !== passwordConfirm) {
         this.passwordError = 'The passwords do not match';
         passwordControl.setValue(''); // Clear the password field
