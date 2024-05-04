@@ -22,13 +22,15 @@ export class LoginComponent {
   logout() {
     this.authService.logout();
   }
-  register(name: string, email: string, password: string, passwordConfirm: string, date: string) {
+  register(name: string, email: string, password: string, passwordConfirm: string, dateOfBirth: string) {
     if (password !== passwordConfirm) {
       this.passwordError = 'Passwords do not match.';
       return;
     }
-    const dateObject = new Date(date);
-    this.authService.register(name, email, password, dateObject).subscribe();
+
+    this.authService.register(name, email, password, dateOfBirth).subscribe(() => {
+      this.login(name, password);
+    });
   }
 
 }

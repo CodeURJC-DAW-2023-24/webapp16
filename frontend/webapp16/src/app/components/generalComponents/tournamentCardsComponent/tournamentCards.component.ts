@@ -12,10 +12,16 @@ import {Router} from "@angular/router";
 })
 export class TournamentCardsComponent implements OnInit{
   @Input() tournamentData: any;
+  @Input() loadDefaultTournaments: boolean = true;
   constructor(private tournamentService: TournamentService, private router: Router) {
 
   }
   ngOnInit(): void {
+    if (this.loadDefaultTournaments) {
+      this.loadMoreTournaments();
+    }
+  }
+  loadMoreTournaments(): void {
     if (!this.tournamentData || this.tournamentData.length === 0) {
       console.log('Making request to get tournaments...');
       this.tournamentService.getTournament().pipe(

@@ -17,6 +17,7 @@ public class UserDTO {
     private String gender;
     private String dni;
     private String nickname;
+    private String password;
     private String encodedPassword;
     private List<String> roles;
     public UserDTO() {
@@ -117,6 +118,13 @@ public class UserDTO {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEncodedPassword() {

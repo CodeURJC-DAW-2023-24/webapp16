@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.nio.file.attribute.UserPrincipal;
@@ -26,6 +27,8 @@ import java.util.stream.Collectors;
 public class UserRestController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping
     @Operation(summary = "Get all users")
@@ -72,6 +75,7 @@ public class UserRestController {
     })
     public ResponseEntity<UserDTO> newUser(@RequestBody UserDTO userDTO){
         User user = userService.convertToEntity(userDTO);
+        user.setEncodedPassword(passwordEncoder.encode(userDTO.getPassword()));
         userService.saveUser(user);
         URI location = URI.create("/api/users/"+user.getId());
         return ResponseEntity.created(location).body(userDTO);

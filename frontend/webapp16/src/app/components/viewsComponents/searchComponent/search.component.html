@@ -10,10 +10,10 @@
       <p>Explore the results available.</p>
     </div>
   </div>
-  <div class="">
-    <teamCard   *ngIf="type =='team'"    [teamData]="data"></teamCard>
-    <playerCard  *ngIf="type =='player'" [playerData]="data"></playerCard>
-    <tournamentCard  *ngIf="type =='tournament'" [tournamentData]="data"></tournamentCard>
+  <div class="" style="margin-bottom: 20px">
+    <teamCard   *ngIf="type =='team'"    [teamData]="data" [loadDefaultTeams]=false></teamCard>
+    <playerCard  *ngIf="type =='player'" [playerData]="data" [loadDefaultPlayers]=false></playerCard>
+    <tournamentCard  *ngIf="type =='tournament'" [tournamentData]="data" [loadDefaultTournaments]=false></tournamentCard>
 
   </div>
 

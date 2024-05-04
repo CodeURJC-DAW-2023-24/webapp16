@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class TeamCardsComponent implements OnInit{
   @Input() teamData: any;
+  @Input() loadDefaultTeams: boolean = true;
   @Output() hasMoreDataChange = new EventEmitter<boolean>();
   page: number = 0;
   hasMoreData: boolean = true;
@@ -20,12 +21,15 @@ export class TeamCardsComponent implements OnInit{
   constructor(private teamsService: TeamService, private paginationService: PaginationService, private router: Router) {
     this.paginationService.currentPage.subscribe(page => {
       this.page = page;
-      this.loadMoreTeams();
+      //this.loadMoreTeams();
     });
   }
 
   ngOnInit(): void {
     this.page= 0;
+    if (this.loadDefaultTeams) {
+      this.loadMoreTeams();
+    }
   }
   ngOnDestroy(): void {
     this.paginationService.resetPage();
