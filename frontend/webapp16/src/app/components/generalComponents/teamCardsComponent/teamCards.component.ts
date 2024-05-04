@@ -39,36 +39,26 @@ export class TeamCardsComponent implements OnInit{
       return throwError(error);
     })
     ).subscribe({
-      next: (teams) => {
-        if (teams.length === 0) {
-          this.hasMoreData = false;
-          //console.log('No more teams. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
-          // Set hasMoreData to false when there are no more teams
-          return;
-        }
-        teams = teams.map(team => {
-          // Add base64 image prefix if not already present
-          if (!team.imagePath.startsWith('data:image')) {
-            team.imagePath = 'data:image/jpeg;base64,' + team.imagePath;
-          }
-          return team;
-        });
-        // If teamData is not initialized, initialize it with the teams from the first page
-        if (!this.teamData) {
-          this.teamData = teams;
-        } else {
-          // If teamData is already initialized, add the new teams to the end of the existing teams
-          this.teamData = [...this.teamData, ...teams];
-        }
-        //console.log('Page incremented. Current page:', this.page); // Log the current page
-        this.page += 1;
-    },
-    error: (error) => {
-      const errorCode = error.status;
-      this.router.navigate(['/error'], { state: { errorCode: errorCode } });
-      return throwError(error);
-      console.error('Error occurred while fetching teams:', error);
+  next: (teams) => {
+    if (teams.length === 0) {
+      this.hasMoreData = false;
+      return;
     }
-    });
+    // If teamData is not initialized, initialize it with the teams from the first page
+    if (!this.teamData) {
+      this.teamData = teams;
+    } else {
+      // If teamData is already initialized, add the new teams to the end of the existing teams
+      this.teamData = [...this.teamData, ...teams];
+    }
+    this.page += 1;
+  },
+  error: (error) => {
+    const errorCode = error.status;
+    this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+    return throwError(error);
+    console.error('Error occurred while fetching teams:', error);
+  }
+});
   }
 }

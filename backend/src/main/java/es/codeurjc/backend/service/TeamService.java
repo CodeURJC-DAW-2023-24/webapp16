@@ -32,11 +32,16 @@ public class TeamService {
 
     public List<Team> findAllTeams(int page, int pageSize) throws SQLException {
         Page<Team> teamsPage = teamRepository.findAll(PageRequest.of(page, pageSize));
-        for (Team team : teamsPage) {
+        for (Team team : teamsPage) { //returns in base64 if not comented
             team.setImagePath(team.getImageAsString());
         }
         return teamsPage.getContent();
     }
+    public List<Team> findAllTeamsAPI(int page, int pageSize) throws SQLException {
+        Page<Team> teamsPage = teamRepository.findAll(PageRequest.of(page, pageSize));
+        return teamsPage.getContent();
+    }
+
 
     public Team saveRest(Team team){
         return teamRepository.save(team);

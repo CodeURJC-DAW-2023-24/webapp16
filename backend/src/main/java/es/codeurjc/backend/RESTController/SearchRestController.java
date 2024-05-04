@@ -70,13 +70,13 @@ public class SearchRestController {
         }
         if (team != null) {
             List<Team> teams = teamService.findTeamByNameSearch(team);
-            teams.forEach(t -> {
-                try {
-                    t.setImagePath(t.getImageAsString());
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+//            teams.forEach(t -> { //returns in base64 if not comented
+//                try {
+//                    t.setImagePath(t.getImageAsString());
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
 
             List<TeamDTO> teamDTOs = teams.stream()
                     .map(teamService::convertToDTO)

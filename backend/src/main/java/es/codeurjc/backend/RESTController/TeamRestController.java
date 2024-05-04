@@ -46,7 +46,7 @@ public class TeamRestController {
     })
     public ResponseEntity<List<Team>> getAllTeams(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam(defaultValue = "4") int pageSize) throws SQLException {
-        return ResponseEntity.ok(teamService.findAllTeams(page, pageSize));
+        return ResponseEntity.ok(teamService.findAllTeamsAPI(page, pageSize));
     }
     @GetMapping("/{id}")
     @Operation(summary = "Get a team by its id")
