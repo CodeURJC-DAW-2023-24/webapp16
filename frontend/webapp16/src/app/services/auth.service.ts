@@ -21,27 +21,30 @@ export class AuthService {
 
 
   // auth.service.ts
-  login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(`${API_URL}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
-      .pipe(
-        map(response => {
-          if (response.status === 200) {
-            this.loggedIn.next(true); // Update loggedIn status
-            this.router.navigate(['/']);
-            return true;
-          }
-          return false; // Add this line
-        }),
-        catchError(error => {
-          if (error.status === 401) {
-            // Handle incorrect password
-            return of(false);
-          } else {
-            return throwError(error);
-          }
-        })
-      );
-  }
+login(username: string, password: string): Observable<boolean> {
+  return this.http.post<any>(`${API_URL}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
+    .pipe(
+      map(response => {
+        if (response.status === 200) {
+          this.loggedIn.next(true); // Update loggedIn status
+          this.router.navigate(['/']);
+          return true;
+        }
+        return false; // Add this line
+      }),
+      catchError(error => {
+        if (error.status === 401) {
+          // Handle incorrect password
+          return of(false);
+        } else if (error.status === 404) {
+          // Handle user not found
+          return throwError('User not found');
+        } else {
+          return throwError(error);
+        }
+      })
+    );
+}
 
   logout():Observable<HttpResponse<any>> {
     return this.http.post<any>(`${API_URL}/auth/logout`, {}, { observe: 'response', withCredentials: true })

@@ -12,7 +12,8 @@
       <div class="col-12 text-center align-self-center py-5">
         <div class="section pb-5 pt-5 pt-sm-2 text-center">
           <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+          <!-- login.component.html -->
+          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" (click)="resetPasswordError()" (click)="resetFieldError()" />
           <label for="reg-log"></label>
           <div class="card-3d-wrap mx-auto">
             <div class="card-3d-wrapper">
@@ -21,18 +22,17 @@
                   <div class="section text-center">
                     <h4 class="mb-4 pb-3">Log In</h4>
 
-                    <form (submit)="login(username.value,password.value)" method="post">
+                    <form [formGroup]="loginForm" (submit)="login()">
                       <div class="form-group">
-                        <input #username type="text" class="form-style" placeholder="username" name="username"  required>
+                        <input type="text" class="form-style" placeholder="username" formControlName="username" required>
                         <i class="input-icon uil uil-user"></i>
                       </div>
                       <div class="form-group mt-2">
-                        <input #password type="password" class="form-style" placeholder="Password" name="password"  required>
+                        <input type="password" class="form-style" placeholder="Password" formControlName="password" required>
                         <i class="input-icon uil uil-lock-alt"></i>
                         <div *ngIf="passwordError" class="error">{{ passwordError }}</div>
                       </div>
                       <button class="btn mt-4" type="submit">Login</button>
-                      <input type="hidden" name="_csrf" value=" "/>
                     </form>
 
                   </div>
@@ -43,29 +43,30 @@
                   <div class="section text-center">
                     <h4 class="mb-3 pb-3">Sign Up</h4>
 
-                    <form (submit)="register(name.value, email.value, newPassword.value, passwordConfirm.value, date.value)" method="post">                      <div class="form-group">
-                        <input #name type="text" class="form-style" placeholder="Name" name="name"  required>
+                    <form [formGroup]="registerForm" (submit)="register()">
+                      <div class="form-group">
+                        <input type="text" class="form-style" placeholder="Name" formControlName="name" required>
                         <i class="input-icon uil uil-user"></i>
                       </div>
                       <div class="form-group mt-2">
-                        <input #email type="email" class="form-style" placeholder="Email" name="email"  required>
+                        <input type="email" class="form-style" placeholder="Email" formControlName="email" required>
                         <i class="input-icon uil uil-at"></i>
                       </div>
                       <div class="form-group mt-2">
-                        <input #newPassword type="password" class="form-style" placeholder="Password" name="password"  required>
+                        <input type="password" class="form-style" placeholder="Password" formControlName="password" required>
                         <i class="input-icon uil uil-lock-alt"></i>
                       </div>
                       <div class="form-group mt-2">
-                        <input #passwordConfirm type="password" class="form-style" placeholder="Password confirmation" name="passwordConfirm"  required>
+                        <input type="password" class="form-style" placeholder="Password confirmation" formControlName="passwordConfirm" required>
                         <i class="input-icon uil uil-lock-alt"></i>
                         <div *ngIf="passwordError" class="error">{{ passwordError }}</div>
                       </div>
                       <div class="form-group mt-2">
-                        <input #date type="date" class="form-style" name="date"  required>
+                        <input type="date" class="form-style" formControlName="dateOfBirth" required>
                         <i class="input-icon uil uil-schedule"></i>
+                        <div *ngIf="fieldsError" class="error">{{ fieldsError }}</div>
                       </div>
                       <button class="btn mt-4" type="submit">Register</button>
-                      <input type="hidden" name="_csrf" value="token"/>
                     </form>
 
                   </div>
