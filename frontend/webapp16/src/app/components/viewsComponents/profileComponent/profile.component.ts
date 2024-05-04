@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
         this.userProfile = data;
         // Copy the updated user profile back to the updated user
         this.updatedUser = { ...data };
-        alert('Profile updated successfully'); // Show success message
+        window.alert('Profile successfully updated'); // Show success message
       },
       error: (error) => {
         console.error('Error occurred while updating user profile:', error); // Show error message
