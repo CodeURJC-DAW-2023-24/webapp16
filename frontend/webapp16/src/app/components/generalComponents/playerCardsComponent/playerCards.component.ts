@@ -14,18 +14,22 @@ import {Router} from "@angular/router";
 export class PlayerCardsComponent implements OnInit{
   @Input() playerData: any;
   @Output() hasMoreDataChange = new EventEmitter<boolean>();
+  @Input() loadDefaultPlayers: boolean = true;
   page: number = 0;
   hasMoreData: boolean = true;
 
   constructor(private playersService: PlayerService, private paginationService: PaginationService, private router: Router) {
     this.paginationService.currentPage.subscribe(page => {
       this.page = page;
-      this.loadMorePlayers();
+      //this.loadMorePlayers();
     });
   }
 
   ngOnInit(): void {
     this.page= 0;
+    if (this.loadDefaultPlayers) {
+      this.loadMorePlayers();
+    }
   }
   ngOnDestroy(): void {
     this.paginationService.resetPage();
