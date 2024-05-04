@@ -29,6 +29,7 @@
                       <div class="form-group mt-2">
                         <input #password type="password" class="form-style" placeholder="Password" name="password"  required>
                         <i class="input-icon uil uil-lock-alt"></i>
+                        <div *ngIf="passwordError" class="error">{{ passwordError }}</div>
                       </div>
                       <button class="btn mt-4" type="submit">Login</button>
                       <input type="hidden" name="_csrf" value=" "/>
