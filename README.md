@@ -43,6 +43,10 @@ ___
   - [**:dash: Deployed application URL**](#dash-Deployed-application-URL)
   - [**:bust_in_silhouette: User Examples**](#bust_in_silhouette-User-Examples)
   - [**:raised_hand: Participation**](#raised_hand-Participation-phase-3)
+- [**Phase 4**](#phase-4)
+  - [**:globe_with_meridians: SPA Client with Angular documentation**](#globe_with_meridians-SPA Client with Angular documentation)
+  - [**:art: Class and templates diagram of SPA**](#art-Class and templates diagram of SPA)
+  - [**:raised_hand: Participation phase 4**](#raised_hand-Participation phase 4)
 ___
 
 ___
@@ -1015,7 +1019,7 @@ To Setting Up the Development Environment, follow these instructions:
 
 
 ---
-# :raised_hand: Participation phase 3
+# :raised_hand: Participation phase 4
 
 ---
 
@@ -1103,9 +1107,9 @@ To Setting Up the Development Environment, follow these instructions:
 
 | #   |                                                                                                           Commit                                                                                                           |     | #   |                                                                                    File                                                                                    |
 | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 1º  |                                                   [Add: teamComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4be45e50d5562bfe6a911420c21cc2fe8c2395b2)                                                   | | 1º | [ReportRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/ReportRestController.java) |
-| 2º  |                                                  [Add: playerComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/35a18ba38ad2beb927ae6fbe34dacf9ab13f827d)                                                  | |2º |                 [ReportDTO.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/DTOs/ReportDTO.java)                 |
-| 3º  | [Fix: playerCardsComponent and teamCardsComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3b951223960c76cd48c6f0a6b69e92b8907bf883#diff-33924fab0ea9d6793f53a7b2d043767b2cd70beb671b5c5ff1f3e3a452ab1218) | | 3º |           [ReportService.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/service/ReportService.java)            |
-| 4º  |                                                  [Add: errorComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/b6dd2ba1dd1aec106d7717d033940a483e4c77f5)                                                   | | 4º |       [ReportRepository.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/repository/ReportRepository.java)       |
-| 5º  |                                                     [Class Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9b91f5579300bb33cdc49536bd39c81ce26c0892)                                                      | | 5º |                     [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                     |
+| 1º  |                                                   [Add: teamComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4be45e50d5562bfe6a911420c21cc2fe8c2395b2)                                                   | | 1º | [player.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/playerComponent/player.component.ts) |
+| 2º  |                                                  [Add: playerComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/35a18ba38ad2beb927ae6fbe34dacf9ab13f827d)                                                  | |2º |    [team.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/teamComponent/team.component.ts)    |
+| 3º  | [Fix: playerCardsComponent and teamCardsComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3b951223960c76cd48c6f0a6b69e92b8907bf883#diff-33924fab0ea9d6793f53a7b2d043767b2cd70beb671b5c5ff1f3e3a452ab1218) | | 3º |  [error.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/errorComponent/error.component.ts)   |
+| 4º  |                                                  [Add: errorComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/b6dd2ba1dd1aec106d7717d033940a483e4c77f5)                                                   | | 4º | [banner.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/bannerComponent/banner.component.ts) |
+| 5º  |                                                     [Class Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9b91f5579300bb33cdc49536bd39c81ce26c0892)                                                      | | 5º |                                             [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                                              |
 
