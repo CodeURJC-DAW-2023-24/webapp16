@@ -74,12 +74,16 @@ public class UserRestController {
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
     })
     public ResponseEntity<UserDTO> newUser(@RequestBody UserDTO userDTO){
+        if (userService.existsUser(userDTO.getName())) {
+            return ResponseEntity.badRequest().body(new UserDTO("Username already exists"));
+        }
         User user = userService.convertToEntity(userDTO);
         user.setEncodedPassword(passwordEncoder.encode(userDTO.getPassword()));
         userService.saveUser(user);
         URI location = URI.create("/api/users/"+user.getId());
         return ResponseEntity.created(location).body(userDTO);
     }
+
     @PutMapping
     @Operation(summary = "Update a user")
     @ApiResponses(value = {

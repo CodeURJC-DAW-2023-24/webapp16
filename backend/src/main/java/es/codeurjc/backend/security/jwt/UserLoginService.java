@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;*/
 
+import es.codeurjc.backend.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +30,9 @@ public class UserLoginService {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
+
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
@@ -142,5 +146,8 @@ public class UserLoginService {
 	private void addRefreshTokenCookie(HttpHeaders httpHeaders, Token token) {
 		httpHeaders.add(HttpHeaders.SET_COOKIE,
 				cookieUtil.createRefreshTokenCookie(token.getTokenValue(), token.getDuration()).toString());
+	}
+	public boolean usernameExists(String username) {
+		return userService.existsUser(username);
 	}
 }

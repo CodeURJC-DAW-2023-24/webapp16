@@ -87,7 +87,7 @@ export class LoginComponent {
       const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
       if (!emailPattern.test(email)) {
         this.passwordError = 'The email format is not valid';
-        emailControl.setValue(''); 
+        emailControl.setValue('');
         return;
       }
 
@@ -117,9 +117,16 @@ export class LoginComponent {
           );
         },
         error => {
-          // Handle registration errors
-          this.passwordError = 'Error during registration';
-          passwordControl.setValue(''); // Clear the password field
+          console.log(error); // Print the full error to the console
+          if (error.status === 400) {
+            // Handle username already exists error
+            this.passwordError = 'Username already exists';
+            nameControl.setValue(''); // Clear the name field
+          } else {
+            // Handle other errors
+            this.passwordError = 'Error during registration';
+            passwordControl.setValue(''); // Clear the password field
+          }
         }
       );
     } else {

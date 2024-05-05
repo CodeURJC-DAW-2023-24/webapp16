@@ -129,6 +129,9 @@ public class UserService {
             return false;
         }
     }
+    public boolean existsUser(String username) {
+        return userRepository.findByName(username).isPresent();
+    }
     public UserDTO convertToDTO(User user) {
         return conversionService.convertToDTO(user, UserDTO.class);
     }

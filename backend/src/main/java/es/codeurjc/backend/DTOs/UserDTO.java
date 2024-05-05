@@ -20,8 +20,12 @@ public class UserDTO {
     private String password;
     private String encodedPassword;
     private List<String> roles;
+    private String message;
     public UserDTO() {
 
+    }
+    public UserDTO(String message) {
+        this.message = message;
     }
 
     public Long getId() {
