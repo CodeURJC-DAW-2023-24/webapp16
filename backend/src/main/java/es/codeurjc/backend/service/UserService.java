@@ -11,6 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +55,7 @@ public class UserService {
     }
 
     public Optional<User> findUserByID(long id){return userRepository.findById(id);}
+
     public void saveUser(User user) {
         userRepository.save(user);
     }
@@ -112,9 +116,19 @@ public class UserService {
     public void newUser(String name, String email, String password, String date) {
         User userNew = new User(name, passwordEncoder.encode(password), "USER");
         userNew.setEmail(email);
-        userNew.setDateOfBirth(date);
-        userRepository.save(userNew);
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date dateOfBirth = formatter.parse(date);
+            System.out.println("Date of birth in newUser service: " + dateOfBirth); // Add this line
 
+            // Convert Date to String in the format you want
+            String formattedDate = formatter.format(dateOfBirth);
+            userNew.setDateOfBirth(formattedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        userRepository.save(userNew);
+        System.out.println("User saved with date of birth: " + userNew.getDateOfBirth()); // Add this line
     }
     public void deleteUserByID(long idUser){
         User user = userRepository.getReferenceById(idUser);

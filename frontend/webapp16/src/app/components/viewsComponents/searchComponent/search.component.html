@@ -11,6 +11,7 @@
     </div>
   </div>
   <div class="" style="margin-bottom: 20px">
+
     <teamCard   *ngIf="type =='team'"    [teamData]="data" [loadDefaultTeams]=false></teamCard>
     <playerCard  *ngIf="type =='player'" [playerData]="data" [loadDefaultPlayers]=false></playerCard>
     <tournamentCard  *ngIf="type =='tournament'" [tournamentData]="data" [loadDefaultTournaments]=false></tournamentCard>

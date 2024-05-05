@@ -47,16 +47,18 @@ login(username: string, password: string): Observable<boolean> {
 }
 
   logout():Observable<HttpResponse<any>> {
+    console.log('Logging out...');
     return this.http.post<any>(`${API_URL}/auth/logout`, {}, { observe: 'response', withCredentials: true })
       .pipe(tap(response => {
         if (response.status === 200) {
+          console.log('Logout successful. Updating loggedIn status...');
           this.loggedIn.next(false); // Update loggedIn status
         }
-        this.router.navigate(['/']);
       }));
   }
 
   register(name: string, email: string, password: string , date: string): Observable<any> {
+    console.log('Date of birth in register service:', date);
     return this.http.post(`${API_URL}/users/`, {name, email, password, date, roles: ["USER"]}, { observe: 'response', withCredentials: true })
       .pipe(tap(response => {
       if (response.status === 200) {
@@ -64,5 +66,8 @@ login(username: string, password: string): Observable<boolean> {
       }
       this.router.navigate(['/']);
     }));
+  }
+  isUsernameChanged(currentUsername: string, updatedUsername: string): boolean {
+    return currentUsername !== updatedUsername;
   }
 }

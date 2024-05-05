@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,17 +46,24 @@ public class MeRestController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
     })
-    public ResponseEntity<UserDTO> updateMyProfile(HttpServletRequest request, @RequestBody UserDTO updatedUserDTO) {
+    public ResponseEntity<UserDTO> updateMyProfile(HttpServletRequest request, @RequestBody UserDTO updatedUserDTO) throws ServletException {
         Principal currentUser = request.getUserPrincipal();
-        if (currentUser == null || !currentUser.getName().equals(updatedUserDTO.getName())){
+        User oldUser = userService.getUserByName(currentUser.getName());
+        if (oldUser == null){
             return ResponseEntity.badRequest().build();
         }
         User updatedUser = userService.convertToEntity(updatedUserDTO);
         userService.modUser(updatedUser);
-        User user = userService.getUserByName(currentUser.getName());
+        User user = userService.getUserByName(updatedUserDTO.getName());
         Hibernate.initialize(user);
         UserDTO userDTO = userService.convertToDTO(user);
         System.out.println(userDTO);
+
+        // If the username has changed, log out the user
+        if (!currentUser.getName().equals(updatedUserDTO.getName())) {
+            request.logout();
+        }
+
         return ResponseEntity.ok(userDTO);
     }
 

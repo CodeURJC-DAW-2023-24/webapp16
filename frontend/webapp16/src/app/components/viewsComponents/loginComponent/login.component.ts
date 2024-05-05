@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import { AuthService } from '../../../services/auth.service'
 import {Router} from "@angular/router";
 import { FormBuilder, Validators } from '@angular/forms';
+import {formatDate} from "@angular/common";
 
 
 @Component({
@@ -97,8 +98,10 @@ export class LoginComponent {
         passwordConfirmControl.setValue(''); // Clear the password confirmation field
         return;
       }
+      const dateOfBirthFormat = formatDate(dateOfBirthControl.value, 'yyyy-MM-dd', 'en-US');
+      console.log('Date of birth before register:', dateOfBirthFormat);
 
-      this.authService.register(name, email, password, dateOfBirth).subscribe(
+      this.authService.register(name, email, password, dateOfBirthFormat).subscribe(
         () => {
           // After successful registration, login with the new credentials
           this.authService.login(name, password).subscribe(

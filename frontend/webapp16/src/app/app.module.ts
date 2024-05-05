@@ -31,6 +31,8 @@ import {SearchComponent} from "./components/viewsComponents/searchComponent/sear
 import {AuthInterceptor} from "./services/auth.interceptor";
 import {TournamentBracketComponent} from "./components/viewsComponents/tournamentBracketComponent/tournamentBracket.component";
 import {MatchInfoComponent} from "./components/viewsComponents/matchInfoComponent/matchInfo.component";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import {MatchInfoComponent} from "./components/viewsComponents/matchInfoComponen
     HttpClientModule,
     NgbNavModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
