@@ -6,6 +6,7 @@ html {
 body {
   background: #f0f2f2;
 }
+
 section{
   margin-left: 50px;
 }
@@ -15,6 +16,7 @@ section{
 }
 .spanClass {
   float: right;
+
 }
 .bracket {
   display: inline-block;

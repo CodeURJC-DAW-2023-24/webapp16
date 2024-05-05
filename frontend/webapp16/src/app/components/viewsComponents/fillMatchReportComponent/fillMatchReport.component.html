@@ -1,5 +1,5 @@
 <div class="content" style="background-color: #1f2029;">
-  <a routerLink="/" style="margin-left: 20px; color: #d8302f;">
+  <a routerLink="" style="margin-left: 20px; color: #d8302f;">
     <i class='input-icon uil uil-arrow-left' style="font-size: 2rem;"></i>
   </a>
   <div class="container">
@@ -22,11 +22,11 @@
             <div class="row">
               <div class="col-md-6 form-group mb-3">
                 <label for="localTeam" class="col-form-label">Home Team *</label>
-                <input type="text" class="form-control" formControlName="localTeam" id="localTeam" readonly>
+                <input type="text" class="form-control" value="{{match.localTeam.name}}" id="localTeam" readonly>
               </div>
               <div class="col-md-6 form-group mb-3">
                 <label for="visitingTeam" class="col-form-label">Away Team *</label>
-                <input type="text" class="form-control" formControlName="visitingTeam" id="visitingTeam" readonly>
+                <input type="text"   class="form-control" value="{{match.visitingTeam.name}}" id="visitingTeam" readonly>
               </div>
             </div>
 
@@ -57,7 +57,7 @@
 
             <div class="row">
               <div class="col-md-12 form-group">
-                <input type="submit" value="Submit Report" (click)="onSubmit()" class="btn btn-primary rounded-0 py-2 px-4">
+                <input type="submit" value="Submit Report"  class="btn btn-primary rounded-0 py-2 px-4">
               </div>
             </div>
           </form>

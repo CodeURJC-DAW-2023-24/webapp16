@@ -11,21 +11,35 @@ import {throwError} from "rxjs";
   encapsulation: ViewEncapsulation.None
 })
 export class FillMatchReportComponent implements OnInit {
-  reportForm!: FormGroup;
+ // reportForm!: FormGroup;
   report: any;
   matchId: any;
   match: any;
+  date: any;
+  time: any;
+  matchOfficials: any;
+  localTeamGoals: any;
+  visitingTeamGoals: any;
+  observations: any;
+
+
+
+
+
+
+
+
+
+  reportForm = this.fb.group({
+    date: ['', Validators.required],
+    time: ['', Validators.required],
+    localTeamGoals: ['', [Validators.required, Validators.min(0)]],
+    visitingTeamGoals: ['', [Validators.required, Validators.min(0)]],
+    matchOfficials: ['', Validators.required],
+    observations: ['', Validators.required],
+  });
   constructor(private fb: FormBuilder, private matchService: MatchService, private route: ActivatedRoute, private router: Router) {
-    this.reportForm = this.fb.group({
-      date: ['', Validators.required],
-      time: ['', Validators.required],
-      localTeamGoals: ['', [Validators.required, Validators.min(0)]],
-      visitingTeamGoals: ['', [Validators.required, Validators.min(0)]],
-      matchOfficials: ['', Validators.required],
-      observations: ['', Validators.required],
-      localTeam: ['', Validators.required],
-      visitingTeam: ['', Validators.required]
-    });
+
   }
 
   ngOnInit() {
@@ -35,10 +49,7 @@ export class FillMatchReportComponent implements OnInit {
         match => {
           this.matchId = match.id;
           this.match = match;
-          this.reportForm.patchValue({
-            localTeam: {value: this.match.localTeam.name, disabled: true},
-            visitingTeam: {value: this.match.visitingTeam.name, disabled: true},
-          });
+          console.log(this.match)
         },
         error => {
           const errorCode = error.status;
@@ -53,6 +64,29 @@ export class FillMatchReportComponent implements OnInit {
 
   onSubmit() {
     if (this.reportForm.valid) {
+
+        this.date = this.reportForm.value.date,
+        this.time= this.reportForm.value.time,
+        this.matchOfficials= this.reportForm.value.matchOfficials,
+       this.localTeamGoals= this.reportForm.value.localTeamGoals,
+        this.visitingTeamGoals= this.reportForm.value.visitingTeamGoals,
+        this.observations= this.reportForm.value.observations,
+
+
+     // console.log(report);
+      this.matchService.postMatchReport(this.date,this.time,this.matchOfficials,this.localTeamGoals,this.visitingTeamGoals,this.observations,this.match).subscribe(
+        response => {
+          console.log( "bien el post : ",response);
+          // lógica de éxito aquí
+        },
+        error => {
+          console.log("mal el post: ",error);
+          // lógica de error aquí
+        }
+      );
+    }
+    else{
+      console.log("Invalid form");
       const report = {
         date: this.reportForm.value.date,
         time: this.reportForm.value.time,
@@ -63,19 +97,7 @@ export class FillMatchReportComponent implements OnInit {
         match: this.match,
       };
       console.log(report);
-      this.matchService.postMatchReport(report).subscribe(
-        response => {
-          console.log(response);
-          // lógica de éxito aquí
-        },
-        error => {
-          console.log(error);
-          // lógica de error aquí
-        }
-      );
-    }
-    else{
-      console.log("Invalid form");
+      throw new Error("Form validation failed");
     }
   }
 }

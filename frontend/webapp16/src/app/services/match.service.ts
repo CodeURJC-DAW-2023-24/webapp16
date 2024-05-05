@@ -5,7 +5,7 @@ import {API_URL} from "../../config";
 import {SessionService} from "./session.service";
 import {Router} from "@angular/router";
 import {Match} from "../models/match.model";
-import {catchError} from "rxjs/operators";
+import {catchError, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -46,15 +46,16 @@ export class MatchService {
     );
   }
 
-  postMatchReport(report: any): Observable<any> {
-    return this.http.post(`${API_URL}/reports/`, report, {withCredentials: true}).pipe(
-      catchError(err => {
-        console.error('Error occurred while posting match report:', err);
-        this.router.navigate(['/error']);
-        return new Observable<any>();
-      })
-    );
-  }
+  postMatchReport(date: any, time: any, matchOfficials: any, localTeamGoals: any, visitingTeamGoals: any, observations: any, match: any): Observable<any> {
+  return this.http.post(`${API_URL}/reports/`,
+    {date,time, matchOfficials,localTeamGoals,visitingTeamGoals, observations, match},
+    {observe: 'response', withCredentials: true}).pipe(tap(response => {
+    if (response.status === 200) {
+      console.log("update rounds") // Update loggedIn status
+    }
+    this.router.navigate(['/']);
+  }));
+}
 
 
 
