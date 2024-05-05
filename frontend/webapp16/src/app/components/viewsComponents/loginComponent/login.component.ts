@@ -41,22 +41,37 @@ export class LoginComponent {
     if (usernameControl && passwordControl && usernameControl.value && passwordControl.value) {
       const username = usernameControl.value;
       const password = passwordControl.value;
-      this.authService.login(username, password).subscribe(
-        success => {
-          if (!success) {
-            // Handle incorrect password
-            this.passwordError = 'Incorrect password';
+      this.authService.usernameExists(username).subscribe(
+        exists => {
+          if (!exists) {
+            this.passwordError = 'User does not exist';
+            usernameControl.setValue(''); // Clear the username field
             passwordControl.setValue(''); // Clear the password field
+          } else {
+            console.log('Logging in...');
+            this.authService.login(username, password).subscribe(
+              success => {
+                if (!success) {
+                  // Handle incorrect password
+                  this.passwordError = 'Incorrect password';
+                  passwordControl.setValue(''); // Clear the password field
+                }
+              },
+              error => {
+                if (error === 'User not found') {
+                  // Handle user not found
+                  this.passwordError = 'User does not exist';
+                } else {
+                  // Handle other errors
+                  this.passwordError = 'An error occurred';
+                }
+              }
+            );
           }
         },
         error => {
-          if (error === 'User not found') {
-            // Handle user not found
-            this.passwordError = 'User not found';
-          } else {
-            // Handle other errors
-            this.passwordError = 'An error occurred';
-          }
+          // Handle error
+          this.passwordError = 'An error occurred';
         }
       );
     } else {

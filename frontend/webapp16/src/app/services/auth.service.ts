@@ -70,4 +70,7 @@ login(username: string, password: string): Observable<boolean> {
   isUsernameChanged(currentUsername: string, updatedUsername: string): boolean {
     return currentUsername !== updatedUsername;
   }
+  usernameExists(username: string): Observable<boolean> {
+    return this.http.get<boolean>(`/api/me/usernameExists/${username}`);
+  }
 }

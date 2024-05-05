@@ -111,4 +111,5 @@ public class UserRestController {
         String msg = "User with id " + idUser+ " deleted .";
         return ResponseEntity.status(HttpStatus.OK).body(msg);
     }
+
 }

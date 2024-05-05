@@ -66,5 +66,13 @@ public class MeRestController {
 
         return ResponseEntity.ok(userDTO);
     }
-
+    @GetMapping("/usernameExists/{username}")
+    public ResponseEntity<Boolean> usernameExists(@PathVariable String username) {
+        boolean exists = userService.existsUser(username);
+        if (exists) {
+            return ResponseEntity.ok(true);
+        } else {
+            return ResponseEntity.ok(false);
+        }
+    }
 }

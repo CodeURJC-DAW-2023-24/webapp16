@@ -76,6 +76,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST,"/api/users/").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/api/users/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET, "/api/me/usernameExists/**").permitAll()
+
                         .requestMatchers(HttpMethod.GET, "/api/me").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/me").permitAll()
 
