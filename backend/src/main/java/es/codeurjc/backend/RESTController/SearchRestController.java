@@ -56,13 +56,13 @@ public class SearchRestController {
 
         if (tournament != null) {
             List<Tournament> tournaments = tournamentService.findTournamentByCupSearch(tournament);
-            tournaments.forEach(t -> {
+           /* tournaments.forEach(t -> {
                 try {
                     t.setTournamentImagePath(t.getTournamentImageAsString());
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-            });
+            });*/
             List<TournamentDTO> tournamentDTOs = tournaments.stream()
                     .map(tournamentService::convertToDTO)
                     .collect(Collectors.toList());

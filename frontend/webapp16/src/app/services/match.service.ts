@@ -63,6 +63,7 @@ export class MatchService {
       {observe: 'response', withCredentials: true}).pipe(tap(response => {
       if (response.status === 200) {
         console.log("update rounds") // Update loggedIn status
+        //logicService.add (report)
       }
       this.router.navigate(['/']);
     }));
