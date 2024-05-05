@@ -59,10 +59,11 @@
         </div>
 
         <div class="fillDiv">
-          <a>
+          <a [routerLink]="['/tournament', report.match.tournament.id]">
             <button type="button" class="btn btn-outline-primary">Bracket</button>
           </a>
         </div>
+
         <div class="fillDiv">
           <button type="button" class="btn btn-outline-primary"(click) =" genPDF()">Download PDF</button>
         </div>
