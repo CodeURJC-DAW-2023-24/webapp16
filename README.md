@@ -956,3 +956,128 @@ Below are the credentials for example users, including an administrator user, to
 | 4º  | [Add: documentation Rest Controllers](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/382b80986944dcbff299b3ec21c89216b157c74d) | | 4º |       [ReportRepository.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/repository/ReportRepository.java)       |
 | 5º  |            [Class Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/2033f6db8fdcce00609d4d089db9334af362f222)            | | 5º |                     [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                     |
 
+___
+# Phase 4
+___
+# :globe_with_meridians: SPA Client with Angular documentation
+
+The SPA Client with Angular documentation is automatically generated and can be accessed in the following formats:
+
+### Link node.js
+
+[api-docs.yaml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml)
+
+
+### Link .html
+
+[api-docs.html](https://raw.githack.com/CodeURJC-DAW-2023-24/webapp16/main/backend/api-docs/api-docs.html)
+
+To generate or update this documentation, follow these commands:
+
+1. Change to the directory containing the `pom.xml` file:
+   ```shell
+   cd backend
+
+2. Then, use the command to generate or update the documentation:
+   ```shell
+   mvn verify
+
+---
+# :art: Class and templates diagram of SPA
+
+![*templateDiagram*](readmeImg/diagramaClass2.png)
+
+
+---
+# :raised_hand: Participation phase 3
+
+---
+
+#### Ahmad Abdel Raziq Al Otaibi
+
+*  I created some DTOs needed to show the elements on the API's requests.
+*  I implemented many Project CRUD Rest functions and Images CRUD Rest functions.
+*  I created Postman requests.
+*  I documented the Rest controllers using Swagger.
+*  I helped generate dynamically the api-docs documentation.
+
+
+| #   |                                                              Commit                                                               |     | #   |                                                                                                File                                                                                                |
+| :-: |:---------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |  [Add: REST match getById](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4753b90309b084007093a06d5892eae6f5cc4007)   | | 1º |   [MatchDTO.java](backend/src/main/java/es/codeurjc/backend/DTOs/MatchDTO.java)    |
+| 2º  |   [Add: Rest Match Post, Put and Delete](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/ad9c3606325eff2b3a07cf731c79c9e2ef00766f)   | |2º | [MatchRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/MatchRestController.java) |
+| 3º  |        [Update collections Json](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/d352afcb8c9c1170fa1cb74da1f64c453423deef)        | | 3º | [TournamentRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/TournamentRestController.java) |
+| 4º  | [Add: documentation MatchRestController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/502bc571f04e6a7ec8ae3c9943f85c27e440b6ef) | | 4º |             [TeamRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/TeamRestController.java)              |
+| 5º  |     [Add: documentation TournamentRestController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/12ee750e57af7ee7a7f87cc72cbe7062df82ab3f)     | | 5º |                          [UserRestController.java](backend/src/main/java/es/codeurjc/backend/RESTController/UserRestController.java)                          |
+
+
+#### Nicolás Hernández Tejero
+
+*  Dockerization of the Application: I completed the dockerization of the application, ensuring a consistent environment for development and deployment.
+*  Implementation of Docker Compose: I added Docker Compose to the project, which allowed us to define and manage multi-container Docker applications.
+*  Controller Refactoring: I refactored our controllers, specifically adding ReportWebController and StatisticsWebController, to better organize our code and improve its maintainability.
+*  Development of REST APIs: I developed several REST APIs for our application, including those for teams, players, and tournaments also the filter option for each one of then. This included creating, modifying, and deleting resources, as well as fetching resource details.
+*  Introduction of Sample Data via Postman: I introduced sample data into our application using Postman. This involved creating a collection of requests, each with its own set of parameters, headers, and body data.
+* Refactoring for Code Reusability: As part of my efforts to improve the maintainability and readability of our codebase, I separated the functions for converting images to blobs and determining a user’s role into separate files.
+
+| #   |                                                               Commit                                                               |     | #   |                                                                                         File                                                                                          |
+| :-: |:----------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |         [Complete: dockerizar app](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/f3573a8db146fc319af367bc9a6cb735960e45fd)          | | 1º |             [Dockerfile](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/Dockerfile)              |
+| 2º  |         [Add: docker Compose](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/f3573a8db146fc319af367bc9a6cb735960e45fd)         | |2º |            [BlobConverter.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/utils/BlobConverter.java)             |
+| 3º  | [Add: Rest Search get](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/435c4307cbf54e304d61856e75b83fc5c0b4a3ab)  | | 3º | [PlayerRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/PlayerRestController.java)  |
+| 4º  | [Refactor: Add ReportWebController and StatisticsWebController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/90641b8f2706538faefda665151c28915bc51671) | | 4º |            [TournamentRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/TournamentRestController.java)             |
+| 5º  |        [Add: REST player DELETE PUT POST](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/bed54deb0428fabb9c2e9f6388a1f204393c4292)        | | 5º | [TeamRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/TeamRestController.java) |
+
+#### Adrián Soriano Aragón
+
+* Fix bugs or problems that have arisen throughout the development of the application to ensure its correct functioning.
+* Implemented OpenAPI documentation generation to streamline API documentation processes.
+* Strong help for implementation of Docker Compose: I helped add Docker Compose to the project, which allowed us to define and manage multi-container Docker applications.
+* Added new collections to postman to have the demo ready.
+* Wrote most of the project documentation in the Readme file.
+
+
+
+| #   |                                                              Commit                                                               |     | #   |                                                                  File                                                                   |
+| :-: |:---------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:---------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |       [Add:Open API doc](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/1e676ae24666f0fdd301378588d2e1890ff29c14)        | | 1º |               [api-docs.yaml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml)                |
+| 2º  | [Add:Docker and Docker Compose](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/0cd443aaf663013ae2d1f7d0fba3e13fc332381f) | |2º |                       [Dockerfile](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/Dockerfile)                        |
+| 3º  |     [Add: Postman Requests](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/1a0030507e74e719240c3b46e76487b194034f78)     | | 3º |                   [Docker-compose.yml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/Dockerfile)                    |
+| 4º  |  [Update: Docker-Compose yml](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3d85bf30a8d397f08f31741cd9868b9cede82531)   | | 4º | [FutProLeague.postman_collection.json](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/FutProLeague.postman_collection.json) |
+| 5º  |   [Update Phase 3 Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4379f0074f2e07f775c047b7a57ced9aee8192a3)    | | 5º |                            [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                            |
+
+#### Manuel López Corchado
+
+* Implemented and updated UserDTO, UserService and UserRestController.
+* Research and bug fixing (such as json from matches related to infinite recursion).
+* Added spring security role to postman, so postman's requests can only be done by the API. Without role, anyone could access database entities and its operations.
+* Code optimization and shortening to ensure the best VM performance. I have reviewed the all the code in rest controllers and services to guarantee the best efficiency and encapsulation.
+* API Rest (postman) research and structure ideation. In collaboration with Nicolás Hernandez Tejero.
+
+
+| #   |                                                                                        Commit                                                                                         |     | #   |                                                                                        File                                                                                        |
+| :-: |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  | [Add: REST User addition, modification and delete V0.4. Add: JSON postman requests](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/2ef1789539689ced7abe8940d717b6d327bec37b) | | 1º | [UserRestController.java and related](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/UserRestController.java) |
+| 2º  |                          [Add: REST team getAll, getById](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/c20455de1c8438d60931e13030741a9b42defeac)                           | |2º | [TeamRestController.java and related](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/TeamRestController.java) |
+| 3º  |                       [Optimization: Code shorted and reduced instances, deleted unused imports](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/da9844f8c8c5a8c7c961a3acacba3a7b593d9132)                     | | 3º |        [MatchService.java and related](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/service/MatchService.java)        |
+| 4º  |              [Add : docker compose almost finished](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3d85bf30a8d397f08f31741cd9868b9cede82531)                 | | 4º |        [RESTController folder files](https://github.com/CodeURJC-DAW-2023-24/webapp16/tree/main/backend/src/main/java/es/codeurjc/backend/RESTController)         |
+| 5º  |                        [Add: REST security by role POSTMAN](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/a9c737afc46c503413848f8168d254e06d4ae981)                         | | 5º |                       [docker-compose.yml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/docker-compose.yml)                        |
+
+
+#### Natalia Hernández Vargas
+
+* I have implemented the ReportRestController, ReportService and ReportDTO.
+* I have done the Class Diagram.
+* I have done Postman request.
+* I have documented the Rest Controllers using Swagger.
+* I have implemented and fixed some Controller and Repository methods.
+
+
+| #   |                                                                 Commit                                                                  |     | #   |                                                                                    File                                                                                    |
+| :-: |:---------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |         [Add: ReportService](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/52713c536a5ff2822e82c7fe0c8feed03a773693)          | | 1º | [ReportRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/ReportRestController.java) |
+| 2º  |      [Add: ReportRestController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/aa8ad55c9a5548b0963e5ae43d4109f69d8f4383)      | |2º |                 [ReportDTO.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/DTOs/ReportDTO.java)                 |
+| 3º  |  [Update: DTOs, ReportWebController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/b75e90182d03c036b1b50ec5cb5872d79ab267f2)  | | 3º |           [ReportService.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/service/ReportService.java)            |
+| 4º  | [Add: documentation Rest Controllers](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/382b80986944dcbff299b3ec21c89216b157c74d) | | 4º |       [ReportRepository.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/repository/ReportRepository.java)       |
+| 5º  |            [Class Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/2033f6db8fdcce00609d4d089db9334af362f222)            | | 5º |                     [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                     |
+
