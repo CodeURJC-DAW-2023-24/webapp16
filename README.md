@@ -985,7 +985,9 @@ To generate or update this documentation, follow these commands:
 ---
 # :art: Class and templates diagram of SPA
 
-![*templateDiagram*](readmeImg/diagramaClass2.png)
+![*templateDiagram*](readmeImg/diagramSPA2.png)
+![*templateDiagram*](readmeImg/diagramSPA1.png)
+
 
 
 ---
