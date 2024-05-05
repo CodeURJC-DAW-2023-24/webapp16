@@ -1092,18 +1092,18 @@ To Setting Up the Development Environment, follow these instructions:
 
 #### Natalia Hernández Vargas
 
-* I have implemented the ReportRestController, ReportService and ReportDTO.
-* I have done the Class Diagram.
-* I have done Postman request.
-* I have documented the Rest Controllers using Swagger.
-* I have implemented and fixed some Controller and Repository methods.
+* I have helped implement the errorComponent and bannerComponent.
+* I have helped implement the teamCardsComponent and playerCardsComponent.
+* I have done the class and templates Diagram.
+* I have implemented the playerComponent.
+* I have implemented the teamComponent.
 
 
-| #   |                                                                 Commit                                                                  |     | #   |                                                                                    File                                                                                    |
-| :-: |:---------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 1º  |         [Add: ReportService](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/52713c536a5ff2822e82c7fe0c8feed03a773693)          | | 1º | [ReportRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/ReportRestController.java) |
-| 2º  |      [Add: ReportRestController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/aa8ad55c9a5548b0963e5ae43d4109f69d8f4383)      | |2º |                 [ReportDTO.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/DTOs/ReportDTO.java)                 |
-| 3º  |  [Update: DTOs, ReportWebController](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/b75e90182d03c036b1b50ec5cb5872d79ab267f2)  | | 3º |           [ReportService.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/service/ReportService.java)            |
-| 4º  | [Add: documentation Rest Controllers](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/382b80986944dcbff299b3ec21c89216b157c74d) | | 4º |       [ReportRepository.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/repository/ReportRepository.java)       |
-| 5º  |            [Class Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/2033f6db8fdcce00609d4d089db9334af362f222)            | | 5º |                     [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                     |
+| #   |                                                                                                           Commit                                                                                                           |     | #   |                                                                                    File                                                                                    |
+| :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |                                                   [Add: teamComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4be45e50d5562bfe6a911420c21cc2fe8c2395b2)                                                   | | 1º | [ReportRestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/RESTController/ReportRestController.java) |
+| 2º  |                                                  [Add: playerComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/35a18ba38ad2beb927ae6fbe34dacf9ab13f827d)                                                  | |2º |                 [ReportDTO.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/DTOs/ReportDTO.java)                 |
+| 3º  | [Fix: playerCardsComponent and teamCardsComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3b951223960c76cd48c6f0a6b69e92b8907bf883#diff-33924fab0ea9d6793f53a7b2d043767b2cd70beb671b5c5ff1f3e3a452ab1218) | | 3º |           [ReportService.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/service/ReportService.java)            |
+| 4º  |                                                  [Add: errorComponent](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/b6dd2ba1dd1aec106d7717d033940a483e4c77f5)                                                   | | 4º |       [ReportRepository.java](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/src/main/java/es/codeurjc/backend/repository/ReportRepository.java)       |
+| 5º  |                                                     [Class Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/9b91f5579300bb33cdc49536bd39c81ce26c0892)                                                      | | 5º |                     [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                     |
 
