@@ -267,13 +267,11 @@ public class SampleAllData {
             Matches match08 =new Matches(athleticBilbao,realSociedad,champions , 3,0,1);
             matches.save(match08);
             report.save(new Report("2024-04-01", "20:00", "Referee James",3, 0, "No obs", match08));
-            Matches match09 =new Matches(realMadrid,athleticBilbao,champions , 2,0,2);
+            Matches match09 =new Matches(realMadrid,athleticBilbao,champions , 0,0,2);
             matches.save(match09);
-            report.save(new Report("2024-04-01", "20:00", "Referee James",2, 0, "No obs", match09));
             Matches match10 =new Matches(villarreal,sevilla,champions , 0,0,2);
             matches.save(match10);
-            Matches match11 =new Matches(realMadrid,null,champions , 0,0,3);
-            matches.save(match11);
+
 
 
             //userCreation

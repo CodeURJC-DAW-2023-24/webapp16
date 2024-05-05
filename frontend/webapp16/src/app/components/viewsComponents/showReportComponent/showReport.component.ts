@@ -22,7 +22,7 @@ export class ShowReportComponent implements OnInit {
     if (id != null) {
       this.titleService.setTitle('Report page');
       this.reportService.getReportById(id).subscribe(
-        (report: Report) => {
+        (report: any) => {
           this.report = report;
           console.log(this.report);
         }

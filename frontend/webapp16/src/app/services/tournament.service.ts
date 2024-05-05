@@ -35,4 +35,13 @@ getTournament(): Observable<Tournament[]> {
   );
 }
 
+  getTournamentById(id: number) : Observable<Tournament> {
+    return this.http.get<Tournament>(`${this.apiUrl}/${id}`, {withCredentials: true}).pipe(
+      catchError(error => {
+        console.error('Error occurred while fetching tournament:', error);
+        return throwError(error);
+      })
+    );
+
+  }
 }

@@ -39,10 +39,25 @@ export class MatchService {
 
 
 
+  postMatch(match: Match) {
+    return this.http.post(`${this.apiUrl}`, match, {observe: 'response', withCredentials: true}).pipe(tap(response => {
+      if (response.status === 201) {
+        console.log("Match created") // Update loggedIn status
+      }
+      this.router.navigate(['/']);
+    }));
 
+  }
 
+  putMatch(match: Match) {
+    return this.http.put(`${this.apiUrl}/${match.id}`, match, {observe: 'response', withCredentials: true}).pipe(tap(response => {
+      if (response.status === 200) {
+        console.log("Match updated") // Update loggedIn status
+      }
+      this.router.navigate(['/']);
+    }));
 
-
+  }
 }
 
 
