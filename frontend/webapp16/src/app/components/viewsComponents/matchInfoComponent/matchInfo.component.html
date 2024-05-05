@@ -47,7 +47,7 @@
   </table>
 
 
-  <div class="fillDiv">
+  <div class="fillDiv" *ngIf="isAdmin$ | async">
     <a >
       <button type="button" class="button" routerLink="/fillMatchReport/{{matchId}}">Fill Match Report</button>
     </a>

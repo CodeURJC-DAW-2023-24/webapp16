@@ -23,7 +23,7 @@ export class TournamentCardsComponent implements OnInit{
   }
   loadMoreTournaments(): void {
     if (!this.tournamentData || this.tournamentData.length === 0) {
-      console.log('Making request to get tournaments...');
+      //console.log('Making request to get tournaments...');
       this.tournamentService.getTournament().pipe(
         catchError(error => {
           const errorCode = error.status;
@@ -33,7 +33,7 @@ export class TournamentCardsComponent implements OnInit{
         })
       ).subscribe({
         next: (tournament) => {
-          console.log('Received tournaments data:', tournament);
+          //console.log('Received tournaments data:', tournament);
           this.tournamentData = tournament;
         },
         error: (error) => {

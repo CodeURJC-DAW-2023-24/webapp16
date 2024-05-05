@@ -105,8 +105,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.PUT,"/api/reports/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/reports/**").hasAnyRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.GET,"/api/matches").hasAnyRole("USER")
-                        .requestMatchers(HttpMethod.GET,"/api/matches/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.GET,"/api/matches").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/matches/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/matches/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/matches/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/matches/**").hasAnyRole("ADMIN")
