@@ -1,11 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatchService} from "../../../services/match.service";
-import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
 import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import { SessionService } from '../../../services/session.service';
-import {Match} from "../../../models/match.model";
 import {AuthService} from "../../../services/auth.service";
 @Component({
   selector: 'matchInfo',

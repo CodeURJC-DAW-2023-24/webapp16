@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Player } from '../models/player.model';
-import { SessionService } from './session.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import {API_URL} from "../../config";
@@ -16,7 +15,7 @@ export class PlayerService {
   private apiUrlPage = `${API_URL}/players?page=`;
   private statisticsUrl = `${API_URL}/statistics/players`;
 
-  constructor(private http: HttpClient, private sessionService: SessionService, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   getPlayers(page: number): Observable<Player[]> {

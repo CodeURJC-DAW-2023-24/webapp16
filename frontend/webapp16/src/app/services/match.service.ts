@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import {API_URL} from "../../config";
-import {SessionService} from "./session.service";
 import {Router} from "@angular/router";
 import {Match} from "../models/match.model";
 import {catchError, tap} from "rxjs/operators";
