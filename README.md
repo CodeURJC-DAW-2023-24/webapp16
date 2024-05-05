@@ -44,9 +44,9 @@ ___
   - [**:bust_in_silhouette: User Examples**](#bust_in_silhouette-User-Examples)
   - [**:raised_hand: Participation**](#raised_hand-Participation-phase-3)
 - [**Phase 4**](#phase-4)
-  - [**:globe_with_meridians: SPA Client with Angular documentation**](#globe_with_meridians-SPA Client with Angular documentation)
-  - [**:art: Class and templates diagram of SPA**](#art-Class and templates diagram of SPA)
-  - [**:raised_hand: Participation phase 4**](#raised_hand-Participation phase 4)
+  - [**:globe_with_meridians: SPA Client with Angular documentation**](#globe_with_meridians-SPA-Client-with-Angular-documentation)
+  - [**:art: Class and templates diagram of SPA**](#art-Class-and-templates-diagram-of-SPA)
+  - [**:raised_hand: Participation phase 4**](#raised_hand-Participation-phase-4)
 ___
 
 ___
