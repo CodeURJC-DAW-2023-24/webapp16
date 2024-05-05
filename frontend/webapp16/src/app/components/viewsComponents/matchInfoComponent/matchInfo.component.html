@@ -53,11 +53,12 @@
     </a>
   </div>
 
-  <div class="fillDiv">
-    <a >
-      <button type="button" class="button" routerLink="/report/{{matchId}}">Report</button>
-    </a>
-  </div>
+  <div class="fillDiv" *ngIf="hasReport">
+  <a >
+    <button type="button" class="button" routerLink="/report/{{matchId}}">Report</button>
+  </a>
+</div>
+
 </div>
 
 
