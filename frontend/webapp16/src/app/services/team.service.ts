@@ -71,4 +71,14 @@ getTeam(id:string): Observable<Team> {
         });
       });
   }
+
+  updateTeam(winningTeam: Team) {
+    return this.http.put(`${this.apiUrl}/${winningTeam.id}`, winningTeam, {observe: 'response', withCredentials: true}).pipe(
+catchError(err => {
+        //console.error('Error occurred while updating team:', err);
+        return throwError(err);
+      })
+    );
+
+  }
 }

@@ -8,6 +8,7 @@ import {catchError, tap} from "rxjs/operators";
 import {Team} from "../models/team.model";
 import {Report} from "../models/report.model";
 import {MatchService} from "./match.service";
+import {TeamService} from "./team.service";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ReportsService {
   reyList: any;
 
 
-  constructor(private http: HttpClient, private router: Router, private  matchService:MatchService) {
+  constructor(private http: HttpClient, private router: Router, private  matchService:MatchService, private teamService: TeamService) {
   }
 
 
@@ -55,8 +56,10 @@ export class ReportsService {
       {observe: 'response', withCredentials: true}).pipe(tap(response => {
       if (response.status === 201) {
         console.log("update rounds") // Update loggedIn status
+
+        this.handleReport(report);
         this.updateMatch(report);
-        this.handleReport(report)
+        this.updateStatistics(report);
       }
       this.router.navigate(['/']);
     }));
@@ -117,6 +120,36 @@ updateMatch(report: Report) {
   ).subscribe(() => {
     console.log("Match updated");
   });
+}
+
+updateStatistics(report: Report) {
+  const winningTeam = report.localTeamGoals > report.visitingTeamGoals ? report.match.localTeam : report.match.visitingTeam;
+  const losingTeam = report.localTeamGoals > report.visitingTeamGoals ? report.match.visitingTeam : report.match.localTeam;
+
+  winningTeam.wins++;
+  losingTeam.loses++;
+
+  // Actualizar los equipos en el servidor
+  this.teamService.updateTeam(winningTeam).subscribe(
+    () => {
+      console.log("Winning team updated");
+      console.log(winningTeam.wins);
+    },
+    error => {
+      console.error('Error occurred while updating winning team:', error);
+    }
+  );
+  this.teamService.updateTeam(losingTeam).subscribe(
+    () => {
+      console.log("Winning team updated");
+      console.log(winningTeam.wins);
+    },
+    error => {
+      console.error('Error occurred while updating winning team:', error);
+    }
+  );
+
+
 }
 
 }
