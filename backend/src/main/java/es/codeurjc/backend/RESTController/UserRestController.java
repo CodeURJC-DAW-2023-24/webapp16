@@ -41,9 +41,9 @@ public class UserRestController {
         List<UserDTO> userDTOS = userService.findAllUsers().stream()
                 .map(userService::convertToDTO)
                 .collect(Collectors.toList());
-        for (UserDTO userDTO: userDTOS){
+      /*  for (UserDTO userDTO: userDTOS){
             userDTO.setEncodedPassword("NothingToSeeHere");
-        }
+        }*/
         return ResponseEntity.ok(userDTOS);
     }
     @GetMapping("/{id}")

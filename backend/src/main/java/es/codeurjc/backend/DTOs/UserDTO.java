@@ -1,5 +1,7 @@
 package es.codeurjc.backend.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 public class UserDTO {
@@ -17,7 +19,9 @@ public class UserDTO {
     private String gender;
     private String dni;
     private String nickname;
+    @JsonIgnore
     private String password;
+    @JsonIgnore
     private String encodedPassword;
     private List<String> roles;
     private String message;

@@ -1,4 +1,5 @@
 package es.codeurjc.backend.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Arrays;
@@ -18,6 +19,8 @@ public class User {
     private String email;
     private String gender;
     private String dni;
+
+    @JsonIgnore
     private String encodedPassword;
     private String nickname;
 
