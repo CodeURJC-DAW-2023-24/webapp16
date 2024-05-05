@@ -57,6 +57,16 @@ export class MatchService {
   }));
 }
 
+  postMatchReport2(report:any): Observable<any> {
+    return this.http.post(`${API_URL}/reports/`,
+      report,
+      {observe: 'response', withCredentials: true}).pipe(tap(response => {
+      if (response.status === 200) {
+        console.log("update rounds") // Update loggedIn status
+      }
+      this.router.navigate(['/']);
+    }));
+  }
 
 
 

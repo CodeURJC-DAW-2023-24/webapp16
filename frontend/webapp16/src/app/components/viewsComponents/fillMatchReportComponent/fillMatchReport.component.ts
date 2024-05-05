@@ -12,15 +12,15 @@ import {throwError} from "rxjs";
 })
 export class FillMatchReportComponent implements OnInit {
  // reportForm!: FormGroup;
-  report: any;
+ //  report: any;
   matchId: any;
   match: any;
-  date: any;
-  time: any;
-  matchOfficials: any;
-  localTeamGoals: any;
-  visitingTeamGoals: any;
-  observations: any;
+  // date: any;
+  // time: any;
+  // matchOfficials: any;
+  // localTeamGoals: any;
+  // visitingTeamGoals: any;
+  // observations: any;
 
 
 
@@ -64,17 +64,17 @@ export class FillMatchReportComponent implements OnInit {
 
   onSubmit() {
     if (this.reportForm.valid) {
-
-        this.date = this.reportForm.value.date,
-        this.time= this.reportForm.value.time,
-        this.matchOfficials= this.reportForm.value.matchOfficials,
-       this.localTeamGoals= this.reportForm.value.localTeamGoals,
-        this.visitingTeamGoals= this.reportForm.value.visitingTeamGoals,
-        this.observations= this.reportForm.value.observations,
-
-
-     // console.log(report);
-      this.matchService.postMatchReport(this.date,this.time,this.matchOfficials,this.localTeamGoals,this.visitingTeamGoals,this.observations,this.match).subscribe(
+    const report = {
+      date : this.reportForm.value.date,
+      time : this.reportForm.value.time,
+      matchOfficials : this.reportForm.value.matchOfficials,
+      localTeamGoals : this.reportForm.value.localTeamGoals,
+      visitingTeamGoals : this.reportForm.value.visitingTeamGoals,
+      observations : this.reportForm.value.observations,
+      match : this.match
+    }
+     // console.log(report); //in case the other one doesn't work
+/*      this.matchService.postMatchReport(this.date,this.time,this.matchOfficials,this.localTeamGoals,this.visitingTeamGoals,this.observations,this.match).subscribe(
         response => {
           console.log( "bien el post : ",response);
           // lógica de éxito aquí
@@ -83,7 +83,17 @@ export class FillMatchReportComponent implements OnInit {
           console.log("mal el post: ",error);
           // lógica de error aquí
         }
-      );
+      );*/
+          this.matchService.postMatchReport2(report).subscribe(
+            response => {
+              console.log( "bien el post : ",response);
+              // lógica de éxito aquí
+            },
+            error => {
+              console.log("mal el post: ",error);
+              // lógica de error aquí
+            }
+          );
     }
     else{
       console.log("Invalid form");
