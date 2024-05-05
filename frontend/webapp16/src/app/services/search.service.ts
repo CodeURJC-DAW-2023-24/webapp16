@@ -7,19 +7,21 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class SearchService {
 
+  private isSearchActive: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   private typeSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) { }
 
   search(query: string): Observable<any> {
+    this.isSearchActive.next(true);
     return this.http.get(`/api/search?query=${query}`,{withCredentials:true});
   }
 
   searchAll(query: string): Observable<any> {
-   /* console.log("query received in searchPlayer: ", query)*/
+    this.isSearchActive.next(true);
     query = query.replace(":", "="); //replace : with =
-  /*  console.log("query after replace:", query)*/
     return this.http.get(`/api/search?${query}`,{withCredentials:true});
   }
 
@@ -37,5 +39,12 @@ export class SearchService {
 
   getType(): Observable<string> {
     return this.typeSubject.asObservable();
+  }
+  getIsSearchActive(): Observable<boolean> {
+    return this.isSearchActive.asObservable();
+  }
+
+  setIsSearchActive(isActive: boolean): void {
+    this.isSearchActive.next(isActive);
   }
 }

@@ -15,14 +15,14 @@ export class SearchComponent implements OnInit{
 
   constructor(private searchService: SearchService, private titleService: Title) { }
 
-ngOnInit(): void {
-  this.titleService.setTitle('Search Page');
-  this.searchService.getData().subscribe(data => this.data = data);
+  ngOnInit(): void {
+    this.titleService.setTitle('Search Page');
+    this.searchService.getData().subscribe(data => this.data = data);
 
-  this.searchService.getType().subscribe(type => {
-    this.type = type;
-  });
-}
+    this.searchService.getType().subscribe(type => {
+      this.type = type;
+    });
+  }
 
 
 

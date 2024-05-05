@@ -5,6 +5,7 @@ import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {PaginationService} from "../../../services/pagination.service";
 import {Router} from "@angular/router";
+import {SearchService} from "../../../services/search.service";
 
 @Component({
   selector: 'playerCard',
@@ -17,54 +18,61 @@ export class PlayerCardsComponent implements OnInit{
   @Input() loadDefaultPlayers: boolean = true;
   page: number = 0;
   hasMoreData: boolean = true;
+  isSearchActive: boolean = false;
 
-  constructor(private playersService: PlayerService, private paginationService: PaginationService, private router: Router) {
+  constructor(private playersService: PlayerService, private paginationService: PaginationService, private router: Router, private searchService: SearchService) {
+    this.searchService.getIsSearchActive().subscribe(isActive => {
+      this.isSearchActive = isActive;
+    });
+
     this.paginationService.currentPage.subscribe(page => {
       this.page = page;
-      //this.loadMorePlayers();
+      console.log('currentPage:', this.page);
+      if (!this.isSearchActive) {
+        console.log('Constructor Search active', this.isSearchActive);
+        this.loadMorePlayers();
+      }
     });
   }
 
   ngOnInit(): void {
     this.page= 0;
-    if (this.loadDefaultPlayers) {
-      this.loadMorePlayers();
-    }
+    console.log('ngOnInit page:', this.page);
+    this.isSearchActive = this.router.url.startsWith('/search');
   }
   ngOnDestroy(): void {
     this.paginationService.resetPage();
   }
   loadMorePlayers(): void {
-    this.playersService.getPlayers(this.page).pipe(
-      catchError(error => {
-        const errorCode = error.status;
-        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
-        //console.error('Error occurred while fetching teams:', error);
-        return throwError(error);
-      })
-    ).subscribe({
-      next: (players) => {
-        if (players.length === 0) {
-          this.hasMoreData = false;
-          //console.log('No more players. hasMoreData:', this.hasMoreData); // Log the value of hasMoreData
-          return;
+    if (!this.isSearchActive) {
+      console.log('LoadMore Search active', this.isSearchActive);
+      console.log('loadMorePlayers called');
+      this.playersService.getPlayers(this.page).pipe(
+        catchError(error => {
+          const errorCode = error.status;
+          this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+          return throwError(error);
+        })
+      ).subscribe({
+        next: (players) => {
+          if (players.length === 0) {
+            this.hasMoreData = false;
+            this.hasMoreDataChange.emit(this.hasMoreData);
+            return;
+          }
+          if (!this.playerData) {
+            this.playerData = players;
+          } else {
+            this.playerData = [...this.playerData, ...players];
+          }
+          this.page += 1;
+        },
+        error: (error) => {
+          const errorCode = error.status;
+          this.router.navigate(['/error'], { state: { errorCode: errorCode } });
+          return throwError(error);
         }
-        // If playerData is not initialized, initialize it with the players from the first page
-        if (!this.playerData) {
-          this.playerData = players;
-        } else {
-          // If playerData is already initialized, add the new players to the end of the existing players
-          this.playerData = [...this.playerData, ...players];
-        }
-        //console.log('Page incremented. Current page:', this.page); // Log the current page
-        this.page += 1;
-      },
-      error: (error) => {
-        const errorCode = error.status;
-        this.router.navigate(['/error'], { state: { errorCode: errorCode } });
-        return throwError(error);
-        //console.error('Error occurred while fetching players:', error);
-      }
-    });
+      });
+    }
   }
 }
