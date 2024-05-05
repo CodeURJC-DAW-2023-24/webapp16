@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {MatchService} from "../../../services/match.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {throwError} from "rxjs";
+import {ReportsService} from "../../../services/reports.service";
 
 @Component({
   selector: 'app-fill-match-report',
@@ -38,7 +39,7 @@ export class FillMatchReportComponent implements OnInit {
     matchOfficials: ['', Validators.required],
     observations: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder, private matchService: MatchService, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, private matchService: MatchService, private route: ActivatedRoute, private router: Router, private reportService:ReportsService) {
 
   }
 
@@ -84,7 +85,7 @@ export class FillMatchReportComponent implements OnInit {
           // lógica de error aquí
         }
       );*/
-          this.matchService.postMatchReport2(report).subscribe(
+          this.reportService.postMatchReport2(report).subscribe(
             response => {
               console.log( "bien el post : ",response);
               // lógica de éxito aquí
