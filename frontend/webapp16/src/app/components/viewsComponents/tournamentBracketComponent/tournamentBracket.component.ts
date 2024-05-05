@@ -25,6 +25,9 @@ export class TournamentBracketComponent implements OnInit {
     if (id != null) {
       this.matchService.getMatches(id).subscribe({
           next : (matches) => {
+            if (matches.length === 0) {
+              console.log('No matches found');
+            this.router.navigate(['/error'], { state: { errorCode: 404 } });} // Redirect to error page
            this.matches = matches;
            this.getMatchesByRound(this.matches);
            console.log(matches)

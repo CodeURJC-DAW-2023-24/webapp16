@@ -4,6 +4,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import {API_URL} from "../../config";
 import {Tournament} from "../models/tournament.model";
 import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import {Injectable} from "@angular/core";
 export class TournamentService {
   private apiUrl = `${API_URL}/tournaments`;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router:Router) {
   }
 
   getBase64ImageFromURL(url: string): Promise<string> {
@@ -37,9 +38,16 @@ getTournament(): Observable<Tournament[]> {
 
   getTournamentById(id: number) : Observable<Tournament> {
     return this.http.get<Tournament>(`${this.apiUrl}/${id}`, {withCredentials: true}).pipe(
-      catchError(error => {
-        console.error('Error occurred while fetching tournament:', error);
-        return throwError(error);
+      catchError(err => {
+        if (err.status === 404) {
+          // Manejar específicamente el error 404
+          console.error('Tournament not found:', err);
+          this.router.navigate(['/error'], {state: {errorCode: 404}});
+        } else {
+          // Manejar otros errores
+          console.error('Error occurred while fetching tournament:', err);
+        }
+        return throwError(err);
       })
     );
 

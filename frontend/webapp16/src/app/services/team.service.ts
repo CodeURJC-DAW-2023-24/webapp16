@@ -36,9 +36,22 @@ export class TeamService {
       })
     );
   }
-  getTeam(id:string): Observable<Team> {
-    return this.http.get<Team>(`${this.apiUrl}/${id}`,{withCredentials:true});
-  }
+getTeam(id:string): Observable<Team> {
+  return this.http.get<Team>(`${this.apiUrl}/${id}`, {withCredentials: true}).pipe(
+    catchError(err => {
+      if (err.status === 404) {
+        // Manejar específicamente el error 404
+        console.error('Team not found:', err);
+        this.router.navigate(['/error'], {state: {errorCode: 404}});
+      } else {
+        // Manejar otros errores
+        console.error('Error occurred while fetching team:', err);
+      }
+      return throwError(err);
+    })
+  );
+}
+
   getTeamPlayers(id: string): Observable<Player[]> {
     return this.http.get<Player[]>(`${this.apiPlayersUrl}/team/${id}`, {withCredentials: true}).pipe(
       catchError(err => {
