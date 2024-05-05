@@ -961,26 +961,50 @@ ___
 ___
 # :globe_with_meridians: SPA Client with Angular documentation
 
-The SPA Client with Angular documentation is automatically generated and can be accessed in the following formats:
+To Setting Up the Development Environment, follow these instructions:
 
-### Link node.js
+### Requirements:
+- Node and npm installed on the host machine
+- Angular CLI installed on the host machine
 
-[api-docs.yaml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml)
+### Steps:
+1. Installing Node.js and npm:
+   
+    Before starting to work with the SPA application developed with Angular, it's necessary to have Node.js and npm (Node Package Manager) installed. You can download and install Node.js from the official website: Node.js. npm will be installed automatically along with Node.js.
 
 
-### Link .html
+  Node.js: [Installation Node.js](https://nodejs.org/)
 
-[api-docs.html](https://raw.githack.com/CodeURJC-DAW-2023-24/webapp16/main/backend/api-docs/api-docs.html)
 
-To generate or update this documentation, follow these commands:
+2. Installing Angular CLI:
 
-1. Change to the directory containing the `pom.xml` file:
+    Angular CLI (Command Line Interface) is a command-line tool that facilitates the creation, compilation, and execution of Angular projects. To install Angular CLI, open a terminal or command prompt and execute the following command:
+
+   ```bash
+    npm install -g @angular/cli
+   ```
+3. **Repository Cloning**
+
+   Clone the application repository using Git.
+
+   ```bash
+   git clone https://github.com/CodeURJC-DAW-2023-24/webapp16
+   ```
+
+4. Installing Dependencies
+
+   Once you have cloned the repository, navigate to the project directory and execute the following command to install all project dependencies:
+
    ```shell
-   cd backend
+    cd webapp16
+    npm install
+   
+5. Compiling and Running the Application
 
-2. Then, use the command to generate or update the documentation:
+   Once you have installed all dependencies, you can compile and run the Angular application locally. Use the following commands in your terminal:
+
    ```shell
-   mvn verify
+   ng serve
 
 ---
 # :art: Class and templates diagram of SPA
