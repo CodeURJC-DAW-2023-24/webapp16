@@ -33,6 +33,8 @@ import {TournamentBracketComponent} from "./components/viewsComponents/tournamen
 import {MatchInfoComponent} from "./components/viewsComponents/matchInfoComponent/matchInfo.component";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NewTeamComponent} from "./components/viewsComponents/newTeamComponent/newTeam.component";
+import {NewTournamentComponent} from "./components/viewsComponents/newTournamentComponent/newTournament.component";
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TeamInfoComponent,
     SearchComponent,
     TournamentBracketComponent,
-    MatchInfoComponent
+    MatchInfoComponent,
+    NewTeamComponent,
+    NewTournamentComponent
 
 
 

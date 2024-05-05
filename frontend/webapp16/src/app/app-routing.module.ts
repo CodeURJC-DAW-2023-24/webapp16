@@ -20,6 +20,8 @@ import {TeamInfoComponent} from "./components/viewsComponents/teamInfoComponent/
 import {SearchComponent} from "./components/viewsComponents/searchComponent/search.component";
 import {TournamentBracketComponent} from "./components/viewsComponents/tournamentBracketComponent/tournamentBracket.component";
 import {MatchInfoComponent} from "./components/viewsComponents/matchInfoComponent/matchInfo.component";
+import {NewTeamComponent} from "./components/viewsComponents/newTeamComponent/newTeam.component";
+import {NewTournamentComponent} from "./components/viewsComponents/newTournamentComponent/newTournament.component";
 
 
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
   { path: 'playerInfo/:id', component: PlayerInfoComponent },
   { path: 'teamInfo/:id', component: TeamInfoComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' }  },
-  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' } },
+  { path: 'logout', component: LoginComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' }   },
+  { path: 'addNewTeamToTournament', component: NewTeamComponent},
+  { path: 'addNewTournament', component: NewTournamentComponent}
 ];
 
 @NgModule({

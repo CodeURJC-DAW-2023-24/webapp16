@@ -1,11 +1,14 @@
 package es.codeurjc.backend.RESTController;
 
+import es.codeurjc.backend.DTOs.PlayerDTO;
 import es.codeurjc.backend.DTOs.TeamDTO;
 import es.codeurjc.backend.DTOs.TournamentDTO;
 import es.codeurjc.backend.DTOs.TournamentWithTeamsDTO;
+import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
 import es.codeurjc.backend.service.MatchService;
+import es.codeurjc.backend.service.PlayerService;
 import es.codeurjc.backend.service.TeamService;
 import es.codeurjc.backend.service.TournamentService;
 import es.codeurjc.backend.utils.BlobConverter;
@@ -35,6 +38,8 @@ public class TournamentRestController {
     private BlobConverter blobConverter;
     @Autowired
     private TeamService teamService;
+    @Autowired
+    private PlayerService playerService;
 
 
     @GetMapping
@@ -82,14 +87,14 @@ public class TournamentRestController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/")
     @Operation(summary = "Create a tournament")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created tournament", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = Tournament.class))}),
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
     })
-    public ResponseEntity<TournamentDTO>getTournamentId(@RequestBody TournamentWithTeamsDTO tournamentWithTeamsDTO){
+    public ResponseEntity<TournamentDTO>newTournament(@RequestBody TournamentWithTeamsDTO tournamentWithTeamsDTO){
         Tournament tournament = tournamentService.convertToEntity(tournamentWithTeamsDTO.getTournament());
         tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
         Tournament savedTournament = tournamentService.saveRest(tournament);
@@ -99,6 +104,11 @@ public class TournamentRestController {
             team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
             team.setTournament(savedTournament);
             teams.add(team);
+            for (PlayerDTO playerDTO : teamDTO.getPlayers()) {
+                Player player = playerService.convertToEntity(playerDTO);
+                player.setTeam(team);
+                playerService.save(player);
+            }
         }
         teamService.saveAllRest(teams);
         matchService.saveAll(matchService.generateMatches(teams, savedTournament));

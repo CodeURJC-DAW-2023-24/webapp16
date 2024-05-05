@@ -1,5 +1,7 @@
 package es.codeurjc.backend.DTOs;
 
+import java.util.List;
+
 public class TeamDTO {
 
     private Long id;
@@ -10,13 +12,14 @@ public class TeamDTO {
     private int wins;
     private int loses;
     private String imagePath;
+    private List<PlayerDTO> players;
 
     // Constructor, getters y setters
     // Constructor vacío
     public TeamDTO() {}
 
     // Constructor con todos los campos
-    public TeamDTO(Long id, String name, String coach, String stadium, int gamesPlayed, int wins, int loses, String imagePath) {
+    public TeamDTO(Long id, String name, String coach, String stadium, int gamesPlayed, int wins, int loses, String imagePath, List<PlayerDTO> players) {
         this.id = id;
         this.name = name;
         this.coach = coach;
@@ -25,6 +28,7 @@ public class TeamDTO {
         this.wins = wins;
         this.loses = loses;
         this.imagePath = imagePath;
+        this.players = players;
     }
 
     // Getters and setters
@@ -91,5 +95,13 @@ public class TeamDTO {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public List<PlayerDTO> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<PlayerDTO> players) {
+        this.players = players;
     }
 }
