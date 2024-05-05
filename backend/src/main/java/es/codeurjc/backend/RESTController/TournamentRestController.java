@@ -99,18 +99,23 @@ public class TournamentRestController {
         tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
         Tournament savedTournament = tournamentService.saveRest(tournament);
         List<Team> teams = new ArrayList<>();
+        List<Player> players = new ArrayList<>();
         for (TeamDTO teamDTO : tournamentWithTeamsDTO.getTeams()) {
             Team team = teamService.convertToEntity(teamDTO);
             team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
             team.setTournament(savedTournament);
             teams.add(team);
             for (PlayerDTO playerDTO : teamDTO.getPlayers()) {
+                System.out.println(playerDTO.getName());
                 Player player = playerService.convertToEntity(playerDTO);
                 player.setTeam(team);
-                playerService.save(player);
+                players.add(player);
             }
         }
         teamService.saveAllRest(teams);
+        for (Player player : players) {
+            playerService.save(player);
+        }
         matchService.saveAll(matchService.generateMatches(teams, savedTournament));
         URI location = URI.create("/api/tournaments/" + savedTournament.getId());
         return ResponseEntity.created(location).body(tournamentService.convertToDTO(savedTournament));
