@@ -99,13 +99,14 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.PUT,"/api/players/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/players/**").hasAnyRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET,"/api/reports/matchReport/").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/reports").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.GET,"/api/reports/**").hasAnyRole("USER")
                         .requestMatchers(HttpMethod.POST,"/api/reports/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/reports/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/reports/**").hasAnyRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.GET,"/api/reports/matchReport/").permitAll()
+
 
                         .requestMatchers(HttpMethod.GET,"/api/matches").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/matches/**").permitAll()
