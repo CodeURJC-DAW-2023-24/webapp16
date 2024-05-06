@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TournamentService} from "../../../services/tournament.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-tournament',
@@ -8,7 +9,10 @@ import {TournamentService} from "../../../services/tournament.service";
 })
 
 export class NewTournamentComponent{
+
+
   teams: any[] =  Array(8).fill(0)
+  tournament: any;
   tourName= '';
   tourCategory= '';
   tourCup= '';
@@ -174,7 +178,7 @@ export class NewTournamentComponent{
     imageAsString: ''
   };
 
-  constructor(private tournamentService: TournamentService) {
+  constructor(private tournamentService: TournamentService, private router: Router) {
     this.getTeamsFromLocalStorage();
   }
 
@@ -293,6 +297,7 @@ export class NewTournamentComponent{
     console.log(this.team6)
     console.log(this.team7)
     console.log(this.team8)
+
   let tournamentWithTeams = {
       tournament: {
         name: this.tourName,
@@ -301,18 +306,31 @@ export class NewTournamentComponent{
         tournamentImagePath: this.tourImage,
       },
     teams: [this.team1, this.team2, this.team3, this.team4, this.team5, this.team6, this.team7, this.team8]
+
   }
+    for (let team of tournamentWithTeams.teams) {
+      team.imagePath = team.imageAsString;
+    }
   console.log(tournamentWithTeams)
+    this.tournament = tournamentWithTeams.tournament
     this.tournamentService.createTournament(tournamentWithTeams).subscribe(
       data => {
         console.log(data);
+
+        this.router.navigate(['/']);
       },
       error => {
         console.error('Error:', error);
       }
     );
 
+
+
   }
+
+
+
+
   onFileChange(event: Event, teamIndex: number) {
     let reader = new FileReader();
     let target = event.target as HTMLInputElement;

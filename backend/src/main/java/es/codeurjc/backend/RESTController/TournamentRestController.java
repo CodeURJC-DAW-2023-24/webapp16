@@ -7,10 +7,7 @@ import es.codeurjc.backend.DTOs.TournamentWithTeamsDTO;
 import es.codeurjc.backend.model.Player;
 import es.codeurjc.backend.model.Team;
 import es.codeurjc.backend.model.Tournament;
-import es.codeurjc.backend.service.MatchService;
-import es.codeurjc.backend.service.PlayerService;
-import es.codeurjc.backend.service.TeamService;
-import es.codeurjc.backend.service.TournamentService;
+import es.codeurjc.backend.service.*;
 import es.codeurjc.backend.utils.BlobConverter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -40,6 +37,9 @@ public class TournamentRestController {
     private TeamService teamService;
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    private FileStorageService fileStorageService;
 
 
     @GetMapping
@@ -96,20 +96,34 @@ public class TournamentRestController {
     })
     public ResponseEntity<TournamentDTO>newTournament(@RequestBody TournamentWithTeamsDTO tournamentWithTeamsDTO){
         Tournament tournament = tournamentService.convertToEntity(tournamentWithTeamsDTO.getTournament());
-        tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
+        //System.out.println(tournament.getTournamentImagePath());
+     //   tournament.setTournamentImageFile(blobConverter.URLtoBlob(tournament.getTournamentImagePath()));
+        String fileName = fileStorageService.storeFile(tournament.getTournamentImagePath(), "torneo"+tournament.getName()+".jpg");
+        tournament.setTournamentImagePath(fileName);
+      //  System.out.println(tournament.getTournamentImagePath());
+
+        //
         Tournament savedTournament = tournamentService.saveRest(tournament);
         List<Team> teams = new ArrayList<>();
         List<Player> players = new ArrayList<>();
         for (TeamDTO teamDTO : tournamentWithTeamsDTO.getTeams()) {
             Team team = teamService.convertToEntity(teamDTO);
-            team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
+           // team.setImageFile(blobConverter.URLtoBlob(team.getImagePath()));
+            if(team.getImagePath() != null){
+            String fileNameTeam = fileStorageService.storeFile(team.getImagePath(), "team"+team.getName()+".jpg");
+            team.setImagePath(fileNameTeam);
+            }
+
             team.setTournament(savedTournament);
             teams.add(team);
-            for (PlayerDTO playerDTO : teamDTO.getPlayers()) {
-                System.out.println(playerDTO.getName());
-                Player player = playerService.convertToEntity(playerDTO);
-                player.setTeam(team);
-                players.add(player);
+            if (teamDTO.getPlayers() != null) {
+
+                for (PlayerDTO playerDTO : teamDTO.getPlayers()) {
+                    System.out.println(playerDTO.getName());
+                    Player player = playerService.convertToEntity(playerDTO);
+                    player.setTeam(team);
+                    players.add(player);
+                }
             }
         }
         teamService.saveAllRest(teams);

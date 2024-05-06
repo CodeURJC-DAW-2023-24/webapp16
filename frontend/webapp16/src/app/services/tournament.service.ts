@@ -47,6 +47,7 @@ getTournament(): Observable<Tournament[]> {
   createTournament(tournament: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/`, tournament, {withCredentials: true}).pipe(
       catchError(error => {
+        console.log(tournament)
         console.error('Error occurred while creating tournament:', error);
         return throwError(error);
       })
