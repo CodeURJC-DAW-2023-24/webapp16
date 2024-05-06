@@ -88,7 +88,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.DELETE,"/api/tournaments/**").hasAnyRole("ADMIN")
 
                         .requestMatchers(HttpMethod.GET,"/api/teams").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/api/teams/**").hasAnyRole("USER")
+                        .requestMatchers(HttpMethod.GET,"/api/teams/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/teams/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/api/teams/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/api/teams/**").hasAnyRole("ADMIN")
