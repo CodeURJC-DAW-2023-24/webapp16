@@ -43,8 +43,8 @@ const routes: Routes = [
   { path: 'teamInfo/:id', component: TeamInfoComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' }  },
   { path: 'logout', component: LoginComponent, canActivate: [AuthGuard], data: { expectedRole: 'USER' }   },
-  { path: 'addNewTeamToTournament', component: NewTeamComponent},
-  { path: 'addNewTournament', component: NewTournamentComponent}
+  { path: 'addNewTeamToTournament', component: NewTeamComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' }},
+  { path: 'addNewTournament', component: NewTournamentComponent, canActivate: [AuthGuard], data: { expectedRole: 'ADMIN' }}
 ];
 
 @NgModule({

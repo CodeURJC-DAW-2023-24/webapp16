@@ -20,14 +20,14 @@
         <li class="login-modal">
           <a routerLink="statistics/players" class="login"><i class="fa fa-user"></i>Player Statistics</a>
         </li>
-      </ul>      <!-- {{#admin}}
-       <a onclick="cleanLSandRedirect()"><button type="button" class="btn btn-outline-primary">Create Tournament</button></a>
-       {{/admin}}-->
-      <ul class="login">
+      </ul>
+
+      <ul class="login" *ngIf="isAdmin$ | async">
         <li class="login-modal">
           <a routerLink="addNewTournament" class="login"><i class="fa fa-user"></i>Add Tournament</a>
         </li>
       </ul>
+
       <ul class="login">
         <li class="login-modal">
           <a routerLink="statistics/teams" class="login"><i class="fa fa-user"></i>Team Statistics</a>
