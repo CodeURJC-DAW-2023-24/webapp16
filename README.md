@@ -1061,21 +1061,20 @@ To Setting Up the Development Environment, follow these instructions:
 
 #### Adrián Soriano Aragón
 
-* Fix bugs or problems that have arisen throughout the development of the application to ensure its correct functioning.
-* Implemented OpenAPI documentation generation to streamline API documentation processes.
-* Strong help for implementation of Docker Compose: I helped add Docker Compose to the project, which allowed us to define and manage multi-container Docker applications.
-* Added new collections to postman to have the demo ready.
-* Wrote most of the project documentation in the Readme file.
+* Algorithms: I implemented the algorithms for calculating the statistics of the teams.
+* Algorithms: Algorithm to generate and update tournamet Bracket with matches reports.
+* Screen : I have implemented and helped with the creation of numerous screen, such as, tournament, tournamentBracket,matchInfo, fillMatchReport..
+* Technology : I have implemented PDF technology to generate reports.
 
 
 
-| #   |                                                              Commit                                                               |     | #   |                                                                  File                                                                   |
-| :-: |:---------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:---------------------------------------------------------------------------------------------------------------------------------------:|
-| 1º  |       [Add:Open API doc](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/1e676ae24666f0fdd301378588d2e1890ff29c14)        | | 1º |               [api-docs.yaml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/backend/api-docs/api-docs.yaml)                |
-| 2º  | [Add:Docker and Docker Compose](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/0cd443aaf663013ae2d1f7d0fba3e13fc332381f) | |2º |                       [Dockerfile](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/Dockerfile)                        |
-| 3º  |     [Add: Postman Requests](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/1a0030507e74e719240c3b46e76487b194034f78)     | | 3º |                   [Docker-compose.yml](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/docker/Dockerfile)                    |
-| 4º  |  [Update: Docker-Compose yml](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/3d85bf30a8d397f08f31741cd9868b9cede82531)   | | 4º | [FutProLeague.postman_collection.json](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/FutProLeague.postman_collection.json) |
-| 5º  |   [Update Phase 3 Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/4379f0074f2e07f775c047b7a57ced9aee8192a3)    | | 5º |                            [Readme.md](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/README.md)                            |
+| #   |                                                                                           Commit                                                                                           |     | #   |                                                                                                    File                                                                                                     |
+| :-: |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-: | :-: |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1º  |                                        [Add: PDF](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/0a2d4e7e93ce892c4783083d35ecf201c7f22ebf)                                        | | 1º |                                [tournament.service.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/services/tournament.service.ts)                                 |
+| 2º  |                                 [Add: tournament Logic](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/ccae648f9756d6ad93dc02166fd3b29e5eee09e3)                                  | |2º |                                    [report.service.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/services/reports.service.ts)                                    |
+| 3º  | [Add : Match info](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/1d862fd32a29fc7926b4ebe1c02ab2eb9d39f2b0#diff-f1b490685397d0aa51631c08d1e5f7f252af3088056372434bae8258a1ff0b5a) | | 3º |           [tournament.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/tournamentComponent/tournament.component.ts)            |
+| 4º  |                                 [Add: tournament screen](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/931c41808bdbd00eb33d7e6e3251427ccb905a2f)                                 | | 4º | [tournamentBracket.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/tournamentBracketComponent/tournamentBracket.component.ts) |
+| 5º  |                               [Add: statistics algorithm](https://github.com/CodeURJC-DAW-2023-24/webapp16/commit/21142855b9fa9512cd849fc342549eb623231512)                                | | 5º |          [teamStatistics.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp16/blob/main/frontend/webapp16/src/app/components/viewsComponents/teamStatistics/teamStatistics.component.ts)          |
 
 #### Manuel López Corchado
 
